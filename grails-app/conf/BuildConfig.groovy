@@ -14,7 +14,8 @@ grails.project.dependency.resolution = {
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
         //mavenLocal()
-        //mavenCentral()
+        mavenCentral()
+        grailsRepo "https://metridoc.googlecode.com/svn/plugins/"
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
@@ -27,6 +28,10 @@ grails.project.dependency.resolution = {
     }
 
     plugins {
+        compile (":metridoc-core:0.52-SNAPSHOT") {
+            exclude "xmlbeans"
+            changing = true
+        }
         build(":tomcat:$grailsVersion",
               ":release:2.0.3",
               ":rest-client-builder:1.0.2") {
