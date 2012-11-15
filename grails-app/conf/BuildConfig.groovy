@@ -22,19 +22,20 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
     dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
-        // runtime 'mysql:mysql-connector-java:5.1.18'
+        //get this to play nice with intellij, not actually needed
+        build("org.tmatesoft.svnkit:svnkit:1.3.5") {
+            excludes "jna", "trilead-ssh2", "sqljet"
+        }
     }
 
     plugins {
-        compile (":metridoc-core:0.52-SNAPSHOT") {
+        compile(":metridoc-core:0.52-SNAPSHOT") {
             exclude "xmlbeans"
             changing = true
         }
         build(":tomcat:$grailsVersion",
-              ":release:2.0.3",
-              ":rest-client-builder:1.0.2") {
+                ":release:2.0.3",
+                ":rest-client-builder:1.0.2") {
             export = false
         }
     }
