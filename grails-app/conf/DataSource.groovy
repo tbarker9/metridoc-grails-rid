@@ -1,6 +1,9 @@
 dataSource {
     pooled = true
     driverClassName = "com.mysql.jdbc.Driver"
+    //driverClassName = "org.h2.Driver"
+    //username = "sa"
+    //password = ""
     username = "admin"
     password = "password"
 }
@@ -16,14 +19,14 @@ environments {
             // one of 'create', 'create-drop','update'
             dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/metridoc_rid?autoreconnect=true"
-            // url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://localhost:3306/metridoc_rid?autoreconnect=true"
-            // url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            //url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
     }
     production {

@@ -21,7 +21,7 @@ class RidTransactionTests {
         assert !ridTransaction2.validate()
         assert "max" == ridTransaction2.errors["interactTimes"]
 
-        def contact = new String("12345678901234567890123456789012")
+        def contact = new String("1234567890123456789012345678901234567890123456789012")
         def ridTransaction3 = new RidTransaction(followUpContact: contact)
         assert !ridTransaction3.validate()
         assert "maxSize" == ridTransaction3.errors["followUpContact"]
