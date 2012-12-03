@@ -1,7 +1,7 @@
 package metridoc.rid
 
 class RidConsutlationMode {
-    static belongsTo = [ridTransaction:RidTransaction]
+    static hasMany = [ridTransaction:RidTransaction]
 
     String mode
     String toString(){
@@ -9,7 +9,7 @@ class RidConsutlationMode {
     }
 
     static constraints = {
-        mode(blank: true, nullable: true, maxSize: 40)
+        mode(blank: false, nullable: true)
         ridTransaction(nullable: true)
     }
 }

@@ -2,7 +2,7 @@ package metridoc.rid
 
 class RidProductConnected {
 
-    static belongsTo = [ridTransaction:RidTransaction]
+    static hasMany = [ridTransaction:RidTransaction]
 
     String name
     String toString(){
@@ -10,7 +10,7 @@ class RidProductConnected {
     }
 
     static constraints = {
-        name(blank: true, nullable: true, maxSize: 40)
+        name(blank: false, nullable: true)
         ridTransaction(nullable: true)
     }
 }

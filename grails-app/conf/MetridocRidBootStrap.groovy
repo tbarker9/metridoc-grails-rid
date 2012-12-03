@@ -7,6 +7,9 @@ import metridoc.rid.RidCourseSponsor
 import metridoc.rid.RidProductConnected
 import metridoc.rid.RidDepartmentalAffiliation
 import metridoc.rid.RidConsutlationMode
+import metridoc.rid.RidCustomer
+import metridoc.rid.RidServiceProvided
+import metridoc.rid.RidEntityAffiliation
 /**
  * Created with IntelliJ IDEA.
  * User: xiaofant
@@ -19,24 +22,33 @@ class MetridocRidBootStrap {
         switch(GrailsUtil.environment){
             case "development":
                 // for departmental affiliation
-                List<String> dAffiliation = Arrays.asList("Biology", "Cinema Studies", "History", "Philosophy", "...");
+                List<String> dAffiliation = Arrays.asList("Biology", "Cinema Studies", "History", "Philosophy", "...")
                 for (String i in dAffiliation) {
                     def da = new RidDepartmentalAffiliation(name: i)
                     da.save()
                     if(da.hasErrors()) println da.errors
                 }
+                // for entity affiliation
+                List<String> eAffiliation = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
+                        "Dental", "SP2", "Design", "UPHS", "CHOP", "Annenberg", "Law", "Penn Other (please indicate)",
+                        "Outside Entity (please indicate)")
+                for (String i in eAffiliation) {
+                    def e = new RidEntityAffiliation(name: i, inForm: 1)
+                    e.save()
+                    if(e.hasErrors()) println e.errors
+                }
                 // for course sponsor
                 List<String> cSponsor = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
-                                                      "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
-                                                      "Independent Research", "Outside Entity(please indicate)");
+                        "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
+                        "Independent Research", "Outside Entity (please indicate)")
                 for (String i in cSponsor) {
-                    def c = new RidCourseSponsor(name: i)
+                    def c = new RidCourseSponsor(name: i, inForm: 1)
                     c.save()
                     if(c.hasErrors()) println c.errors
                 }
                 // for product connected
                 List<String> pConnected = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
-                                                        "Independent Research")
+                        "Independent Research")
                 for (String i in pConnected) {
                     def p = new RidProductConnected(name: i)
                     p.save()
@@ -46,9 +58,34 @@ class MetridocRidBootStrap {
                 List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "In person(in library)",
                         "In person(outside library)", "Conferencing software")
                 for (String i in cMode) {
-                    def p = new RidConsutlationMode(mode: i)
-                    p.save()
-                    if(p.hasErrors()) println p.errors
+                    def c = new RidConsutlationMode(mode: i)
+                    c.save()
+                    if(c.hasErrors()) println c.errors
+                }
+                // for customer
+                List<String> customers = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
+                        "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Stuff",
+                        "Other (please indicate)")
+                for (String i in customers) {
+                    def c = new RidCustomer(name: i, inForm: 1)
+                    c.save()
+                    if(c.hasErrors()) println c.errors
+                }
+                new RidCustomer(name: "***Shouldn't be shown***", inForm: 0).save()
+                // for service provided
+                List<String> sProvided = Arrays.asList("Course design", "Research assistance",
+                        "Acquisition/Collections", "Copyright assistance for author", "Copyright assistance for user",
+                        "Coorect an operational or service breakdown (incl. tech support)",
+                        "Instructional support (apart from course design)", "Clinic", "Tour",
+                        "Clinical decision making", "Tech/Software instrcution", "Search instruction",
+                        "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
+                        "Consumer health", "Admin/policy questions", "Citation management instruction",
+                        "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
+                        "Other (please indicate)")
+                for (String i in sProvided) {
+                    def s = new RidServiceProvided(name: i, inForm: 1)
+                    s.save()
+                    if(s.hasErrors()) println s.errors
                 }
                 break
             case "production": break

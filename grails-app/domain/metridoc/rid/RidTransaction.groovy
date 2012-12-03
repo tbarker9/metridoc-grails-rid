@@ -2,19 +2,23 @@ package metridoc.rid
 
 class RidTransaction {
 
-    static hasMany = [departmentalAffilication: RidDepartmentalAffiliation,
+    static belongsTo = [departmentalAffilication: RidDepartmentalAffiliation,
                       courseSponsor: RidCourseSponsor,
                       productConnected: RidProductConnected,
-                      consutlationMode: RidConsutlationMode]
+                      consutlationMode: RidConsutlationMode,
+                      customer: RidCustomer,
+                      serviceProvided: RidServiceProvided,
+                      entityAffiliation: RidEntityAffiliation]
 
-    // Statement of work
+    // statement of work
+    String customerQuestion
     Integer interactTimes = 0
     String followUpContact
     Integer prepTime = 0
     Integer eventLength = 0
     String notes
 
-    // Roles
+    // roles
     String facultySponsor
     String courseName
     String courseNumber
@@ -24,21 +28,27 @@ class RidTransaction {
     String patronEmail
 
     static constraints = {
-        interactTimes nullable: false, max: 50
-        followUpContact blank: true, nullable: true, maxSize: 50
-        prepTime nullable: false
-        eventLength nullable: false
-        notes blank: true, nullable: true, maxSize: 200
-
-        facultySponsor(blank: true, nullable: true, maxSize: 40)
-        courseName(blank: true, nullable: true, maxSize: 30)
-        courseNumber(blank: true, nullable: true, maxSize: 10)
-        departmentalAffilication(nullable: true)
-        courseSponsor(nullable: true)
-
+        // statement of work
+        customerQuestion(blank: true, nullable: true, maxSize: 500)
+        interactTimes(nullable: false, max: 50)
+        followUpContact(blank: true, nullable: true, maxSize: 50)
+        prepTime(nullable: false)
+        eventLength(nullable: false)
+        notes(blank: true, nullable: true, maxSize: 200)
+        // roles
+        facultySponsor(blank: true, nullable: true, maxSize: 300)
+        courseName(blank: true, nullable: true, maxSize: 300)
+        courseNumber(blank: true, nullable: true, maxSize: 300)
+        //customer(nullable: true)
+        //entityAffiliation(nullable: true)
+        //departmentalAffilication(nullable: true)
+        //courseSponsor(nullable: true)
+        // description
         librarian(blank: true, nullable: true, maxSize: 40)
         patronEmail(blank: true, nullable: true, email: true, maxSize: 40)
-        productConnected(nullable: true)
-        consutlationMode(nullable: true)
+        //serviceProvided(nullable: true)
+        //consutlationMode(nullable: true)
+        //productConnected(nullable: true)
     }
+
 }
