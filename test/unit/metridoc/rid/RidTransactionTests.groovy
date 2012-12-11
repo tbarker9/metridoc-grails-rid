@@ -11,6 +11,7 @@ import org.junit.Test
 class RidTransactionTests {
 
     @Test
+    // failed now since make some non-null value null
     void testConstraints() {
         mockForConstraintsTests(RidTransaction)
 
@@ -31,6 +32,7 @@ class RidTransactionTests {
     }
 
     @Test
+    // failed now since make some non-null value null
     void testDatabase() {
         mockForConstraintsTests(RidTransaction)
 

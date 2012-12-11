@@ -4,23 +4,25 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class RidTransactionController {
 
-    static homePage = [title: "RidTransaction", description: "balabala"]
+    def databaseService
+
+    static homePage = [title: "RidTransaction"]
     def scaffold = true
-    /*
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
-    def index() {
-        redirect(action: "list", params: params)
-    }
-
-    def list(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        [ridTransactionInstanceList: RidTransaction.list(params), ridTransactionInstanceTotal: RidTransaction.count()]
-    }
-
-    def create() {
-        [ridTransactionInstance: new RidTransaction(params)]
-    }
+//
+//    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+//
+//    def index() {
+//        redirect(action: "list", params: params)
+//    }
+//
+//    def list(Integer max) {
+//        params.max = Math.min(max ?: 10, 100)
+//        [ridTransactionInstanceList: RidTransaction.list(params), ridTransactionInstanceTotal: RidTransaction.count()]
+//    }
+//
+//    def create() {
+//        [ridTransactionInstance: new RidTransaction(params)]
+//    }
 
     def save() {
         def ridTransactionInstance = new RidTransaction(params)
@@ -29,10 +31,12 @@ class RidTransactionController {
             return
         }
 
+        databaseService.serviceMethod(params)
+
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
         redirect(action: "show", id: ridTransactionInstance.id)
     }
-
+    /*
     def show(Long id) {
         def ridTransactionInstance = RidTransaction.get(id)
         if (!ridTransactionInstance) {

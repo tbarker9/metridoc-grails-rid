@@ -6,6 +6,7 @@ class RidCustomer {
 
     String name
     Integer inForm = 0
+    Date myDate = new Date()
 
     String toString(){
         return "${name}"

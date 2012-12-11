@@ -1,6 +1,6 @@
 package metridoc.rid
 
-class RidConsutlationMode {
+class RidModeOfConsutlation {
     static hasMany = [ridTransaction:RidTransaction]
 
     String mode

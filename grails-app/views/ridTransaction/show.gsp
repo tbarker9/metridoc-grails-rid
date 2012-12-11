@@ -104,6 +104,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${ridTransactionInstance?.otherCustomer}">
+				<li class="fieldcontain">
+					<span id="otherCustomer-label" class="property-label"><g:message code="ridTransaction.otherCustomer.label" default="Other Customer" /></span>
+					
+						<span class="property-value" aria-labelledby="otherCustomer-label"><g:fieldValue bean="${ridTransactionInstance}" field="otherCustomer"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${ridTransactionInstance?.librarian}">
 				<li class="fieldcontain">
 					<span id="librarian-label" class="property-label"><g:message code="ridTransaction.librarian.label" default="Librarian" /></span>
@@ -122,11 +131,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${ridTransactionInstance?.consutlationMode}">
+				<g:if test="${ridTransactionInstance?.modeOfConsutlation}">
 				<li class="fieldcontain">
-					<span id="consutlationMode-label" class="property-label"><g:message code="ridTransaction.consutlationMode.label" default="Consutlation Mode" /></span>
+					<span id="modeOfConsutlation-label" class="property-label"><g:message code="ridTransaction.modeOfConsutlation.label" default="Consutlation Mode" /></span>
 					
-						<span class="property-value" aria-labelledby="consutlationMode-label"><g:link controller="ridConsutlationMode" action="show" id="${ridTransactionInstance?.consutlationMode?.id}">${ridTransactionInstance?.consutlationMode?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="modeOfConsutlation-label"><g:link controller="ridModeOfConsutlationAdmin" action="show" id="${ridTransactionInstance?.modeOfConsutlation?.id}">${ridTransactionInstance?.modeOfConsutlation?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -135,7 +144,7 @@
 				<li class="fieldcontain">
 					<span id="courseSponsor-label" class="property-label"><g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor" /></span>
 					
-						<span class="property-value" aria-labelledby="courseSponsor-label"><g:link controller="ridCourseSponsor" action="show" id="${ridTransactionInstance?.courseSponsor?.id}">${ridTransactionInstance?.courseSponsor?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="courseSponsor-label"><g:link controller="ridCourseSponsorAdmin" action="show" id="${ridTransactionInstance?.courseSponsor?.id}">${ridTransactionInstance?.courseSponsor?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -153,7 +162,7 @@
 				<li class="fieldcontain">
 					<span id="departmentalAffilication-label" class="property-label"><g:message code="ridTransaction.departmentalAffilication.label" default="Departmental Affilication" /></span>
 					
-						<span class="property-value" aria-labelledby="departmentalAffilication-label"><g:link controller="ridDepartmentalAffiliation" action="show" id="${ridTransactionInstance?.departmentalAffilication?.id}">${ridTransactionInstance?.departmentalAffilication?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="departmentalAffilication-label"><g:link controller="ridDepartmentalAffiliationAdmin" action="show" id="${ridTransactionInstance?.departmentalAffilication?.id}">${ridTransactionInstance?.departmentalAffilication?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -162,7 +171,7 @@
 				<li class="fieldcontain">
 					<span id="entityAffiliation-label" class="property-label"><g:message code="ridTransaction.entityAffiliation.label" default="Entity Affiliation" /></span>
 					
-						<span class="property-value" aria-labelledby="entityAffiliation-label"><g:link controller="ridEntityAffiliation" action="show" id="${ridTransactionInstance?.entityAffiliation?.id}">${ridTransactionInstance?.entityAffiliation?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="entityAffiliation-label"><g:link controller="ridEntityAffiliationAdmin" action="show" id="${ridTransactionInstance?.entityAffiliation?.id}">${ridTransactionInstance?.entityAffiliation?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -171,7 +180,7 @@
 				<li class="fieldcontain">
 					<span id="productConnected-label" class="property-label"><g:message code="ridTransaction.productConnected.label" default="Product Connected" /></span>
 					
-						<span class="property-value" aria-labelledby="productConnected-label"><g:link controller="ridProductConnected" action="show" id="${ridTransactionInstance?.productConnected?.id}">${ridTransactionInstance?.productConnected?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="productConnected-label"><g:link controller="ridProductConnectedAdmin" action="show" id="${ridTransactionInstance?.productConnected?.id}">${ridTransactionInstance?.productConnected?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -180,7 +189,7 @@
 				<li class="fieldcontain">
 					<span id="serviceProvided-label" class="property-label"><g:message code="ridTransaction.serviceProvided.label" default="Service Provided" /></span>
 					
-						<span class="property-value" aria-labelledby="serviceProvided-label"><g:link controller="ridServiceProvided" action="show" id="${ridTransactionInstance?.serviceProvided?.id}">${ridTransactionInstance?.serviceProvided?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="serviceProvided-label"><g:link controller="ridServiceProvidedAdmin" action="show" id="${ridTransactionInstance?.serviceProvided?.id}">${ridTransactionInstance?.serviceProvided?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
