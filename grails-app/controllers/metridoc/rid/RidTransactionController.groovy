@@ -6,7 +6,9 @@ class RidTransactionController {
 
     def databaseService
 
-    static homePage = [title: "RidTransaction"]
+    static homePage = [title: "Reference Instruction Database",
+            description: "Adds/Updates/Reviews Reference Instruction Transactions"]
+
     def scaffold = true
 //
 //    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
