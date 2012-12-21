@@ -21,7 +21,7 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-
+            <hr width="96%" align="center"/>
             <div id="controllerList" style="padding-left: 150px;">
                 <ul>
                     <g:each var="c" in="${grailsApplication.controllerClasses}">
@@ -36,9 +36,9 @@
                 </ul>
             </div>
 
-            <div class="pagination">
+            %{--<div class="pagination">--}%
                 %{--<g:paginate total="${ridTransactionAdminInstanceTotal}"/>--}%
-            </div>
+            %{--</div>--}%
         </div>
 
     </div>

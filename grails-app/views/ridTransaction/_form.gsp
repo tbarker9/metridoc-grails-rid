@@ -16,7 +16,7 @@
         <g:message code="ridTransaction.customerQuestion.label" default="Customer Question"/>
 
     </label>
-    <g:textArea name="customerQuestion" cols="40" rows="5" maxlength="500"
+    <g:textArea class="userInput" name="customerQuestion" cols="40" rows="5" maxlength="500"
                 value="${ridTransactionInstance?.customerQuestion}"/>
 </div>
 
@@ -25,7 +25,7 @@
         <g:message code="ridTransaction.interactTimes.label" default="Interact Times"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="interactTimes" type="number" max="50" value="${ridTransactionInstance.interactTimes}" required=""/>
+    <g:field class="userInput" name="interactTimes" type="number" max="50" value="${ridTransactionInstance.interactTimes}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'followUpContact', 'error')} ">
@@ -33,7 +33,7 @@
         <g:message code="ridTransaction.followUpContact.label" default="Follow Up Contact"/>
 
     </label>
-    <g:textField name="followUpContact" maxlength="50" value="${ridTransactionInstance?.followUpContact}"/>
+    <g:textField class="userInput" name="followUpContact" maxlength="50" value="${ridTransactionInstance?.followUpContact}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'prepTime', 'error')} required">
@@ -41,7 +41,7 @@
         <g:message code="ridTransaction.prepTime.label" default="Prep Time"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="prepTime" type="number" value="${ridTransactionInstance.prepTime}" required=""/>
+    <g:field class="userInput" name="prepTime" type="number" value="${ridTransactionInstance.prepTime}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'eventLength', 'error')} required">
@@ -49,7 +49,7 @@
         <g:message code="ridTransaction.eventLength.label" default="Event Length"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="eventLength" type="number" value="${ridTransactionInstance.eventLength}" required=""/>
+    <g:field class="userInput" name="eventLength" type="number" value="${ridTransactionInstance.eventLength}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'notes', 'error')} ">
@@ -57,7 +57,7 @@
         <g:message code="ridTransaction.notes.label" default="Notes"/>
 
     </label>
-    <g:textField name="notes" maxlength="200" value="${ridTransactionInstance?.notes}"/>
+    <g:textField class="userInput" name="notes" maxlength="200" value="${ridTransactionInstance?.notes}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">
@@ -65,7 +65,7 @@
         <g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>
 
     </label>
-    <g:textArea name="facultySponsor" cols="40" rows="5" maxlength="300"
+    <g:textArea class="userInput" name="facultySponsor" cols="40" rows="5" maxlength="300"
                 value="${ridTransactionInstance?.facultySponsor}"/>
 </div>
 
@@ -74,7 +74,7 @@
         <g:message code="ridTransaction.courseName.label" default="Course Name"/>
 
     </label>
-    <g:textArea name="courseName" cols="40" rows="5" maxlength="300" value="${ridTransactionInstance?.courseName}"/>
+    <g:textArea class="userInput" name="courseName" cols="40" rows="5" maxlength="300" value="${ridTransactionInstance?.courseName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseNumber', 'error')} ">
@@ -82,7 +82,7 @@
         <g:message code="ridTransaction.courseNumber.label" default="Course Number"/>
 
     </label>
-    <g:textArea name="courseNumber" cols="40" rows="5" maxlength="300" value="${ridTransactionInstance?.courseNumber}"/>
+    <g:textArea class="userInput" name="courseNumber" cols="40" rows="5" maxlength="300" value="${ridTransactionInstance?.courseNumber}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'librarian', 'error')} ">
@@ -90,7 +90,7 @@
         <g:message code="ridTransaction.librarian.label" default="Librarian"/>
 
     </label>
-    <g:textField name="librarian" maxlength="40" value="${ridTransactionInstance?.librarian}"/>
+    <g:textField class="userInput" name="librarian" maxlength="40" value="${ridTransactionInstance?.librarian}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">
@@ -98,7 +98,7 @@
         <g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>
 
     </label>
-    <g:field type="email" name="patronEmail" maxlength="40" value="${ridTransactionInstance?.patronEmail}"/>
+    <g:field class="userInput" type="email" name="patronEmail" maxlength="40" value="${ridTransactionInstance?.patronEmail}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsutlation', 'error')} required">
@@ -126,7 +126,7 @@
         <g:message code="ridTransaction.otherCourseSponsor.label" default="Other Course Sponsor"/>
 
     </label>
-    <g:textField name="otherCourseSponsor" maxlength="50" value="${ridTransactionInstance?.otherCourseSponsor}"/>
+    <g:textField class="userInput" name="otherCourseSponsor" maxlength="50" value="${ridTransactionInstance?.otherCourseSponsor}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'customer', 'error')} required">
@@ -147,7 +147,7 @@
         <g:message code="ridTransaction.otherCustomer.label" default="Other Customer"/>
 
     </label>
-    <g:textField name="otherCustomer" maxlength="50" value="${ridTransactionInstance?.otherCustomer}"/>
+    <g:textField class="userInput" name="otherCustomer" maxlength="50" value="${ridTransactionInstance?.otherCustomer}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'departmentalAffilication', 'error')} required">
@@ -175,7 +175,7 @@
     <label for="otherEntityAffiliation">
         <g:message code="ridTransaction.otherEntityAffiliation.label" default="Other Entity Affiliation"/>
     </label>
-    <g:textField name="otherEntityAffiliation" maxlength="50" value="${ridTransactionInstance?.otherEntityAffiliation}"/>
+    <g:textField class="userInput" name="otherEntityAffiliation" maxlength="50" value="${ridTransactionInstance?.otherEntityAffiliation}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'productConnected', 'error')} required">
@@ -202,7 +202,7 @@
     <label for="otherService">
         <g:message code="ridTransaction.otherService.label" default="Other Service"/>
     </label>
-    <g:textField name="otherService" maxlength="100" value="${ridTransactionInstance?.otherService}"/>
+    <g:textField class="userInput" name="otherService" maxlength="100" value="${ridTransactionInstance?.otherService}"/>
 </div>
 %{--<div>--}%
     %{--<select id="foo" multiple="multiple" style="height:96px;width:85px">--}%

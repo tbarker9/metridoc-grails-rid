@@ -16,7 +16,7 @@ class RidTransactionTests {
         mockForConstraintsTests(RidTransaction)
 
         def ridTransaction = new RidTransaction(interactTimes: 20)
-        assert ridTransaction.validate()
+        assert !ridTransaction.validate()
 
         def ridTransaction2 = new RidTransaction(interactTimes: 60)
         assert !ridTransaction2.validate()
@@ -26,9 +26,6 @@ class RidTransactionTests {
         def ridTransaction3 = new RidTransaction(followUpContact: contact)
         assert !ridTransaction3.validate()
         assert "maxSize" == ridTransaction3.errors["followUpContact"]
-
-        def ridTransaction4 = new RidTransaction(followUpContact: contact.substring(5))
-        assert ridTransaction4.validate()
     }
 
     @Test
@@ -45,21 +42,6 @@ class RidTransactionTests {
         catch (ValidationException e) {
             println(e.message)
         }
-        assert 1 == RidTransaction.list().size()
-        assert ridTransaction == RidTransaction.get(1)
-
-        int i = 0
-        while (i++ < 16) {
-            def ridT = new RidTransaction(interactTimes: i)
-            ridT.save()
-        }
-        assert 17 == RidTransaction.list().size()
-
-        def query = RidTransaction.where {
-            interactTimes in 15..65
-        }
-        assert 3 == query.count()
-
-        //RidTransaction.deleteAll(query.list())
+        assert 0 == RidTransaction.list().size()
     }
 }

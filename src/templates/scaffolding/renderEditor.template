@@ -49,7 +49,7 @@
         } else {
 			def sb = new StringBuilder("")
             if ("textarea" == cp.widget || (cp.maxSize > 250 && !cp.password && !cp.inList)) {
-                sb << '<g:textArea name="' << property.name << '"'
+                sb << '<g:textArea class="userInput" name="' << property.name << '"'
  				sb << ' cols="40" rows="5"'
 				if (cp.maxSize) sb << ' maxlength="' << cp.maxSize << '"'
 				if (isRequired()) sb << ' required=""'
@@ -65,13 +65,13 @@
 				sb << '/>'
 			} else {
 				if (cp.password) {
-					sb << '<g:field type="password"'
+					sb << '<g:field class="userInput" type="password"'
 				} else if (cp.url) {
-					sb << '<g:field type="url"'
+					sb << '<g:field class="userInput" type="url"'
 				} else if (cp.email) {
-					sb << '<g:field type="email"'
+					sb << '<g:field class="userInput" type="email"'
 				} else {
-					sb << '<g:textField'
+					sb << '<g:textField class="userInput"'
 				}
 				sb << ' name="' << property.name << '"'
 				if (cp.maxSize) sb << ' maxlength="' << cp.maxSize << '"'
@@ -173,7 +173,7 @@
 				sb << renderNoSelection(property)
 				sb << '/>'
             } else {
-				sb << '<g:field'
+				sb << '<g:field class="userInput"'
 				sb << ' name="' << property.name << '"'
 				if (property.type in [float, double, Float, Double, BigDecimal]) {
 					sb << ' value="${' << "fieldValue(bean: ${domainInstance}, field: '${property.name}')" << '}"'

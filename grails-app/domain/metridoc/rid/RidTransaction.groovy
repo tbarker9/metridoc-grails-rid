@@ -10,6 +10,8 @@ class RidTransaction {
                       serviceProvided: RidServiceProvided,
                       entityAffiliation: RidEntityAffiliation]
 
+    static transients = ['otherCustomer', 'otherEntityAffiliation', 'otherCourseSponsor', 'otherService']
+
     // statement of work
     String customerQuestion
     Integer interactTimes = 0
@@ -60,4 +62,7 @@ class RidTransaction {
         //productConnected(nullable: true)
     }
 
+    String toString(){
+        return "id=${id}; question:${customerQuestion}"
+    }
 }

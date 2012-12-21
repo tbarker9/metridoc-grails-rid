@@ -28,12 +28,11 @@ class RidTransactionController {
 
     def save() {
         def ridTransactionInstance = new RidTransaction(params)
+        databaseService.serviceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
             render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
             return
         }
-
-        databaseService.serviceMethod(params)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
         redirect(action: "show", id: ridTransactionInstance.id)

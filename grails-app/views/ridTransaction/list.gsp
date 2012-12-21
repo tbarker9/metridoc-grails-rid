@@ -58,9 +58,11 @@
                     </g:each>
                     </tbody>
                 </table>
-                <div class="pagination">
-                    <g:paginate total="${ridTransactionInstanceTotal}" />
-                </div>
+                <g:if test="${ridTransactionInstanceTotal > 10}">
+                    <div class="pagination">
+                        <g:paginate total="${ridTransactionInstanceTotal}" />
+                    </div>
+                </g:if>
             </div>
         </div>
 	</body>

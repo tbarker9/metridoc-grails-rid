@@ -13,7 +13,7 @@ class RidEntityAffiliation {
 
     static constraints = {
         name(blank: false, nullable: true)
-        inForm(nullable: false)
+        inForm(nullable: false, inList: [0,1,2])
         ridTransaction(nullable: true)
     }
 }
