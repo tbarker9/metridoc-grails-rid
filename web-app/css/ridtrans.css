@@ -1,0 +1,9 @@
+.fieldcontain label,
+.fieldcontain .property-label {
+    width: auto;
+}
+
+
+tr:hover {
+    background: #FFFFFF;
+}

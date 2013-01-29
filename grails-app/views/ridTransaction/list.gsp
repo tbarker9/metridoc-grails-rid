@@ -26,9 +26,9 @@
                         
                         <g:sortableColumn property="customerQuestion" title="${message(code: 'ridTransaction.customerQuestion.label', default: 'Customer Question')}" />
                         
-                        <g:sortableColumn property="interactTimes" title="${message(code: 'ridTransaction.interactTimes.label', default: 'Interact Times')}" />
+                        <g:sortableColumn property="librarian" title="${message(code: 'ridTransaction.librarian.label', default: 'Librarian')}" />
                         
-                        <g:sortableColumn property="followUpContact" title="${message(code: 'ridTransaction.followUpContact.label', default: 'Follow Up Contact')}" />
+                        <g:sortableColumn property="patronEmail" title="${message(code: 'ridTransaction.patronEmail.label', default: 'Patron Email')}" />
                         
                         <g:sortableColumn property="prepTime" title="${message(code: 'ridTransaction.prepTime.label', default: 'Prep Time')}" />
                         
@@ -41,12 +41,20 @@
                     <tbody>
                     <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
                         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                            <%
+                                customerQ = ridTransactionInstance.customerQuestion
+                                if (customerQ!=null && customerQ.length() > 12)
+                                    customerQ = customerQ.substring(0,12) + "..."
+                            %>
+                            <td><g:link action="show" id="${ridTransactionInstance.id}"
+                                        title="${ridTransactionInstance.customerQuestion}">
+                                    ${customerQ}
+                                </g:link>
+                            </td>
                             
-                            <td><g:link action="show" id="${ridTransactionInstance.id}">${fieldValue(bean: ridTransactionInstance, field: "customerQuestion")}</g:link></td>
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "librarian")}</td>
                             
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "interactTimes")}</td>
-                            
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "followUpContact")}</td>
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "patronEmail")}</td>
                             
                             <td>${fieldValue(bean: ridTransactionInstance, field: "prepTime")}</td>
                             

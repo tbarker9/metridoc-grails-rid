@@ -7,6 +7,7 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
+        <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
         <div class="md-application-content">
             %{--<a href="#create-ridTransaction" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>--}%
             <div class="nav" role="navigation">
@@ -32,6 +33,7 @@
                         <g:render template="form"/>
                     </fieldset>
                     <fieldset class="buttons">
+                        <input id="resetButton" class="edit" type="reset" value="Reset" />
                         <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                     </fieldset>
                 </g:form>

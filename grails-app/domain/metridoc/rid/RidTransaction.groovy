@@ -19,6 +19,7 @@ class RidTransaction {
     Integer prepTime = 0
     Integer eventLength = 0
     String notes
+    String staffPennkey
 
     // roles
     String facultySponsor
@@ -36,16 +37,17 @@ class RidTransaction {
 
     static constraints = {
         // STATEMENT OF WORK
-        customerQuestion(blank: true, nullable: true, maxSize: 500)
-        interactTimes(nullable: false, max: 50)
+        customerQuestion(blank: false, nullable: false, maxSize: 500)
+        interactTimes(nullable: false, min: 0, max: 50)
         followUpContact(blank: true, nullable: true, maxSize: 50)
-        prepTime(nullable: false)
-        eventLength(nullable: false)
-        notes(blank: true, nullable: true, maxSize: 200)
+        prepTime(nullable: false, min: 0)
+        eventLength(nullable: false, min: 0)
+        notes(blank: true, nullable: true, maxSize: 500)
+        staffPennkey(blank: false, nullable: false, maxSize: 100)
         // ROLES
         facultySponsor(blank: true, nullable: true, maxSize: 300)
-        courseName(blank: true, nullable: true, maxSize: 300)
-        courseNumber(blank: true, nullable: true, maxSize: 300)
+        courseName(blank: true, nullable: true, maxSize: 100)
+        courseNumber(blank: true, nullable: true, maxSize: 100)
         //customer(nullable: true)
         otherCustomer(blank: true, nullable: true, maxSize: 50)
         //entityAffiliation(nullable: true)
@@ -54,8 +56,8 @@ class RidTransaction {
         //courseSponsor(nullable: true)
         otherCourseSponsor(blank: true, nullable: true, maxSize: 50)
         // DESCRIPTION
-        librarian(blank: true, nullable: true, maxSize: 40)
-        patronEmail(blank: true, nullable: true, email: true, maxSize: 40)
+        librarian(blank: true, nullable: true, maxSize: 100)
+        patronEmail(blank: true, nullable: true, email: true, maxSize: 100)
         //serviceProvided(nullable: true)
         otherService(blank: true, nullable: true, maxSize: 100)
         //modeOfConsutlation(nullable: true)

@@ -5,6 +5,7 @@
 //    })
 //})
 
+
 $(function() {
     var choiceCustomer = $("#customer").val();
     if (choiceCustomer == "9") {
@@ -78,5 +79,18 @@ $(function() {
             $("#otherCourseSponsorDiv").hide();
             $("#otherCourseSponsor").val("");
         }
+    })
+})
+
+$(function() {
+    $("#resetButton").click(function() {
+        $("#otherCustomerDiv").hide();
+        $("#otherCustomer").val("");
+        $("#otherServiceDiv").hide();
+        $("#otherService").val("");
+        $("#otherEntityAffiliationDiv").hide();
+        $("#otherEntityAffiliation").val("");
+        $("#otherCourseSponsorDiv").hide();
+        $("#otherCourseSponsor").val("");
     })
 })

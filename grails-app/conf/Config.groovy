@@ -13,11 +13,8 @@
  * permissions and limitations under the License.
  */
 
-
-import org.apache.shiro.SecurityUtils
-import static org.quartz.SimpleScheduleBuilder.*
-import static org.quartz.CronScheduleBuilder.*
 import org.apache.commons.lang.SystemUtils
+import org.slf4j.LoggerFactory
 
 // config files can either be Java properties files or ConfigSlurper scripts
 
@@ -31,9 +28,23 @@ import org.apache.commons.lang.SystemUtils
 // }
 
 //for jquery
-grails.views.javascript.library="jquery"
+grails.views.javascript.library = "jquery"
 
 def rootLoader = Thread.currentThread().contextClassLoader.rootLoader
+
+def driverDirectory = new File("${SystemUtils.USER_HOME}/.grails/drivers")
+if (driverDirectory.exists() && driverDirectory.isDirectory()) {
+    if (rootLoader) {
+        driverDirectory.eachFile {
+            if (it.name.endsWith(".jar")) {
+                def url = it.toURI().toURL()
+                LoggerFactory.getLogger("config.Config").info "adding driver ${url}" as String
+                rootLoader.addURL(url)
+            }
+        }
+    }
+}
+
 
 grails.converters.default.pretty.print = true
 metridoc.home = "${userHome}/.metridoc"
@@ -45,7 +56,9 @@ grails.config.locations = []
 if (new File("${metridoc.home}/MetridocConfig.groovy").exists()) {
     log.info "found MetridocConfig.groovy, will add to configuration"
 }
+grails.config.locations << "classpath:MetridocConfig.groovy"
 grails.config.locations << "file:${metridoc.home}/MetridocConfig.groovy"
+
 
 if (System.properties["${appName}.config.location"]) {
     grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -122,7 +135,7 @@ log4j = {
 
     appenders {
 
-        println "INFO: logs will be stored at ${config.metridoc.home}/logs"
+
 
         rollingFile name: "file",
                 maxBackupIndex: 10,
@@ -134,6 +147,7 @@ log4j = {
                 maxBackupIndex: 10,
                 file: "${config.metridoc.home}/logs/metridoc-stacktrace.log"
 
+        //not used yet... this will be where we log cli jobs
         rollingFile name: "jobLog",
                 maxFileSize: "1MB",
                 maxBackupIndex: 10,
@@ -151,48 +165,35 @@ log4j = {
             'org.springframework',
             'org.hibernate',
             'net.sf.ehcache.hibernate',
-            'org.apache'
+            'org.apache',
+            'grails.util.GrailsUtil',
+            'org.grails.plugin.resource',
+            'grails.plugin.webxml.WebxmlGrailsPlugin',
+            'org.quartz',
+            'grails.plugin.quartz2',
+            'metridoc.core.DevelopmentWorkflowRunnerService',
+            'org.codehaus.groovy.grails.web.context',
+            'net.sf.ehcache'
 
-    warn 'metridoc.camel'
+    warn 'metridoc.camel',
+            'ShiroGrailsPlugin',
+            'org.quartz.core',
+            'org.codehaus.groovy.grails.scaffolding',
+            'metridoc.utils.CamelUtils'
 
-    //logs all job output
-    info jobLog: "metridoc.job"
-
-    root {
-        info 'stdout', 'file'
-    }
-}
-
-//change the document parameters if creating a user manual for a plugin
-grails.doc.authors = "Thomas Barker, Weizhuo Wu"
-
-grails.doc.subtitle = " "
-
-grails.doc.title = "MetriDoc User Manual"
-
-metridoc {
-    security {
-
-        //steps: checks for custom, checks if anonymous, then does fallback
-
-        anonymous = ["illiad", "logout", "auth", "counter", "sushi", "home"]
-
-        fallback = {
-            return role("ROLE_ADMIN") //|| ipIn("<ip group name>")
+    //since it it running via commandline, it is assumed that standard out is only needed
+    if ("true" == System.getProperty("metridoc.job.cliOnly")) {
+        root {
+            info 'stdout'
         }
-
-        custom {
-            //based on controller name
-            //counter = {.....}
-            profile = {
-
-                def userName = SecurityUtils.subject.principal as String
-
-                if ("anonymous" == userName) {
-                    return false
-                }
-                return true
-            }
+    } else {
+        if ("false" == System.getProperty("metridoc.job.loggedLogLocation", "false")) {
+            println "INFO: logs will be stored at ${config.metridoc.home}/logs"
+            //avoids duplicate logging
+            System.setProperty("metridoc.job.loggedLogLocation", "true")
+        }
+        root {
+            info 'stdout', 'file'
         }
     }
 }
@@ -200,36 +201,5 @@ metridoc {
 //sets the layout for all pages
 metridoc.style.layout = "main"
 
-metridoc {
-    style {
-        home {
-            layout {
-                //if the app exists a link will be added under the name available applications
-                availableApplications {
-                    illiad = "Illiad Dashboards"
-                    counter = "Counter Reports"
-                    sushi = "Sushi Tester"
-                    fallback = "No applications available"
-                }
 
-                administration {
-                    user = "Manage Users"
-                    profile = "User Profile"
-                    jenkins = "Install Jenkins"
-                    role = "Manage Roles"
-                }
-            }
-        }
-    }
-}
 
-metridoc {
-    scheduling {
-        workflows {
-            foo {
-                schedule = simpleSchedule().withIntervalInMinutes(30).repeatForever()
-                startNow = true
-            }
-        }
-    }
-}

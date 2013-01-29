@@ -37,28 +37,6 @@ class RidTransactionController {
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
         redirect(action: "show", id: ridTransactionInstance.id)
     }
-    /*
-    def show(Long id) {
-        def ridTransactionInstance = RidTransaction.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridTransactionInstance: ridTransactionInstance]
-    }
-
-    def edit(Long id) {
-        def ridTransactionInstance = RidTransaction.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridTransactionInstance: ridTransactionInstance]
-    }
 
     def update(Long id, Long version) {
         def ridTransactionInstance = RidTransaction.get(id)
@@ -79,7 +57,7 @@ class RidTransactionController {
         }
 
         ridTransactionInstance.properties = params
-
+        databaseService.serviceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
             render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
             return
@@ -87,6 +65,29 @@ class RidTransactionController {
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
         redirect(action: "show", id: ridTransactionInstance.id)
+    }
+
+    /*
+    def edit(Long id) {
+        def ridTransactionInstance = RidTransaction.get(id)
+        if (!ridTransactionInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [ridTransactionInstance: ridTransactionInstance]
+    }
+
+    def show(Long id) {
+        def ridTransactionInstance = RidTransaction.get(id)
+        if (!ridTransactionInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
+            redirect(action: "list")
+            return
+        }
+
+        [ridTransactionInstance: ridTransactionInstance]
     }
 
     def delete(Long id) {
