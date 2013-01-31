@@ -20,7 +20,7 @@
                 </g:hasErrors>
                 <g:form action="save">
                     <fieldset class="form">
-                        <g:render template="form"/>
+                        <g:render template="form" plugin="metridoc-rid"/>
                     </fieldset>
                     <fieldset class="buttons">
                         <input id="resetButton" class="btn btn-success" type="reset" value="Reset" />

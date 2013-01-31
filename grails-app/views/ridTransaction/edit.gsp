@@ -21,7 +21,7 @@
                     <g:hiddenField name="id" value="${ridTransactionInstance?.id}" />
                     <g:hiddenField name="version" value="${ridTransactionInstance?.version}" />
                     <fieldset class="form">
-                        <g:render template="form"/>
+                        <g:render template="form" plugin="metridoc-rid"/>
                     </fieldset>
                     <fieldset class="buttons">
                         <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
