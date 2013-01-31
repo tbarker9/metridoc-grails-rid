@@ -22,7 +22,7 @@ class RidCourseSponsorTests {
             if(c.hasErrors()) println c.errors
         }
 
-        assert list().size() > 0
+        assert RidCourseSponsor.list().size() > 0
         def nameList = RidCourseSponsor.findAllByName("SEAS")
         assert nameList.size() == 1
         for(RidCourseSponsor i in nameList) {

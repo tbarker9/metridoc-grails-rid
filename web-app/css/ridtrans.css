@@ -3,7 +3,26 @@
     width: auto;
 }
 
+#dateOfConsultation_day,
+#dateOfConsultation_start_day,
+#dateOfConsultation_end_day {
+    width: 60px;
+}
+#dateOfConsultation_month,
+#dateOfConsultation_start_month,
+#dateOfConsultation_end_month {
+    width: 100px;
+}
+#dateOfConsultation_year,
+#dateOfConsultation_start_year,
+#dateOfConsultation_end_year {
+    width: 80px;
+}
 
-tr:hover {
-    background: #FFFFFF;
+label {
+    font-size: 12px;
+}
+
+.row-fluid {
+    width: 1000px;
 }

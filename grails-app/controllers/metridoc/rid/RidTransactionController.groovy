@@ -11,7 +11,7 @@ class RidTransactionController {
 
     def scaffold = true
 //
-//    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+//   static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 //
 //    def index() {
 //        redirect(action: "list", params: params)
@@ -109,4 +109,65 @@ class RidTransactionController {
         }
     }
     */
+
+    def search() {}
+
+    def query(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+
+        def query = RidTransaction.where {
+            customerQuestion != null
+        }
+
+        try {
+            Date start = params.dateOfConsultation_start
+            Date end = params.dateOfConsultation_end
+            query = query.where {
+                dateOfConsultation >= start && dateOfConsultation < end.next()
+            }
+        } catch(Exception e) {
+            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
+            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
+            query = query.where {
+                dateOfConsultation >= start && dateOfConsultation < end.next()
+            }
+        }
+
+        String [] staffPennkey_splits = params.staffPennkey.split(" ");
+        for (String s in staffPennkey_splits) {
+            if (!s.trim().isEmpty()) {
+                query = query.where {
+                    staffPennkey ==~ ~s.trim()
+                }
+            }
+        }
+
+        String [] customerQuestion_splits = params.customerQuestion.split(" ");
+        for (String s in customerQuestion_splits) {
+            if (!s.trim().isEmpty()) {
+                query = query.where {
+                    //customerQuestion ==~ ~"^.+ba\$"
+                    //customerQuestion ==~ ~"^k.*"
+                    customerQuestion ==~ ~s.trim()
+                }
+            }
+        }
+
+        String [] notes_splits = params.notes.split(" ");
+        for (String s in notes_splits) {
+            if (!s.trim().isEmpty()) {
+                query = query.where {
+                    notes ==~ ~s.trim()
+                }
+            }
+        }
+
+        print(query.count())
+        def ridTransactionList = query.list(params)
+
+        render(view: "list",
+            model: [ridTransactionInstanceList: ridTransactionList, ridTransactionInstanceTotal: query.count()])
+        return
+    }
+
 }

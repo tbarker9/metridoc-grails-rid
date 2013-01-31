@@ -33,6 +33,7 @@ class RidTransaction {
     String librarian
     String patronEmail
     String otherService
+    // Calendar dateOfConsultation = Calendar.getInstance()
     Date dateOfConsultation = new Date()
 
     static constraints = {

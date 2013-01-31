@@ -1,36 +1,33 @@
 
 <%@ page import="metridoc.rid.RidTransaction" %>
-<!doctype html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
+%{--<!doctype html>--}%
+%{--<html>--}%
+	%{--<head>--}%
+		%{--<meta name="layout" content="main">--}%
+		%{--<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />--}%
+		%{--<title><g:message code="default.list.label" args="[entityName]" /></title>--}%
+	%{--</head>--}%
+	%{--<body>--}%
+
+<md:report>
         <div class="md-application-content">
-            <div class="nav" role="navigation">
-                <ul>
-                    <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
+            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+
             <div id="list-ridTransaction" class="content scaffold-list" role="main">
                 <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
-                <table>
+                <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         
                         <g:sortableColumn property="customerQuestion" title="${message(code: 'ridTransaction.customerQuestion.label', default: 'Customer Question')}" />
                         
-                        <g:sortableColumn property="librarian" title="${message(code: 'ridTransaction.librarian.label', default: 'Librarian')}" />
+                        <g:sortableColumn property="staffPennkey" title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}" />
                         
-                        <g:sortableColumn property="patronEmail" title="${message(code: 'ridTransaction.patronEmail.label', default: 'Patron Email')}" />
-                        
-                        <g:sortableColumn property="prepTime" title="${message(code: 'ridTransaction.prepTime.label', default: 'Prep Time')}" />
+                        <g:sortableColumn property="dateOfConsultation" title="${message(code: 'ridTransaction.dateOfConsultation.label', default: 'Date of Consultation')}" />
                         
                         <g:sortableColumn property="eventLength" title="${message(code: 'ridTransaction.eventLength.label', default: 'Event Length')}" />
                         
@@ -52,11 +49,10 @@
                                 </g:link>
                             </td>
                             
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "librarian")}</td>
-                            
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "patronEmail")}</td>
-                            
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "prepTime")}</td>
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>
+
+                            <td><g:formatDate format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfConsultation}" /></td>
+                            %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
                             
                             <td>${fieldValue(bean: ridTransactionInstance, field: "eventLength")}</td>
                             
@@ -68,10 +64,11 @@
                 </table>
                 <g:if test="${ridTransactionInstanceTotal > 10}">
                     <div class="pagination">
-                        <g:paginate total="${ridTransactionInstanceTotal}" />
+                        <g:paginate total="${ridTransactionInstanceTotal}" params="${params}" />
                     </div>
                 </g:if>
             </div>
         </div>
-	</body>
-</html>
+</md:report>
+	%{--</body>--}%
+%{--</html>--}%

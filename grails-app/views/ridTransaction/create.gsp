@@ -1,21 +1,11 @@
 <%@ page import="metridoc.rid.RidTransaction" %>
-<!doctype html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
+
+<md:report>
         <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
         <div class="md-application-content">
-            %{--<a href="#create-ridTransaction" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>--}%
-            <div class="nav" role="navigation">
-                <ul>
-                    <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
+            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+
             <div id="create-ridTransaction" class="content scaffold-create" role="main">
                 <h1><g:message code="default.create.label" args="[entityName]" /></h1>
                 <g:if test="${flash.message}">
@@ -28,16 +18,15 @@
                     </g:eachError>
                 </ul>
                 </g:hasErrors>
-                <g:form action="save" >
+                <g:form action="save">
                     <fieldset class="form">
                         <g:render template="form"/>
                     </fieldset>
                     <fieldset class="buttons">
-                        <input id="resetButton" class="edit" type="reset" value="Reset" />
-                        <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                        <input id="resetButton" class="btn btn-success" type="reset" value="Reset" />
+                        <g:submitButton name="create" class="btn btn-danger" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                     </fieldset>
                 </g:form>
             </div>
         </div>
-	</body>
-</html>
+</md:report>

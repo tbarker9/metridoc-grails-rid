@@ -1,24 +1,12 @@
 
 <%@ page import="metridoc.rid.RidTransaction" %>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
 
-<!doctype html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-
-	</head>
-	<body>
+<md:report>
         <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
         <div class="md-application-content">
-            <div class="nav" role="navigation">
-                <ul>
-                    <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
+            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+
             <div id="show-ridTransaction" class="content scaffold-show" role="main">
                 <h1><g:message code="default.show.label" args="[entityName]" /></h1>
                 <g:if test="${flash.message}">
@@ -188,11 +176,10 @@
                 <g:form>
                     <fieldset class="buttons">
                         <g:hiddenField name="id" value="${ridTransactionInstance?.id}" />
-                        <g:link class="edit" action="edit" id="${ridTransactionInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                        <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                        <g:actionSubmit class="btn btn-success" action="edit" id="${ridTransactionInstance?.id}" value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
+                        <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                     </fieldset>
                 </g:form>
             </div>
         </div>
-	</body>
-</html>
+</md:report>
