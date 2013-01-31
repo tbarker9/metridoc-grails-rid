@@ -2,6 +2,11 @@ grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 
+//location of the release repository
+grails.project.repos.metridocInternalRepo.url = "svn:http://svn2.library.upenn.int/svn/dev/correctFormat/metridoc/plugins/maven/repository/"
+//name of the repository
+grails.project.repos.default = "metridocInternalRepo"
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -26,14 +31,15 @@ grails.project.dependency.resolution = {
         build("org.tmatesoft.svnkit:svnkit:1.3.5") {
             excludes "jna", "trilead-ssh2", "sqljet"
         }
+        build("com.google.code.maven-svn-wagon:maven-svn-wagon:1.4")
     }
 
     plugins {
         compile(":metridoc-core:0.53-SNAPSHOT")
-        build(":tomcat:$grailsVersion",
-                ":release:2.0.3",
-                ":rest-client-builder:1.0.2") {
+        build ":release:$grailsVersion"
+        build(":tomcat:$grailsVersion") {
             export = false
         }
+
     }
 }
