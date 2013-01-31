@@ -2,3 +2,5 @@
 *.iws
 *.iml
 projectFilesBackup
+grails-metridoc-rid*
+plugin.xml

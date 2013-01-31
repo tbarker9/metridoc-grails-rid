@@ -32,9 +32,11 @@ grails.project.dependency.resolution = {
             excludes "jna", "trilead-ssh2", "sqljet"
         }
         build("com.google.code.maven-svn-wagon:maven-svn-wagon:1.4")
+
     }
 
     plugins {
+        build(":rest-client-builder:1.0.3")
         compile(":metridoc-core:0.53-SNAPSHOT")
         build ":release:$grailsVersion"
         build(":tomcat:$grailsVersion") {
