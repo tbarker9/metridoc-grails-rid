@@ -1,90 +1,9 @@
 <%@ page import="metridoc.rid.RidCourseSponsor" %>
 <g:set var="entityName" value="${message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')}" />
 
-
-
 <md:report>
     <!--[if !IE]><!-->
-    <style>
-        /*
-        Max width before this PARTICULAR table gets nasty
-        This query will take effect for any screen smaller than 760px
-        and also iPads specifically.
-        */
-    @media
-    only screen and (max-width: 760px),
-    (min-device-width: 768px) and (max-device-width: 1024px)  {
-
-        /* Force table to not be like tables anymore */
-        table, thead, tbody, th, td, tr {
-            display: block;
-        }
-
-        /* Hide table headers (but not display: none;, for accessibility) */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        tr { border: 1px solid #ccc; }
-
-        .table td {
-            /* Behave  like a "row" */
-            border: none;
-            /*border-bottom: 1px solid #eee;*/
-            position: relative;
-            padding-left: 50%;
-        }
-
-        .table td a{
-            /* Behave  like a "row" */
-            border: none;
-            position: relative;
-            /*padding-left: 50%;*/
-            margin-left: 49%;
-            color: #48802c;
-            text-decoration: none;
-        }
-
-
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-        }
-
-        /*
-          Label the data
-          */
-        td:nth-of-type(1):before { content: "Name"; }
-        td:nth-of-type(2):before { content: "In Form"; }
-        td:nth-of-type(3):before { content: "Number of RidTransaction"; }
-    }
-
-        /* Smartphones (portrait and landscape) ----------- */
-    @media only screen
-    and (min-device-width : 320px)
-    and (max-device-width : 480px) {
-        body {
-            padding: 0;
-            margin: 0;
-            width: 320px; }
-    }
-
-        /* iPads (portrait and landscape) ----------- */
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-        body {
-            width: 495px;
-        }
-    }
-
-    </style>
+    <r:external dir="css" file="floating_tables_for_admin.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div style="font-size: 12px">
@@ -92,7 +11,7 @@
     </div>
 
     <div class="md-application-content">
-        <g:render template="modal" plugin="metridocRid"/>
+        <g:render template="/ridCourseSponsor/modal" plugin="metridocRid" model="[title: entityName]"/>
 
         <div id="list-ridCourseSponsor" class="content scaffold-list" role="main">
 
@@ -100,7 +19,7 @@
                     <g:message code="default.list.label" args="[entityName]" />
 
                     <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
-                        <i title="Create Course Sponsor" class="icon-cog"></i>
+                        <i title="Create Course Sponsor" class="icon-plus-sign-alt"></i>
                     </a>
                 </h1>
 

@@ -17,7 +17,7 @@
                     </g:eachError>
                 </ul>
                 </g:hasErrors>
-                <g:form method="post" >
+                <g:form method="post">
                     <g:hiddenField name="id" value="${ridTransactionInstance?.id}" />
                     <g:hiddenField name="version" value="${ridTransactionInstance?.version}" />
                     <fieldset class="form">

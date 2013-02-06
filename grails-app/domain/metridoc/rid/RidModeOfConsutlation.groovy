@@ -3,13 +3,13 @@ package metridoc.rid
 class RidModeOfConsutlation {
     static hasMany = [ridTransaction:RidTransaction]
 
-    String mode
+    String name
     String toString(){
-        return "${mode}"
+        return "${name}"
     }
 
     static constraints = {
-        mode(blank: false, nullable: true)
+        name(blank: false, nullable: true)
         ridTransaction(nullable: true)
     }
 }
