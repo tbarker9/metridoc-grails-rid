@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
 
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
@@ -170,7 +170,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <g:select style="width:120px" id="departmentalAffilication" name="departmentalAffilication.id"
-                          from="${metridoc.rid.RidDepartmentalAffiliation.list()}" optionKey="id" required=""
+                          from="${RidDepartmentalAffiliation.list()}" optionKey="id" required=""
                           value="${ridTransactionInstance?.departmentalAffilication?.id}" class="many-to-one"/>
             </div>
         </div>
@@ -196,11 +196,11 @@
                     <g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <% courseSponsorList = metridoc.rid.RidCourseSponsor.findAllByInForm(1) %>
+                <% courseSponsorList = RidCourseSponsor.findAllByInForm(1) %>
                 <% if (ridTransactionInstance?.courseSponsor?.inForm == 0)
-                    courseSponsorList.addAll(metridoc.rid.RidCourseSponsor.findAllById(
+                    courseSponsorList.addAll(RidCourseSponsor.findAllById(
                             ridTransactionInstance?.courseSponsorn?.id)) %>
-                <% courseSponsorList.addAll(metridoc.rid.RidCourseSponsor.findAllByInForm(2)) %>
+                <% courseSponsorList.addAll(RidCourseSponsor.findAllByInForm(2)) %>
                 <g:select style="width:120px" id="courseSponsor" name="courseSponsor.id" from="${courseSponsorList}" optionKey="id"
                           required="" value="${ridTransactionInstance?.courseSponsor?.id}" class="many-to-one"/>
             </div>

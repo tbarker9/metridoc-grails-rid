@@ -3,7 +3,7 @@
 
 <md:report>
         <div class="md-application-content">
-            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+            <g:render template="tabs" plugin="metridocRid"/>
 
             <div id="edit-ridTransaction" class="content scaffold-edit" role="main">
                 <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
@@ -21,11 +21,12 @@
                     <g:hiddenField name="id" value="${ridTransactionInstance?.id}" />
                     <g:hiddenField name="version" value="${ridTransactionInstance?.version}" />
                     <fieldset class="form">
-                        <g:render template="form" plugin="metridoc-rid"/>
+                        <g:render template="form" plugin="metridocRid"/>
                     </fieldset>
                     <fieldset class="buttons">
                         <g:actionSubmit class="btn btn-success" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                        <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                        <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                        formnovalidate="" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                     </fieldset>
                 </g:form>
             </div>

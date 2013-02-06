@@ -1,46 +1,33 @@
-<!doctype html>
-<html>
-<head>
-    <meta name="layout" content="main">
-    <g:set var="entityName" value="RidTransactionAdmin"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
-    %{--<link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />--}%
-</head>
+<meta name="layout" content="main">
+<g:set var="entityName" value="RidTransactionAdmin"/>
 
-<body>
+<md:report>
     <div class="md-application-content">
-
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-            </ul>
-        </div>
-
         <div id="list-ridTransactionAdmin" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]"/></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <hr width="96%" align="center"/>
-            <div id="controllerList" style="padding-left: 150px;">
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses}">
-                        <g:if test="${c.shortName.contains('Admin') && !c.shortName.contains('RidTransaction')}">
-                            <li class="controller" style="padding-top: 10px;">
-                                <g:link controller="${c.logicalPropertyName}">
-                                    ${c.shortName}
-                                </g:link>
-                            </li>
-                        </g:if>
-                    </g:each>
-                </ul>
+
+            <div style="font-size: 12px">
+                <g:render template="tabs" plugin="metridoc-rid"/>
             </div>
 
-            %{--<div class="pagination">--}%
-                %{--<g:paginate total="${ridTransactionAdminInstanceTotal}"/>--}%
+
+            %{--<div id="controllerList" style="padding-left: 150px;">--}%
+                %{--<ul>--}%
+                    %{--<g:each var="c" in="${grailsApplication.controllerClasses}">--}%
+                        %{--<g:if test="${c.shortName.contains('Rid') && !c.shortName.contains('RidTransaction')}">--}%
+                            %{--<li class="controller" style="padding-top: 10px;">--}%
+                                %{--<g:link controller="${c.logicalPropertyName}">--}%
+                                    %{--${c.shortName}--}%
+                                %{--</g:link>--}%
+                            %{--</li>--}%
+                        %{--</g:if>--}%
+                    %{--</g:each>--}%
+                %{--</ul>--}%
             %{--</div>--}%
         </div>
-
     </div>
-</body>
-</html>
+</md:report>

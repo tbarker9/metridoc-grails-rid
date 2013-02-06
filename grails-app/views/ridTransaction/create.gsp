@@ -4,7 +4,7 @@
 <md:report>
         <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
         <div class="md-application-content">
-            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+            <g:render template="tabs" plugin="metridocRid"/>
 
             <div id="create-ridTransaction" class="content scaffold-create" role="main">
                 <h1><g:message code="default.create.label" args="[entityName]" /></h1>
@@ -20,7 +20,7 @@
                 </g:hasErrors>
                 <g:form action="save">
                     <fieldset class="form">
-                        <g:render template="form" plugin="metridoc-rid"/>
+                        <g:render template="form" plugin="metridocRid"/>
                     </fieldset>
                     <fieldset class="buttons">
                         <input id="resetButton" class="btn btn-success" type="reset" value="Reset" />

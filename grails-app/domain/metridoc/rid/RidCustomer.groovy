@@ -2,7 +2,6 @@ package metridoc.rid
 
 class RidCustomer {
 
-    static className2 = 'wewewe'
     static hasMany = [ridTransaction:RidTransaction]
 
     String name

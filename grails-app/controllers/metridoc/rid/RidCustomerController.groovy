@@ -2,7 +2,8 @@ package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class RidServiceProvidedAdminController {
+class RidCustomerController {
 
-    def scaffold = RidServiceProvided
+    def scaffold = RidCustomer
+
 }

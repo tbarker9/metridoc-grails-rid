@@ -5,7 +5,7 @@
 <md:report>
         <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
         <div class="md-application-content">
-            <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+            <g:render template="tabs" plugin="metridocRid"/>
 
             <div id="show-ridTransaction" class="content scaffold-show" role="main">
                 <h1><g:message code="default.show.label" args="[entityName]" /></h1>
@@ -31,17 +31,17 @@
                         <td>
                             <span id="modeOfConsutlation-label" class="property-label"><g:message code="ridTransaction.modeOfConsutlation.label" default="Mode Of Consutlation" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="modeOfConsutlation-label"><g:link controller="ridModeOfConsutlationAdmin" action="show" id="${ridTransactionInstance?.modeOfConsutlation?.id}">${ridTransactionInstance?.modeOfConsutlation?.encodeAsHTML()}</g:link></span>
+                            <span class="property-value" aria-labelledby="modeOfConsutlation-label"><g:fieldValue bean="${ridTransactionInstance}" field="modeOfConsutlation"/></span>
                         </td>
                         <td>
                             <span id="productConnected-label" class="property-label"><g:message code="ridTransaction.productConnected.label" default="Product Connected" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="productConnected-label"><g:link controller="ridProductConnectedAdmin" action="show" id="${ridTransactionInstance?.productConnected?.id}">${ridTransactionInstance?.productConnected?.encodeAsHTML()}</g:link></span>
+                            <span class="property-value" aria-labelledby="productConnected-label"><g:fieldValue bean="${ridTransactionInstance}" field="productConnected"/></span>
                         </td>
                         <td>
                             <span id="serviceProvided-label" class="property-label"><g:message code="ridTransaction.serviceProvided.label" default="Service Provided" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="serviceProvided-label"><g:link controller="ridServiceProvidedAdmin" action="show" id="${ridTransactionInstance?.serviceProvided?.id}">${ridTransactionInstance?.serviceProvided?.encodeAsHTML()}</g:link></span>
+                            <span class="property-value" aria-labelledby="serviceProvided-label"><g:fieldValue bean="${ridTransactionInstance}" field="serviceProvided"/></span>
                         </td>
                         <td>
                             <span id="prepTime-label" class="property-label"><g:message code="ridTransaction.prepTime.label" default="Prep Time" /></span>
@@ -58,12 +58,12 @@
                         <td>
                             <span id="customer-label" class="property-label"><g:message code="ridTransaction.customer.label" default="Customer" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="customer-label"><g:link controller="ridCustomerAdmin" action="show" id="${ridTransactionInstance?.customer?.id}">${ridTransactionInstance?.customer?.encodeAsHTML()}</g:link></span>
+                            <span class="property-value" aria-labelledby="customer-label"><g:fieldValue bean="${ridTransactionInstance}" field="customer"/></span>
                         </td>
                         <td>
                             <span id="entityAffiliation-label" class="property-label"><g:message code="ridTransaction.entityAffiliation.label" default="Entity Affiliation" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="entityAffiliation-label"><g:link controller="ridEntityAffiliationAdmin" action="show" id="${ridTransactionInstance?.entityAffiliation?.id}">${ridTransactionInstance?.entityAffiliation?.encodeAsHTML()}</g:link></span>
+                            <span class="property-value" aria-labelledby="entityAffiliation-label"><g:fieldValue bean="${ridTransactionInstance}" field="entityAffiliation"/></span>
                         </td>
                         <td>
                             <span id="patronEmail-label" class="property-label"><g:message code="ridTransaction.patronEmail.label" default="Patron Email" /></span>
@@ -85,7 +85,8 @@
                         <td>
                             <span id="departmentalAffilication-label" class="property-label"><g:message code="ridTransaction.departmentalAffilication.label" default="Departmental Affilication" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="departmentalAffilication-label"><g:link controller="ridDepartmentalAffiliationAdmin" action="show" id="${ridTransactionInstance?.departmentalAffilication?.id}">${ridTransactionInstance?.departmentalAffilication?.encodeAsHTML()}</g:link></span>
+                            %{--<span class="property-value" aria-labelledby="departmentalAffilication-label"><g:link controller="ridDepartmentalAffiliation" action="show" id="${ridTransactionInstance?.departmentalAffilication?.id}">${ridTransactionInstance?.departmentalAffilication?.encodeAsHTML()}</g:link></span>--}%
+                            <span class="property-value" aria-labelledby="departmentalAffilication-label"><g:fieldValue bean="${ridTransactionInstance}" field="departmentalAffilication"/></span>
                         </td>
                         <td>
                             <span id="courseNumber-label" class="property-label"><g:message code="ridTransaction.courseNumber.label" default="Course Number" /></span>
@@ -98,9 +99,9 @@
                             <span class="property-value" aria-labelledby="librarian-label"><g:fieldValue bean="${ridTransactionInstance}" field="librarian"/></span>
                         </td>
                         <td>
-                            <span id="facultySponsor-label" class="property-label"><g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor" /></span>
+                            <span id="courseSponsor-label" class="property-label"><g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="facultySponsor-label"><g:fieldValue bean="${ridTransactionInstance}" field="facultySponsor"/></span>
+                            <span class="property-value" aria-labelledby="courseSponsor-label"><g:fieldValue bean="${ridTransactionInstance}" field="courseSponsor"/></span>
                         </td>
                     </tr>
                     <tr align="center">

@@ -6,8 +6,10 @@ class RidTransactionAdminController {
             description: "Updates Lookup Tables for RID Transaction Database"]
 
     def index() {
-        redirect(action: "list", params: params)
+        redirect(controller: "RidCourseSponsor", action: "index")
     }
 
-    def list(Integer max) {}
+    def list(Integer max) {
+        redirect(controller: "RidCourseSponsor", action: "index")
+    }
 }

@@ -2,7 +2,7 @@ package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class RidProductConnectedAdminController {
+class RidServiceProvidedController {
 
-    def scaffold = RidProductConnected
+    def scaffold = RidServiceProvided
 }

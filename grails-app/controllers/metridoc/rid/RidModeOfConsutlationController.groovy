@@ -2,8 +2,7 @@ package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class RidCourseSponsorAdminController {
+class RidModeOfConsutlationController {
 
-    def scaffold = RidCourseSponsor
-
+    def scaffold = RidModeOfConsutlation
 }

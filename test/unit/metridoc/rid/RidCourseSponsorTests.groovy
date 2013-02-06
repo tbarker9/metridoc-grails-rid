@@ -3,8 +3,6 @@ package metridoc.rid
 import grails.test.mixin.*
 import org.junit.*
 
-import static RidCourseSponsor.*
-
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */

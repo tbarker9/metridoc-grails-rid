@@ -31,7 +31,8 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update"
+            //TDDO: change back to "update" after everything is set down
+            dbCreate = "create-drop"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             pooled = true
             properties {

@@ -1,26 +1,20 @@
 <% import grails.persistence.Event %>
 <%=packageName%>
-<!doctype html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-        <div class="md-application-content">
-            <div class="nav" role="navigation">
-                <ul>
-                    <li><a class="home" href="\${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
+<g:set var="entityName" value="\${message(code: '${domainClass.propertyName}.label', default: '${className}')}" />
+
+<md:report>
+    <div style="font-size: 12px">
+        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
+    </div>
+
+    <div class="md-application-content">
+
             <div id="list-${domainClass.propertyName}" class="content scaffold-list" role="main">
                 <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                 <g:if test="\${flash.message}">
                     <div class="message" role="status">\${flash.message}</div>
                 </g:if>
-                <table>
+                <table class="table table-striped table-hover">
                     <thead>
                     <tr>
                         <%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
@@ -60,6 +54,5 @@
                     </div>
                 </g:if>
             </div>
-        </div>
-	</body>
-</html>
+    </div>
+</md:report>

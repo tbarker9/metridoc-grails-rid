@@ -6,7 +6,7 @@
         <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
         <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 
-        <g:render template="/ridTransaction/tabs" plugin="metridocRid"/>
+        <g:render template="tabs" plugin="metridocRid"/>
 
         <div id="search-ridTransaction" class="content scaffold-search" role="main">
             <h1><g:message code="RidTransaction Search" /></h1>

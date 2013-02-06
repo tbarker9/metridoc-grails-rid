@@ -66,6 +66,9 @@ class RidTransaction {
     }
 
     String toString(){
-        return "id=${id}; question:${customerQuestion}"
+        String customerQ = new String(customerQuestion)
+        if (customerQ!=null && customerQ.length() > 32)
+            customerQ = customerQ.substring(0,32) + "..."
+        return "ID: ${id}; customerQuestion: ${customerQ}"
     }
 }

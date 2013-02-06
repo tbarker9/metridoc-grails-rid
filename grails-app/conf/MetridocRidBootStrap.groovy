@@ -64,11 +64,11 @@ class MetridocRidBootStrap {
                         "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
                         "Independent Research")
                 for (String i in cSponsor) {
-                    def c = new RidCourseSponsor(name: i, inForm: 1)
+                    def c = new RidCourseSponsor(name: i, inForm: "YES, and no indication needed")
                     c.save()
                     if(c.hasErrors()) println c.errors
                 }
-                new RidCourseSponsor(name: "Outside Entity (please indicate)", inForm: 2).save()
+                new RidCourseSponsor(name: "Outside Entity (please indicate)", inForm: "YES, and indication required").save()
                 // for product connected
                 List<String> pConnected = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
                         "Independent Research")

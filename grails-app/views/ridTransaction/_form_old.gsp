@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidModeOfConsutlation; metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidCourseSponsor; metridoc.rid.RidCourseSponsorAdmin; metridoc.rid.RidModeOfConsutlation; metridoc.rid.RidTransaction" %>
 
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 
@@ -124,8 +124,8 @@
         <g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor"/>
         <span class="required-indicator">*</span>
     </label>
-    <% courseSponsorList = metridoc.rid.RidCourseSponsor.findAllByInForm(1) %>
-    <% courseSponsorList.addAll(metridoc.rid.RidCourseSponsor.findAllByInForm(2)) %>
+    <% courseSponsorList = RidCourseSponsor.findAllByInForm(1) %>
+    <% courseSponsorList.addAll(RidCourseSponsor.findAllByInForm(2)) %>
     <g:select id="courseSponsor" name="courseSponsor.id" from="${courseSponsorList}" optionKey="id"
               required="" value="${ridTransactionInstance?.courseSponsor?.id}" class="many-to-one"/>
 </div>
