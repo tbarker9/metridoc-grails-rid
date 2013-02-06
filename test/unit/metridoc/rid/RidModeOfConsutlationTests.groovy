@@ -14,7 +14,7 @@ class RidModeOfConsutlationTests {
         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "In person(in library)",
                 "In person(outside library)", "Conferencing software")
         for (String i in cMode) {
-            def c = new RidModeOfConsutlation(mode: i)
+            def c = new RidModeOfConsutlation(name: i)
             c.save()
             if(c.hasErrors()) println c.errors
         }
