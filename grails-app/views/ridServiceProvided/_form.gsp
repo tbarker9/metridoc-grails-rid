@@ -16,6 +16,19 @@
 		<span class="required-indicator">*</span>
 	</label>
     <div class="controls">
-	    <g:select name="inForm" from="${ridServiceProvidedInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridServiceProvidedInstance, field: 'inForm')}" valueMessagePrefix="ridServiceProvided.inForm"/>
+        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+        <g:select name="inForm" from="${choices}" value="${ridServiceProvidedInstance?.inForm}" keys="${ridServiceProvidedInstance.constraints.inForm.inList}" />
+    </div>
+</div>
+
+
+<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridGroupType', 'error')} required">
+    <label class="control-label" for="ridGroupType">
+        <g:message code="ridServiceProvided.ridGroupType.label" default="Group Type" />
+        <span class="required-indicator">*</span>
+    </label>
+    <div class="controls">
+        <g:select id="ridGroupType" style="width:120px" name="ridGroupType.id" from="${metridoc.rid.RidGroupType.list()}"
+                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridGroupType?.id}" class="many-to-one"/>
     </div>
 </div>

@@ -17,8 +17,10 @@
 		<span class="required-indicator">*</span>
 	</label>
     <div class="controls">
+        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
         %{--<g:if test="${ridCourseSponsorInstance?.constraints?.inForm?.inList}">--}%
-	        <g:select name="inForm" from="${ridCourseSponsorInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridCourseSponsorInstance, field: 'inForm')}" valueMessagePrefix="ridCourseSponsor.inForm"/>
+            <g:select name="inForm" from="${choices}" value="${ridCourseSponsorInstance?.inForm}" keys="${ridCourseSponsorInstance.constraints.inForm.inList}" />
+	        %{--<g:select name="inForm" from="${ridCourseSponsorInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridCourseSponsorInstance, field: 'inForm')}" valueMessagePrefix="ridCourseSponsor.inForm"/>--}%
         %{--</g:if>--}%
         %{--<g:else>--}%
             %{--<g:select name="inForm" from="${RidCourseSponsor.constraints.inForm.inList}" required=""/>--}%

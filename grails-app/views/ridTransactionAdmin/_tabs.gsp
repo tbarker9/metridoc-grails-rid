@@ -40,9 +40,9 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridModeOfConsutlation',
+                    linkController: 'ridModeOfConsultation',
                     linkAction: 'list',
-                    linkText: 'Consutlation Mode',
+                    linkText: 'Consultation Mode',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"

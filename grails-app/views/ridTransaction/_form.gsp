@@ -1,8 +1,21 @@
-<%@ page import="metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidGroupType; metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
 
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 
+
+    <div class="row-fluid">
+        <div class="span9">
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'ridGroupType', 'error')}">
+                <label for="ridGroupType">
+                    <g:message code="ridTransaction.ridGroupType.label" default="Group Type" />
+                    <span class="required-indicator">*</span>
+                </label>
+                <g:select id="ridGroupType" style="width:520px" name="ridGroupType.id" from="${metridoc.rid.RidGroupType.list()}"
+                          optionKey="id" required="" value="${ridTransactionInstance?.ridGroupType?.id}" class="many-to-one"/>
+            </div>
+        </div>
+    </div>
     <div class="row-fluid">
         <div class="span6">
             <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'dateOfConsultation', 'error')} required">
@@ -26,13 +39,13 @@
     </div>
     <div class="row-fluid">
         <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsutlation', 'error')} required">
-                <label for="modeOfConsutlation">
-                    <g:message code="ridTransaction.modeOfConsutlation.label" default="Mode Of Consutlation"/>
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsultation', 'error')} required">
+                <label for="modeOfConsultation">
+                    <g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select style="width:120px" id="modeOfConsutlation" name="modeOfConsutlation.id" from="${metridoc.rid.RidModeOfConsutlation.list()}"
-                          optionKey="id" required="" value="${ridTransactionInstance?.modeOfConsutlation?.id}" class="many-to-one"/>
+                <g:select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" from="${metridoc.rid.RidModeOfConsultation.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))}"
+                          optionKey="id" required="" value="${ridTransactionInstance?.modeOfConsultation?.id}" class="many-to-one"/>
             </div>
         </div>
         <div class="span2">
@@ -41,7 +54,7 @@
                     <g:message code="ridTransaction.productConnected.label" default="Product Connected"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select id="productConnected" style="width:120px" name="productConnected.id" from="${metridoc.rid.RidProductConnected.list()}"
+                <g:select id="productConnected" style="width:120px" name="productConnected.id" from="${metridoc.rid.RidProductConnected.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))}"
                           optionKey="id" required="" value="${ridTransactionInstance?.productConnected?.id}" class="many-to-one"/>
             </div>
         </div>
@@ -52,7 +65,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <%
-                    serviceList = metridoc.rid.RidServiceProvided.findAllByInForm(1)
+                    serviceList = metridoc.rid.RidServiceProvided.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))
                     if (ridTransactionInstance?.serviceProvided?.inForm == 0)
                         serviceList.addAll(metridoc.rid.RidServiceProvided.findAllById(
                             ridTransactionInstance?.serviceProvided?.id))

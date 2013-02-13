@@ -5,10 +5,11 @@ class RidTransaction {
     static belongsTo = [departmentalAffilication: RidDepartmentalAffiliation,
                       courseSponsor: RidCourseSponsor,
                       productConnected: RidProductConnected,
-                      modeOfConsutlation: RidModeOfConsutlation,
+                      modeOfConsultation: RidModeOfConsultation,
                       customer: RidCustomer,
                       serviceProvided: RidServiceProvided,
-                      entityAffiliation: RidEntityAffiliation]
+                      entityAffiliation: RidEntityAffiliation,
+                      ridGroupType: RidGroupType]
 
     static transients = ['otherCustomer', 'otherEntityAffiliation', 'otherCourseSponsor', 'otherService']
 
@@ -61,8 +62,9 @@ class RidTransaction {
         patronEmail(blank: true, nullable: true, email: true, maxSize: 100)
         //serviceProvided(nullable: true)
         otherService(blank: true, nullable: true, maxSize: 100)
-        //modeOfConsutlation(nullable: true)
+        //modeOfConsultation(nullable: true)
         //productConnected(nullable: true)
+        //ridGroupType(nullable: true)
     }
 
     String toString(){

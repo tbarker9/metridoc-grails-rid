@@ -16,7 +16,9 @@
 		<span class="required-indicator">*</span>
 	</label>
     <div class="controls">
-	    <g:select name="inForm" from="${ridCustomerInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridCustomerInstance, field: 'inForm')}" valueMessagePrefix="ridCustomer.inForm"/>
+        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+	    %{--<g:select name="inForm" from="${ridCustomerInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridCustomerInstance, field: 'inForm')}" valueMessagePrefix="ridCustomer.inForm"/>--}%
+        <g:select name="inForm" from="${choices}" value="${ridCustomerInstance?.inForm}" keys="${ridCustomerInstance.constraints.inForm.inList}" />
     </div>
 </div>
 

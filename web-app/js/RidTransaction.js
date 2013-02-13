@@ -94,3 +94,33 @@ $(function() {
         $("#otherCourseSponsor").val("");
     })
 })
+
+$(function() {
+    $("#ridGroupType").change(function() {
+        var choice = $("#ridGroupType").val();
+        $.ajax({
+            //url: '${g.createLink(controller: 'RidTransaction', action: 'ajaxChooseType')}',
+            url: 'ajaxChooseType',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                typeId: choice
+            },
+            success: function(data) {
+                $.each(data, function(index, itemList) {
+                    $('#'+index+' > option').remove();
+                    $.each(itemList, function(id, element) {
+                        $('#'+index).append($("<option>", {
+                            text: element.name
+                        }).attr('value', element.id));
+                    });
+                });
+            },
+            error: function(request, status, error) {
+                alert(error);
+            },
+            complete: function() {
+            }
+        });
+    })
+})

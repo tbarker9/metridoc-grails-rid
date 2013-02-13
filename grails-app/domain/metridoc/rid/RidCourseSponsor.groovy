@@ -5,16 +5,15 @@ class RidCourseSponsor {
     static hasMany = [ridTransaction:RidTransaction]
 
     String name
-    String inForm = "NO"
+    Integer inForm = 0
 
     String toString(){
         return "${name}"
     }
 
     static constraints = {
-        name(blank: false, nullable: false)
-//        inForm(nullable: false, inList: [0,1,2])
-        inForm(blank: false, inList: ["NO","YES, and no indication needed","YES, and indication required"])
-        //ridTransaction(nullable: true)
+        name(blank: false, nullable: false, unique: true)
+        inForm(nullable: false, inList: [0,1,2])
+        ridTransaction(nullable: true)
     }
 }

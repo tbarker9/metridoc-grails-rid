@@ -41,8 +41,9 @@
                                     ${fieldValue(bean: ridCustomerInstance, field: "name")}
                                 </a>
                             </td>
-                            
-                            <td>${fieldValue(bean: ridCustomerInstance, field: "inForm")}</td>
+
+                            <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+                            <td>${choices.get(ridCustomerInstance?.inForm)}</td>
 
                             <td>${ridCustomerInstance?.ridTransaction?.size()}</td>
                         </tr>

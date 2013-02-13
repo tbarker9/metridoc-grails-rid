@@ -7,7 +7,7 @@
                     linkController: 'ridTransaction',
                     linkAction: 'create',
                     linkText: 'Create RidTransaction',
-                    icon: 'icon-user']"/>
+                    icon: 'icon-plus-sign-alt']"/>
     <g:render
             template="/ridTransaction/tabLabel"
             plugin="metridocRid"

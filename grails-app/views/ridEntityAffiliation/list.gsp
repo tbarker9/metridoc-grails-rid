@@ -41,8 +41,9 @@
                                     ${fieldValue(bean: ridEntityAffiliationInstance, field: "name")}
                                 </a>
                             </td>
-                            
-                            <td>${fieldValue(bean: ridEntityAffiliationInstance, field: "inForm")}</td>
+
+                            <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+                            <td>${choices.get(ridEntityAffiliationInstance?.inForm)}</td>
 
                             <td>${ridEntityAffiliationInstance?.ridTransaction?.size()}</td>
                         </tr>

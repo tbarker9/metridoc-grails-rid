@@ -29,9 +29,9 @@
                     </tr>
                     <tr align="center">
                         <td>
-                            <span id="modeOfConsutlation-label" class="property-label"><g:message code="ridTransaction.modeOfConsutlation.label" default="Mode Of Consutlation" /></span>
+                            <span id="modeOfConsultation-label" class="property-label"><g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation" /></span>
                             :<br/>
-                            <span class="property-value" aria-labelledby="modeOfConsutlation-label"><g:fieldValue bean="${ridTransactionInstance}" field="modeOfConsutlation"/></span>
+                            <span class="property-value" aria-labelledby="modeOfConsultation-label"><g:fieldValue bean="${ridTransactionInstance}" field="modeOfConsultation"/></span>
                         </td>
                         <td>
                             <span id="productConnected-label" class="property-label"><g:message code="ridTransaction.productConnected.label" default="Product Connected" /></span>

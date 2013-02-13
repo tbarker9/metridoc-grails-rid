@@ -12,8 +12,8 @@ class RidCustomer {
     }
 
     static constraints = {
-        name(blank: false, nullable: true)
+        name(blank: false, nullable: false, unique: true)
         inForm(nullable: false, inList: [0,1,2])
-       // ridTransaction(nullable: true)
+        ridTransaction(nullable: true)
     }
 }

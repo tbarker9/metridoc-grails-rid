@@ -3,6 +3,7 @@ package metridoc.rid
 class RidServiceProvided {
 
     static hasMany = [ridTransaction:RidTransaction]
+    static belongsTo = [ridGroupType: RidGroupType]
 
     String name
     Integer inForm = 0
@@ -12,8 +13,9 @@ class RidServiceProvided {
     }
 
     static constraints = {
-        name(blank: false, nullable: true)
+        name(blank: false, nullable: false, unique: true)
         inForm(nullable: false, inList: [0,1,2])
-        //ridTransaction(nullable: true)
+        ridTransaction(nullable: true)
+        ridGroupType(nullable: true)
     }
 }

@@ -1,5 +1,5 @@
-<%@ page import="metridoc.rid.RidProductConnected" %>
-<g:set var="entityName" value="${message(code: 'ridProductConnected.label', default: 'RidProductConnected')}" />
+<%@ page import="metridoc.rid.RidModeOfConsultation" %>
+<g:set var="entityName" value="${message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation')}" />
 
 <md:report>
     <!--[if !IE]><!-->
@@ -13,11 +13,11 @@
     <div class="md-application-content">
         <g:render template="/ridCourseSponsor/modal" plugin="metridocRid" model="[title: entityName]"/>
 
-            <div id="list-ridProductConnected" class="content scaffold-list" role="main">
+            <div id="list-ridModeOfConsultation" class="content scaffold-list" role="main">
                 <h1>
                     <g:message code="default.list.label" args="[entityName]" />
                     <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
-                        <i title="Create Product Connected" class="icon-plus-sign-alt"></i>
+                        <i title="Create Mode of Consultation" class="icon-plus-sign-alt"></i>
                     </a>
                 </h1>
 
@@ -25,33 +25,33 @@
                     <thead>
                     <tr>
                         
-                        <g:sortableColumn property="name" title="${message(code: 'ridProductConnected.name.label', default: 'Name')}" />
+                        <g:sortableColumn property="mode" title="${message(code: 'ridModeOfConsultation.mode.label', default: 'Mode')}" />
 
-                        <g:sortableColumn property="ridGroupType" title="${message(code: 'ridProductConnected.ridGroupType.label', default: 'Group Type')}" />
+                        <g:sortableColumn property="ridGroupType" title="${message(code: 'ridModeOfConsultation.ridGroupType.label', default: 'Group Type')}" />
 
                         <th>Number of RidTransaction</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${ridProductConnectedInstanceList}" status="i" var="ridProductConnectedInstance">
+                    <g:each in="${ridModeOfConsultationInstanceList}" status="i" var="ridModeOfConsultationInstance">
                         <tr>
                             
                             <td>
-                                <a data-toggle="modal" href="edit/${ridProductConnectedInstance.id}" data-target="#myModal">
-                                    ${fieldValue(bean: ridProductConnectedInstance, field: "name")}
+                                <a data-toggle="modal" href="edit/${ridModeOfConsultationInstance.id}" data-target="#myModal">
+                                    ${fieldValue(bean: ridModeOfConsultationInstance, field: "name")}
                                 </a>
                             </td>
 
-                            <td>${fieldValue(bean: ridProductConnectedInstance, field: "ridGroupType")}</td>
+                            <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridGroupType")}</td>
 
-                            <td>${ridProductConnectedInstance?.ridTransaction?.size()}</td>
+                            <td>${ridModeOfConsultationInstance?.ridTransaction?.size()}</td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
-                <g:if test="${ridProductConnectedInstanceTotal > 10}">
+                <g:if test="${ridModeOfConsultationInstanceTotal > 10}">
                     <div class="pagination">
-                        <g:paginate total="${ridProductConnectedInstanceTotal}" />
+                        <g:paginate total="${ridModeOfConsultationInstanceTotal}" />
                     </div>
                 </g:if>
             </div>

@@ -48,7 +48,8 @@
                                 </a>
                             </td>
 
-                            <td>${fieldValue(bean: ridCourseSponsorInstance, field: "inForm")}</td>
+                            <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+                            <td>${choices.get(ridCourseSponsorInstance?.inForm)}</td>
 
                             <td>${ridCourseSponsorInstance?.ridTransaction?.size()}</td>
                             

@@ -10,7 +10,7 @@ class RidDepartmentalAffiliation {
     }
 
     static constraints = {
-        name(blank: false, nullable: true)
+        name(blank: false, nullable: false, unique: true)
         ridTransaction(nullable: true)
     }
 }

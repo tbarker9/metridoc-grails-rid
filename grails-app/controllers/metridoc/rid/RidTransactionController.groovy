@@ -1,15 +1,28 @@
 package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.converters.JSON
 
 class RidTransactionController {
 
     def databaseService
+    //def stemmer
 
     static homePage = [title: "Reference Instruction Database",
             description: "Adds/Updates/Reviews Reference Instruction Transactions"]
 
     def scaffold = true
+
+    def ajaxChooseType = {
+        def products = RidProductConnected.findAllByRidGroupType(RidGroupType.get(params.typeId))
+        def consultations = RidModeOfConsultation.findAllByRidGroupType(RidGroupType.get(params.typeId))
+        def services = RidServiceProvided.findAllByRidGroupType(RidGroupType.get(params.typeId))
+        def response = ['productConnected': products,
+                'modeOfConsultation': consultations,
+                'serviceProvided': services]
+        render response as JSON
+    }
+
 //
 //   static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 //
@@ -136,6 +149,7 @@ class RidTransactionController {
         String [] staffPennkey_splits = params.staffPennkey.split(" ");
         for (String s in staffPennkey_splits) {
             if (!s.trim().isEmpty()) {
+                s = stemmer.doStemming(s)
                 query = query.where {
                     staffPennkey ==~ ~s.trim()
                 }
