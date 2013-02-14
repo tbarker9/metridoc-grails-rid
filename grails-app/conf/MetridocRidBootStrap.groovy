@@ -142,8 +142,11 @@ class MetridocRidBootStrap {
                             entityAffiliation: RidEntityAffiliation.get(1),
                             ridGroupType: RidGroupType.get(1)
                     )
-                    t.save(failOnError: true)
-                    if(t.hasErrors()) println t.errors
+                    try {
+                        t.save(failOnError: true)
+                    } catch (Exception e) {
+                        if(t.hasErrors()) println t.errors
+                    }
                 }
                 break
 
