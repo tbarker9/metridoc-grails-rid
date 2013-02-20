@@ -13,9 +13,9 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridCustomer',
+                    linkController: 'ridUser',
                     linkAction: 'list',
-                    linkText: 'Customer',
+                    linkText: 'User',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
@@ -31,9 +31,9 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridEntityAffiliation',
+                    linkController: 'ridUserAffiliation',
                     linkAction: 'list',
-                    linkText: 'Entity Affiliation',
+                    linkText: 'User Affiliation',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
@@ -49,9 +49,9 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridProductConnected',
+                    linkController: 'ridUserGoal',
                     linkAction: 'list',
-                    linkText: 'Product Connected',
+                    linkText: 'User Goal',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"

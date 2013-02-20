@@ -24,7 +24,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
-        mavenRepo "http://metridoc.googlecode.com/svn/trunk/maven/repository/"
+        mavenRepo "http://metridoc.googlecode.com/svn/maven/repository/"
     }
     dependencies {
         //get this to play nice with intellij, not actually needed

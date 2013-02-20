@@ -1,11 +1,11 @@
-<%@ page import="metridoc.rid.RidCustomer" %>
-<g:set var="entityName" value="${message(code: 'ridCustomer.label', default: 'RidCustomer')}" />
+<%@ page import="metridoc.rid.RidUserAffiliation" %>
+<g:set var="entityName" value="${message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')}" />
 
-            <div id="create-ridCustomer" class="content scaffold-create" role="main">
+            <div id="create-ridUserAffiliation" class="content scaffold-create" role="main">
                 <h1><g:message code="default.create.label" args="[entityName]" /></h1>
-                <g:hasErrors bean="${ridCustomerInstance}">
+                <g:hasErrors bean="${ridUserAffiliationInstance}">
                     <ul class="errors" role="alert">
-                        <g:eachError bean="${ridCustomerInstance}" var="error">
+                        <g:eachError bean="${ridUserAffiliationInstance}" var="error">
                             <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                         </g:eachError>
                     </ul>

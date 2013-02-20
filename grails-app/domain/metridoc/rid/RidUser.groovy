@@ -1,18 +1,19 @@
 package metridoc.rid
 
-class RidProductConnected {
+class RidUser {
 
     static hasMany = [ridTransaction:RidTransaction]
-    static belongsTo = [ridGroupType: RidGroupType]
 
     String name
+    Integer inForm = 0
+
     String toString(){
         return "${name}"
     }
 
     static constraints = {
         name(blank: false, nullable: false, unique: true)
+        inForm(nullable: false, inList: [0,1,2])
         ridTransaction(nullable: true)
-        ridGroupType(nullable: true)
     }
 }

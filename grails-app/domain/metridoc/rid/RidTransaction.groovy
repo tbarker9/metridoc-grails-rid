@@ -4,17 +4,17 @@ class RidTransaction {
 
     static belongsTo = [departmentalAffilication: RidDepartmentalAffiliation,
                       courseSponsor: RidCourseSponsor,
-                      productConnected: RidProductConnected,
+                      userGoal: RidUserGoal,
                       modeOfConsultation: RidModeOfConsultation,
-                      customer: RidCustomer,
+                      user: RidUser,
                       serviceProvided: RidServiceProvided,
-                      entityAffiliation: RidEntityAffiliation,
-                      ridGroupType: RidGroupType]
+                      userAffiliation: RidUserAffiliation,
+                      ridReportType: RidReportType]
 
-    static transients = ['otherCustomer', 'otherEntityAffiliation', 'otherCourseSponsor', 'otherService']
+    static transients = ['otherUser', 'otherUserAffiliation', 'otherCourseSponsor', 'otherService']
 
     // statement of work
-    String customerQuestion
+    String userQuestion
     Integer interactTimes = 0
     String followUpContact
     Integer prepTime = 0
@@ -26,8 +26,8 @@ class RidTransaction {
     String facultySponsor
     String courseName
     String courseNumber
-    String otherCustomer
-    String otherEntityAffiliation
+    String otherUser
+    String otherUserAffiliation
     String otherCourseSponsor
 
     // description
@@ -39,7 +39,7 @@ class RidTransaction {
 
     static constraints = {
         // STATEMENT OF WORK
-        customerQuestion(blank: false, nullable: false, maxSize: 500)
+        userQuestion(blank: false, nullable: false, maxSize: 500)
         interactTimes(nullable: false, min: 0, max: 50)
         followUpContact(blank: true, nullable: true, maxSize: 50)
         prepTime(nullable: false, min: 0)
@@ -50,10 +50,10 @@ class RidTransaction {
         facultySponsor(blank: true, nullable: true, maxSize: 300)
         courseName(blank: true, nullable: true, maxSize: 100)
         courseNumber(blank: true, nullable: true, maxSize: 100)
-        //customer(nullable: true)
-        otherCustomer(blank: true, nullable: true, maxSize: 50)
-        //entityAffiliation(nullable: true)
-        otherEntityAffiliation(blank: true, nullable: true, maxSize: 50)
+        //user(nullable: true)
+        otherUser(blank: true, nullable: true, maxSize: 50)
+        //userAffiliation(nullable: true)
+        otherUserAffiliation(blank: true, nullable: true, maxSize: 50)
         //departmentalAffilication(nullable: true)
         //courseSponsor(nullable: true)
         otherCourseSponsor(blank: true, nullable: true, maxSize: 50)
@@ -63,14 +63,14 @@ class RidTransaction {
         //serviceProvided(nullable: true)
         otherService(blank: true, nullable: true, maxSize: 100)
         //modeOfConsultation(nullable: true)
-        //productConnected(nullable: true)
-        //ridGroupType(nullable: true)
+        //userGoal(nullable: true)
+        //ridReportType(nullable: true)
     }
 
     String toString(){
-        String customerQ = new String(customerQuestion)
-        if (customerQ!=null && customerQ.length() > 32)
-            customerQ = customerQ.substring(0,32) + "..."
-        return "ID: ${id}; customerQuestion: ${customerQ}"
+        String userQ = new String(userQuestion)
+        if (userQ!=null && userQ.length() > 32)
+            userQ = userQ.substring(0,32) + "..."
+        return "ID: ${id}; userQuestion: ${userQ}"
     }
 }

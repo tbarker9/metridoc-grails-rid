@@ -8,19 +8,19 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RidProductConnected)
-class RidProductConnectedTests {
+@TestFor(RidUserGoal)
+class RidUserGoalTests {
 
     @Test
     void testBootStrap() {
-        List<String> pConnected = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
+        List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
                 "Independent Research");
-        for (String i in pConnected) {
-            def p = new RidProductConnected(name: i)
+        for (String i in uGoal) {
+            def p = new RidUserGoal(name: i)
             p.save()
             if(p.hasErrors()) println p.errors
         }
 
-        assert RidProductConnected.list().size() > 0
+        assert RidUserGoal.list().size() > 0
     }
 }

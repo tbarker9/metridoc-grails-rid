@@ -1,5 +1,5 @@
-<%@ page import="metridoc.rid.RidEntityAffiliation" %>
-<g:set var="entityName" value="${message(code: 'ridEntityAffiliation.label', default: 'RidEntityAffiliation')}" />
+<%@ page import="metridoc.rid.RidUserAffiliation" %>
+<g:set var="entityName" value="${message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')}" />
 
 <md:report>
     <!--[if !IE]><!-->
@@ -13,11 +13,11 @@
     <div class="md-application-content">
         <g:render template="/ridCourseSponsor/modal" plugin="metridocRid" model="[title: entityName]"/>
 
-            <div id="list-ridEntityAffiliation" class="content scaffold-list" role="main">
+            <div id="list-ridUserAffiliation" class="content scaffold-list" role="main">
                 <h1>
                     <g:message code="default.list.label" args="[entityName]" />
                     <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
-                        <i title="Create Entity Affiliation" class="icon-plus-sign-alt"></i>
+                        <i title="Create User Affiliation" class="icon-plus-sign-alt"></i>
                     </a>
                 </h1>
 
@@ -25,34 +25,34 @@
                     <thead>
                     <tr>
                         
-                        <g:sortableColumn property="name" title="${message(code: 'ridEntityAffiliation.name.label', default: 'Name')}" />
+                        <g:sortableColumn property="name" title="${message(code: 'ridUserAffiliation.name.label', default: 'Name')}" />
                         
-                        <g:sortableColumn property="inForm" title="${message(code: 'ridEntityAffiliation.inForm.label', default: 'In Form')}" />
+                        <g:sortableColumn property="inForm" title="${message(code: 'ridUserAffiliation.inForm.label', default: 'In Form')}" />
 
                         <th>Number of RidTransaction</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${ridEntityAffiliationInstanceList}" status="i" var="ridEntityAffiliationInstance">
+                    <g:each in="${ridUserAffiliationInstanceList}" status="i" var="ridUserAffiliationInstance">
                         <tr>
                             
                             <td>
-                                <a data-toggle="modal" href="edit/${ridEntityAffiliationInstance.id}" data-target="#myModal">
-                                    ${fieldValue(bean: ridEntityAffiliationInstance, field: "name")}
+                                <a data-toggle="modal" href="edit/${ridUserAffiliationInstance.id}" data-target="#myModal">
+                                    ${fieldValue(bean: ridUserAffiliationInstance, field: "name")}
                                 </a>
                             </td>
 
                             <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
-                            <td>${choices.get(ridEntityAffiliationInstance?.inForm)}</td>
+                            <td>${choices.get(ridUserAffiliationInstance?.inForm)}</td>
 
-                            <td>${ridEntityAffiliationInstance?.ridTransaction?.size()}</td>
+                            <td>${ridUserAffiliationInstance?.ridTransaction?.size()}</td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
-                <g:if test="${ridEntityAffiliationInstanceTotal > 10}">
+                <g:if test="${ridUserAffiliationInstanceTotal > 10}">
                     <div class="pagination">
-                        <g:paginate total="${ridEntityAffiliationInstanceTotal}" />
+                        <g:paginate total="${ridUserAffiliationInstanceTotal}" />
                     </div>
                 </g:if>
             </div>

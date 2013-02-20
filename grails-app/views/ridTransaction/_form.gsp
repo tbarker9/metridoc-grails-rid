@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidGroupType; metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidUserAffiliation; metridoc.rid.RidUser; metridoc.rid.RidUserGoal; metridoc.rid.RidReportType; metridoc.rid.RidGroupType; metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
 
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
@@ -6,13 +6,13 @@
 
     <div class="row-fluid">
         <div class="span9">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'ridGroupType', 'error')}">
-                <label for="ridGroupType">
-                    <g:message code="ridTransaction.ridGroupType.label" default="Group Type" />
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'ridReportType', 'error')}">
+                <label for="ridReportType">
+                    <g:message code="ridTransaction.ridReportType.label" default="Report Type" />
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select id="ridGroupType" style="width:520px" name="ridGroupType.id" from="${metridoc.rid.RidGroupType.list()}"
-                          optionKey="id" required="" value="${ridTransactionInstance?.ridGroupType?.id}" class="many-to-one"/>
+                <g:select id="ridReportType" style="width:520px" name="ridReportType.id" from="${metridoc.rid.RidReportType.list()}"
+                          optionKey="id" required="" value="${ridTransactionInstance?.ridReportType?.id}" class="many-to-one"/>
             </div>
         </div>
     </div>
@@ -24,6 +24,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <g:datePicker style="width: 150px" name="dateOfConsultation" precision="day"  value="${ridTransactionInstance?.dateOfConsultation}"  />
+                <calendar:datePicker name="date" defaultValue="${new Date()}"/>
             </div>
         </div>
         <div class="span5">
@@ -44,18 +45,8 @@
                     <g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" from="${metridoc.rid.RidModeOfConsultation.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))}"
+                <g:select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" from="${metridoc.rid.RidModeOfConsultation.findAllByRidReportType(ridTransactionInstance?.ridReportType ?: RidReportType.get(1))}"
                           optionKey="id" required="" value="${ridTransactionInstance?.modeOfConsultation?.id}" class="many-to-one"/>
-            </div>
-        </div>
-        <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'productConnected', 'error')} required">
-                <label for="productConnected">
-                    <g:message code="ridTransaction.productConnected.label" default="Product Connected"/>
-                    <span class="required-indicator">*</span>
-                </label>
-                <g:select id="productConnected" style="width:120px" name="productConnected.id" from="${metridoc.rid.RidProductConnected.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))}"
-                          optionKey="id" required="" value="${ridTransactionInstance?.productConnected?.id}" class="many-to-one"/>
             </div>
         </div>
         <div class="span2">
@@ -65,7 +56,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <%
-                    serviceList = metridoc.rid.RidServiceProvided.findAllByRidGroupType(ridTransactionInstance?.ridGroupType ?: RidGroupType.get(1))
+                    serviceList = metridoc.rid.RidServiceProvided.findAllByRidReportType(ridTransactionInstance?.ridReportType ?: RidReportType.get(1))
                     if (ridTransactionInstance?.serviceProvided?.inForm == 0)
                         serviceList.addAll(metridoc.rid.RidServiceProvided.findAllById(
                             ridTransactionInstance?.serviceProvided?.id))
@@ -81,6 +72,15 @@
                 <g:textField class="userInput" name="otherService" style="width:120px" maxlength="100" value="${ridTransactionInstance?.otherService}"/>
             </div>
 
+        </div>
+        <div class="span2">
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userGoal', 'error')}">
+                <label for="userGoal">
+                    <g:message code="ridTransaction.userGoal.label" default="User Goal"/>
+                </label>
+                <g:select id="userGoal" style="width:120px" name="userGoal.id" from="${RidUserGoal.findAllByRidReportType(ridTransactionInstance?.ridReportType ?: RidReportType.get(1))}"
+                          optionKey="id" required="" value="${ridTransactionInstance?.userGoal?.id}" class="many-to-one"/>
+            </div>
         </div>
         <div class="span2">
             <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'prepTime', 'error')} required">
@@ -105,57 +105,57 @@
 
     <div class="row-fluid">
         <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'customer', 'error')} required">
-                <label for="customer">
-                    <g:message code="ridTransaction.customer.label" default="Customer"/>
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'user', 'error')} required">
+                <label for="user">
+                    <g:message code="ridTransaction.user.label" default="User"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <% customerList = metridoc.rid.RidCustomer.findAllByInForm(1) %>
-                <% if (ridTransactionInstance?.customer?.inForm == 0)
-                    customerList.addAll(metridoc.rid.RidCustomer.findAllById(
-                            ridTransactionInstance?.customer?.id)) %>
-                <% customerList.addAll(metridoc.rid.RidCustomer.findAllByInForm(2)) %>
-                <g:select style="width:120px" id="customer" name="customer.id"
-                          from="${customerList}"
+                <% userList = RidUser.findAllByInForm(1) %>
+                <% if (ridTransactionInstance?.user?.inForm == 0)
+                    userList.addAll(RidUser.findAllById(
+                            ridTransactionInstance?.user?.id)) %>
+                <% userList.addAll(RidUser.findAllByInForm(2)) %>
+                <g:select style="width:120px" id="user" name="user.id"
+                          from="${userList}"
                           optionKey="id" required=""
-                          value="${ridTransactionInstance?.customer?.id}" class="many-to-one"/>
+                          value="${ridTransactionInstance?.user?.id}" class="many-to-one"/>
             </div>
-            <div id="otherCustomerDiv" style="display:none" class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherCustomer', 'error')} ">
-                <label for="otherCustomer">
-                    <g:message code="ridTransaction.otherCustomer.label" default="Other Customer"/>
+            <div id="otherUserDiv" style="display:none" class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherUser', 'error')} ">
+                <label for="otherUser">
+                    <g:message code="ridTransaction.otherUser.label" default="Other User"/>
                 </label>
-                <g:textField class="userInput" name="otherCustomer" style="width:120px" maxlength="50" value="${ridTransactionInstance?.otherCustomer}"/>
+                <g:textField class="userInput" name="otherUser" style="width:120px" maxlength="50" value="${ridTransactionInstance?.otherUser}"/>
             </div>
         </div>
         <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'entityAffiliation', 'error')} required">
-                <label for="entityAffiliation">
-                    <g:message code="ridTransaction.entityAffiliation.label" default="Entity Affiliation"/>
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userAffiliation', 'error')} required">
+                <label for="userAffiliation">
+                    <g:message code="ridTransaction.userAffiliation.label" default="User Affiliation"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <% entityAffiliationList = metridoc.rid.RidEntityAffiliation.findAllByInForm(1) %>
-                <% if (ridTransactionInstance?.entityAffiliation?.inForm == 0)
-                    entityAffiliationList.addAll(metridoc.rid.RidEntityAffiliation.findAllById(
-                            ridTransactionInstance?.entityAffiliation?.id)) %>
-                <% entityAffiliationList.addAll(metridoc.rid.RidEntityAffiliation.findAllByInForm(2)) %>
-                <g:select style="width:120px" id="entityAffiliation" name="entityAffiliation.id" from="${entityAffiliationList}"
-                          optionKey="id" required="" value="${ridTransactionInstance?.entityAffiliation?.id}" class="many-to-one"/>
+                <% userAffiliationList = RidUserAffiliation.findAllByInForm(1) %>
+                <% if (ridTransactionInstance?.userAffiliation?.inForm == 0)
+                    userAffiliationList.addAll(RidUserAffiliation.findAllById(
+                            ridTransactionInstance?.userAffiliation?.id)) %>
+                <% userAffiliationList.addAll(RidUserAffiliation.findAllByInForm(2)) %>
+                <g:select style="width:120px" id="userAffiliation" name="userAffiliation.id" from="${userAffiliationList}"
+                          optionKey="id" required="" value="${ridTransactionInstance?.userAffiliation?.id}" class="many-to-one"/>
             </div>
-            <div id="otherEntityAffiliationDiv" style="display:none;" class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherEntityAffiliation', 'error')} ">
-                <label for="otherEntityAffiliation">
-                    <g:message code="ridTransaction.otherEntityAffiliation.label" default="Other Entity Affiliation"/>
+            <div id="otherUserAffiliationDiv" style="display:none;" class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherUserAffiliation', 'error')} ">
+                <label for="otherUserAffiliation">
+                    <g:message code="ridTransaction.otherUserAffiliation.label" default="Other User Affiliation"/>
                 </label>
-                <g:textField class="userInput" style="width:120px" name="otherEntityAffiliation" maxlength="50" value="${ridTransactionInstance?.otherEntityAffiliation}"/>
+                <g:textField class="userInput" style="width:120px" name="otherUserAffiliation" maxlength="50" value="${ridTransactionInstance?.otherUserAffiliation}"/>
             </div>
         </div>
-        <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">
-                <label for="patronEmail">
-                    <g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>
-                </label>
-                <g:field style="width:120px" class="userInput" type="email" name="patronEmail" maxlength="100" value="${ridTransactionInstance?.patronEmail}"/>
-            </div>
-        </div>
+        %{--<div class="span2">--}%
+            %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">--}%
+                %{--<label for="patronEmail">--}%
+                    %{--<g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>--}%
+                %{--</label>--}%
+                %{--<g:field style="width:120px" class="userInput" type="email" name="patronEmail" maxlength="100" value="${ridTransactionInstance?.patronEmail}"/>--}%
+            %{--</div>--}%
+        %{--</div>--}%
         <div class="span2">
             <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactTimes', 'error')} required">
                 <label for="interactTimes">
@@ -195,14 +195,30 @@
                 <g:textField class="userInput" name="courseNumber" style="width: 120px" maxlength="100" value="${ridTransactionInstance?.courseNumber}"/>
             </div>
         </div>
+        %{--<div class="span2">--}%
+            %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'librarian', 'error')} ">--}%
+                %{--<label for="librarian">--}%
+                    %{--<g:message code="ridTransaction.librarian.label" default="Librarian"/>--}%
+                %{--</label>--}%
+                %{--<g:textField class="userInput" name="librarian" style="width: 120px" maxlength="100" value="${ridTransactionInstance?.librarian}"/>--}%
+            %{--</div>--}%
+        %{--</div>--}%
         <div class="span2">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'librarian', 'error')} ">
-                <label for="librarian">
-                    <g:message code="ridTransaction.librarian.label" default="Librarian"/>
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">
+                <label for="facultySponsor">
+                    <g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>
                 </label>
-                <g:textField class="userInput" name="librarian" style="width: 120px" maxlength="100" value="${ridTransactionInstance?.librarian}"/>
+                <g:textField class="userInput" name="facultySponsor" style="width: 120px" maxlength="300" value="${ridTransactionInstance?.facultySponsor}"/>
             </div>
         </div>
+        %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">--}%
+        %{--<label for="facultySponsor">--}%
+        %{--<g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>--}%
+
+        %{--</label>--}%
+        %{--<g:textArea class="userInput" name="facultySponsor" cols="40" rows="5" maxlength="300"--}%
+        %{--value="${ridTransactionInstance?.facultySponsor}"/>--}%
+        %{--</div>--}%
         <div class="span2">
             <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseSponsor', 'error')} required">
                 <label for="courseSponsor">
@@ -228,13 +244,13 @@
 
     <div class="row-fluid">
         <div class="span4">
-            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'customerQuestion', 'error')} ">
-                <label for="customerQuestion">
-                    <g:message code="ridTransaction.customerQuestion.label" default="Customer Question"/>
+            <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userQuestion', 'error')} ">
+                <label for="userQuestion">
+                    <g:message code="ridTransaction.userQuestion.label" default="User Question"/>
                     <span class="required-indicator">*</span>
                 </label>
-                <g:textArea class="userInput" name="customerQuestion" cols="40" rows="5" maxlength="500"
-                            value="${ridTransactionInstance?.customerQuestion}"/>
+                <g:textArea class="userInput" name="userQuestion" cols="40" rows="5" maxlength="500"
+                            value="${ridTransactionInstance?.userQuestion}"/>
             </div>
         </div>
         <div class="span4">

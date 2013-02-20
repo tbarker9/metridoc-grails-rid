@@ -1,19 +1,15 @@
 import grails.util.Environment
-import metridoc.rid.RidDepartmentalAffiliation
 import grails.util.GrailsUtil
 import metridoc.rid.RidTransaction
 import metridoc.rid.RidCourseSponsor
-import metridoc.rid.RidProductConnected
-import metridoc.rid.RidCourseSponsor
-import metridoc.rid.RidProductConnected
 import metridoc.rid.RidDepartmentalAffiliation
-import metridoc.rid.RidModeOfConsultation
-import metridoc.rid.RidCustomer
 import metridoc.rid.RidServiceProvided
-import metridoc.rid.RidEntityAffiliation
 import org.apache.commons.lang.RandomStringUtils
-import metridoc.rid.RidGroupType
 import metridoc.rid.RidModeOfConsultation
+import metridoc.rid.RidReportType
+import metridoc.rid.RidUserGoal
+import metridoc.rid.RidUser
+import metridoc.rid.RidUserAffiliation
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,11 +25,11 @@ class MetridocRidBootStrap {
                 if (!RidTransaction.first()) {
                     println "Creating test data for RID database"
                     RidTransaction.withNewTransaction{
-                        // for group type
+                        // for Report type
                         List<String> gType = Arrays.asList("type1", "type2", "type3", "type4", "type5")
                         for (String i in gType) {
-                            if (!RidGroupType.findByName(i)) {
-                                def gt = new RidGroupType(name: i)
+                            if (!RidReportType.findByName(i)) {
+                                def gt = new RidReportType(name: i)
                                 gt.save()
                                 if (gt.hasErrors()) println gt.errors
                             }
@@ -67,24 +63,24 @@ class MetridocRidBootStrap {
                                 if (da.hasErrors()) println da.errors
                             }
                         }
-                        // for entity affiliation
-                        List<String> eAffiliation = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
+                        // for user affiliation
+                        List<String> uAffiliation = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
                                 "Dental", "SP2", "Design", "UPHS", "CHOP", "Annenberg", "Law")
-                        for (String i in eAffiliation) {
-                            if (!RidEntityAffiliation.findByName(i)) {
-                                def e = new RidEntityAffiliation(name: i, inForm: 1)
+                        for (String i in uAffiliation) {
+                            if (!RidUserAffiliation.findByName(i)) {
+                                def e = new RidUserAffiliation(name: i, inForm: 1)
                                 e.save()
                                 if (e.hasErrors()) println e.errors
                             }
                         }
-                        def outsideEntityPleaseIndicate = "Outside Entity (please indicate)"
+                        def outsidePleaseIndicate = "Outside Penn (please indicate)"
                         def pennOtherPleaseIndicate = "Penn Other (please indicate)"
-                        if (!RidEntityAffiliation.findByName(pennOtherPleaseIndicate)) {
-                            new RidEntityAffiliation(name: pennOtherPleaseIndicate, inForm: 2).save()
+                        if (!RidUserAffiliation.findByName(pennOtherPleaseIndicate)) {
+                            new RidUserAffiliation(name: pennOtherPleaseIndicate, inForm: 2).save()
                         }
 
-                        if (!RidEntityAffiliation.findByName(outsideEntityPleaseIndicate)) {
-                            new RidEntityAffiliation(name: outsideEntityPleaseIndicate, inForm: 2).save()
+                        if (!RidUserAffiliation.findByName(outsidePleaseIndicate)) {
+                            new RidUserAffiliation(name: outsidePleaseIndicate, inForm: 2).save()
                         }
 
                         // for course sponsor
@@ -99,31 +95,30 @@ class MetridocRidBootStrap {
                             }
                         }
 
-                        if (!RidCourseSponsor.findByName(outsideEntityPleaseIndicate)) {
-                            new RidCourseSponsor(name: outsideEntityPleaseIndicate, inForm: 2).save()
+                        if (!RidCourseSponsor.findByName(outsidePleaseIndicate)) {
+                            new RidCourseSponsor(name: outsidePleaseIndicate, inForm: 2).save()
                         }
-                        // for customer
-                        List<String> customers = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
+                        // for user
+                        List<String> users = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
                                 "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Stuff")
-                        for (String i in customers) {
-                            if (!RidCustomer.findByName(i)) {
-                                def c = new RidCustomer(name: i, inForm: 1)
+                        for (String i in users) {
+                            if (!RidUser.findByName(i)) {
+                                def c = new RidUser(name: i, inForm: 1)
                                 c.save()
                                 if (c.hasErrors()) println c.errors
                             }
                         }
                         def otherPleaseIndicate = "Other (please indicate)"
-                        if (RidCustomer.findByName(otherPleaseIndicate)) {
-                            new RidCustomer(name: otherPleaseIndicate, inForm: 2).save()
+                        if (!RidUser.findByName(otherPleaseIndicate)) {
+                            new RidUser(name: otherPleaseIndicate, inForm: 2).save()
                         }
-                        //new RidCustomer(name: "***Shouldn't be shown***", inForm: 0).save()
-                        // for product connected
-                        List<String> pConnected = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
+                        // for user goal
+                        List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
                                 "Independent Research")
                         int id = 0
-                        for (String i in pConnected) {
-                            if (!RidProductConnected.findByName(i)) {
-                                def p = new RidProductConnected(name: i, ridGroupType: RidGroupType.get(id++ % 3 + 1))
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByName(i)) {
+                                def p = new RidUserGoal(name: i, ridReportType: RidReportType.get(id++ % 3 + 1))
                                 p.save()
                                 if (p.hasErrors()) println p.errors
                             }
@@ -134,7 +129,7 @@ class MetridocRidBootStrap {
                                 "In person(in library)", "In person(outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByName(i)) {
-                                def c = new RidModeOfConsultation(name: i, ridGroupType: RidGroupType.get(id++ % 3 + 1))
+                                def c = new RidModeOfConsultation(name: i, ridReportType: RidReportType.get(id++ % 3 + 1))
                                 c.save()
                                 if (c.hasErrors()) println c.errors
                             }
@@ -151,31 +146,31 @@ class MetridocRidBootStrap {
                                 "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO")
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByName(i)) {
-                                def s = new RidServiceProvided(name: i, inForm: 1, ridGroupType: RidGroupType.get(id++ % 3 + 1))
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(id++ % 3 + 1))
                                 s.save()
                                 if (s.hasErrors()) println s.errors
                             }
                         }
-                        //TODO: how to hundle this for RidGroupType ??
+                        //TODO: how to hundle this for RidReportType ??
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2).save()
 
                         // for ridTransaction (only for demo)
                         for (int i = 0; i < 500; i++) {
                             def t = new RidTransaction(staffPennkey: "012345667",
-                                    customerQuestion: RandomStringUtils.randomAlphanumeric(i % 500 + 1), interactTimes: i % 50, prepTime: i % 4,
+                                    userQuestion: RandomStringUtils.randomAlphanumeric(i % 500 + 1), interactTimes: i % 50, prepTime: i % 4,
                                     eventLength: i, followUpContact: "Sample Contact", notes: "Sample Notes",
                                     facultySponsor: "Sample Sponsor", courseName: "Sample Course Name", courseNumber: "LIB001",
-                                    //otherCustomer: "others", otherEntityAffiliation: "others", otherCourseSponsor: "others",
+                                    //otherUser: "others", otherUserAffiliation: "others", otherCourseSponsor: "others",
                                     //otherService: "others",
                                     librarian: "librarian", patronEmail: "sample@gmail.com",
                                     departmentalAffilication: RidDepartmentalAffiliation.get(1),
                                     courseSponsor: RidCourseSponsor.get(1),
-                                    productConnected: RidProductConnected.get(1),
+                                    userGoal: RidUserGoal.get(1),
                                     modeOfConsultation: RidModeOfConsultation.get(1),
-                                    customer: RidCustomer.get(1),
+                                    user: RidUser.get(1),
                                     serviceProvided: RidServiceProvided.get(1),
-                                    entityAffiliation: RidEntityAffiliation.get(1),
-                                    ridGroupType: RidGroupType.get(1)
+                                    userAffiliation: RidUserAffiliation.get(1),
+                                    ridReportType: RidReportType.get(1)
                             )
 
                             try {

@@ -14,10 +14,10 @@ class RidTransactionController {
     def scaffold = true
 
     def ajaxChooseType = {
-        def products = RidProductConnected.findAllByRidGroupType(RidGroupType.get(params.typeId))
-        def consultations = RidModeOfConsultation.findAllByRidGroupType(RidGroupType.get(params.typeId))
-        def services = RidServiceProvided.findAllByRidGroupType(RidGroupType.get(params.typeId))
-        def response = ['productConnected': products,
+        def products = RidUserGoal.findAllByRidReportType(RidReportType.get(params.typeId))
+        def consultations = RidModeOfConsultation.findAllByRidReportType(RidReportType.get(params.typeId))
+        def services = RidServiceProvided.findAllByRidReportType(RidReportType.get(params.typeId))
+        def response = ['userGoal': products,
                 'modeOfConsultation': consultations,
                 'serviceProvided': services]
         render response as JSON

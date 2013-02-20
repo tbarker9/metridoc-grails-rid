@@ -22,13 +22,13 @@
 </div>
 
 
-<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridGroupType', 'error')} required">
-    <label class="control-label" for="ridGroupType">
-        <g:message code="ridServiceProvided.ridGroupType.label" default="Group Type" />
+<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridReportType', 'error')} required">
+    <label class="control-label" for="ridReportType">
+        <g:message code="ridServiceProvided.ridReportType.label" default="Report Type" />
         <span class="required-indicator">*</span>
     </label>
     <div class="controls">
-        <g:select id="ridGroupType" style="width:120px" name="ridGroupType.id" from="${metridoc.rid.RidGroupType.list()}"
-                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridGroupType?.id}" class="many-to-one"/>
+        <g:select id="ridReportType" style="width:120px" name="ridReportType.id" from="${metridoc.rid.RidReportType.list()}"
+                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridReportType?.id}" class="many-to-one"/>
     </div>
 </div>

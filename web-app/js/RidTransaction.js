@@ -7,20 +7,20 @@
 
 
 $(function() {
-    var choiceCustomer = $("#customer").val();
-    if (choiceCustomer == "9") {
-        $("#otherCustomerDiv").show();
-        $("#otherCustomer").val("");
+    var choiceUser = $("#user").val();
+    if (choiceUser == "9") {
+        $("#otherUserDiv").show();
+        $("#otherUser").val("");
     }
     var choiceService = $("#serviceProvided").val();
     if (choiceService == "21") {
         $("#otherServiceDiv").show();
         $("#otherService").val("");
     }
-    var choiceEntityAffiliation = $("#entityAffiliation").val();
-    if (choiceEntityAffiliation == "15" || choiceEntityAffiliation == "16") {
-        $("#otherEntityAffiliationDiv").show();
-        $("#otherEntityAffiliation").val("");
+    var choiceUserAffiliation = $("#userAffiliation").val();
+    if (choiceUserAffiliation == "15" || choiceUserAffiliation == "16") {
+        $("#otherUserAffiliationDiv").show();
+        $("#otherUserAffiliation").val("");
     }
     var choiceCourseSponsor = $("#courseSponsor").val();
     if (choiceCourseSponsor == "15") {
@@ -30,15 +30,15 @@ $(function() {
 })
 
 $(function() {
-    $("#customer").change(function() {
-        var choice = $("#customer").val();
+    $("#user").change(function() {
+        var choice = $("#user").val();
         //alert(choice)
         if (choice == "9") {
-            $("#otherCustomerDiv").show();
+            $("#otherUserDiv").show();
         }
         else {
-            $("#otherCustomerDiv").hide();
-            $("#otherCustomer").val("");
+            $("#otherUserDiv").hide();
+            $("#otherUser").val("");
         }
     })
 })
@@ -57,14 +57,14 @@ $(function() {
 })
 
 $(function() {
-    $("#entityAffiliation").change(function() {
-        var choice = $("#entityAffiliation").val();
+    $("#userAffiliation").change(function() {
+        var choice = $("#userAffiliation").val();
         if (choice == "15" || choice == "16") {
-            $("#otherEntityAffiliationDiv").show();
+            $("#otherUserAffiliationDiv").show();
         }
         else {
-            $("#otherEntityAffiliationDiv").hide();
-            $("#otherEntityAffiliation").val("");
+            $("#otherUserAffiliationDiv").hide();
+            $("#otherUserAffiliation").val("");
         }
     })
 })
@@ -84,20 +84,20 @@ $(function() {
 
 $(function() {
     $("#resetButton").click(function() {
-        $("#otherCustomerDiv").hide();
-        $("#otherCustomer").val("");
+        $("#otherUserDiv").hide();
+        $("#otherUser").val("");
         $("#otherServiceDiv").hide();
         $("#otherService").val("");
-        $("#otherEntityAffiliationDiv").hide();
-        $("#otherEntityAffiliation").val("");
+        $("#otherUserAffiliationDiv").hide();
+        $("#otherUserAffiliation").val("");
         $("#otherCourseSponsorDiv").hide();
         $("#otherCourseSponsor").val("");
     })
 })
 
 $(function() {
-    $("#ridGroupType").change(function() {
-        var choice = $("#ridGroupType").val();
+    $("#ridReportType").change(function() {
+        var choice = $("#ridReportType").val();
         $.ajax({
             //url: '${g.createLink(controller: 'RidTransaction', action: 'ajaxChooseType')}',
             url: 'ajaxChooseType',

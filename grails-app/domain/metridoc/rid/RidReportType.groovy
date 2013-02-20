@@ -1,8 +1,8 @@
 package metridoc.rid
 
-class RidGroupType {
+class RidReportType {
 
-    static hasMany = [productConnected: RidProductConnected,
+    static hasMany = [userGoal: RidUserGoal,
             modeOfConsultation: RidModeOfConsultation,
             serviceProvided: RidServiceProvided,
             ridTransaction: RidTransaction]

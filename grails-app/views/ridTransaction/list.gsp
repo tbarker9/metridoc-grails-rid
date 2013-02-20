@@ -27,7 +27,7 @@
                     <thead>
                     <tr>
                         
-                        <g:sortableColumn property="customerQuestion" title="${message(code: 'ridTransaction.customerQuestion.label', default: 'Customer Question')}" />
+                        <g:sortableColumn property="userQuestion" title="${message(code: 'ridTransaction.userQuestion.label', default: 'User Question')}" />
                         
                         <g:sortableColumn property="staffPennkey" title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}" />
                         
@@ -43,13 +43,13 @@
                     <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
                         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                             <%
-                                customerQ = ridTransactionInstance.customerQuestion
-                                if (customerQ!=null && customerQ.length() > 12)
-                                    customerQ = customerQ.substring(0,12) + "..."
+                                userQ = ridTransactionInstance.userQuestion
+                                if (userQ!=null && userQ.length() > 12)
+                                    userQ = userQ.substring(0,12) + "..."
                             %>
                             <td><g:link action="show" id="${ridTransactionInstance.id}"
-                                        title="${ridTransactionInstance.customerQuestion}">
-                                    ${customerQ}
+                                        title="${ridTransactionInstance.userQuestion}">
+                                    ${userQ}
                                 </g:link>
                             </td>
                             

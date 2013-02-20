@@ -27,7 +27,7 @@
                         
                         <g:sortableColumn property="mode" title="${message(code: 'ridModeOfConsultation.mode.label', default: 'Mode')}" />
 
-                        <g:sortableColumn property="ridGroupType" title="${message(code: 'ridModeOfConsultation.ridGroupType.label', default: 'Group Type')}" />
+                        <g:sortableColumn property="ridReportType" title="${message(code: 'ridModeOfConsultation.ridReportType.label', default: 'Report Type')}" />
 
                         <th>Number of RidTransaction</th>
                     </tr>
@@ -42,7 +42,7 @@
                                 </a>
                             </td>
 
-                            <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridGroupType")}</td>
+                            <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridReportType")}</td>
 
                             <td>${ridModeOfConsultationInstance?.ridTransaction?.size()}</td>
                         </tr>

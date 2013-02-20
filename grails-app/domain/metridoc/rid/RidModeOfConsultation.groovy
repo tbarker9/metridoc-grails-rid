@@ -3,7 +3,7 @@ package metridoc.rid
 class RidModeOfConsultation {
 
     static hasMany = [ridTransaction:RidTransaction]
-    static belongsTo = [ridGroupType: RidGroupType]
+    static belongsTo = [ridReportType: RidReportType]
 
     String name
     String toString(){
@@ -13,6 +13,6 @@ class RidModeOfConsultation {
     static constraints = {
         name(blank: false, nullable: false, unique: true)
         ridTransaction(nullable: true)
-        ridGroupType(nullable: true)
+        ridReportType(nullable: true)
     }
 }

@@ -29,7 +29,7 @@
                         
                         <g:sortableColumn property="inForm" title="${message(code: 'ridServiceProvided.inForm.label', default: 'In Form')}" />
 
-                        <g:sortableColumn property="ridGroupType" title="${message(code: 'ridServiceProvided.ridGroupType.label', default: 'Group Type')}" />
+                        <g:sortableColumn property="ridReportType" title="${message(code: 'ridServiceProvided.ridReportType.label', default: 'Report Type')}" />
 
                         <th>Number of RidTransaction</th>
                     </tr>
@@ -47,7 +47,7 @@
                             <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
                             <td>${choices.get(ridServiceProvidedInstance?.inForm)}</td>
 
-                            <td>${fieldValue(bean: ridServiceProvidedInstance, field: "ridGroupType")}</td>
+                            <td>${fieldValue(bean: ridServiceProvidedInstance, field: "ridReportType")}</td>
 
                             <td>${ridServiceProvidedInstance?.ridTransaction?.size()}</td>
                         </tr>

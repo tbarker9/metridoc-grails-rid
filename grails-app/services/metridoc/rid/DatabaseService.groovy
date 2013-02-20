@@ -3,27 +3,27 @@ package metridoc.rid
 class DatabaseService {
 
     def serviceMethod(Map params, RidTransaction ridTransactionInstance) {
-        String otherCustomer = params.otherCustomer
-        //println(otherCustomer)
-        if (otherCustomer!=null && !otherCustomer.isEmpty()) {
-            if (RidCustomer.findAllByName(otherCustomer).size()==0) {
-                def c = new RidCustomer(name: otherCustomer, inForm: 0)
+        String otherUser = params.otherUser
+        //println(otherUser)
+        if (otherUser!=null && !otherUser.isEmpty()) {
+            if (RidUser.findAllByName(otherUser).size()==0) {
+                def c = new RidUser(name: otherUser, inForm: 0)
                 c.save()
                 if(c.hasErrors()) println c.errors
             }
-            if (RidCustomer.findAllByName(otherCustomer).size() > 0)
-                ridTransactionInstance.customer = RidCustomer.findByName(otherCustomer)
+            if (RidUser.findAllByName(otherUser).size() > 0)
+                ridTransactionInstance.user = RidUser.findByName(otherUser)
         }
 
-        String otherEntityAffiliation = params.otherEntityAffiliation
-        if (otherEntityAffiliation!=null && !otherEntityAffiliation.isEmpty()) {
-            if (RidEntityAffiliation.findAllByName(otherEntityAffiliation).size() == 0) {
-                def e = new RidEntityAffiliation(name: otherEntityAffiliation, inForm: 0)
+        String otherUserAffiliation = params.otherUserAffiliation
+        if (otherUserAffiliation!=null && !otherUserAffiliation.isEmpty()) {
+            if (RidUserAffiliation.findAllByName(otherUserAffiliation).size() == 0) {
+                def e = new RidUserAffiliation(name: otherUserAffiliation, inForm: 0)
                 e.save()
                 if(e.hasErrors()) println e.errors
             }
-            if (RidEntityAffiliation.findAllByName(otherEntityAffiliation).size() > 0)
-                ridTransactionInstance.entityAffiliation = RidEntityAffiliation.findByName(otherEntityAffiliation)
+            if (RidUserAffiliation.findAllByName(otherUserAffiliation).size() > 0)
+                ridTransactionInstance.userAffiliation = RidUserAffiliation.findByName(otherUserAffiliation)
         }
 
         String otherCourseSponsor = params.otherCourseSponsor
