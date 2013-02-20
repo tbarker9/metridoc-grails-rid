@@ -2,6 +2,7 @@ package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
+import java.text.SimpleDateFormat
 
 class RidTransactionController {
 
@@ -40,6 +41,7 @@ class RidTransactionController {
 //    }
 
     def save() {
+        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         def ridTransactionInstance = new RidTransaction(params)
         databaseService.serviceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
@@ -69,6 +71,7 @@ class RidTransactionController {
             }
         }
 
+        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         ridTransactionInstance.properties = params
         databaseService.serviceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
@@ -129,21 +132,21 @@ class RidTransactionController {
         params.max = Math.min(max ?: 10, 100)
 
         def query = RidTransaction.where {
-            customerQuestion != null
+            userQuestion != null
         }
 
         try {
-            Date start = params.dateOfConsultation_start
-            Date end = params.dateOfConsultation_end
+            Date start = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_start)
+            Date end =  new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_end)
             query = query.where {
                 dateOfConsultation >= start && dateOfConsultation < end.next()
             }
         } catch(Exception e) {
-            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
-            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
-            query = query.where {
-                dateOfConsultation >= start && dateOfConsultation < end.next()
-            }
+//            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
+//            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
+//            query = query.where {
+//                dateOfConsultation >= start && dateOfConsultation < end.next()
+//            }
         }
 
         String [] staffPennkey_splits = params.staffPennkey.split(" ");
@@ -156,13 +159,13 @@ class RidTransactionController {
             }
         }
 
-        String [] customerQuestion_splits = params.customerQuestion.split(" ");
-        for (String s in customerQuestion_splits) {
+        String [] userQuestion_splits = params.userQuestion.split(" ");
+        for (String s in userQuestion_splits) {
             if (!s.trim().isEmpty()) {
                 query = query.where {
-                    //customerQuestion ==~ ~"^.+ba\$"
-                    //customerQuestion ==~ ~"^k.*"
-                    customerQuestion ==~ ~s.trim()
+                    //userQuestion ==~ ~"^.+ba\$"
+                    //userQuestion ==~ ~"^k.*"
+                    userQuestion ==~ ~s.trim()
                 }
             }
         }
@@ -176,9 +179,7 @@ class RidTransactionController {
             }
         }
 
-        print(query.count())
         def ridTransactionList = query.list(params)
-
         render(view: "list",
             model: [ridTransactionInstanceList: ridTransactionList, ridTransactionInstanceTotal: query.count()])
         return

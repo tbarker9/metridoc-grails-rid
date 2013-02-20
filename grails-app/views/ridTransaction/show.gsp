@@ -19,7 +19,7 @@
                         <td colspan="2">
                             <span id="dateOfConsultation-label" class="property-label"><g:message code="ridTransaction.dateOfConsultation.label" default="Date Of Consultation" /></span>
                             :
-                            <span class="property-value" aria-labelledby="dateOfConsultation-label"><g:formatDate date="${ridTransactionInstance?.dateOfConsultation}" /></span>
+                            <span class="property-value" aria-labelledby="dateOfConsultation-label"><g:formatDate format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfConsultation}" /></span>
                         </td>
                         <td colspan="3">
                             <span id="staffPennkey-label" class="property-label"><g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey" /></span>

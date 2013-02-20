@@ -5,6 +5,42 @@
 //    })
 //})
 
+$(function() {
+    var nowTemp = new Date();
+    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+    var dateOfConsultation = $('#dp1').datepicker({
+//        onRender: function(date) {
+//            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+//        }
+    }).on('changeDate', function(ev) {
+            dateOfConsultation.hide();
+            $('#dp1').blur();
+        }).data('datepicker');
+
+
+    $('#dpd1').datepicker('setValue', now);
+    $('#dpd2').datepicker('setValue', now);
+    var checkin = $('#dpd1').datepicker().on('changeDate', function(ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate());
+                checkout.setValue(newDate);
+            }
+            checkin.hide();
+            $('#dpd2')[0].focus();
+        }).data('datepicker');
+    var checkout = $('#dpd2').datepicker()
+        .on('changeDate', function(ev) {
+            if (ev.date.valueOf() < checkin.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate());
+                checkin.setValue(newDate);
+            }
+            checkout.hide();
+        }).data('datepicker');
+
+});
 
 $(function() {
     var choiceUser = $("#user").val();
@@ -27,7 +63,7 @@ $(function() {
         $("#otherCourseSponsorDiv").show();
         $("#otherCourseSponsor").val("");
     }
-})
+});
 
 $(function() {
     $("#user").change(function() {
@@ -41,7 +77,7 @@ $(function() {
             $("#otherUser").val("");
         }
     })
-})
+});
 
 $(function() {
     $("#serviceProvided").change(function() {
@@ -54,7 +90,7 @@ $(function() {
             $("#otherService").val("");
         }
     })
-})
+});
 
 $(function() {
     $("#userAffiliation").change(function() {
@@ -67,7 +103,7 @@ $(function() {
             $("#otherUserAffiliation").val("");
         }
     })
-})
+});
 
 $(function() {
     $("#courseSponsor").change(function() {
@@ -80,7 +116,7 @@ $(function() {
             $("#otherCourseSponsor").val("");
         }
     })
-})
+});
 
 $(function() {
     $("#resetButton").click(function() {
@@ -93,7 +129,7 @@ $(function() {
         $("#otherCourseSponsorDiv").hide();
         $("#otherCourseSponsor").val("");
     })
-})
+});
 
 $(function() {
     $("#ridReportType").change(function() {
@@ -123,4 +159,4 @@ $(function() {
             }
         });
     })
-})
+});

@@ -1,8 +1,9 @@
-<%@ page import="metridoc.rid.RidUserAffiliation; metridoc.rid.RidUser; metridoc.rid.RidUserGoal; metridoc.rid.RidReportType; metridoc.rid.RidGroupType; metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
+<%@ page import="java.text.SimpleDateFormat; metridoc.rid.RidUserAffiliation; metridoc.rid.RidUser; metridoc.rid.RidUserGoal; metridoc.rid.RidReportType; metridoc.rid.RidGroupType; metridoc.rid.RidDepartmentalAffiliation; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
 
+<r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
+<r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
-
 
     <div class="row-fluid">
         <div class="span9">
@@ -23,8 +24,10 @@
                     <g:message code="ridTransaction.dateOfConsultation.label" default="Date Of Consultation" />
                     <span class="required-indicator">*</span>
                 </label>
-                <g:datePicker style="width: 150px" name="dateOfConsultation" precision="day"  value="${ridTransactionInstance?.dateOfConsultation}"  />
-                <calendar:datePicker name="date" defaultValue="${new Date()}"/>
+                %{--<g:datePicker style="width: 150px" name="dateOfConsultation" precision="day"  value="${ridTransactionInstance?.dateOfConsultation}"  />--}%
+                <% def dateString = new SimpleDateFormat("MM/dd/yyyy").format(ridTransactionInstance?.dateOfConsultation); %>
+                <input type="text" name="dateOfConsultation" style="width: 150px"
+                       value="${dateString}" id="dp1"/>
             </div>
         </div>
         <div class="span5">

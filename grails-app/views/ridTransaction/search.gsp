@@ -3,6 +3,8 @@
 
 <md:report>
     <div class="md-application-content">
+        <r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
+        <r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
         <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
         <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 
@@ -33,9 +35,11 @@
                             dateOfConsultation2.add(Calendar.DAY_OF_YEAR, - (365 * 2))
                         %>
                         <div class="controls">
-                            <g:datePicker id="dateOfConsultation_start" name="dateOfConsultation_start" precision="day" value="${dateOfConsultation2}" />
+                            %{--<g:datePicker id="dateOfConsultation_start" name="dateOfConsultation_start" precision="day" value="${dateOfConsultation2}" />--}%
+                            <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
                             <span style="color: #666666">and</span>
-                            <g:datePicker id="dateOfConsultation_end" name="dateOfConsultation_end" precision="day" value="${dateOfConsultation1}" />
+                            %{--<g:datePicker id="dateOfConsultation_end" name="dateOfConsultation_end" precision="day" value="${dateOfConsultation1}" />--}%
+                            <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
                         </div>
                     </div>
                     <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'staffPennkey', 'error')} required">
@@ -46,12 +50,12 @@
                             <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey" maxlength="100" value="" />
                         </div>
                     </div>
-                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'customerQuestion', 'error')} ">
-                        <label class="control-label" for="customerQuestion">
-                            <g:message code="ridTransaction.customerQuestion.label" default="Customer Question"/>
+                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userQuestion', 'error')} ">
+                        <label class="control-label" for="userQuestion">
+                            <g:message code="ridTransaction.userQuestion.label" default="User Question"/>
                         </label>
                         <div class="controls">
-                            <g:textField id="customerQuestion" style="width:350px" class="userInput" name="customerQuestion" maxlength="100" value="" />
+                            <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion" maxlength="100" value="" />
                         </div>
                     </div>
                     <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'notes', 'error')} ">
