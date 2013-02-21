@@ -31,16 +31,16 @@ class RidUserAffiliationController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridUserAffiliationInstance = RidUserAffiliation.get(id)
-        if (!ridUserAffiliationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridUserAffiliationInstance: ridUserAffiliationInstance]
-    }
+//    def show(Long id) {
+//        def ridUserAffiliationInstance = RidUserAffiliation.get(id)
+//        if (!ridUserAffiliationInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridUserAffiliationInstance: ridUserAffiliationInstance]
+//    }
 
     def edit(Long id) {
         def ridUserAffiliationInstance = RidUserAffiliation.get(id)

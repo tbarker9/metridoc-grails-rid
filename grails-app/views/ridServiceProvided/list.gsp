@@ -6,12 +6,9 @@
     <r:external dir="css" file="floating_tables_for_admin.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
-    <div style="font-size: 12px">
-        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
-    </div>
-
     <div class="md-application-content">
-        <g:render template="/ridCourseSponsor/modal" plugin="metridocRid" model="[title: entityName]"/>
+        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName]"/>
 
             <div id="list-ridServiceProvided" class="content scaffold-list" role="main">
                 <h1>

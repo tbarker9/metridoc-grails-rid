@@ -31,16 +31,16 @@ class RidUserController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridUserInstance = RidUser.get(id)
-        if (!ridUserInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridUserInstance: ridUserInstance]
-    }
+//    def show(Long id) {
+//        def ridUserInstance = RidUser.get(id)
+//        if (!ridUserInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridUserInstance: ridUserInstance]
+//    }
 
     def edit(Long id) {
         def ridUserInstance = RidUser.get(id)

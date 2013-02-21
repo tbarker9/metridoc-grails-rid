@@ -31,16 +31,16 @@ class RidDepartmentalAffiliationController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
-        if (!ridDepartmentalAffiliationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance]
-    }
+//    def show(Long id) {
+//        def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
+//        if (!ridDepartmentalAffiliationInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance]
+//    }
 
     def edit(Long id) {
         def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)

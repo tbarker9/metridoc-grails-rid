@@ -31,16 +31,16 @@ class RidServiceProvidedController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridServiceProvidedInstance = RidServiceProvided.get(id)
-        if (!ridServiceProvidedInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridServiceProvidedInstance: ridServiceProvidedInstance]
-    }
+//    def show(Long id) {
+//        def ridServiceProvidedInstance = RidServiceProvided.get(id)
+//        if (!ridServiceProvidedInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridServiceProvidedInstance: ridServiceProvidedInstance]
+//    }
 
     def edit(Long id) {
         def ridServiceProvidedInstance = RidServiceProvided.get(id)

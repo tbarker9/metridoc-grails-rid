@@ -31,16 +31,16 @@ class RidCourseSponsorController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridCourseSponsorInstance = RidCourseSponsor.get(id)
-        if (!ridCourseSponsorInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridCourseSponsorInstance: ridCourseSponsorInstance]
-    }
+//    def show(Long id) {
+//        def ridCourseSponsorInstance = RidCourseSponsor.get(id)
+//        if (!ridCourseSponsorInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridCourseSponsorInstance: ridCourseSponsorInstance]
+//    }
 
     def edit(Long id) {
         def ridCourseSponsorInstance = RidCourseSponsor.get(id)

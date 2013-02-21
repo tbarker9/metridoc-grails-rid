@@ -31,16 +31,16 @@ class RidModeOfConsultationController {
         redirect(action: "list")
     }
 
-    def show(Long id) {
-        def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
-        if (!ridModeOfConsultationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-            redirect(action: "list")
-            return
-        }
-
-        [ridModeOfConsultationInstance: ridModeOfConsultationInstance]
-    }
+//    def show(Long id) {
+//        def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
+//        if (!ridModeOfConsultationInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        [ridModeOfConsultationInstance: ridModeOfConsultationInstance]
+//    }
 
     def edit(Long id) {
         def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
