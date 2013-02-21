@@ -152,7 +152,7 @@ class RidTransactionController {
         String [] staffPennkey_splits = params.staffPennkey.split(" ");
         for (String s in staffPennkey_splits) {
             if (!s.trim().isEmpty()) {
-                s = stemmer.doStemming(s)
+                // s = stemmer.doStemming(s)
                 query = query.where {
                     staffPennkey ==~ ~s.trim()
                 }
