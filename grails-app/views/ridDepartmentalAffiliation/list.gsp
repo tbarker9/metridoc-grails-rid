@@ -3,7 +3,7 @@
 
 <md:report>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_tables_for_admin_2.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">

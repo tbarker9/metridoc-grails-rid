@@ -3,7 +3,7 @@
 
 <md:report>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_tables_for_admin_3.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
@@ -22,7 +22,7 @@
                     <thead>
                     <tr>
                         
-                        <g:sortableColumn property="mode" title="${message(code: 'ridModeOfConsultation.mode.label', default: 'Mode')}" />
+                        <g:sortableColumn property="name" title="${message(code: 'ridModeOfConsultation.name.label', default: 'Name')}" />
 
                         <g:sortableColumn property="ridReportType" title="${message(code: 'ridModeOfConsultation.ridReportType.label', default: 'Report Type')}" />
 

@@ -35,10 +35,8 @@
                             dateOfConsultation2.add(Calendar.DAY_OF_YEAR, - (365 * 2))
                         %>
                         <div class="controls">
-                            %{--<g:datePicker id="dateOfConsultation_start" name="dateOfConsultation_start" precision="day" value="${dateOfConsultation2}" />--}%
                             <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
-                            <span style="color: #666666">and</span>
-                            %{--<g:datePicker id="dateOfConsultation_end" name="dateOfConsultation_end" precision="day" value="${dateOfConsultation1}" />--}%
+                            <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
                             <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
                         </div>
                     </div>
