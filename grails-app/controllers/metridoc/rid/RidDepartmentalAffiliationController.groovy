@@ -22,7 +22,8 @@ class RidDepartmentalAffiliationController {
     def save() {
         def ridDepartmentalAffiliationInstance = new RidDepartmentalAffiliation(params)
         if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            render(view: "create", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
+            //render(view: "create", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
+            chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidDepartmentalAffiliationController {
         ridDepartmentalAffiliationInstance.properties = params
 
         if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            render(view: "edit", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
+            //render(view: "edit", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
+            chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
             return
         }
 

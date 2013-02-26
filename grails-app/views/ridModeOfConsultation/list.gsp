@@ -18,6 +18,12 @@
                     </a>
                 </h1>
 
+                <g:hasErrors bean="${ridModeOfConsultationError}">
+                    <div class="errors">
+                        <g:renderErrors bean="${ridModeOfConsultationError}" as="list" />
+                    </div>
+                </g:hasErrors>
+
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>

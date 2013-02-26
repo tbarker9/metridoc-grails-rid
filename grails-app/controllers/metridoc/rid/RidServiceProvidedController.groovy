@@ -22,7 +22,8 @@ class RidServiceProvidedController {
     def save() {
         def ridServiceProvidedInstance = new RidServiceProvided(params)
         if (!ridServiceProvidedInstance.save(flush: true)) {
-            render(view: "create", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+            //render(view: "create", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+            chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidServiceProvidedController {
         ridServiceProvidedInstance.properties = params
 
         if (!ridServiceProvidedInstance.save(flush: true)) {
-            render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+            //render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+            chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
             return
         }
 

@@ -24,6 +24,12 @@
                     %{--<div class="message" role="status">${flash.message}</div>--}%
                 %{--</g:if>--}%
 
+                <g:hasErrors bean="${ridCourseSponsorError}">
+                    <div class="errors">
+                        <g:renderErrors bean="${ridCourseSponsorError}" as="list" />
+                    </div>
+                </g:hasErrors>
+
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>

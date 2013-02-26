@@ -22,7 +22,8 @@ class RidUserGoalController {
     def save() {
         def ridUserGoalInstance = new RidUserGoal(params)
         if (!ridUserGoalInstance.save(flush: true)) {
-            render(view: "create", model: [ridUserGoalInstance: ridUserGoalInstance])
+            //render(view: "create", model: [ridUserGoalInstance: ridUserGoalInstance])
+            chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidUserGoalController {
         ridUserGoalInstance.properties = params
 
         if (!ridUserGoalInstance.save(flush: true)) {
-            render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
+            //render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
+            chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
             return
         }
 

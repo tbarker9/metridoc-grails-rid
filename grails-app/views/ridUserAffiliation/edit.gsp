@@ -5,13 +5,13 @@
 
             <div id="edit-ridUserAffiliation" class="content scaffold-edit" role="main">
                 <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
-                <g:hasErrors bean="${ridUserAffiliationInstance}">
-                    <ul class="errors" role="alert">
-                        <g:eachError bean="${ridUserAffiliationInstance}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-                        </g:eachError>
-                    </ul>
-                </g:hasErrors>
+                %{--<g:hasErrors bean="${ridUserAffiliationInstance}">--}%
+                    %{--<ul class="errors" role="alert">--}%
+                        %{--<g:eachError bean="${ridUserAffiliationInstance}" var="error">--}%
+                        %{--<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>--}%
+                        %{--</g:eachError>--}%
+                    %{--</ul>--}%
+                %{--</g:hasErrors>--}%
 
                 <g:form method="post" >
                     <g:hiddenField name="id" value="${ridUserAffiliationInstance?.id}" />

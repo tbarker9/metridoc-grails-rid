@@ -22,7 +22,8 @@ class RidUserController {
     def save() {
         def ridUserInstance = new RidUser(params)
         if (!ridUserInstance.save(flush: true)) {
-            render(view: "create", model: [ridUserInstance: ridUserInstance])
+            //render(view: "create", model: [ridUserInstance: ridUserInstance])
+            chain(action: "list", model: [ridUserError: ridUserInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidUserController {
         ridUserInstance.properties = params
 
         if (!ridUserInstance.save(flush: true)) {
-            render(view: "edit", model: [ridUserInstance: ridUserInstance])
+            //render(view: "edit", model: [ridUserInstance: ridUserInstance])
+            chain(action: "list", model: [ridUserError: ridUserInstance])
             return
         }
 

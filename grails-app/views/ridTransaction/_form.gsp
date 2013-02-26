@@ -27,7 +27,7 @@
                 %{--<g:datePicker style="width: 150px" name="dateOfConsultation" precision="day"  value="${ridTransactionInstance?.dateOfConsultation}"  />--}%
                 <% def dateString = new SimpleDateFormat("MM/dd/yyyy").format(ridTransactionInstance?.dateOfConsultation); %>
                 <input type="text" name="dateOfConsultation" style="width: 150px"
-                       value="${dateString}" id="dp1"/>
+                       value="${dateString}" id="dp1" required="" />
             </div>
         </div>
         <div class="span5">
@@ -37,7 +37,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <g:textField style="width:150px" class="userInput" name="staffPennkey" maxlength="100"
-                            value="${ridTransactionInstance?.staffPennkey}"/>
+                             required="" value="${ridTransactionInstance?.staffPennkey}"/>
             </div>
         </div>
     </div>
@@ -253,7 +253,7 @@
                     <span class="required-indicator">*</span>
                 </label>
                 <g:textArea class="userInput" name="userQuestion" cols="40" rows="5" maxlength="500"
-                            value="${ridTransactionInstance?.userQuestion}"/>
+                            required="" value="${ridTransactionInstance?.userQuestion}"/>
             </div>
         </div>
         <div class="span4">

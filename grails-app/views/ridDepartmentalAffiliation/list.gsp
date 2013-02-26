@@ -18,6 +18,12 @@
                     </a>
                 </h1>
 
+                <g:hasErrors bean="${ridDepartmentalAffiliationError}">
+                    <div class="errors">
+                        <g:renderErrors bean="${ridDepartmentalAffiliationError}" as="list" />
+                    </div>
+                </g:hasErrors>
+
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>

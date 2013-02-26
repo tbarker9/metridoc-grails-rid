@@ -22,7 +22,8 @@ class RidUserAffiliationController {
     def save() {
         def ridUserAffiliationInstance = new RidUserAffiliation(params)
         if (!ridUserAffiliationInstance.save(flush: true)) {
-            render(view: "create", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+            //render(view: "create", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+            chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidUserAffiliationController {
         ridUserAffiliationInstance.properties = params
 
         if (!ridUserAffiliationInstance.save(flush: true)) {
-            render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+            //render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+            chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
             return
         }
 

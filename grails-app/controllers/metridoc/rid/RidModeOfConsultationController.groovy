@@ -22,7 +22,8 @@ class RidModeOfConsultationController {
     def save() {
         def ridModeOfConsultationInstance = new RidModeOfConsultation(params)
         if (!ridModeOfConsultationInstance.save(flush: true)) {
-            render(view: "create", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
+            //render(view: "create", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
+            chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
             return
         }
 
@@ -74,7 +75,8 @@ class RidModeOfConsultationController {
         ridModeOfConsultationInstance.properties = params
 
         if (!ridModeOfConsultationInstance.save(flush: true)) {
-            render(view: "edit", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
+            //render(view: "edit", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
+            chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
             return
         }
 

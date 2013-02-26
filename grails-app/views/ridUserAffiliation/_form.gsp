@@ -1,6 +1,6 @@
 <%@ page import="metridoc.rid.RidUserAffiliation" %>
 
-<div class="control-group fieldcontain">
+<div class="control-group fieldcontain required">
 	<label class="control-label" for="name">
 		<g:message code="ridUserAffiliation.name.label" default="Name" />
 		<span class="required-indicator">*</span>
@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="control-group fieldcontain">
+<div class="control-group fieldcontain required">
 	<label class="control-label" for="inForm">
 		<g:message code="ridUserAffiliation.inForm.label" default="In Form" />
 		<span class="required-indicator">*</span>

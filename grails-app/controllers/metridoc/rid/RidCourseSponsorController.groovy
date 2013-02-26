@@ -12,7 +12,9 @@ class RidCourseSponsorController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        //def ridCourseSponsorError = session.ridCourseSponsorError ?: null
         [ridCourseSponsorInstanceList: RidCourseSponsor.list(params), ridCourseSponsorInstanceTotal: RidCourseSponsor.count()]
+          //      ridCourseSponsorError:ridCourseSponsorError]
     }
 
     def create() {
@@ -22,7 +24,10 @@ class RidCourseSponsorController {
     def save() {
         def ridCourseSponsorInstance = new RidCourseSponsor(params)
         if (!ridCourseSponsorInstance.save(flush: true)) {
-            render(view: "create", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+            //render(view: "create", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+            //session.putValue("ridCourseSponsorError", ridCourseSponsorInstance)
+            chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
+            //redirect(action: "list")
             return
         }
 
@@ -74,7 +79,8 @@ class RidCourseSponsorController {
         ridCourseSponsorInstance.properties = params
 
         if (!ridCourseSponsorInstance.save(flush: true)) {
-            render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+            //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+            chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
             return
         }
 

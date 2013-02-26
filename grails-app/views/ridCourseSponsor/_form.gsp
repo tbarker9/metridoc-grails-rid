@@ -1,12 +1,13 @@
 <%@ page import="metridoc.rid.RidCourseSponsor" %>
 
 %{--<div class="control-group fieldcontain ${hasErrors(bean: ridCourseSponsorInstance, field: 'name', 'error')}">--}%
-<div class="control-group fieldcontain">
+<div class="control-group fieldcontain required">
 	<label class="control-label" for="name">
 		<g:message code="ridCourseSponsor.name.label" default="Name" />
+        <span class="required-indicator">*</span>
 	</label>
     <div class="controls">
-        <g:textField class="userInput" name="name" value="${ridCourseSponsorInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridCourseSponsorInstance?.name}"/>
     </div>
 </div>
 
@@ -19,7 +20,8 @@
     <div class="controls">
         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
         %{--<g:if test="${ridCourseSponsorInstance?.constraints?.inForm?.inList}">--}%
-            <g:select name="inForm" from="${choices}" value="${ridCourseSponsorInstance?.inForm}" keys="${ridCourseSponsorInstance.constraints.inForm.inList}" />
+            <g:select name="inForm" from="${choices}" required=""
+                      value="${ridCourseSponsorInstance?.inForm}" keys="${ridCourseSponsorInstance.constraints.inForm.inList}" />
 	        %{--<g:select name="inForm" from="${ridCourseSponsorInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridCourseSponsorInstance, field: 'inForm')}" valueMessagePrefix="ridCourseSponsor.inForm"/>--}%
         %{--</g:if>--}%
         %{--<g:else>--}%
