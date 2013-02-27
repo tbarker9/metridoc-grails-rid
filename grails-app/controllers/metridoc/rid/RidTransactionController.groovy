@@ -149,6 +149,16 @@ class RidTransactionController {
 //            }
         }
 
+        def TypeList = params.list('ridReportTypeSearch')
+        if (TypeList.size() > 0 && !TypeList.contains("0")) {
+            List<Long> tList = new LinkedList<Long>()
+            for (String id in TypeList)
+                tList.add(Long.valueOf(id))
+            query = query.where {
+                ridReportType in RidReportType.findAllByIdInList(tList)
+            }
+        }
+
         String [] staffPennkey_splits = params.staffPennkey.split(" ");
         for (String s in staffPennkey_splits) {
             if (!s.trim().isEmpty()) {

@@ -47,21 +47,25 @@ $(function() {
     if (choiceUser == "9") {
         $("#otherUserDiv").show();
         $("#otherUser").val("");
+        $("#otherUser").attr("required","");
     }
     var choiceService = $("#serviceProvided").val();
     if (choiceService == "21") {
         $("#otherServiceDiv").show();
         $("#otherService").val("");
+        $("#otherService").attr("required","");
     }
     var choiceUserAffiliation = $("#userAffiliation").val();
     if (choiceUserAffiliation == "15" || choiceUserAffiliation == "16") {
         $("#otherUserAffiliationDiv").show();
         $("#otherUserAffiliation").val("");
+        $("#otherUserAffiliation").attr("required","");
     }
     var choiceCourseSponsor = $("#courseSponsor").val();
     if (choiceCourseSponsor == "15") {
         $("#otherCourseSponsorDiv").show();
         $("#otherCourseSponsor").val("");
+        $("#otherCourseSponsor").attr("required","");
     }
 });
 
@@ -71,10 +75,12 @@ $(function() {
         //alert(choice)
         if (choice == "9") {
             $("#otherUserDiv").show();
+            $("#otherUser").attr("required","");
         }
         else {
             $("#otherUserDiv").hide();
             $("#otherUser").val("");
+            $("#otherUser").removeAttr("required");
         }
     })
 });
@@ -84,10 +90,12 @@ $(function() {
         var choice = $("#serviceProvided").val();
         if (choice == "21") {
             $("#otherServiceDiv").show();
+            $("#otherService").attr("required","");
         }
         else {
             $("#otherServiceDiv").hide();
             $("#otherService").val("");
+            $("#otherService").removeAttr("required");
         }
     })
 });
@@ -97,10 +105,12 @@ $(function() {
         var choice = $("#userAffiliation").val();
         if (choice == "15" || choice == "16") {
             $("#otherUserAffiliationDiv").show();
+            $("#otherUserAffiliation").attr("required","");
         }
         else {
             $("#otherUserAffiliationDiv").hide();
             $("#otherUserAffiliation").val("");
+            $("#otherUserAffiliation").removeAttr("required");
         }
     })
 });
@@ -110,10 +120,12 @@ $(function() {
         var choice = $("#courseSponsor").val();
         if (choice == "15") {
             $("#otherCourseSponsorDiv").show();
+            $("#otherCourseSponsor").attr("required","");
         }
         else {
             $("#otherCourseSponsorDiv").hide();
             $("#otherCourseSponsor").val("");
+            $("#otherCourseSponsor").removeAttr("required");
         }
     })
 });
@@ -122,12 +134,16 @@ $(function() {
     $("#resetButton").click(function() {
         $("#otherUserDiv").hide();
         $("#otherUser").val("");
+        $("#otherUser").removeAttr("required");
         $("#otherServiceDiv").hide();
         $("#otherService").val("");
+        $("#otherService").removeAttr("required");
         $("#otherUserAffiliationDiv").hide();
         $("#otherUserAffiliation").val("");
+        $("#otherUserAffiliation").removeAttr("required");
         $("#otherCourseSponsorDiv").hide();
         $("#otherCourseSponsor").val("");
+        $("#otherCourseSponsor").removeAttr("required");
     })
 });
 

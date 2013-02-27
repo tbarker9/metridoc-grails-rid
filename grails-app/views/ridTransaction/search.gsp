@@ -18,9 +18,9 @@
 
             <g:form class="form-horizontal" action="query" method="GET">
                 <fieldset class="form">
-                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'dateOfConsultation', 'error')} required">
+                    <div class="control-group fieldcontain">
                         <label class="control-label" for="dateOfConsultation">
-                            <g:message code="ridTransaction.dateOfConsultation.label" default="Consult-Date Between" />
+                            <g:message code="ridTransaction.dateOfConsultation.label" default="Consultation Date Between" />
                         </label>
                         <%
                             Calendar dateOfConsultation1 = Calendar.getInstance()
@@ -33,7 +33,17 @@
                             <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
                         </div>
                     </div>
-                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'staffPennkey', 'error')} required">
+                    <div class="control-group fieldcontain">
+                        <label class="control-label" for="ridReportType">
+                            <g:message code="ridTransaction.ridReportType.label" default="Report Type"/>
+                        </label>
+                        <div class="controls">
+                            <g:select id="ridReportTypeSearch" style="width:150px" name="ridReportTypeSearch"
+                                      noSelection="${['0':'All Types']}" optionKey="id" multiple="true" value="0"
+                                      from="${metridoc.rid.RidReportType.list()}" />
+                        </div>
+                    </div>
+                    <div class="control-group fieldcontain">
                         <label class="control-label" for="staffPennkey">
                             <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
                         </label>
@@ -41,7 +51,7 @@
                             <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey" maxlength="100" value="" />
                         </div>
                     </div>
-                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userQuestion', 'error')} ">
+                    <div class="control-group fieldcontain">
                         <label class="control-label" for="userQuestion">
                             <g:message code="ridTransaction.userQuestion.label" default="User Question"/>
                         </label>
@@ -49,7 +59,7 @@
                             <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion" maxlength="100" value="" />
                         </div>
                     </div>
-                    <div class="control-group fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'notes', 'error')} ">
+                    <div class="control-group fieldcontain">
                         <label class="control-label" for="notes">
                             <g:message code="ridTransaction.notes.label" default="Notes"/>
                         </label>
