@@ -26,7 +26,7 @@ class MetridocRidBootStrap {
                     println "Creating test data for RID database"
                     RidTransaction.withNewTransaction{
                         // for Report type
-                        List<String> gType = Arrays.asList("WIC", "HSL", "CDM", "type4", "type5")
+                        List<String> gType = Arrays.asList("WIC", "HSL", "CDM", "LIPPINCOTT", "RIS")
                         for (String i in gType) {
                             if (!RidReportType.findByName(i)) {
                                 def gt = new RidReportType(name: i)
@@ -144,6 +144,20 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
+                        // for user goal -- LIPPINCOTT
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(4)).save()
+                        // for user goal -- RIS
+                        uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
+                                "Research article", "Monograph", "Data Management", "Independent Research",
+                                "Course Creation", "Grant Proposal")
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByNameAndRidReportType(i, RidReportType.get(5))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridReportType: RidReportType.get(5))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(5)).save()
                         // ---------------------------------------------------------------------------------------------
                         // for mode of consutlation -- WIC
                         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
@@ -172,6 +186,26 @@ class MetridocRidBootStrap {
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(3))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(3))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // for mode of consutlation -- LIPPINCOTT
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person(in library)", "In person(outside library)")
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(4))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(4))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // for mode of consutlation -- RIS
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person(in library)", "In person(outside library)")
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(5))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(5))
                                 c.save()
                                 if (c.hasErrors()) println c.errors
                             }
@@ -225,6 +259,35 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
+                        // for service provided -- LIPPINCOTT
+                        sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
+                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Instructional support (apart from course design)", "Tour",
+                                "Tech/Software instrcution", "Search instruction",
+                                "Literature search", "Bibliometrics or citation metrics",
+                                "Admin/policy questions", "Citation management instruction")
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(4))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(4))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(4)).save()
+                        // for service provided -- RIS
+                        sProvided = Arrays.asList("Research assistance", "Clinic", "Tour",
+                                "Acquisition/Collections", "Citation management instruction", "Instructional Support",
+                                "Tech/Software instrcution", "Mobile technology", "Correct an Operational or Service Breakdown",
+                                "Admin/policy questions", "Bibliometrics or citation metrics", "Copyright",
+                                "Scholarly Commons/Repository Services")
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(5))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(5))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(5)).save()
                         // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
                         for (int i = 0; i < 500; i++) {
