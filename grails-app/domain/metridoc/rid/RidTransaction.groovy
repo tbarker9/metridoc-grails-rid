@@ -11,7 +11,8 @@ class RidTransaction {
                       userAffiliation: RidUserAffiliation,
                       ridReportType: RidReportType]
 
-    static transients = ['otherUser', 'otherUserAffiliation', 'otherCourseSponsor', 'otherService']
+    static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherUserAffiliation',
+            'otherCourseSponsor', 'otherService']
 
     // statement of work
     String userQuestion
@@ -27,6 +28,8 @@ class RidTransaction {
     String courseName
     String courseNumber
     String otherUser
+    String otherUserGoal
+    String otherModeOfConsultation
     String otherUserAffiliation
     String otherCourseSponsor
 
@@ -52,6 +55,8 @@ class RidTransaction {
         courseNumber(blank: true, nullable: true, maxSize: 100)
         //user(nullable: true)
         otherUser(blank: true, nullable: true, maxSize: 50)
+        otherUserGoal(blank: true, nullable: true, maxSize: 50)
+        otherModeOfConsultation(blank: true, nullable: true, maxSize: 50)
         //userAffiliation(nullable: true)
         otherUserAffiliation(blank: true, nullable: true, maxSize: 50)
         //departmentalAffilication(nullable: true)

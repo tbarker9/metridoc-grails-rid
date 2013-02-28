@@ -67,7 +67,8 @@ class RidServiceProvidedController {
                 ridServiceProvidedInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')] as Object[],
                         "Another user has updated this RidServiceProvided while you were editing")
-                render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+                //render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
+                chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
                 return
             }
         }

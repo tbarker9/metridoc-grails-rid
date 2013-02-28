@@ -10,6 +10,17 @@
     </div>
 </div>
 
+<div class="control-group fieldcontain">
+    <label class="control-label" for="inForm">
+        <g:message code="ridModeOfConsultation.inForm.label" default="In Form" />
+        <span class="required-indicator">*</span>
+    </label>
+    <div class="controls">
+        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+        <g:select name="inForm" from="${choices}" required=""
+                  value="${ridModeOfConsultationInstance?.inForm}" keys="${ridModeOfConsultationInstance.constraints.inForm.inList}" />
+    </div>
+</div>
 
 <div class="control-group fieldcontain ${hasErrors(bean: ridModeOfConsultationInstance, field: 'ridReportType', 'error')} required">
     <label class="control-label" for="ridReportType">

@@ -26,7 +26,7 @@ class MetridocRidBootStrap {
                     println "Creating test data for RID database"
                     RidTransaction.withNewTransaction{
                         // for Report type
-                        List<String> gType = Arrays.asList("type1", "type2", "type3", "type4", "type5")
+                        List<String> gType = Arrays.asList("WIC", "HSL", "CDM", "type4", "type5")
                         for (String i in gType) {
                             if (!RidReportType.findByName(i)) {
                                 def gt = new RidReportType(name: i)
@@ -112,48 +112,120 @@ class MetridocRidBootStrap {
                         if (!RidUser.findByName(otherPleaseIndicate)) {
                             new RidUser(name: otherPleaseIndicate, inForm: 2).save()
                         }
-                        // for user goal
+                        // ---------------------------------------------------------------------------------------------
+                        // for user goal -- WIC
                         List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
-                                "Independent Research")
-                        int id = 0
+                                "Independent Research", "Improvement in Teaching")
                         for (String i in uGoal) {
-                            if (!RidUserGoal.findByName(i)) {
-                                def p = new RidUserGoal(name: i, ridReportType: RidReportType.get(id++ % 3 + 1))
+                            if (!RidUserGoal.findByNameAndRidReportType(i, RidReportType.get(1))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridReportType: RidReportType.get(1))
                                 p.save()
                                 if (p.hasErrors()) println p.errors
                             }
                         }
-                        // for mode of consutlation
-                        id = 0
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(1)).save()
+                        // for user goal -- HSL
+                        uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByNameAndRidReportType(i, RidReportType.get(2))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridReportType: RidReportType.get(2))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(2)).save()
+                        // for user goal -- CDM
+                        uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByNameAndRidReportType(i, RidReportType.get(3))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridReportType: RidReportType.get(3))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
+                        // ---------------------------------------------------------------------------------------------
+                        // for mode of consutlation -- WIC
                         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "In person(in library)", "In person(outside library)")
+                                "Video or web conference", "In person(in library)", "In person(outside library)")
                         for (String i in cMode) {
-                            if (!RidModeOfConsultation.findByName(i)) {
-                                def c = new RidModeOfConsultation(name: i, ridReportType: RidReportType.get(id++ % 3 + 1))
+                            if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(1))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(1))
                                 c.save()
                                 if (c.hasErrors()) println c.errors
                             }
                         }
-                        // for service provided
-                        id = 0
+                        new RidModeOfConsultation(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(1)).save()
+                        // for mode of consutlation -- HSL
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person(in library)", "In person(outside library)")
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(2))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(2))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // for mode of consutlation -- CDM
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person(in library)", "In person(outside library)")
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(3))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(3))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // ---------------------------------------------------------------------------------------------
+                        // for service provided -- WIC
                         List<String> sProvided = Arrays.asList("Course design", "Research assistance",
-                                "Acquisition/Collections", "Copyright assistance for author", "Copyright assistance for user",
-                                "Coorect an operational or service breakdown (incl. tech support)",
-                                "Instructional support (apart from course design)", "Clinic", "Tour",
-                                "Clinical decision making", "Tech/Software instrcution", "Search instruction",
-                                "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
-                                "Consumer health", "Admin/policy questions", "Citation management instruction",
-                                "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO")
+                                "Instructional support (apart from course design)", "Tour",
+                                "Tech/Software instrcution", "Mobile technology", "Assistance to undergraduates")
                         for (String i in sProvided) {
-                            if (!RidServiceProvided.findByName(i)) {
-                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(id++ % 3 + 1))
+                            if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(1))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(1))
                                 s.save()
                                 if (s.hasErrors()) println s.errors
                             }
                         }
-                        //TODO: how to hundle this for RidReportType ??
-                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2).save()
-
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(1)).save()
+                        // for service provided -- HSL
+                        sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
+                                "Copyright assistance for author", "Copyright assistance for user",
+                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Instructional support (apart from course design, including courseware)",
+                                "Clinical decision making", "Tech/Software instrcution", "Search instruction",
+                                "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
+                                "Consumer health", "Admin/policy questions", "Citation management instruction",
+                                "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
+                                "Comprehensive Lit Search/Systematic Reviews")
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(2))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(2))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(2)).save()
+                        // for service provided -- CDM
+                        sProvided = Arrays.asList("Course design", "Research assistance",
+                                "Acquisition/Collections", "Copyright assistance for author", "Copyright assistance for user",
+                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Instructional support (apart from course design)", "Clinic", "Tour",
+                                "Tech/Software instrcution", "Search instruction",
+                                "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
+                                "Admin/policy questions", "Citation management instruction",
+                                "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
+                                "Coursera/MOOCs support", "Research practice support")
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(3))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(3))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
+                        // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
                         for (int i = 0; i < 500; i++) {
                             def t = new RidTransaction(staffPennkey: "012345667",

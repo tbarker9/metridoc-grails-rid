@@ -67,7 +67,8 @@ class RidUserGoalController {
                 ridUserGoalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUserGoal.label', default: 'RidUserGoal')] as Object[],
                         "Another user has updated this RidUserGoal while you were editing")
-                render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
+                //render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
+                chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
                 return
             }
         }

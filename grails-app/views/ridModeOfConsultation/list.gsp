@@ -30,6 +30,8 @@
                         
                         <g:sortableColumn property="name" title="${message(code: 'ridModeOfConsultation.name.label', default: 'Name')}" />
 
+                        <g:sortableColumn property="inForm" title="${message(code: 'ridModeOfConsultation.inForm.label', default: 'In Form')}" />
+
                         <g:sortableColumn property="ridReportType" title="${message(code: 'ridModeOfConsultation.ridReportType.label', default: 'Report Type')}" />
 
                         <th>Number of RidTransaction</th>
@@ -44,6 +46,9 @@
                                     ${fieldValue(bean: ridModeOfConsultationInstance, field: "name")}
                                 </a>
                             </td>
+
+                            <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+                            <td>${choices.get(ridModeOfConsultationInstance?.inForm)}</td>
 
                             <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridReportType")}</td>
 

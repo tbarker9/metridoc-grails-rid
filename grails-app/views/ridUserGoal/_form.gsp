@@ -10,6 +10,18 @@
     </div>
 </div>
 
+<div class="control-group fieldcontain">
+    <label class="control-label" for="inForm">
+        <g:message code="ridUserGoal.inForm.label" default="In Form" />
+        <span class="required-indicator">*</span>
+    </label>
+    <div class="controls">
+        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
+        <g:select name="inForm" from="${choices}" required=""
+                  value="${ridUserGoalInstance?.inForm}" keys="${ridUserGoalInstance.constraints.inForm.inList}" />
+    </div>
+</div>
+
 <div class="control-group fieldcontain ${hasErrors(bean: ridUserGoalInstance, field: 'ridReportType', 'error')} required">
     <label class="control-label" for="ridReportType">
         <g:message code="ridUserGoalInstance.ridReportType.label" default="Report Type" />

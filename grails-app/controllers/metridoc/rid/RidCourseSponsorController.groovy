@@ -71,7 +71,8 @@ class RidCourseSponsorController {
                 ridCourseSponsorInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                           [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')] as Object[],
                           "Another user has updated this RidCourseSponsor while you were editing")
-                render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+                //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+                chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
                 return
             }
         }

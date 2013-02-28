@@ -33,8 +33,8 @@
                         
                         <g:sortableColumn property="dateOfConsultation" title="${message(code: 'ridTransaction.dateOfConsultation.label', default: 'Date of Consultation')}" />
                         
-                        <g:sortableColumn property="eventLength" title="${message(code: 'ridTransaction.eventLength.label', default: 'Event Length')}" />
-                        
+                        <g:sortableColumn property="ridReportType" title="${message(code: 'ridTransaction.ridReportType.label', default: 'Report Type')}" />
+
                         <g:sortableColumn property="notes" title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}" />
                         
                     </tr>
@@ -57,9 +57,9 @@
 
                             <td><g:formatDate format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfConsultation}" /></td>
                             %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
-                            
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "eventLength")}</td>
-                            
+
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "ridReportType")}</td>
+
                             <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
                             
                         </tr>

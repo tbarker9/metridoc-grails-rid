@@ -15,10 +15,28 @@ class RidTransactionController {
     def scaffold = true
 
     def ajaxChooseType = {
-        def products = RidUserGoal.findAllByRidReportType(RidReportType.get(params.typeId))
-        def consultations = RidModeOfConsultation.findAllByRidReportType(RidReportType.get(params.typeId))
-        def services = RidServiceProvided.findAllByRidReportType(RidReportType.get(params.typeId))
-        def response = ['userGoal': products,
+        def userGoals = RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
+        def consultations = RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
+        def services = RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
+        userGoals.addAll(RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
+        consultations.addAll(RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
+        services.addAll(RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
+        if(!params.goalID.isEmpty()) {
+            def goal = RidUserGoal.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.goalID)
+            if (goal!=null && !userGoals.contains(goal))
+                userGoals.add(0, goal)
+        }
+        if(!params.modeID.isEmpty()) {
+            def mode = RidModeOfConsultation.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.modeID)
+            if (mode!=null && !consultations.contains(mode))
+                consultations.add(0, mode)
+        }
+        if(!params.serviceID.isEmpty()) {
+            def service = RidServiceProvided.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.serviceID)
+            if (service!=null && !userGoals.contains(service))
+                services.add(0, service)
+        }
+        def response = ['userGoal': userGoals,
                 'modeOfConsultation': consultations,
                 'serviceProvided': services]
         render response as JSON

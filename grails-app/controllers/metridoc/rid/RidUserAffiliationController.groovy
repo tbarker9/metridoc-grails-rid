@@ -67,7 +67,8 @@ class RidUserAffiliationController {
                 ridUserAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')] as Object[],
                         "Another user has updated this RidUserAffiliation while you were editing")
-                render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+                //render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
+                chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
                 return
             }
         }

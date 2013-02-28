@@ -37,15 +37,49 @@ class DatabaseService {
                 ridTransactionInstance.courseSponsor = RidCourseSponsor.findByName(otherCourseSponsor)
         }
 
-        String otherService = params.otherService
-        if (otherService!=null && !otherService.isEmpty()) {
-            if (RidServiceProvided.findAllByName(otherService).size() == 0) {
-                def s = new RidServiceProvided(name: otherService, inForm: 0)
+        String otherModeOfConsultation = params.otherModeOfConsultation
+        if (otherModeOfConsultation!=null && !otherModeOfConsultation.isEmpty()) {
+            if (RidModeOfConsultation.findAllByNameAndRidReportType(otherModeOfConsultation,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+                def s = new RidModeOfConsultation(name: otherModeOfConsultation, inForm: 0,
+                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
                 s.save()
                 if(s.hasErrors()) println s.errors
             }
-            if (RidServiceProvided.findAllByName(otherService).size() > 0)
-                ridTransactionInstance.serviceProvided = RidServiceProvided.findByName(otherService)
+            if (RidModeOfConsultation.findAllByNameAndRidReportType(otherModeOfConsultation,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
+                ridTransactionInstance.modeOfConsultation = RidModeOfConsultation.findByNameAndRidReportType(
+                        otherModeOfConsultation, RidReportType.get(Long.valueOf(params.ridReportType.id)))
+        }
+
+        String otherService = params.otherService
+        if (otherService!=null && !otherService.isEmpty()) {
+            if (RidServiceProvided.findAllByNameAndRidReportType(otherService,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+                def s = new RidServiceProvided(name: otherService, inForm: 0,
+                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
+                s.save()
+                if(s.hasErrors()) println s.errors
+            }
+            if (RidServiceProvided.findAllByNameAndRidReportType(otherService,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
+                ridTransactionInstance.serviceProvided = RidServiceProvided.findByNameAndRidReportType(otherService,
+                        RidReportType.get(Long.valueOf(params.ridReportType.id)))
+        }
+
+        String otherUserGoal = params.otherUserGoal
+        if (otherUserGoal!=null && !otherUserGoal.isEmpty()) {
+            if (RidUserGoal.findAllByNameAndRidReportType(otherUserGoal,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+                def s = new RidUserGoal(name: otherUserGoal, inForm: 0,
+                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
+                s.save()
+                if(s.hasErrors()) println s.errors
+            }
+            if (RidUserGoal.findAllByNameAndRidReportType(otherUserGoal,
+                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
+                ridTransactionInstance.userGoal = RidUserGoal.findByNameAndRidReportType(otherUserGoal,
+                        RidReportType.get(Long.valueOf(params.ridReportType.id)))
         }
     }
 }

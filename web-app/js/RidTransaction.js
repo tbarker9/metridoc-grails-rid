@@ -43,37 +43,81 @@ $(function() {
 });
 
 $(function() {
-    var choiceUser = $("#user").val();
-    if (choiceUser == "9") {
+    var choiceUser = $("#user option:selected").attr("inForm");
+    if (choiceUser == "2") {
         $("#otherUserDiv").show();
         $("#otherUser").val("");
         $("#otherUser").attr("required","");
     }
-    var choiceService = $("#serviceProvided").val();
-    if (choiceService == "21") {
+    var choiceService = $("#serviceProvided option:selected").attr("inForm");
+    if (choiceService == "2") {
         $("#otherServiceDiv").show();
         $("#otherService").val("");
         $("#otherService").attr("required","");
     }
-    var choiceUserAffiliation = $("#userAffiliation").val();
-    if (choiceUserAffiliation == "15" || choiceUserAffiliation == "16") {
+    var choiceUserAffiliation = $("#userAffiliation option:selected").attr("inForm");
+    if (choiceUserAffiliation == "2") {
         $("#otherUserAffiliationDiv").show();
         $("#otherUserAffiliation").val("");
         $("#otherUserAffiliation").attr("required","");
     }
-    var choiceCourseSponsor = $("#courseSponsor").val();
-    if (choiceCourseSponsor == "15") {
+    var choiceCourseSponsor = $("#courseSponsor option:selected").attr("inForm");
+    if (choiceCourseSponsor == "2") {
         $("#otherCourseSponsorDiv").show();
         $("#otherCourseSponsor").val("");
         $("#otherCourseSponsor").attr("required","");
     }
+    var choiceUserGoal = $("#userGoal option:selected").attr("inForm");
+    if (choiceUserGoal == "2") {
+        $("#otherUserGoalDiv").show();
+        $("#otherUserGoal").val("");
+        $("#otherUserGoal").attr("required","");
+    }
+    var choiceMode = $("#modeOfConsultation option:selected").attr("inForm");
+    if (choiceMode == "2") {
+        $("#otherModeOfConsultationDiv").show();
+        $("#otherModeOfConsultation").val("");
+        $("#otherModeOfConsultation").attr("required","");
+    }
+});
+
+$(function() {
+    $("#modeOfConsultation").change(function() {
+        var choice = $("#modeOfConsultation option:selected").attr("inForm");
+        //alert(choice)
+        if (choice == "2") {
+            $("#otherModeOfConsultationDiv").show();
+            $("#otherModeOfConsultation").attr("required","");
+        }
+        else {
+            $("#otherModeOfConsultationDiv").hide();
+            $("#otherModeOfConsultation").val("");
+            $("#otherModeOfConsultation").removeAttr("required");
+        }
+    })
+});
+
+$(function() {
+    $("#userGoal").change(function() {
+        var choice = $("#userGoal option:selected").attr("inForm");
+        //alert(choice)
+        if (choice == "2") {
+            $("#otherUserGoalDiv").show();
+            $("#otherUserGoal").attr("required","");
+        }
+        else {
+            $("#otherUserGoalDiv").hide();
+            $("#otherUserGoal").val("");
+            $("#otherUserGoal").removeAttr("required");
+        }
+    })
 });
 
 $(function() {
     $("#user").change(function() {
-        var choice = $("#user").val();
+        var choice = $("#user option:selected").attr("inForm");
         //alert(choice)
-        if (choice == "9") {
+        if (choice == "2") {
             $("#otherUserDiv").show();
             $("#otherUser").attr("required","");
         }
@@ -87,8 +131,8 @@ $(function() {
 
 $(function() {
     $("#serviceProvided").change(function() {
-        var choice = $("#serviceProvided").val();
-        if (choice == "21") {
+        var choice = $("#serviceProvided option:selected").attr("inForm");
+        if (choice == "2") {
             $("#otherServiceDiv").show();
             $("#otherService").attr("required","");
         }
@@ -102,8 +146,8 @@ $(function() {
 
 $(function() {
     $("#userAffiliation").change(function() {
-        var choice = $("#userAffiliation").val();
-        if (choice == "15" || choice == "16") {
+        var choice = $("#userAffiliation option:selected").attr("inForm");
+        if (choice == "2") {
             $("#otherUserAffiliationDiv").show();
             $("#otherUserAffiliation").attr("required","");
         }
@@ -117,8 +161,8 @@ $(function() {
 
 $(function() {
     $("#courseSponsor").change(function() {
-        var choice = $("#courseSponsor").val();
-        if (choice == "15") {
+        var choice = $("#courseSponsor option:selected").attr("inForm");
+        if (choice == "2") {
             $("#otherCourseSponsorDiv").show();
             $("#otherCourseSponsor").attr("required","");
         }
@@ -144,19 +188,28 @@ $(function() {
         $("#otherCourseSponsorDiv").hide();
         $("#otherCourseSponsor").val("");
         $("#otherCourseSponsor").removeAttr("required");
+        $("#otherUserGoalDiv").hide();
+        $("#otherUserGoal").val("");
+        $("#otherUserGoal").removeAttr("required");
     })
 });
 
 $(function() {
     $("#ridReportType").change(function() {
-        var choice = $("#ridReportType").val();
+        var choiceType = $("#ridReportType").val();
+        var choiceMode = $("#currentModeOfConsultation").text();
+        var choiceService = $("#currentServiceProvided").text();
+        var choiceGoal = $("#currentUserGoal").text();
         $.ajax({
             //url: '${g.createLink(controller: 'RidTransaction', action: 'ajaxChooseType')}',
             url: 'ajaxChooseType',
             type: 'POST',
             dataType: 'json',
             data: {
-                typeId: choice
+                typeId: choiceType,
+                modeID: choiceMode,
+                serviceID: choiceService,
+                goalID: choiceGoal
             },
             success: function(data) {
                 $.each(data, function(index, itemList) {
@@ -164,7 +217,7 @@ $(function() {
                     $.each(itemList, function(id, element) {
                         $('#'+index).append($("<option>", {
                             text: element.name
-                        }).attr('value', element.id));
+                        }).attr('value', element.id).attr('inForm', element.inForm));
                     });
                 });
             },
@@ -172,7 +225,38 @@ $(function() {
                 alert(error);
             },
             complete: function() {
+                var choiceService = $("#serviceProvided > option:first").attr("inForm");
+                if (choiceService == "2") {
+                    $("#otherServiceDiv").show();
+                    $("#otherService").attr("required","");
+                }
+                else {
+                    $("#otherServiceDiv").hide();
+                    $("#otherService").val("");
+                    $("#otherService").removeAttr("required");
+                }
+                var choiceUserGoal = $("#userGoal > option:first").attr("inForm");
+                if (choiceUserGoal == "2") {
+                    $("#otherUserGoalDiv").show();
+                    $("#otherUserGoal").attr("required","");
+                }
+                else {
+                    $("#otherUserGoalDiv").hide();
+                    $("#otherUserGoal").val("");
+                    $("#otherUserGoal").removeAttr("required");
+                }
+                var choiceMode = $("#modeOfConsultation > option:first").attr("inForm");
+                if (choiceMode == "2") {
+                    $("#otherModeOfConsultationDiv").show();
+                    $("#otherModeOfConsultation").attr("required","");
+                }
+                else {
+                    $("#otherModeOfConsultationDiv").hide();
+                    $("#otherModeOfConsultation").val("");
+                    $("#otherModeOfConsultation").removeAttr("required");
+                }
             }
         });
+
     })
 });

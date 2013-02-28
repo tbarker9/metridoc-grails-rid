@@ -67,7 +67,8 @@ class RidUserController {
                 ridUserInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUser.label', default: 'RidUser')] as Object[],
                         "Another user has updated this RidUser while you were editing")
-                render(view: "edit", model: [ridUserInstance: ridUserInstance])
+                //render(view: "edit", model: [ridUserInstance: ridUserInstance])
+                chain(action: "list", model: [ridUserError: ridUserInstance])
                 return
             }
         }
