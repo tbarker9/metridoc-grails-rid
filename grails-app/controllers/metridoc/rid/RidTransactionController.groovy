@@ -49,20 +49,52 @@ class RidTransactionController {
 //        redirect(action: "list", params: params)
 //    }
 //
-//    def list(Integer max) {
-//        params.max = Math.min(max ?: 10, 100)
-//        [ridTransactionInstanceList: RidTransaction.list(params), ridTransactionInstanceTotal: RidTransaction.count()]
-//    }
-//
-//    def create() {
-//        [ridTransactionInstance: new RidTransaction(params)]
-//    }
+    def list(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        def query = RidTransaction.where {
+            template == Boolean.FALSE
+        }
+        [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count()]
+    }
+
+    def templateList() {
+        def query = RidTransaction.where {
+            template == Boolean.TRUE
+        }
+        [ridTransactionInstanceList: query.list()]
+    }
+
+    def create(Long id) {
+        if (id == null || !RidTransaction.get(id))
+            [ridTransactionInstance: new RidTransaction(params)]
+        else {
+            def ridTransactionInstance = new RidTransaction(params)
+            ridTransactionInstance.properties = RidTransaction.get(id).properties
+            ridTransactionInstance.template = Boolean.FALSE
+            [ridTransactionInstance: ridTransactionInstance]
+        }
+    }
 
     def save() {
         params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         def ridTransactionInstance = new RidTransaction(params)
+        ridTransactionInstance.template = Boolean.FALSE
         databaseService.serviceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
+            render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+            return
+        }
+
+        flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
+        redirect(action: "show", id: ridTransactionInstance.id)
+    }
+
+    def remember() {
+        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+        def ridTransactionInstance = new RidTransaction(params)
+        ridTransactionInstance.template = Boolean.TRUE
+        databaseService.serviceMethod(params, ridTransactionInstance)
+        if (!ridTransactionInstance.save(validate: false, flush: true)) {
             render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
             return
         }
@@ -150,7 +182,7 @@ class RidTransactionController {
         params.max = Math.min(max ?: 10, 100)
 
         def query = RidTransaction.where {
-            userQuestion != null
+            template == Boolean.FALSE
         }
 
         try {

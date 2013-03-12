@@ -41,16 +41,19 @@
                     </thead>
                     <tbody>
                     <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
-                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
+                            onclick="window.location='show/${ridTransactionInstance.id}'"
+                            style="cursor: pointer;">
                             <%
                                 userQ = ridTransactionInstance.userQuestion
                                 if (userQ!=null && userQ.length() > 12)
                                     userQ = userQ.substring(0,12) + "..."
                             %>
-                            <td><g:link action="show" id="${ridTransactionInstance.id}"
-                                        title="${ridTransactionInstance.userQuestion}">
+                            <td>
+                                %{--<g:link action="show" id="${ridTransactionInstance.id}"--}%
+                                        %{--title="${ridTransactionInstance.userQuestion}">--}%
                                     ${userQ}
-                                </g:link>
+                                %{--</g:link>--}%
                             </td>
                             
                             <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>

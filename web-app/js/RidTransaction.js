@@ -264,3 +264,45 @@ $(function() {
 
     })
 });
+
+function removeRequired() {
+    $("#ridReportType").removeAttr("required");
+    $("#dateOfConsultation").removeAttr("required");
+    $("#staffPennkey").removeAttr("required");
+    $("#modeOfConsultation").removeAttr("required");
+    $("#serviceProvided").removeAttr("required");
+    $("#prepTime").removeAttr("required");
+    $("#eventLength").removeAttr("required");
+    $("#user").removeAttr("required");
+    $("#userAffiliation").removeAttr("required");
+    $("#interactTimes").removeAttr("required");
+    $("#departmentalAffilication").removeAttr("required");
+    $("#courseSponsor").removeAttr("required");
+    $("#userQuestion").removeAttr("required");
+    $("#otherUser").removeAttr("required");
+    $("#otherService").removeAttr("required");
+    $("#otherUserAffilication").removeAttr("required");
+    $("#otherCourseSponsor").removeAttr("required");
+    $("#otherUserGoal").removeAttr("required");
+}
+
+function setRequired() {
+    $("#ridReportType").attr("required", "");
+    $("#dateOfConsultation").attr("required", "");
+    $("#staffPennkey").attr("required", "");
+    $("#modeOfConsultation").attr("required", "");
+    $("#serviceProvided").attr("required", "");
+    $("#prepTime").attr("required", "");
+    $("#eventLength").attr("required", "");
+    $("#user").attr("required", "");
+    $("#userAffiliation").attr("required", "");
+    $("#interactTimes").attr("required", "");
+    $("#departmentalAffilication").attr("required", "");
+    $("#courseSponsor").attr("required", "");
+    $("#userQuestion").attr("required", "");
+    $("#otherUser").attr("required", "");
+    $("#otherService").attr("required", "");
+    $("#otherUserAffilication").attr("required", "");
+    $("#otherCourseSponsor").attr("required", "");
+    $("#otherUserGoal").attr("required", "");
+}

@@ -14,6 +14,8 @@ class RidTransaction {
     static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherUserAffiliation',
             'otherCourseSponsor', 'otherService']
 
+    Boolean template = Boolean.FALSE
+
     // statement of work
     String userQuestion
     Integer interactTimes = 0

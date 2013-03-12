@@ -2,7 +2,9 @@
 <g:set var="entityName" value="${message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')}" />
 
             <div id="create-ridServiceProvided" class="content scaffold-create" role="main">
-                <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+                <h1>
+                    <g:message code="default.create.label" args="[entityName]" />
+                </h1>
                 %{--<g:hasErrors bean="${ridServiceProvidedInstance}">--}%
                     %{--<ul class="errors" role="alert">--}%
                         %{--<g:eachError bean="${ridServiceProvidedInstance}" var="error">--}%
