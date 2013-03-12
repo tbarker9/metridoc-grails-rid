@@ -53,7 +53,7 @@ class RidTransaction {
         facultySponsor(blank: true, nullable: true, maxSize: 300)
         courseName(blank: true, nullable: true, maxSize: 100)
         courseNumber(blank: true, nullable: true, maxSize: 100)
-        //user(nullable: true)
+        userGoal(nullable: true)
         otherUser(blank: true, nullable: true, maxSize: 50)
         otherUserGoal(blank: true, nullable: true, maxSize: 50)
         otherModeOfConsultation(blank: true, nullable: true, maxSize: 50)

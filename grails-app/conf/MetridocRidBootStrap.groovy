@@ -145,11 +145,11 @@ class MetridocRidBootStrap {
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
                         // for user goal -- LIPPINCOTT
-                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(4)).save()
+                        //new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(4)).save()
                         // for user goal -- RIS
                         uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
-                                "Research article", "Monograph", "Data Management", "Independent Research",
-                                "Course Creation", "Grant Proposal")
+                                "Dissertation", "Research article", "Monograph", "Data Management",
+                                "Independent Research", "Course Creation", "Grant Proposal")
                         for (String i in uGoal) {
                             if (!RidUserGoal.findByNameAndRidReportType(i, RidReportType.get(5))) {
                                 def p = new RidUserGoal(name: i, inForm: 1, ridReportType: RidReportType.get(5))
@@ -226,7 +226,7 @@ class MetridocRidBootStrap {
                         // for service provided -- HSL
                         sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
                                 "Copyright assistance for author", "Copyright assistance for user",
-                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design, including courseware)",
                                 "Clinical decision making", "Tech/Software instrcution", "Search instruction",
                                 "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
@@ -244,7 +244,7 @@ class MetridocRidBootStrap {
                         // for service provided -- CDM
                         sProvided = Arrays.asList("Course design", "Research assistance",
                                 "Acquisition/Collections", "Copyright assistance for author", "Copyright assistance for user",
-                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design)", "Clinic", "Tour",
                                 "Tech/Software instrcution", "Search instruction",
                                 "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
@@ -261,7 +261,7 @@ class MetridocRidBootStrap {
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
                         // for service provided -- LIPPINCOTT
                         sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
-                                "Coorect an operational or service breakdown (incl. tech support)",
+                                "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design)", "Tour",
                                 "Tech/Software instrcution", "Search instruction",
                                 "Literature search", "Bibliometrics or citation metrics",

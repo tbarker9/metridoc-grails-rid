@@ -219,6 +219,10 @@ $(function() {
                             text: element.name
                         }).attr('value', element.id).attr('inForm', element.inForm));
                     });
+                    if(itemList.length==0)
+                        $('#'+index).attr("disabled","");
+                    else
+                        $('#'+index).removeAttr("disabled");
                 });
             },
             error: function(request, status, error) {

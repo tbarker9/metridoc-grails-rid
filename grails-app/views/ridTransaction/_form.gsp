@@ -132,10 +132,11 @@
                             ridTransactionInstance?.ridReportType ?: RidReportType.get(1) ))
                 %>
                 <div id="currentUserGoal" style="display: none;">${ridTransactionInstance?.userGoal?.id}</div>
-                <select style="width:120px" id="userGoal" name="userGoal.id" required="" class="many-to-one">
+                <select <g:if test="${goalList.size()==0}">disabled=""</g:if>
+                        style="width:120px" id="userGoal" name="userGoal.id" class="many-to-one">
                     <g:each in="${goalList}">
                         <option value="${it.id}" inForm="${it.inForm}"
-                                <g:if test="${ridTransactionInstance?.userGoal?.id==it.id}">selected="" </g:if>
+                                <g:if test="${ridTransactionInstance?.userGoal?.id==it.id}">selected=""</g:if>
                         >
                             ${it.name}
                         </option>
