@@ -32,6 +32,12 @@ grails.project.dependency.resolution = {
             excludes "jna", "trilead-ssh2", "sqljet"
         }
         build("com.google.code.maven-svn-wagon:maven-svn-wagon:1.4")
+        //for excel file parser
+        compile("org.apache.poi:poi:3.8-beta3")
+        compile("org.apache.poi:poi-ooxml:3.8-beta3") {
+            excludes 'poi'
+            excludes 'dom4j'
+        }
 
     }
 

@@ -3,6 +3,18 @@ package metridoc.rid
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
 import java.text.SimpleDateFormat
+import metridoc.core.CommonService
+import org.apache.commons.lang.StringUtils
+import org.apache.maven.artifact.ant.shaded.ExceptionUtils
+import groovy.util.logging.Slf4j
+import org.apache.poi.ss.usermodel.Sheet
+import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.ss.usermodel.Cell
+import org.apache.poi.ss.usermodel.Row
+import org.apache.poi.ss.usermodel.WorkbookFactory
+import org.apache.poi.ss.usermodel.DateUtil
+import org.springframework.web.multipart.MultipartFile
+import org.apache.poi.ss.util.CellReference
 
 class RidTransactionController {
 
@@ -250,4 +262,68 @@ class RidTransactionController {
         return
     }
 
+    def spreadsheetUpload() {}
+
+    def upload() {
+        //def uploadedFile = request.getFile("spreadsheetUpload").inputStream.getText("utf-8")
+        MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
+        if (uploadedFile == null || uploadedFile.empty) {
+            flash.alerts << "No file was provided"
+            redirect(action:  "spreadsheetUpload")
+            return
+        }
+
+        //TODO:get rid of after debugging
+        println "Class:${uploadedFile.class}";
+        println "Name:${uploadedFile.name}";
+        println "OriginalFilename:${uploadedFile.originalFilename}";
+        println "Size:${uploadedFile.size}";
+        println "ContentType:${uploadedFile.contentType}";
+
+        List<String> fileValidator = Arrays.asList(
+                'application/vnd.ms-excel [official]', 'application/msexcel',
+                'application/x-msexcel', 'application/x-ms-excel', 'application/vnd.ms-excel',
+                'application/x-excel', 'application/x-dos_ms_excel', 'application/xls',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        )
+        if (!fileValidator.contains(uploadedFile.getContentType())) {
+            flash.alerts << "Invalid File Type. Only Excel Files are accepted!"
+            redirect(action: "spreadsheetUpload")
+            return
+        }
+
+        Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
+        Sheet sheet = wb.getSheetAt(0);
+        for (Row row : sheet) {
+            for (Cell cell : row) {
+                CellReference cellRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
+                System.out.print(cellRef.formatAsString());
+                System.out.print(" - ");
+
+                switch (cell.getCellType()) {
+                    case Cell.CELL_TYPE_STRING:
+                        System.out.println(cell.getRichStringCellValue().getString());
+                        break;
+                    case Cell.CELL_TYPE_NUMERIC:
+                        if (DateUtil.isCellDateFormatted(cell)) {
+                            System.out.println(cell.getDateCellValue());
+                        } else {
+                            System.out.println(cell.getNumericCellValue());
+                        }
+                        break;
+                    case Cell.CELL_TYPE_BOOLEAN:
+                        System.out.println(cell.getBooleanCellValue());
+                        break;
+                    case Cell.CELL_TYPE_FORMULA:
+                        System.out.println(cell.getCellFormula());
+                        break;
+                    default:
+                        System.out.println();
+                }
+            }
+        }
+
+        flash.infos << "File successfully uploaded"
+        redirect(action: "list")
+    }
 }
