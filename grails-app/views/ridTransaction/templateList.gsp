@@ -23,7 +23,7 @@
                 <tbody>
                 <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
-                        onclick="window.location='create/${ridTransactionInstance.id}'"
+                        onclick="window.location='create?tmp=${ridTransactionInstance.id}'"
                         style="cursor: pointer;">
                         <td>
                             ${fieldValue(bean: ridTransactionInstance, field: "user")}

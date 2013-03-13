@@ -64,14 +64,19 @@ class RidTransactionController {
         [ridTransactionInstanceList: query.list()]
     }
 
-    def create(Long id) {
-        if (id == null || !RidTransaction.get(id))
-            [ridTransactionInstance: new RidTransaction(params)]
-        else {
+    def create() {
+        try {
             def ridTransactionInstance = new RidTransaction(params)
-            ridTransactionInstance.properties = RidTransaction.get(id).properties
-            ridTransactionInstance.template = Boolean.FALSE
+            if (params.tmp != null && RidTransaction.get(Long.valueOf(params.tmp))) {
+                ridTransactionInstance.properties = RidTransaction.get(Long.valueOf(params.tmp)).properties
+                ridTransactionInstance.template = Boolean.FALSE
+            }
             [ridTransactionInstance: ridTransactionInstance]
+        } catch (NumberFormatException e) {
+            if (params.tmp.equals("templateList"))
+                redirect(action: "templateList")
+            else
+                [ridTransactionInstance: new RidTransaction(params)]
         }
     }
 
