@@ -1,66 +1,29 @@
 package metridoc.rid
 
-import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
 import java.text.SimpleDateFormat
-import metridoc.core.CommonService
-import org.apache.commons.lang.StringUtils
-import org.apache.maven.artifact.ant.shaded.ExceptionUtils
-import groovy.util.logging.Slf4j
-import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.ss.usermodel.Workbook
-import org.apache.poi.ss.usermodel.Cell
-import org.apache.poi.ss.usermodel.Row
-import org.apache.poi.ss.usermodel.WorkbookFactory
-import org.apache.poi.ss.usermodel.DateUtil
 import org.springframework.web.multipart.MultipartFile
-import org.apache.poi.ss.util.CellReference
 
 class RidTransactionController {
-
-    def databaseService
-    //def stemmer
 
     static homePage = [title: "Reference Instruction Database",
             description: "Adds/Updates/Reviews Reference Instruction Transactions"]
 
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def ridTransactionService
+    def spreadsheetUploadingService
     def scaffold = true
 
     def ajaxChooseType = {
-        def userGoals = RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        def consultations = RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        def services = RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        userGoals.addAll(RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
-        consultations.addAll(RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
-        services.addAll(RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
-        if(!params.goalID.isEmpty()) {
-            def goal = RidUserGoal.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.goalID)
-            if (goal!=null && !userGoals.contains(goal))
-                userGoals.add(0, goal)
-        }
-        if(!params.modeID.isEmpty()) {
-            def mode = RidModeOfConsultation.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.modeID)
-            if (mode!=null && !consultations.contains(mode))
-                consultations.add(0, mode)
-        }
-        if(!params.serviceID.isEmpty()) {
-            def service = RidServiceProvided.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.serviceID)
-            if (service!=null && !userGoals.contains(service))
-                services.add(0, service)
-        }
-        def response = ['userGoal': userGoals,
-                'modeOfConsultation': consultations,
-                'serviceProvided': services]
+        def response = ridTransactionService.ajaxMethod(params)
         render response as JSON
     }
 
-//
-//   static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-//
 //    def index() {
 //        redirect(action: "list", params: params)
 //    }
-//
+
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def query = RidTransaction.where {
@@ -78,6 +41,8 @@ class RidTransactionController {
 
     def create() {
         try {
+            //TODO: remove this after debugging
+            //Thread.sleep(1000)
             def ridTransactionInstance = new RidTransaction(params)
             if (params.tmp != null && RidTransaction.get(Long.valueOf(params.tmp))) {
                 ridTransactionInstance.properties = RidTransaction.get(Long.valueOf(params.tmp)).properties
@@ -96,7 +61,7 @@ class RidTransactionController {
         params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         def ridTransactionInstance = new RidTransaction(params)
         ridTransactionInstance.template = Boolean.FALSE
-        databaseService.serviceMethod(params, ridTransactionInstance)
+        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
             render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
             return
@@ -110,7 +75,7 @@ class RidTransactionController {
         params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         def ridTransactionInstance = new RidTransaction(params)
         ridTransactionInstance.template = Boolean.TRUE
-        databaseService.serviceMethod(params, ridTransactionInstance)
+        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(validate: false, flush: true)) {
             render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
             return
@@ -140,7 +105,7 @@ class RidTransactionController {
 
         params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
         ridTransactionInstance.properties = params
-        databaseService.serviceMethod(params, ridTransactionInstance)
+        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
         if (!ridTransactionInstance.save(flush: true)) {
             render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
             return
@@ -197,75 +162,16 @@ class RidTransactionController {
 
     def query(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        def ridTransactionList = ridTransactionService.queryMethod(params)
 
-        def query = RidTransaction.where {
-            template == Boolean.FALSE
-        }
-
-        try {
-            Date start = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_start)
-            Date end =  new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_end)
-            query = query.where {
-                dateOfConsultation >= start && dateOfConsultation < end.next()
-            }
-        } catch(Exception e) {
-//            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
-//            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
-//            query = query.where {
-//                dateOfConsultation >= start && dateOfConsultation < end.next()
-//            }
-        }
-
-        def TypeList = params.list('ridReportTypeSearch')
-        if (TypeList.size() > 0 && !TypeList.contains("0")) {
-            List<Long> tList = new LinkedList<Long>()
-            for (String id in TypeList)
-                tList.add(Long.valueOf(id))
-            query = query.where {
-                ridReportType in RidReportType.findAllByIdInList(tList)
-            }
-        }
-
-        String [] staffPennkey_splits = params.staffPennkey.split(" ");
-        for (String s in staffPennkey_splits) {
-            if (!s.trim().isEmpty()) {
-                // s = stemmer.doStemming(s)
-                query = query.where {
-                    staffPennkey ==~ ~s.trim()
-                }
-            }
-        }
-
-        String [] userQuestion_splits = params.userQuestion.split(" ");
-        for (String s in userQuestion_splits) {
-            if (!s.trim().isEmpty()) {
-                query = query.where {
-                    //userQuestion ==~ ~"^.+ba\$"
-                    //userQuestion ==~ ~"^k.*"
-                    userQuestion ==~ ~s.trim()
-                }
-            }
-        }
-
-        String [] notes_splits = params.notes.split(" ");
-        for (String s in notes_splits) {
-            if (!s.trim().isEmpty()) {
-                query = query.where {
-                    notes ==~ ~s.trim()
-                }
-            }
-        }
-
-        def ridTransactionList = query.list(params)
         render(view: "list",
-            model: [ridTransactionInstanceList: ridTransactionList, ridTransactionInstanceTotal: query.count()])
+            model: [ridTransactionInstanceList: ridTransactionList, ridTransactionInstanceTotal: ridTransactionList.size()])
         return
     }
 
     def spreadsheetUpload() {}
 
     def upload() {
-        //def uploadedFile = request.getFile("spreadsheetUpload").inputStream.getText("utf-8")
         MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
         if (uploadedFile == null || uploadedFile.empty) {
             flash.alerts << "No file was provided"
@@ -274,56 +180,38 @@ class RidTransactionController {
         }
 
         //TODO:get rid of after debugging
-        println "Class:${uploadedFile.class}";
-        println "Name:${uploadedFile.name}";
-        println "OriginalFilename:${uploadedFile.originalFilename}";
-        println "Size:${uploadedFile.size}";
-        println "ContentType:${uploadedFile.contentType}";
+//        println "Class:${uploadedFile.class}";
+//        println "Name:${uploadedFile.name}";
+//        println "OriginalFilename:${uploadedFile.originalFilename}";
+//        println "Size:${uploadedFile.size}";
+//        println "ContentType:${uploadedFile.contentType}";
 
-        List<String> fileValidator = Arrays.asList(
-                'application/vnd.ms-excel [official]', 'application/msexcel',
-                'application/x-msexcel', 'application/x-ms-excel', 'application/vnd.ms-excel',
-                'application/x-excel', 'application/x-dos_ms_excel', 'application/xls',
-                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        )
-        if (!fileValidator.contains(uploadedFile.getContentType())) {
+        if (!spreadsheetUploadingService.checkFileType(uploadedFile.getContentType())) {
             flash.alerts << "Invalid File Type. Only Excel Files are accepted!"
             redirect(action: "spreadsheetUpload")
             return
         }
 
-        Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
-        Sheet sheet = wb.getSheetAt(0);
-        for (Row row : sheet) {
-            for (Cell cell : row) {
-                CellReference cellRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
-                System.out.print(cellRef.formatAsString());
-                System.out.print(" - ");
-
-                switch (cell.getCellType()) {
-                    case Cell.CELL_TYPE_STRING:
-                        System.out.println(cell.getRichStringCellValue().getString());
-                        break;
-                    case Cell.CELL_TYPE_NUMERIC:
-                        if (DateUtil.isCellDateFormatted(cell)) {
-                            System.out.println(cell.getDateCellValue());
-                        } else {
-                            System.out.println(cell.getNumericCellValue());
-                        }
-                        break;
-                    case Cell.CELL_TYPE_BOOLEAN:
-                        System.out.println(cell.getBooleanCellValue());
-                        break;
-                    case Cell.CELL_TYPE_FORMULA:
-                        System.out.println(cell.getCellFormula());
-                        break;
-                    default:
-                        System.out.println();
-                }
-            }
+        if (RidTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
+            flash.alerts << "This spreadsheet has been uploaded before. Choose a new spreadsheet with a different name!"
+            redirect(action: "spreadsheetUpload")
+            return
         }
 
-        flash.infos << "File successfully uploaded"
-        redirect(action: "list")
+        List<List<String>> allInstances = spreadsheetUploadingService.getInstancesFromSpreadsheet(uploadedFile, flash)
+        if (!allInstances.size()) {
+            redirect(action:  "spreadsheetUpload")
+            return
+        }
+
+        if (spreadsheetUploadingService.saveToDatabase(allInstances, uploadedFile.originalFilename, flash)) {
+            flash.infos << "Spreadsheet successfully uploaded. " +
+                    String.valueOf(allInstances.size()) + " instances uploaded."
+            redirect(action: "list")
+        }
+        else {
+            redirect(action: "spreadsheetUpload")
+            return
+        }
     }
 }

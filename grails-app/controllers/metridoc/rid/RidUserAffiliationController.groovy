@@ -22,26 +22,13 @@ class RidUserAffiliationController {
     def save() {
         def ridUserAffiliationInstance = new RidUserAffiliation(params)
         if (!ridUserAffiliationInstance.save(flush: true)) {
-            //render(view: "create", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
             chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
-        //redirect(action: "show", id: ridUserAffiliationInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridUserAffiliationInstance = RidUserAffiliation.get(id)
-//        if (!ridUserAffiliationInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridUserAffiliationInstance: ridUserAffiliationInstance]
-//    }
 
     def edit(Long id) {
         def ridUserAffiliationInstance = RidUserAffiliation.get(id)
@@ -67,7 +54,6 @@ class RidUserAffiliationController {
                 ridUserAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')] as Object[],
                         "Another user has updated this RidUserAffiliation while you were editing")
-                //render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
                 chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidUserAffiliationController {
         ridUserAffiliationInstance.properties = params
 
         if (!ridUserAffiliationInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridUserAffiliationInstance: ridUserAffiliationInstance])
             chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
-        //redirect(action: "show", id: ridUserAffiliationInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidUserAffiliationController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }

@@ -22,26 +22,13 @@ class RidUserGoalController {
     def save() {
         def ridUserGoalInstance = new RidUserGoal(params)
         if (!ridUserGoalInstance.save(flush: true)) {
-            //render(view: "create", model: [ridUserGoalInstance: ridUserGoalInstance])
             chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), ridUserGoalInstance.id])
-        //redirect(action: "show", id: ridUserGoalInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridUserGoalInstance = RidUserGoal.get(id)
-//        if (!ridUserGoalInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridUserGoalInstance: ridUserGoalInstance]
-//    }
 
     def edit(Long id) {
         def ridUserGoalInstance = RidUserGoal.get(id)
@@ -67,7 +54,6 @@ class RidUserGoalController {
                 ridUserGoalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUserGoal.label', default: 'RidUserGoal')] as Object[],
                         "Another user has updated this RidUserGoal while you were editing")
-                //render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
                 chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidUserGoalController {
         ridUserGoalInstance.properties = params
 
         if (!ridUserGoalInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridUserGoalInstance: ridUserGoalInstance])
             chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), ridUserGoalInstance.id])
-        //redirect(action: "show", id: ridUserGoalInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidUserGoalController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }

@@ -15,6 +15,7 @@ class RidTransaction {
             'otherCourseSponsor', 'otherService']
 
     Boolean template = Boolean.FALSE
+    String spreadsheetName
 
     // statement of work
     String userQuestion
@@ -47,12 +48,12 @@ class RidTransaction {
         userQuestion(blank: false, nullable: false, maxSize: 500)
         interactTimes(nullable: false, min: 0, max: 50)
         followUpContact(blank: true, nullable: true, maxSize: 50)
-        prepTime(nullable: false, min: 0)
-        eventLength(nullable: false, min: 0)
+        prepTime(nullable: false, min: 0, max: 50)
+        eventLength(nullable: false, min: 0, max: 50)
         notes(blank: true, nullable: true, maxSize: 500)
         staffPennkey(blank: false, nullable: false, maxSize: 100)
         // ROLES
-        facultySponsor(blank: true, nullable: true, maxSize: 300)
+        facultySponsor(blank: true, nullable: true, maxSize: 100)
         courseName(blank: true, nullable: true, maxSize: 100)
         courseNumber(blank: true, nullable: true, maxSize: 100)
         userGoal(nullable: true)
@@ -72,6 +73,7 @@ class RidTransaction {
         //modeOfConsultation(nullable: true)
         //userGoal(nullable: true)
         //ridReportType(nullable: true)
+        spreadsheetName(nullable: true, blank: true)
     }
 
     String toString(){

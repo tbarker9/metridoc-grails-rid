@@ -10,7 +10,7 @@
 
             <g:form style="padding-top: 15px" class="form-horizontal" enctype="multipart/form-data">
                 <div class="control-group">
-                    %{--TODO: move all scripts and css to separate js and css files--}%
+
                     <div class="controls">
                         <input id="spreadsheetUpload" name="spreadsheetUpload" type="file" style="display: none" />
                         <div class="input-append">

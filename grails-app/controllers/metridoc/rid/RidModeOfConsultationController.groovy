@@ -22,26 +22,13 @@ class RidModeOfConsultationController {
     def save() {
         def ridModeOfConsultationInstance = new RidModeOfConsultation(params)
         if (!ridModeOfConsultationInstance.save(flush: true)) {
-            //render(view: "create", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
             chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), ridModeOfConsultationInstance.id])
-        //redirect(action: "show", id: ridModeOfConsultationInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
-//        if (!ridModeOfConsultationInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridModeOfConsultationInstance: ridModeOfConsultationInstance]
-//    }
 
     def edit(Long id) {
         def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
@@ -67,7 +54,6 @@ class RidModeOfConsultationController {
                 ridModeOfConsultationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation')] as Object[],
                         "Another user has updated this RidModeOfConsultation while you were editing")
-                //render(view: "edit", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
                 chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidModeOfConsultationController {
         ridModeOfConsultationInstance.properties = params
 
         if (!ridModeOfConsultationInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridModeOfConsultationInstance: ridModeOfConsultationInstance])
             chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), ridModeOfConsultationInstance.id])
-        //redirect(action: "show", id: ridModeOfConsultationInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidModeOfConsultationController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }

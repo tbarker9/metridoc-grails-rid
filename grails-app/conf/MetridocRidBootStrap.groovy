@@ -290,10 +290,10 @@ class MetridocRidBootStrap {
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(5)).save()
                         // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
-                        for (int i = 0; i < 500; i++) {
+                        for (int i = 0; i < 50; i++) {
                             def t = new RidTransaction(staffPennkey: "012345667",
-                                    userQuestion: RandomStringUtils.randomAlphanumeric(i % 500 + 1), interactTimes: i % 50, prepTime: i % 4,
-                                    eventLength: i, followUpContact: "Sample Contact", notes: "Sample Notes",
+                                    userQuestion: RandomStringUtils.randomAlphanumeric(i % 50 + 1), interactTimes: i % 50, prepTime: i % 40,
+                                    eventLength: i % 50, followUpContact: "Sample Contact", notes: "Sample Notes",
                                     facultySponsor: "Sample Sponsor", courseName: "Sample Course Name", courseNumber: "LIB001",
                                     //otherUser: "others", otherUserAffiliation: "others", otherCourseSponsor: "others",
                                     //otherService: "others",

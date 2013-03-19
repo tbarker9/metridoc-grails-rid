@@ -22,26 +22,13 @@ class RidDepartmentalAffiliationController {
     def save() {
         def ridDepartmentalAffiliationInstance = new RidDepartmentalAffiliation(params)
         if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            //render(view: "create", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
             chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
-        //redirect(action: "show", id: ridDepartmentalAffiliationInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
-//        if (!ridDepartmentalAffiliationInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance]
-//    }
 
     def edit(Long id) {
         def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
@@ -67,7 +54,6 @@ class RidDepartmentalAffiliationController {
                 ridDepartmentalAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation')] as Object[],
                         "Another user has updated this RidDepartmentalAffiliation while you were editing")
-                //render(view: "edit", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
                 chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidDepartmentalAffiliationController {
         ridDepartmentalAffiliationInstance.properties = params
 
         if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridDepartmentalAffiliationInstance: ridDepartmentalAffiliationInstance])
             chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
-        //redirect(action: "show", id: ridDepartmentalAffiliationInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidDepartmentalAffiliationController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }

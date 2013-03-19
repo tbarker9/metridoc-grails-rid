@@ -22,26 +22,13 @@ class RidServiceProvidedController {
     def save() {
         def ridServiceProvidedInstance = new RidServiceProvided(params)
         if (!ridServiceProvidedInstance.save(flush: true)) {
-            //render(view: "create", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
             chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
-        //redirect(action: "show", id: ridServiceProvidedInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridServiceProvidedInstance = RidServiceProvided.get(id)
-//        if (!ridServiceProvidedInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridServiceProvidedInstance: ridServiceProvidedInstance]
-//    }
 
     def edit(Long id) {
         def ridServiceProvidedInstance = RidServiceProvided.get(id)
@@ -67,7 +54,6 @@ class RidServiceProvidedController {
                 ridServiceProvidedInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')] as Object[],
                         "Another user has updated this RidServiceProvided while you were editing")
-                //render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
                 chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidServiceProvidedController {
         ridServiceProvidedInstance.properties = params
 
         if (!ridServiceProvidedInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridServiceProvidedInstance: ridServiceProvidedInstance])
             chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
-        //redirect(action: "show", id: ridServiceProvidedInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidServiceProvidedController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }

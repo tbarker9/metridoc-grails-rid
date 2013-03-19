@@ -22,26 +22,13 @@ class RidUserController {
     def save() {
         def ridUserInstance = new RidUser(params)
         if (!ridUserInstance.save(flush: true)) {
-            //render(view: "create", model: [ridUserInstance: ridUserInstance])
             chain(action: "list", model: [ridUserError: ridUserInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
-        //redirect(action: "show", id: ridUserInstance.id)
         redirect(action: "list")
     }
-
-//    def show(Long id) {
-//        def ridUserInstance = RidUser.get(id)
-//        if (!ridUserInstance) {
-//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
-//            redirect(action: "list")
-//            return
-//        }
-//
-//        [ridUserInstance: ridUserInstance]
-//    }
 
     def edit(Long id) {
         def ridUserInstance = RidUser.get(id)
@@ -67,7 +54,6 @@ class RidUserController {
                 ridUserInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'ridUser.label', default: 'RidUser')] as Object[],
                         "Another user has updated this RidUser while you were editing")
-                //render(view: "edit", model: [ridUserInstance: ridUserInstance])
                 chain(action: "list", model: [ridUserError: ridUserInstance])
                 return
             }
@@ -76,13 +62,11 @@ class RidUserController {
         ridUserInstance.properties = params
 
         if (!ridUserInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridUserInstance: ridUserInstance])
             chain(action: "list", model: [ridUserError: ridUserInstance])
             return
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
-        //redirect(action: "show", id: ridUserInstance.id)
         redirect(action: "list")
     }
 
@@ -101,7 +85,6 @@ class RidUserController {
         }
         catch (DataIntegrityViolationException e) {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
-            //redirect(action: "show", id: id)
             redirect(action: "list")
         }
     }
