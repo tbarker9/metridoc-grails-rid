@@ -20,14 +20,19 @@ class RidDepartmentalAffiliationController {
     }
 
     def save() {
-        def ridDepartmentalAffiliationInstance = new RidDepartmentalAffiliation(params)
-        if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
-            return
-        }
+        withForm {
+            def ridDepartmentalAffiliationInstance = new RidDepartmentalAffiliation(params)
+            if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
+                chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
-        redirect(action: "list")
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def edit(Long id) {
@@ -42,32 +47,37 @@ class RidDepartmentalAffiliationController {
     }
 
     def update(Long id, Long version) {
-        def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
-        if (!ridDepartmentalAffiliationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridDepartmentalAffiliationInstance = RidDepartmentalAffiliation.get(id)
+            if (!ridDepartmentalAffiliationInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridDepartmentalAffiliationInstance.version > version) {
-                ridDepartmentalAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation')] as Object[],
-                        "Another user has updated this RidDepartmentalAffiliation while you were editing")
+            if (version != null) {
+                if (ridDepartmentalAffiliationInstance.version > version) {
+                    ridDepartmentalAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation')] as Object[],
+                            "Another user has updated this RidDepartmentalAffiliation while you were editing")
+                    chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
+                    return
+                }
+            }
+
+            ridDepartmentalAffiliationInstance.properties = params
+
+            if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
                 chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
                 return
             }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        ridDepartmentalAffiliationInstance.properties = params
-
-        if (!ridDepartmentalAffiliationInstance.save(flush: true)) {
-            chain(action: "list", model: [ridDepartmentalAffiliationError: ridDepartmentalAffiliationInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation'), ridDepartmentalAffiliationInstance.id])
-        redirect(action: "list")
     }
 
     def delete(Long id) {

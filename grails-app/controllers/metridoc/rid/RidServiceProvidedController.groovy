@@ -20,14 +20,19 @@ class RidServiceProvidedController {
     }
 
     def save() {
-        def ridServiceProvidedInstance = new RidServiceProvided(params)
-        if (!ridServiceProvidedInstance.save(flush: true)) {
-            chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
-            return
-        }
+        withForm {
+            def ridServiceProvidedInstance = new RidServiceProvided(params)
+            if (!ridServiceProvidedInstance.save(flush: true)) {
+                chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
-        redirect(action: "list")
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def edit(Long id) {
@@ -42,32 +47,37 @@ class RidServiceProvidedController {
     }
 
     def update(Long id, Long version) {
-        def ridServiceProvidedInstance = RidServiceProvided.get(id)
-        if (!ridServiceProvidedInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridServiceProvidedInstance = RidServiceProvided.get(id)
+            if (!ridServiceProvidedInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridServiceProvidedInstance.version > version) {
-                ridServiceProvidedInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')] as Object[],
-                        "Another user has updated this RidServiceProvided while you were editing")
+            if (version != null) {
+                if (ridServiceProvidedInstance.version > version) {
+                    ridServiceProvidedInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')] as Object[],
+                            "Another user has updated this RidServiceProvided while you were editing")
+                    chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
+                    return
+                }
+            }
+
+            ridServiceProvidedInstance.properties = params
+
+            if (!ridServiceProvidedInstance.save(flush: true)) {
                 chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
                 return
             }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        ridServiceProvidedInstance.properties = params
-
-        if (!ridServiceProvidedInstance.save(flush: true)) {
-            chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), ridServiceProvidedInstance.id])
-        redirect(action: "list")
     }
 
     def delete(Long id) {

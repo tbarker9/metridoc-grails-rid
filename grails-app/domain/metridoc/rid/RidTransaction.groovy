@@ -3,13 +3,13 @@ package metridoc.rid
 class RidTransaction {
 
     static belongsTo = [departmentalAffilication: RidDepartmentalAffiliation,
-                      courseSponsor: RidCourseSponsor,
-                      userGoal: RidUserGoal,
-                      modeOfConsultation: RidModeOfConsultation,
-                      user: RidUser,
-                      serviceProvided: RidServiceProvided,
-                      userAffiliation: RidUserAffiliation,
-                      ridReportType: RidReportType]
+            courseSponsor: RidCourseSponsor,
+            userGoal: RidUserGoal,
+            modeOfConsultation: RidModeOfConsultation,
+            user: RidUser,
+            serviceProvided: RidServiceProvided,
+            userAffiliation: RidUserAffiliation,
+            ridReportType: RidReportType]
 
     static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherUserAffiliation',
             'otherCourseSponsor', 'otherService']
@@ -76,10 +76,10 @@ class RidTransaction {
         spreadsheetName(nullable: true, blank: true)
     }
 
-    String toString(){
+    String toString() {
         String userQ = new String(userQuestion)
-        if (userQ!=null && userQ.length() > 32)
-            userQ = userQ.substring(0,32) + "..."
+        if (userQ != null && userQ.length() > 32)
+            userQ = userQ.substring(0, 32) + "..."
         return "ID: ${id}; userQuestion: ${userQ}"
     }
 }

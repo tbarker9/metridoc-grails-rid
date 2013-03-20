@@ -1,81 +1,86 @@
-
 <%@ page import="metridoc.rid.RidTransaction" %>
-<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 %{--<!doctype html>--}%
 %{--<html>--}%
-	%{--<head>--}%
-		%{--<meta name="layout" content="main">--}%
-		%{--<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />--}%
-		%{--<title><g:message code="default.list.label" args="[entityName]" /></title>--}%
-	%{--</head>--}%
-	%{--<body>--}%
+%{--<head>--}%
+%{--<meta name="layout" content="main">--}%
+%{--<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}" />--}%
+%{--<title><g:message code="default.list.label" args="[entityName]" /></title>--}%
+%{--</head>--}%
+%{--<body>--}%
 
 <md:report>
     <!--[if !IE]><!-->
     <r:external dir="css" file="floating_table.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
-        <div class="md-application-content">
-            <g:render template="tabs" plugin="metridocRid"/>
+    <div class="md-application-content">
+        <g:render template="tabs" plugin="metridocRid"/>
 
-            <div id="list-ridTransaction" class="content scaffold-list" role="main">
-                <h1><g:message code="default.list.label" args="[entityName]" /></h1>
-                <g:if test="${flash.message}">
-                    <div class="message" role="status">${flash.message}</div>
-                </g:if>
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
-                        
-                        <g:sortableColumn property="userQuestion" title="${message(code: 'ridTransaction.userQuestion.label', default: 'User Question')}" />
-                        
-                        <g:sortableColumn property="staffPennkey" title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}" />
-                        
-                        <g:sortableColumn property="dateOfConsultation" title="${message(code: 'ridTransaction.dateOfConsultation.label', default: 'Date of Consultation')}" />
-                        
-                        <g:sortableColumn property="ridReportType" title="${message(code: 'ridTransaction.ridReportType.label', default: 'Report Type')}" />
+        <div id="list-ridTransaction" class="content scaffold-list" role="main">
+            <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+            %{--<g:if test="${flash.message}">--}%
+            %{--<div class="message" role="status">${flash.message}</div>--}%
+            %{--</g:if>--}%
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
 
-                        <g:sortableColumn property="notes" title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}" />
-                        
+                    <g:sortableColumn property="userQuestion"
+                                      title="${message(code: 'ridTransaction.userQuestion.label', default: 'User Question')}"/>
+
+                    <g:sortableColumn property="staffPennkey"
+                                      title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}"/>
+
+                    <g:sortableColumn property="dateOfConsultation"
+                                      title="${message(code: 'ridTransaction.dateOfConsultation.label', default: 'Date of Consultation')}"/>
+
+                    <g:sortableColumn property="ridReportType"
+                                      title="${message(code: 'ridTransaction.ridReportType.label', default: 'Report Type')}"/>
+
+                    <g:sortableColumn property="notes"
+                                      title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}"/>
+
+                </tr>
+                </thead>
+                <tbody>
+                <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
+                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
+                        onclick="window.location = 'show/${ridTransactionInstance.id}'"
+                        style="cursor: pointer;">
+                        <%
+                            userQ = ridTransactionInstance.userQuestion
+                            if (userQ != null && userQ.length() > 12)
+                                userQ = userQ.substring(0, 12) + "..."
+                        %>
+                        <td>
+                            %{--<g:link action="show" id="${ridTransactionInstance.id}"--}%
+                            %{--title="${ridTransactionInstance.userQuestion}">--}%
+                            ${userQ}
+                            %{--</g:link>--}%
+                        </td>
+
+                        <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>
+
+                        <td><g:formatDate format="yyyy-MM-dd"
+                                          date="${ridTransactionInstance?.dateOfConsultation}"/></td>
+                        %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
+
+                        <td>${fieldValue(bean: ridTransactionInstance, field: "ridReportType")}</td>
+
+                        <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
+
                     </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
-                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
-                            onclick="window.location='show/${ridTransactionInstance.id}'"
-                            style="cursor: pointer;">
-                            <%
-                                userQ = ridTransactionInstance.userQuestion
-                                if (userQ!=null && userQ.length() > 12)
-                                    userQ = userQ.substring(0,12) + "..."
-                            %>
-                            <td>
-                                %{--<g:link action="show" id="${ridTransactionInstance.id}"--}%
-                                        %{--title="${ridTransactionInstance.userQuestion}">--}%
-                                    ${userQ}
-                                %{--</g:link>--}%
-                            </td>
-                            
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>
-
-                            <td><g:formatDate format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfConsultation}" /></td>
-                            %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "ridReportType")}</td>
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
-                            
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-                <g:if test="${ridTransactionInstanceTotal > 10}">
-                    <div class="pagination">
-                        <g:paginate total="${ridTransactionInstanceTotal}" params="${params}" />
-                    </div>
-                </g:if>
-            </div>
+                </g:each>
+                </tbody>
+            </table>
+            <g:if test="${ridTransactionInstanceTotal > 10}">
+                <div class="pagination">
+                    <g:paginate total="${ridTransactionInstanceTotal}" params="${params}"/>
+                </div>
+            </g:if>
         </div>
+    </div>
 </md:report>
-	%{--</body>--}%
+%{--</body>--}%
 %{--</html>--}%

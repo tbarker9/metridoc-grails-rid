@@ -18,6 +18,7 @@
                     %{--<fieldset class="form">--}%
                     <div style="margin-top: 2em">
                         <g:render template="form" plugin="metridoc-rid"/>
+                    </div>
                     %{--</fieldset>--}%
                     <fieldset class="buttons">
                         <g:submitButton name="create" class="btn btn-danger" value="\${message(code: 'default.button.create.label', default: 'Create')}" />

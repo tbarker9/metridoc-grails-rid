@@ -2,10 +2,11 @@ package metridoc.rid
 
 class RidDepartmentalAffiliation {
 
-    static hasMany = [ridTransaction:RidTransaction]
+    static hasMany = [ridTransaction: RidTransaction]
 
     String name
-    String toString(){
+
+    String toString() {
         return "${name}"
     }
 

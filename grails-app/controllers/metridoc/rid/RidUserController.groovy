@@ -20,14 +20,19 @@ class RidUserController {
     }
 
     def save() {
-        def ridUserInstance = new RidUser(params)
-        if (!ridUserInstance.save(flush: true)) {
-            chain(action: "list", model: [ridUserError: ridUserInstance])
-            return
-        }
+        withForm {
+            def ridUserInstance = new RidUser(params)
+            if (!ridUserInstance.save(flush: true)) {
+                chain(action: "list", model: [ridUserError: ridUserInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
-        redirect(action: "list")
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def edit(Long id) {
@@ -42,32 +47,37 @@ class RidUserController {
     }
 
     def update(Long id, Long version) {
-        def ridUserInstance = RidUser.get(id)
-        if (!ridUserInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridUserInstance = RidUser.get(id)
+            if (!ridUserInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUser.label', default: 'RidUser'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridUserInstance.version > version) {
-                ridUserInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'ridUser.label', default: 'RidUser')] as Object[],
-                        "Another user has updated this RidUser while you were editing")
+            if (version != null) {
+                if (ridUserInstance.version > version) {
+                    ridUserInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridUser.label', default: 'RidUser')] as Object[],
+                            "Another user has updated this RidUser while you were editing")
+                    chain(action: "list", model: [ridUserError: ridUserInstance])
+                    return
+                }
+            }
+
+            ridUserInstance.properties = params
+
+            if (!ridUserInstance.save(flush: true)) {
                 chain(action: "list", model: [ridUserError: ridUserInstance])
                 return
             }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        ridUserInstance.properties = params
-
-        if (!ridUserInstance.save(flush: true)) {
-            chain(action: "list", model: [ridUserError: ridUserInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUser.label', default: 'RidUser'), ridUserInstance.id])
-        redirect(action: "list")
     }
 
     def delete(Long id) {

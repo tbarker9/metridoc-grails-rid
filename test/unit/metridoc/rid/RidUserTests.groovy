@@ -1,8 +1,6 @@
 package metridoc.rid
 
-
-
-import grails.test.mixin.*
+import grails.test.mixin.TestFor
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
@@ -11,13 +9,15 @@ import grails.test.mixin.*
 class RidUserTests {
 
     void testBootStrap() {
+        mockForConstraintsTests(RidUser)
+
         List<String> user = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
                 "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Stuff",
                 "Other (please indicate)")
         for (String i in user) {
             def c = new RidUser(name: i)
             c.save()
-            if(c.hasErrors()) println c.errors
+            if (c.hasErrors()) println c.errors
         }
 
         assert RidUser.list().size() > 0

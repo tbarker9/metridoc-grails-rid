@@ -14,7 +14,7 @@ class RidCourseSponsorController {
         params.max = Math.min(max ?: 10, 100)
         //def ridCourseSponsorError = session.ridCourseSponsorError ?: null
         [ridCourseSponsorInstanceList: RidCourseSponsor.list(params), ridCourseSponsorInstanceTotal: RidCourseSponsor.count()]
-          //      ridCourseSponsorError:ridCourseSponsorError]
+        //      ridCourseSponsorError:ridCourseSponsorError]
     }
 
     def create() {
@@ -22,18 +22,23 @@ class RidCourseSponsorController {
     }
 
     def save() {
-        def ridCourseSponsorInstance = new RidCourseSponsor(params)
-        if (!ridCourseSponsorInstance.save(flush: true)) {
-            //render(view: "create", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
-            //session.putValue("ridCourseSponsorError", ridCourseSponsorInstance)
-            chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
-            //redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridCourseSponsorInstance = new RidCourseSponsor(params)
+            if (!ridCourseSponsorInstance.save(flush: true)) {
+                //render(view: "create", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+                //session.putValue("ridCourseSponsorError", ridCourseSponsorInstance)
+                chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
+                //redirect(action: "list")
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
-        //redirect(action: "show", id: ridCourseSponsorInstance.id)
-        redirect(action: "list")
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
+            //redirect(action: "show", id: ridCourseSponsorInstance.id)
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
 //    def show(Long id) {
@@ -59,35 +64,40 @@ class RidCourseSponsorController {
     }
 
     def update(Long id, Long version) {
-        def ridCourseSponsorInstance = RidCourseSponsor.get(id)
-        if (!ridCourseSponsorInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridCourseSponsorInstance = RidCourseSponsor.get(id)
+            if (!ridCourseSponsorInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridCourseSponsorInstance.version > version) {
-                ridCourseSponsorInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')] as Object[],
-                          "Another user has updated this RidCourseSponsor while you were editing")
+            if (version != null) {
+                if (ridCourseSponsorInstance.version > version) {
+                    ridCourseSponsorInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')] as Object[],
+                            "Another user has updated this RidCourseSponsor while you were editing")
+                    //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
+                    chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
+                    return
+                }
+            }
+
+            ridCourseSponsorInstance.properties = params
+
+            if (!ridCourseSponsorInstance.save(flush: true)) {
                 //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
                 chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
                 return
             }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
+            //redirect(action: "show", id: ridCourseSponsorInstance.id)
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        ridCourseSponsorInstance.properties = params
-
-        if (!ridCourseSponsorInstance.save(flush: true)) {
-            //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
-            chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
-        //redirect(action: "show", id: ridCourseSponsorInstance.id)
-        redirect(action: "list")
     }
 
     def delete(Long id) {

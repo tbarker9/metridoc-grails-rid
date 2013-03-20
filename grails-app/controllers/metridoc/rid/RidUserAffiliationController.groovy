@@ -20,14 +20,19 @@ class RidUserAffiliationController {
     }
 
     def save() {
-        def ridUserAffiliationInstance = new RidUserAffiliation(params)
-        if (!ridUserAffiliationInstance.save(flush: true)) {
-            chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
-            return
-        }
+        withForm {
+            def ridUserAffiliationInstance = new RidUserAffiliation(params)
+            if (!ridUserAffiliationInstance.save(flush: true)) {
+                chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
-        redirect(action: "list")
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def edit(Long id) {
@@ -42,32 +47,37 @@ class RidUserAffiliationController {
     }
 
     def update(Long id, Long version) {
-        def ridUserAffiliationInstance = RidUserAffiliation.get(id)
-        if (!ridUserAffiliationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridUserAffiliationInstance = RidUserAffiliation.get(id)
+            if (!ridUserAffiliationInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridUserAffiliationInstance.version > version) {
-                ridUserAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')] as Object[],
-                        "Another user has updated this RidUserAffiliation while you were editing")
+            if (version != null) {
+                if (ridUserAffiliationInstance.version > version) {
+                    ridUserAffiliationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')] as Object[],
+                            "Another user has updated this RidUserAffiliation while you were editing")
+                    chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
+                    return
+                }
+            }
+
+            ridUserAffiliationInstance.properties = params
+
+            if (!ridUserAffiliationInstance.save(flush: true)) {
                 chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
                 return
             }
+
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
+            redirect(action: "list")
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        ridUserAffiliationInstance.properties = params
-
-        if (!ridUserAffiliationInstance.save(flush: true)) {
-            chain(action: "list", model: [ridUserAffiliationError: ridUserAffiliationInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation'), ridUserAffiliationInstance.id])
-        redirect(action: "list")
     }
 
     def delete(Long id) {

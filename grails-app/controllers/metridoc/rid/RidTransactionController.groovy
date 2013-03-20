@@ -1,8 +1,9 @@
 package metridoc.rid
 
 import grails.converters.JSON
-import java.text.SimpleDateFormat
 import org.springframework.web.multipart.MultipartFile
+
+import java.text.SimpleDateFormat
 
 class RidTransactionController {
 
@@ -41,8 +42,6 @@ class RidTransactionController {
 
     def create() {
         try {
-            //TODO: remove this after debugging
-            //Thread.sleep(1000)
             def ridTransactionInstance = new RidTransaction(params)
             if (params.tmp != null && RidTransaction.get(Long.valueOf(params.tmp))) {
                 ridTransactionInstance.properties = RidTransaction.get(Long.valueOf(params.tmp)).properties
@@ -58,61 +57,77 @@ class RidTransactionController {
     }
 
     def save() {
-        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-        def ridTransactionInstance = new RidTransaction(params)
-        ridTransactionInstance.template = Boolean.FALSE
-        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-        if (!ridTransactionInstance.save(flush: true)) {
-            render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
-            return
-        }
+        withForm {
+            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            def ridTransactionInstance = new RidTransaction(params)
+            ridTransactionInstance.template = Boolean.FALSE
+            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
+            if (!ridTransactionInstance.save(flush: true)) {
+                flash.alerts << ridTransactionInstance.errors
+                render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
-        redirect(action: "show", id: ridTransactionInstance.id)
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
+            redirect(action: "show", id: ridTransactionInstance.id)
+        }.invalidToken {
+            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def remember() {
-        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-        def ridTransactionInstance = new RidTransaction(params)
-        ridTransactionInstance.template = Boolean.TRUE
-        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-        if (!ridTransactionInstance.save(validate: false, flush: true)) {
-            render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
-            return
-        }
+        withForm {
+            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            def ridTransactionInstance = new RidTransaction(params)
+            ridTransactionInstance.template = Boolean.TRUE
+            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
+            if (!ridTransactionInstance.save(validate: false, flush: true)) {
+                render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                return
+            }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
-        redirect(action: "show", id: ridTransactionInstance.id)
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction Template'), ridTransactionInstance.id])
+            redirect(action: "show", id: ridTransactionInstance.id)
+        }.invalidToken {
+            flash.alerts << "Don't click the remember button more than one time to make dulplicated submission!"
+            redirect(action: "list")
+        }
     }
 
     def update(Long id, Long version) {
-        def ridTransactionInstance = RidTransaction.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
-            redirect(action: "list")
-            return
-        }
+        withForm {
+            def ridTransactionInstance = RidTransaction.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
+                redirect(action: "list")
+                return
+            }
 
-        if (version != null) {
-            if (ridTransactionInstance.version > version) {
-                ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'ridTransaction.label', default: 'RidTransaction')] as Object[],
-                        "Another user has updated this RidTransaction while you were editing")
+            if (version != null) {
+                if (ridTransactionInstance.version > version) {
+                    ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                            [message(code: 'ridTransaction.label', default: 'RidTransaction')] as Object[],
+                            "Another user has updated this RidTransaction while you were editing")
+                    render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+            }
+
+            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            ridTransactionInstance.properties = params
+            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
+            if (!ridTransactionInstance.save(flush: true)) {
                 render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
                 return
             }
-        }
 
-        params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-        ridTransactionInstance.properties = params
-        ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-        if (!ridTransactionInstance.save(flush: true)) {
-            render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
-            return
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
+            redirect(action: "show", id: ridTransactionInstance.id)
+        }.invalidToken {
+            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            redirect(action: "list")
         }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
-        redirect(action: "show", id: ridTransactionInstance.id)
     }
 
     /*
@@ -162,56 +177,54 @@ class RidTransactionController {
 
     def query(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def ridTransactionList = ridTransactionService.queryMethod(params)
+        def queryResult = ridTransactionService.queryMethod(params)
 
         render(view: "list",
-            model: [ridTransactionInstanceList: ridTransactionList, ridTransactionInstanceTotal: ridTransactionList.size()])
+                model: [ridTransactionInstanceList: queryResult.list(params), ridTransactionInstanceTotal: queryResult.count()])
         return
     }
 
     def spreadsheetUpload() {}
 
     def upload() {
-        MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
-        if (uploadedFile == null || uploadedFile.empty) {
-            flash.alerts << "No file was provided"
-            redirect(action:  "spreadsheetUpload")
-            return
-        }
+        withForm {
+            MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
+            if (uploadedFile == null || uploadedFile.empty) {
+                flash.alerts << "No file was provided"
+                redirect(action: "spreadsheetUpload")
+                return
+            }
 
-        //TODO:get rid of after debugging
-//        println "Class:${uploadedFile.class}";
-//        println "Name:${uploadedFile.name}";
-//        println "OriginalFilename:${uploadedFile.originalFilename}";
-//        println "Size:${uploadedFile.size}";
-//        println "ContentType:${uploadedFile.contentType}";
+            if (!spreadsheetUploadingService.checkFileType(uploadedFile.getContentType())) {
+                flash.alerts << "Invalid File Type. Only Excel Files are accepted!"
+                redirect(action: "spreadsheetUpload")
+                return
+            }
 
-        if (!spreadsheetUploadingService.checkFileType(uploadedFile.getContentType())) {
-            flash.alerts << "Invalid File Type. Only Excel Files are accepted!"
+            if (RidTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
+                flash.alerts << "This spreadsheet has been uploaded before. Choose a new spreadsheet with a different name!"
+                redirect(action: "spreadsheetUpload")
+                return
+            }
+
+            List<List<String>> allInstances = spreadsheetUploadingService.getInstancesFromSpreadsheet(uploadedFile, flash)
+            if (!allInstances.size()) {
+                redirect(action: "spreadsheetUpload")
+                return
+            }
+
+            if (spreadsheetUploadingService.saveToDatabase(allInstances, uploadedFile.originalFilename, flash)) {
+                flash.infos << "Spreadsheet successfully uploaded. " +
+                        String.valueOf(allInstances.size()) + " instances uploaded."
+                redirect(action: "list")
+            }
+            else {
+                redirect(action: "spreadsheetUpload")
+                return
+            }
+        }.invalidToken {
+            flash.alerts << "Don't click the uploading button more than one time to make dulplicated submission!"
             redirect(action: "spreadsheetUpload")
-            return
-        }
-
-        if (RidTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
-            flash.alerts << "This spreadsheet has been uploaded before. Choose a new spreadsheet with a different name!"
-            redirect(action: "spreadsheetUpload")
-            return
-        }
-
-        List<List<String>> allInstances = spreadsheetUploadingService.getInstancesFromSpreadsheet(uploadedFile, flash)
-        if (!allInstances.size()) {
-            redirect(action:  "spreadsheetUpload")
-            return
-        }
-
-        if (spreadsheetUploadingService.saveToDatabase(allInstances, uploadedFile.originalFilename, flash)) {
-            flash.infos << "Spreadsheet successfully uploaded. " +
-                    String.valueOf(allInstances.size()) + " instances uploaded."
-            redirect(action: "list")
-        }
-        else {
-            redirect(action: "spreadsheetUpload")
-            return
         }
     }
 }

@@ -9,7 +9,7 @@ class RidReportType {
 
     String name
 
-    String toString(){
+    String toString() {
         return "${name}"
     }
 
