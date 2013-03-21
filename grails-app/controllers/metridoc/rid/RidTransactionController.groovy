@@ -201,6 +201,12 @@ class RidTransactionController {
                 return
             }
 
+            if (!spreadsheetUploadingService.checkSpreadsheetFormat(uploadedFile)) {
+                flash.alerts << "Invalid Spreadsheet Format. Cannot Parse it."
+                redirect(action: "spreadsheetUpload")
+                return
+            }
+
             if (RidTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
                 flash.alerts << "This spreadsheet has been uploaded before. Choose a new spreadsheet with a different name!"
                 redirect(action: "spreadsheetUpload")

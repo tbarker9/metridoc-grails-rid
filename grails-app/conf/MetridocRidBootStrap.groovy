@@ -1,15 +1,6 @@
 import grails.util.Environment
-import grails.util.GrailsUtil
-import metridoc.rid.RidTransaction
-import metridoc.rid.RidCourseSponsor
-import metridoc.rid.RidDepartmentalAffiliation
-import metridoc.rid.RidServiceProvided
 import org.apache.commons.lang.RandomStringUtils
-import metridoc.rid.RidModeOfConsultation
-import metridoc.rid.RidReportType
-import metridoc.rid.RidUserGoal
-import metridoc.rid.RidUser
-import metridoc.rid.RidUserAffiliation
+import metridoc.rid.*
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +15,7 @@ class MetridocRidBootStrap {
             case Environment.DEVELOPMENT:
                 if (!RidTransaction.first()) {
                     println "Creating test data for RID database"
-                    RidTransaction.withNewTransaction{
+                    RidTransaction.withNewTransaction {
                         // for Report type
                         List<String> gType = Arrays.asList("WIC", "HSL", "CDM", "LIPPINCOTT", "RIS")
                         for (String i in gType) {

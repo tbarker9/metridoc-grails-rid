@@ -10,6 +10,42 @@ import org.apache.poi.ss.usermodel.*
 
 class SpreadsheetUploadingService {
 
+    def checkSpreadsheetFormat(MultipartFile uploadedFile) {
+        Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
+        Sheet sheet = wb.getSheetAt(0)
+        int colNum = 1
+
+        List<String> itemNames = new ArrayList<String>()
+        for (int rowNum = 5; rowNum < 40; rowNum += 2) {
+            Row row = sheet.getRow(rowNum)
+            if (!row) return false
+            Cell cell = row.getCell(colNum)
+            if (!cell) return false
+
+            switch (cell.getCellType()) {
+                case Cell.CELL_TYPE_STRING:
+                    itemNames.add(cell.getRichStringCellValue().getString())
+                    break
+                default:
+                    System.out.println("CELL_TYPE_DEFAULT")
+                    return false
+            }
+        }
+
+        List<String> validNames = Arrays.asList('Report Type', 'Date of Consultation (mm/dd/yyyy)', 'Staff Pennkey',
+                'Consultation Mode', 'Service Provided', 'User Goal', 'Prep Time (enter in minutes)',
+                'Event Length (enter in minutes)', 'User Rank', 'User Affiliation', 'Interact Times', 'Course Name',
+                'Department Affiliation', 'Course Number', 'Faculty Sponsor', 'Course Sponsor', 'User Question',
+                'Notes'
+        )
+
+        if (validNames.size() != itemNames.size()) return false
+        for (int i = 0 ; i < itemNames.size(); i++) {
+            if (!itemNames.get(i).trim().equals(validNames.get(i).trim())) return false
+        }
+        return true
+    }
+
     def getInstancesFromSpreadsheet(MultipartFile uploadedFile, FlashScope flash) {
         Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
         Sheet sheet = wb.getSheetAt(0)
@@ -40,18 +76,19 @@ class SpreadsheetUploadingService {
                 switch (cell.getCellType()) {
                     case Cell.CELL_TYPE_STRING:
                         instance.add(cell.getRichStringCellValue().getString())
-                        break;
+                        break
                     case Cell.CELL_TYPE_NUMERIC:
                         if (DateUtil.isCellDateFormatted(cell)) {
                             instance.add(cell.getDateCellValue().format("MM/dd/yyyy"))
                         } else {
                             instance.add(cell.getNumericCellValue().toInteger().toString())
                         }
-                        break;
+                        break
                     case Cell.CELL_TYPE_FORMULA:
                         instance.add(cell.getCellFormula())
-                        break;
+                        break
                     default:
+                        flash.alerts << "Undefined Cell Type at " + new CellReference(rowNum, colNum).formatAsString()
                         System.out.println("CELL_TYPE_DEFAULT")
                 }
             }
