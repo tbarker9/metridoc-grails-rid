@@ -2,6 +2,8 @@
 <g:set var="entityName" value="${message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')}"/>
 
 <md:report>
+    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
     <!--[if !IE]><!-->
     <r:external dir="css" file="floating_tables_for_admin_1.css" plugin="metridoc-rid"/>
     <!--<![endif]-->

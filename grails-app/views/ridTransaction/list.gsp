@@ -10,6 +10,8 @@
 %{--<body>--}%
 
 <md:report>
+    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
     <!--[if !IE]><!-->
     <r:external dir="css" file="floating_table.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
@@ -74,9 +76,9 @@
                 </g:each>
                 </tbody>
             </table>
-            <g:if test="${ridTransactionInstanceTotal > 10}">
+            <g:if test="${ridTransactionInstanceTotal > params.max}">
                 <div class="pagination">
-                    <g:paginate total="${ridTransactionInstanceTotal}" params="${params}"/>
+                    <g:paginate total="${ridTransactionInstanceTotal}" params="${params}" next="&gt;&gt;" prev="&lt;&lt;"/>
                 </div>
             </g:if>
         </div>

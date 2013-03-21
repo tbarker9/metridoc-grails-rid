@@ -13,13 +13,16 @@ class RidCourseSponsorTests {
     void testBootStrap() {
         mockForConstraintsTests(RidCourseSponsor)
 
+        def r = new RidCourseSponsor()
+        assert !r.validate()
+        assert "nullable" == r.errors["name"]
+
         List<String> cSponsor = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
                 "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
                 "Independent Research", "Outside Entity(please indicate)");
         for (String i in cSponsor) {
             def c = new RidCourseSponsor(name: i)
             c.save()
-            if (c.hasErrors()) println c.errors
         }
 
         assert RidCourseSponsor.list().size() > 0
@@ -36,7 +39,5 @@ class RidCourseSponsorTests {
             }
         }
         assert 15 == names
-
-
     }
 }
