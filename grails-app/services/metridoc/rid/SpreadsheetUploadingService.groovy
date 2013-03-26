@@ -149,7 +149,8 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Mode of Consultation Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidModeOfConsultation.findByName(instance.get(i))) {
+                    if (!RidModeOfConsultation.findByNameAndRidReportType(
+                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
                         flash.alerts << "Invalid Mode of Consultation at " + cellRef.formatAsString()
                         return false
                     }
@@ -159,13 +160,15 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Service Provided Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidServiceProvided.findByName(instance.get(i))) {
+                    if (!RidServiceProvided.findByNameAndRidReportType(
+                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
                         flash.alerts << "Invalid Service Provided at " + cellRef.formatAsString()
                         return false
                     }
                     break
                 case 5:
-                    if (!instance.get(i).empty && !RidUserGoal.findByName(instance.get(i))) {
+                    if (!instance.get(i).empty && !RidUserGoal.findByNameAndRidReportType(
+                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
                         flash.alerts << "Invalid User Goal at " + cellRef.formatAsString()
                         return false
                     }
@@ -320,6 +323,7 @@ class SpreadsheetUploadingService {
 
     def saveToDatabase(List<List<String>> allInstances, String spreadsheetName, FlashScope flash) {
         for (List<String> instance in allInstances) {
+            def type = RidReportType.findByName(instance.get(0))
             def t = new RidTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(16),
                     dateOfConsultation: new SimpleDateFormat("MM/dd/yyyy").parse(instance.get(1)),
                     interactTimes: Integer.valueOf(instance.get(10)).intValue(),
@@ -329,12 +333,12 @@ class SpreadsheetUploadingService {
                     courseNumber: instance.get(13), //librarian: "librarian", patronEmail: "sample@gmail.com",
                     departmentalAffilication: RidDepartmentalAffiliation.findByName(instance.get(12)),
                     courseSponsor: RidCourseSponsor.findByName(instance.get(15)),
-                    userGoal: RidUserGoal.findByName(instance.get(5)),
-                    modeOfConsultation: RidModeOfConsultation.findByName(instance.get(3)),
+                    userGoal: RidUserGoal.findByNameAndRidReportType(instance.get(5), type),
+                    modeOfConsultation: RidModeOfConsultation.findByNameAndRidReportType(instance.get(3), type),
                     user: RidUser.findByName(instance.get(8)),
-                    serviceProvided: RidServiceProvided.findByName(instance.get(4)),
+                    serviceProvided: RidServiceProvided.findByNameAndRidReportType(instance.get(4), type),
                     userAffiliation: RidUserAffiliation.findByName(instance.get(9)),
-                    ridReportType: RidReportType.findByName(instance.get(0)),
+                    ridReportType: type,
                     spreadsheetName: spreadsheetName
             )
 

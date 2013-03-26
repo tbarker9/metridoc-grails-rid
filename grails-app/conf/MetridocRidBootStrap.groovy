@@ -91,7 +91,7 @@ class MetridocRidBootStrap {
                         }
                         // for user
                         List<String> users = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
-                                "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Stuff")
+                                "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Staff")
                         for (String i in users) {
                             if (!RidUser.findByName(i)) {
                                 def c = new RidUser(name: i, inForm: 1)
@@ -152,7 +152,7 @@ class MetridocRidBootStrap {
                         // ---------------------------------------------------------------------------------------------
                         // for mode of consutlation -- WIC
                         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "Video or web conference", "In person(in library)", "In person(outside library)")
+                                "Video or web conference", "In person (in library)", "In person (outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(1))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(1))
@@ -163,7 +163,7 @@ class MetridocRidBootStrap {
                         new RidModeOfConsultation(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(1)).save()
                         // for mode of consutlation -- HSL
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "In person(in library)", "In person(outside library)")
+                                "In person (in library)", "In person (outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(2))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(2))
@@ -173,7 +173,7 @@ class MetridocRidBootStrap {
                         }
                         // for mode of consutlation -- CDM
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "In person(in library)", "In person(outside library)")
+                                "In person (in library)", "In person (outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(3))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(3))
@@ -183,7 +183,7 @@ class MetridocRidBootStrap {
                         }
                         // for mode of consutlation -- LIPPINCOTT
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "In person(in library)", "In person(outside library)")
+                                "In person (in library)", "In person (outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(4))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(4))
@@ -193,7 +193,7 @@ class MetridocRidBootStrap {
                         }
                         // for mode of consutlation -- RIS
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
-                                "In person(in library)", "In person(outside library)")
+                                "In person (in library)", "In person (outside library)")
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidReportType(i, RidReportType.get(5))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridReportType: RidReportType.get(5))
@@ -205,7 +205,7 @@ class MetridocRidBootStrap {
                         // for service provided -- WIC
                         List<String> sProvided = Arrays.asList("Course design", "Research assistance",
                                 "Instructional support (apart from course design)", "Tour",
-                                "Tech/Software instrcution", "Mobile technology", "Assistance to undergraduates")
+                                "Tech/Software instruction", "Mobile technology", "Assistance to undergraduates")
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidReportType(i, RidReportType.get(1))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridReportType: RidReportType.get(1))
@@ -215,11 +215,11 @@ class MetridocRidBootStrap {
                         }
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(1)).save()
                         // for service provided -- HSL
-                        sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
+                        sProvided = Arrays.asList("Research assistance", "Acquisitions/Collections",
                                 "Copyright assistance for author", "Copyright assistance for user",
                                 "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design, including courseware)",
-                                "Clinical decision making", "Tech/Software instrcution", "Search instruction",
+                                "Clinical decision making", "Tech/Software instruction", "Search instruction",
                                 "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
                                 "Consumer health", "Admin/policy questions", "Citation management instruction",
                                 "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
@@ -234,10 +234,10 @@ class MetridocRidBootStrap {
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(2)).save()
                         // for service provided -- CDM
                         sProvided = Arrays.asList("Course design", "Research assistance",
-                                "Acquisition/Collections", "Copyright assistance for author", "Copyright assistance for user",
+                                "Acquisitions/Collections", "Copyright assistance for author", "Copyright assistance for user",
                                 "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design)", "Clinic", "Tour",
-                                "Tech/Software instrcution", "Search instruction",
+                                "Tech/Software instruction", "Search instruction",
                                 "Literature search", "Mobile technology", "Bibliometrics or citation metrics",
                                 "Admin/policy questions", "Citation management instruction",
                                 "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
@@ -251,10 +251,10 @@ class MetridocRidBootStrap {
                         }
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(3)).save()
                         // for service provided -- LIPPINCOTT
-                        sProvided = Arrays.asList("Research assistance", "Acquisition/Collections",
+                        sProvided = Arrays.asList("Research assistance", "Acquisitions/Collections",
                                 "Correct an operational or service breakdown (incl. tech support)",
                                 "Instructional support (apart from course design)", "Tour",
-                                "Tech/Software instrcution", "Search instruction",
+                                "Tech/Software instruction", "Search instruction",
                                 "Literature search", "Bibliometrics or citation metrics",
                                 "Admin/policy questions", "Citation management instruction")
                         for (String i in sProvided) {
@@ -267,8 +267,8 @@ class MetridocRidBootStrap {
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridReportType: RidReportType.get(4)).save()
                         // for service provided -- RIS
                         sProvided = Arrays.asList("Research assistance", "Clinic", "Tour",
-                                "Acquisition/Collections", "Citation management instruction", "Instructional Support",
-                                "Tech/Software instrcution", "Mobile technology", "Correct an Operational or Service Breakdown",
+                                "Acquisitions/Collections", "Citation management instruction", "Instructional Support",
+                                "Tech/Software instruction", "Mobile technology", "Correct an Operational or Service Breakdown",
                                 "Admin/policy questions", "Bibliometrics or citation metrics", "Copyright",
                                 "Scholarly Commons/Repository Services")
                         for (String i in sProvided) {

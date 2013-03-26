@@ -186,6 +186,25 @@ class RidTransactionController {
 
     def spreadsheetUpload() {}
 
+    def download() {
+        def file = new File('web-app/spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
+
+        if (file.exists()) {
+            try {
+                response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                response.setHeader("Content-disposition", "filename=${file.name}")
+                response.outputStream << file.newInputStream() // Performing a binary stream copy
+            } catch (Exception e) {
+                flash.alerts << e.message
+                redirect(action: "spreadsheetUpload")
+            }
+        }
+        else {
+            flash.alerts << 'Cannot find file: spreadsheet_for_test - ' + params.ridReportType.name + '.xlsx'
+            redirect(action: "spreadsheetUpload")
+        }
+    }
+
     def upload() {
         withForm {
             MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
