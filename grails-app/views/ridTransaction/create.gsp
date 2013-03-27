@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidTransaction" %>
+<%@ page import="org.apache.shiro.SecurityUtils; metridoc.rid.RidTransaction" %>
 <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 
 <md:report>
@@ -10,9 +10,11 @@
         <div id="create-ridTransaction" class="content scaffold-create" role="main">
             <h1>
                 <g:message code="default.create.label" args="[entityName]"/>
-                <a data-toggle="modal" href="templateList" data-target="#myModal">
-                    <i title="Choose from template list" class="icon-list"></i>
-                </a>
+                <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
+                    <a data-toggle="modal" href="templateList" data-target="#myModal">
+                        <i title="Choose from template list" class="icon-list"></i>
+                    </a>
+                </g:if>
             </h1>
         %{--<g:if test="${flash.message}">--}%
         %{--<div class="message" role="status">${flash.message}</div>--}%
@@ -40,9 +42,11 @@
                     <input id="resetButton" class="btn btn-success" type="reset" value="Reset"/>
                     <g:actionSubmit action="save" name="create" class="btn btn-danger"
                                     value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-                    <g:actionSubmit action="remember" style="float: right" name="remember" class="btn btn-warning"
-                                    value="${message(code: 'default.button.remember.label', default: 'Remember as template')}"
-                                    onmouseover="removeRequired()" onmouseout="setRequired()"/>
+                    <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
+                        <g:actionSubmit action="remember" style="float: right" name="remember" class="btn btn-warning"
+                                        value="${message(code: 'default.button.remember.label', default: 'Remember as template')}"
+                                        onmouseover="removeRequired()" onmouseout="setRequired()"/>
+                    </g:if>
                 </fieldset>
             </g:form>
         </div>

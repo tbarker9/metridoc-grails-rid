@@ -4,6 +4,7 @@ import grails.converters.JSON
 import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
+import org.apache.shiro.SecurityUtils
 
 class RidTransactionController {
 
@@ -28,16 +29,21 @@ class RidTransactionController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def query = RidTransaction.where {
-            template == Boolean.FALSE
+            templateOwner == ""
         }
         [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count()]
     }
 
     def templateList() {
-        def query = RidTransaction.where {
-            template == Boolean.TRUE
+        if (SecurityUtils.getSubject().getPrincipal()) {
+            def query = RidTransaction.where {
+                templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
+            }
+            [ridTransactionInstanceList: query.list()]
         }
-        [ridTransactionInstanceList: query.list()]
+        else {
+            redirect(action: "create")
+        }
     }
 
     def create() {
@@ -45,7 +51,7 @@ class RidTransactionController {
             def ridTransactionInstance = new RidTransaction(params)
             if (params.tmp != null && RidTransaction.get(Long.valueOf(params.tmp))) {
                 ridTransactionInstance.properties = RidTransaction.get(Long.valueOf(params.tmp)).properties
-                ridTransactionInstance.template = Boolean.FALSE
+                ridTransactionInstance.templateOwner = ""
             }
             [ridTransactionInstance: ridTransactionInstance]
         } catch (NumberFormatException e) {
@@ -60,7 +66,7 @@ class RidTransactionController {
         withForm {
             params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
             def ridTransactionInstance = new RidTransaction(params)
-            ridTransactionInstance.template = Boolean.FALSE
+            ridTransactionInstance.templateOwner = ""
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(flush: true)) {
                 flash.alerts << ridTransactionInstance.errors
@@ -80,7 +86,7 @@ class RidTransactionController {
         withForm {
             params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
             def ridTransactionInstance = new RidTransaction(params)
-            ridTransactionInstance.template = Boolean.TRUE
+            ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(validate: false, flush: true)) {
                 render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
@@ -90,7 +96,8 @@ class RidTransactionController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction Template'), ridTransactionInstance.id])
             redirect(action: "show", id: ridTransactionInstance.id)
         }.invalidToken {
-            flash.alerts << "Don't click the remember button more than one time to make dulplicated submission!"
+            if (SecurityUtils.getSubject().getPrincipal())
+                flash.alerts << "Don't click the remember button more than one time to make dulplicated submission!"
             redirect(action: "list")
         }
     }

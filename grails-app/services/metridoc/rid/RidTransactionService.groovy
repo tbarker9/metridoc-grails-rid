@@ -6,7 +6,7 @@ class RidTransactionService {
 
     def queryMethod(Map params) {
         def query = RidTransaction.where {
-            template == Boolean.FALSE
+            templateOwner == ""
         }
 
         try {
