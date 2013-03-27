@@ -27,7 +27,7 @@ class SpreadsheetUploadingService {
                     itemNames.add(cell.getRichStringCellValue().getString())
                     break
                 default:
-                    System.out.println("CELL_TYPE_DEFAULT")
+                    println "CELL_TYPE_DEFAULT at " + new CellReference(rowNum, colNum).formatAsString()
                     return false
             }
         }
@@ -87,9 +87,12 @@ class SpreadsheetUploadingService {
                     case Cell.CELL_TYPE_FORMULA:
                         instance.add(cell.getCellFormula())
                         break
+                    case Cell.CELL_TYPE_BLANK:
+                        instance.add("")
+                        break
                     default:
                         flash.alerts << "Undefined Cell Type at " + new CellReference(rowNum, colNum).formatAsString()
-                        System.out.println("CELL_TYPE_DEFAULT")
+                        println "CELL_TYPE_DEFAULT at " + new CellReference(rowNum, colNum).formatAsString()
                 }
             }
 
@@ -149,9 +152,14 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Mode of Consultation Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
+                    if (!RidModeOfConsultation.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid Mode of Consultation at " + cellRef.formatAsString()
+                        return false
+                    }
                     if (!RidModeOfConsultation.findByNameAndRidReportType(
                             instance.get(i), RidReportType.findByName(instance.get(0)))) {
-                        flash.alerts << "Invalid Mode of Consultation at " + cellRef.formatAsString()
+                        flash.alerts << "Mode of Consultation at " + cellRef.formatAsString() +
+                                " does NOT match the Report Type" + instance.get(0)
                         return false
                     }
                     break
@@ -160,16 +168,26 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Service Provided Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
+                    if (!RidServiceProvided.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid Service Provided at " + cellRef.formatAsString()
+                        return false
+                    }
                     if (!RidServiceProvided.findByNameAndRidReportType(
                             instance.get(i), RidReportType.findByName(instance.get(0)))) {
-                        flash.alerts << "Invalid Service Provided at " + cellRef.formatAsString()
+                        flash.alerts << "Service Provided at " + cellRef.formatAsString() +
+                                " does NOT match the Report Type" + instance.get(0)
                         return false
                     }
                     break
                 case 5:
+                    if (!instance.get(i).empty && !RidUserGoal.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid User Goal at " + cellRef.formatAsString()
+                        return false
+                    }
                     if (!instance.get(i).empty && !RidUserGoal.findByNameAndRidReportType(
                             instance.get(i), RidReportType.findByName(instance.get(0)))) {
-                        flash.alerts << "Invalid User Goal at " + cellRef.formatAsString()
+                        flash.alerts << "User Goal at " + cellRef.formatAsString() +
+                                " does NOT match the Report Type" + instance.get(0)
                         return false
                     }
                     break

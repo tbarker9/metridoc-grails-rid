@@ -83,7 +83,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherModeOfConsultation', 'error')} ">
             <label for="otherModeOfConsultation">
                 <g:message code="ridTransaction.otherModeOfConsultation.label" default="Other Consult-Mode"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" name="otherModeOfConsultation" style="width:120px"
                          maxlength="100" value="${ridTransactionInstance?.otherModeOfConsultation}"/>
@@ -121,7 +120,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherService', 'error')} ">
             <label for="otherService">
                 <g:message code="ridTransaction.otherService.label" default="Other Service"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" name="otherService" style="width:120px"
                          maxlength="100" value="${ridTransactionInstance?.otherService}"/>
@@ -158,7 +156,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherUserGoal', 'error')} ">
             <label for="otherUserGoal">
                 <g:message code="ridTransaction.otherUserGoal.label" default="Other User Goal"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" name="otherUserGoal" style="width:120px"
                          maxlength="100" value="${ridTransactionInstance?.otherUserGoal}"/>
@@ -214,7 +211,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherUser', 'error')} ">
             <label for="otherUser">
                 <g:message code="ridTransaction.otherUser.label" default="Other User"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" name="otherUser" style="width:120px" maxlength="50"
                          value="${ridTransactionInstance?.otherUser}"/>
@@ -246,7 +242,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherUserAffiliation', 'error')} ">
             <label for="otherUserAffiliation">
                 <g:message code="ridTransaction.otherUserAffiliation.label" default="Other User Affiliation"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" style="width:120px" name="otherUserAffiliation" maxlength="50"
                          value="${ridTransactionInstance?.otherUserAffiliation}"/>
@@ -356,7 +351,6 @@
              class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherCourseSponsor', 'error')} ">
             <label for="otherCourseSponsor">
                 <g:message code="ridTransaction.otherCourseSponsor.label" default="Other Course Sponsor"/>
-                <span class="required-indicator">*</span>
             </label>
             <g:textField class="userInput" name="otherCourseSponsor" style="width: 120px" maxlength="50"
                          value="${ridTransactionInstance?.otherCourseSponsor}"/>
