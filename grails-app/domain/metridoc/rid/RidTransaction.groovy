@@ -14,6 +14,8 @@ class RidTransaction {
     static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherUserAffiliation',
             'otherCourseSponsor', 'otherService']
 
+    //Records the owner/creator of this template
+    //Leaves it blank if this is NOT a template
     String templateOwner = ""
     String spreadsheetName
 

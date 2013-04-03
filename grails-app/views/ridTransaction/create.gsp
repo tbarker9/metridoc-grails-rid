@@ -37,7 +37,7 @@
             <g:form controller="RidTransaction" useToken="true">
                 <fieldset class="form">
                     <g:render template="form" plugin="metridocRid"/>
-                </fieldset>
+                </fieldset>collectively                       c
                 <fieldset class="buttons">
                     <input id="resetButton" class="btn btn-success" type="reset" value="Reset"/>
                     <g:actionSubmit action="save" name="create" class="btn btn-danger"

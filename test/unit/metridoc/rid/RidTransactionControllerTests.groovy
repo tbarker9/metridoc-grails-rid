@@ -3,6 +3,9 @@ package metridoc.rid
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
+import org.apache.shiro.util.ThreadContext
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.SecurityUtils
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
@@ -17,11 +20,18 @@ class RidTransactionControllerTests {
         serviceMocker.demand.createNewInstanceMethod { params, ridTransactionInstance ->  }
         serviceMocker.demand.ajaxMethod {params -> return [book:"Great"] }
         controller.ridTransactionService = serviceMocker.createMock(); // inject it into the controller
+
+        // Mocks the SecurityUtils
+        def subject = [getPrincipal: {863},
+                isAuthenticated: {true}
+        ]as Subject
+        ThreadContext.put(ThreadContext.SECURITY_MANAGER_KEY,
+                [getSubject: {subject} as SecurityManager])
+        SecurityUtils.metaClass.static.getSubject = {subject}
     }
 
     void testAjaxReturn() {
         controller.ajaxChooseType()
-        assert '{"book":"Great"}' == response.text
         assert "Great" == response.json.book
     }
 
@@ -31,7 +41,7 @@ class RidTransactionControllerTests {
         assert model.ridTransactionInstance.dateOfConsultation != null
         assert model.ridTransactionInstance.staffPennkey == null
         assert model.ridTransactionInstance.ridReportType == null
-        assert model.ridTransactionInstance.template == Boolean.FALSE
+        assert model.ridTransactionInstance.templateOwner == ""
     }
 
     void testDuplicatedSubmission() {
