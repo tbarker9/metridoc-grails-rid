@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
 import org.apache.shiro.SecurityUtils
+import org.codehaus.groovy.grails.io.support.ClassPathResource
 
 class RidTransactionController {
 
@@ -29,7 +30,7 @@ class RidTransactionController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def query = RidTransaction.where {
-            templateOwner == ""
+            templateOwner == "" //|| templateOwner == null
         }
         [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count()]
     }
@@ -194,8 +195,9 @@ class RidTransactionController {
     def spreadsheetUpload() {}
 
     def download() {
-        def file = new File('web-app/spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
-
+//        def file = new File('web-app/spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
+        ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
+        def file = resource.getFile()
         if (file.exists()) {
             try {
                 response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
@@ -207,7 +209,7 @@ class RidTransactionController {
             }
         }
         else {
-            flash.alerts << 'Cannot find file: spreadsheet_for_test - ' + params.ridReportType.name + '.xlsx'
+            flash.alerts << 'Cannot find file: ' + params.ridReportType.name + '_Bulkload_Schematic.xlsx'
             redirect(action: "spreadsheetUpload")
         }
     }

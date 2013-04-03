@@ -297,7 +297,7 @@ class MetridocRidBootStrap {
                                     serviceProvided: RidServiceProvided.get(1),
                                     userAffiliation: RidUserAffiliation.get(1),
                                     ridReportType: RidReportType.get(1),
-                                    templateOwner: ""
+                                    templateOwner: "",
                             )
 
                             try {

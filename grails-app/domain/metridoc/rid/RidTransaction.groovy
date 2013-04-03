@@ -75,7 +75,7 @@ class RidTransaction {
         //modeOfConsultation(nullable: true)
         //userGoal(nullable: true)
         //ridReportType(nullable: true)
-        templateOwner(blank: true, nullable: true)
+        templateOwner(blank: true)
         spreadsheetName(nullable: true, blank: true)
     }
 
