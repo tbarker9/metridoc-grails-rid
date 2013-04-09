@@ -49,7 +49,7 @@ class RidTransactionControllerTests {
         // This only works if you do the test using "extends ControllerUnitTestCase"
         // controller.request.invalidToken = true
         controller.remember()
-        // for a direct calling, 302 should always be the status
+        // for a redirecting calling, 302 should always be the status
         assert controller.response.status == 302
         assert response.redirectedUrl == '/ridTransaction/list'
     }
