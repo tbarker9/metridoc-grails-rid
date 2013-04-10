@@ -13,27 +13,27 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridUser',
+                    linkController: 'ridRank',
                     linkAction: 'list',
-                    linkText: 'User',
+                    linkText: 'Rank',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridDepartmentalAffiliation',
+                    linkController: 'ridDepartment',
                     linkAction: 'list',
-                    linkText: 'Department Affiliation',
+                    linkText: 'Department',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
-                    linkController: 'ridUserAffiliation',
+                    linkController: 'ridSchool',
                     linkAction: 'list',
-                    linkText: 'User Affiliation',
+                    linkText: 'School',
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"

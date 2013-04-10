@@ -2,16 +2,16 @@ package metridoc.rid
 
 class RidTransaction {
 
-    static belongsTo = [departmentalAffilication: RidDepartmentalAffiliation,
+    static belongsTo = [department: RidDepartment,
             courseSponsor: RidCourseSponsor,
             userGoal: RidUserGoal,
             modeOfConsultation: RidModeOfConsultation,
-            user: RidUser,
+            rank: RidRank,
             serviceProvided: RidServiceProvided,
-            userAffiliation: RidUserAffiliation,
-            ridReportType: RidReportType]
+            school: RidSchool,
+            ridLibraryUnit: RidLibraryUnit]
 
-    static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherUserAffiliation',
+    static transients = ['otherUser', 'otherUserGoal', 'otherModeOfConsultation', 'otherSchool',
             'otherCourseSponsor', 'otherService']
 
     //Records the owner/creator of this template
@@ -21,21 +21,22 @@ class RidTransaction {
 
     // statement of work
     String userQuestion
-    Integer interactTimes = 0
+    Integer interactTimes = 1
     String followUpContact
-    Integer prepTime = 0
-    Integer eventLength = 0
+    Integer prepTime = 1
+    Integer eventLength = 1
     String notes
     String staffPennkey
 
     // roles
+    String userName
     String facultySponsor
     String courseName
     String courseNumber
-    String otherUser
+    String otherRank
     String otherUserGoal
     String otherModeOfConsultation
-    String otherUserAffiliation
+    String otherSchool
     String otherCourseSponsor
 
     // description
@@ -47,7 +48,7 @@ class RidTransaction {
 
     static constraints = {
         // STATEMENT OF WORK
-        userQuestion(blank: false, nullable: false, maxSize: 500)
+        userQuestion(blank: true, nullable: true, maxSize: 500)
         interactTimes(nullable: false, min: 0, max: 50)
         followUpContact(blank: true, nullable: true, maxSize: 50)
         prepTime(nullable: false, min: 0, max: 50)
@@ -59,12 +60,13 @@ class RidTransaction {
         courseName(blank: true, nullable: true, maxSize: 100)
         courseNumber(blank: true, nullable: true, maxSize: 100)
         userGoal(nullable: true)
-        otherUser(blank: true, nullable: true, maxSize: 50)
+        otherRank(blank: true, nullable: true, maxSize: 50)
         otherUserGoal(blank: true, nullable: true, maxSize: 50)
         otherModeOfConsultation(blank: true, nullable: true, maxSize: 50)
-        //userAffiliation(nullable: true)
-        otherUserAffiliation(blank: true, nullable: true, maxSize: 50)
-        //departmentalAffilication(nullable: true)
+        //school(nullable: true)
+        otherSchool(blank: true, nullable: true, maxSize: 50)
+        department(nullable: true)
+        userName(blank: true, nullable: true, maxSize: 50)
         //courseSponsor(nullable: true)
         otherCourseSponsor(blank: true, nullable: true, maxSize: 50)
         // DESCRIPTION
@@ -74,7 +76,7 @@ class RidTransaction {
         otherService(blank: true, nullable: true, maxSize: 100)
         //modeOfConsultation(nullable: true)
         //userGoal(nullable: true)
-        //ridReportType(nullable: true)
+        //ridLibraryUnit(nullable: true)
         templateOwner(blank: true)
         spreadsheetName(nullable: true, blank: true)
     }

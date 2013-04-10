@@ -25,16 +25,16 @@
     </div>
 </div>
 
-<div class="control-group fieldcontain ${hasErrors(bean: ridModeOfConsultationInstance, field: 'ridReportType', 'error')} required">
-    <label class="control-label" for="ridReportType">
-        <g:message code="ridModeOfConsultationInstance.ridReportType.label" default="Report Type"/>
+<div class="control-group fieldcontain ${hasErrors(bean: ridModeOfConsultationInstance, field: 'ridLibraryUnit', 'error')} required">
+    <label class="control-label" for="ridLibraryUnit">
+        <g:message code="ridModeOfConsultationInstance.ridLibraryUnit.label" default="Library Unit"/>
         <span class="required-indicator">*</span>
     </label>
 
     <div class="controls">
-        <g:select id="ridReportType" style="width:120px" name="ridReportType.id"
-                  from="${metridoc.rid.RidReportType.list()}"
-                  optionKey="id" required="" value="${ridModeOfConsultationInstance?.ridReportType?.id}"
+        <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.id"
+                  from="${metridoc.rid.RidLibraryUnit.list()}"
+                  optionKey="id" required="" value="${ridModeOfConsultationInstance?.ridLibraryUnit?.id}"
                   class="many-to-one"/>
     </div>
 </div>

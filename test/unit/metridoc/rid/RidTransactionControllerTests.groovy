@@ -37,10 +37,10 @@ class RidTransactionControllerTests {
 
     void testCreate() {
         def model = controller.create()
-        assert model.ridTransactionInstance.prepTime == 0
+        assert model.ridTransactionInstance.prepTime == 1
         assert model.ridTransactionInstance.dateOfConsultation != null
         assert model.ridTransactionInstance.staffPennkey == null
-        assert model.ridTransactionInstance.ridReportType == null
+        assert model.ridTransactionInstance.ridLibraryUnit == null
         assert model.ridTransactionInstance.templateOwner == ""
     }
 
@@ -89,14 +89,14 @@ class RidTransactionControllerTests {
         params.notes = 'testN'
         params.courseNumber = '123123'
 
-        params.departmentalAffilication = new RidDepartmentalAffiliation(name: "testDA")
+        params.department = new RidDepartment(name: "testDA")
         params.courseSponsor = RidCourseSponsor.get(2)
         params.userGoal = new RidUserGoal(name: "testUG")
         params.modeOfConsultation = new RidModeOfConsultation(name: "testMC")
-        params.user = new RidUser(name: "testU")
+        params.rank = new RidRank(name: "testU")
         params.serviceProvided = new RidServiceProvided(name: "testSP")
-        params.userAffiliation = new RidUserAffiliation(name: "testUA")
-        params.ridReportType = new RidReportType(name: "testRT")
+        params.school = new RidSchool(name: "testUA")
+        params.ridLibraryUnit = new RidLibraryUnit(name: "testRT")
 
         controller.save()
 

@@ -17,7 +17,8 @@
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
 
-                <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                   data-target="#myModal" data-toggle="modal">
                     <i title="Create Course Sponsor" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
@@ -50,7 +51,9 @@
                 <g:each in="${ridCourseSponsorInstanceList}" status="i" var="ridCourseSponsorInstance">
                     <tr>
                         <td>
-                            <a data-toggle="modal" href="edit/${ridCourseSponsorInstance.id}" data-target="#myModal">
+                            <a data-toggle="modal"
+                               href="edit/${ridCourseSponsorInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                               data-target="#myModal">
                                 ${fieldValue(bean: ridCourseSponsorInstance, field: "name")}
                             </a>
                         </td>

@@ -1,6 +1,7 @@
 package metridoc.rid
 
 import org.springframework.dao.DataIntegrityViolationException
+import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 class RidCourseSponsorController {
 
@@ -76,7 +77,7 @@ class RidCourseSponsorController {
                 if (ridCourseSponsorInstance.version > version) {
                     ridCourseSponsorInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                             [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')] as Object[],
-                            "Another user has updated this RidCourseSponsor while you were editing")
+                            "Another rank has updated this RidCourseSponsor while you were editing")
                     //render(view: "edit", model: [ridCourseSponsorInstance: ridCourseSponsorInstance])
                     chain(action: "list", model: [ridCourseSponsorError: ridCourseSponsorInstance])
                     return

@@ -1,6 +1,6 @@
 package metridoc.rid
 
-class RidReportType {
+class RidLibraryUnit {
 
     static hasMany = [userGoal: RidUserGoal,
             modeOfConsultation: RidModeOfConsultation,

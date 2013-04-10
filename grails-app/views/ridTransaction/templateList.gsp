@@ -11,13 +11,13 @@
         <thead>
         <tr>
 
-            <g:sortableColumn property="user" title="${message(code: 'ridTransaction.user.label', default: 'User')}"/>
+            <g:sortableColumn property="rank" title="${message(code: 'ridTransaction.rank.label', default: 'Rank')}"/>
 
-            <g:sortableColumn property="departmentalAffilication"
-                              title="${message(code: 'ridTransaction.departmentalAffilication.label', default: 'Department Affilication')}"/>
+            <g:sortableColumn property="department"
+                              title="${message(code: 'ridTransaction.department.label', default: 'Department Affilication')}"/>
 
-            <g:sortableColumn property="ridReportType"
-                              title="${message(code: 'ridTransaction.ridReportType.label', default: 'Report Type')}"/>
+            <g:sortableColumn property="ridLibraryUnit"
+                              title="${message(code: 'ridTransaction.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
         </tr>
         </thead>
@@ -27,12 +27,12 @@
                 onclick="window.location = 'create?tmp=${ridTransactionInstance.id}'"
                 style="cursor: pointer;">
                 <td>
-                    ${fieldValue(bean: ridTransactionInstance, field: "user")}
+                    ${fieldValue(bean: ridTransactionInstance, field: "rank")}
                 </td>
 
-                <td>${fieldValue(bean: ridTransactionInstance, field: "departmentalAffilication")}</td>
+                <td>${fieldValue(bean: ridTransactionInstance, field: "department")}</td>
 
-                <td>${fieldValue(bean: ridTransactionInstance, field: "ridReportType")}</td>
+                <td>${fieldValue(bean: ridTransactionInstance, field: "ridLibraryUnit")}</td>
 
             </tr>
         </g:each>

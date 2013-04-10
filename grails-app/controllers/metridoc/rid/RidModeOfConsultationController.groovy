@@ -59,7 +59,7 @@ class RidModeOfConsultationController {
                 if (ridModeOfConsultationInstance.version > version) {
                     ridModeOfConsultationInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                             [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation')] as Object[],
-                            "Another user has updated this RidModeOfConsultation while you were editing")
+                            "Another rank has updated this RidModeOfConsultation while you were editing")
                     chain(action: "list", model: [ridModeOfConsultationError: ridModeOfConsultationInstance])
                     return
                 }

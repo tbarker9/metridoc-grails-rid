@@ -1,7 +1,7 @@
-<%@ page import="metridoc.rid.RidUser" %>
-<g:set var="entityName" value="${message(code: 'ridUser.label', default: 'RidUser')}"/>
+<%@ page import="metridoc.rid.RidSchool" %>
+<g:set var="entityName" value="${message(code: 'ridSchool.label', default: 'RidSchool')}"/>
 
-<div id="create-ridUser" class="content scaffold-create" role="main">
+<div id="create-ridSchool" class="content scaffold-create" role="main">
     <h1><g:message code="default.create.label" args="[entityName]"/></h1>
 
     <g:form class="form-horizontal" action="save" useToken="true">

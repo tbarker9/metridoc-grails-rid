@@ -5,21 +5,21 @@ import grails.test.mixin.TestFor
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RidUser)
-class RidUserTests {
+@TestFor(RidRank)
+class RidRankTests {
 
     void testBootStrap() {
-        mockForConstraintsTests(RidUser)
+        mockForConstraintsTests(RidRank)
 
-        List<String> user = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
+        List<String> rank = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
                 "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Stuff",
                 "Other (please indicate)")
-        for (String i in user) {
-            def c = new RidUser(name: i)
+        for (String i in rank) {
+            def c = new RidRank(name: i)
             c.save()
             if (c.hasErrors()) println c.errors
         }
 
-        assert RidUser.list().size() > 0
+        assert RidRank.list().size() > 0
     }
 }

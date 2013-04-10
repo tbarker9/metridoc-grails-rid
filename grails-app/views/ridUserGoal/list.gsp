@@ -15,7 +15,8 @@
         <div id="list-ridUserGoal" class="content scaffold-list" role="main">
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-                <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                   data-target="#myModal" data-toggle="modal">
                     <i title="Create Product Connected" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
@@ -36,8 +37,8 @@
                     <g:sortableColumn property="inForm"
                                       title="${message(code: 'ridUserGoal.inForm.label', default: 'In Form')}"/>
 
-                    <g:sortableColumn property="ridReportType"
-                                      title="${message(code: 'ridUserGoal.ridReportType.label', default: 'Report Type')}"/>
+                    <g:sortableColumn property="ridLibraryUnit"
+                                      title="${message(code: 'ridUserGoal.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
                     <th>Number of RidTransaction</th>
                 </tr>
@@ -47,7 +48,8 @@
                     <tr>
 
                         <td>
-                            <a data-toggle="modal" href="edit/${ridUserGoalInstance.id}" data-target="#myModal">
+                            <a data-toggle="modal" href="edit/${ridUserGoalInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                               data-target="#myModal">
                                 ${fieldValue(bean: ridUserGoalInstance, field: "name")}
                             </a>
                         </td>
@@ -55,7 +57,7 @@
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
                         <td>${choices.get(ridUserGoalInstance?.inForm)}</td>
 
-                        <td>${fieldValue(bean: ridUserGoalInstance, field: "ridReportType")}</td>
+                        <td>${fieldValue(bean: ridUserGoalInstance, field: "ridLibraryUnit")}</td>
 
                         <td>${ridUserGoalInstance?.ridTransaction?.size()}</td>
                     </tr>

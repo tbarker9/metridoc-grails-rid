@@ -65,12 +65,13 @@ class RidTransactionController {
 
     def save() {
         withForm {
-            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            if (!params.dateOfConsultation.empty)
+                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
             def ridTransactionInstance = new RidTransaction(params)
             ridTransactionInstance.templateOwner = ""
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(flush: true)) {
-                flash.alerts << ridTransactionInstance.errors
+                //flash.alerts << ridTransactionInstance.errors
                 render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                 return
             }
@@ -85,7 +86,8 @@ class RidTransactionController {
 
     def remember() {
         withForm {
-            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            if (!params.dateOfConsultation.empty)
+                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation)
             def ridTransactionInstance = new RidTransaction(params)
             ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
@@ -116,13 +118,14 @@ class RidTransactionController {
                 if (ridTransactionInstance.version > version) {
                     ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                             [message(code: 'ridTransaction.label', default: 'RidTransaction')] as Object[],
-                            "Another user has updated this RidTransaction while you were editing")
+                            "Another rank has updated this RidTransaction while you were editing")
                     render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
             }
 
-            params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+            if (!params.dateOfConsultation.empty)
+                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
             ridTransactionInstance.properties = params
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(flush: true)) {
@@ -195,8 +198,8 @@ class RidTransactionController {
     def spreadsheetUpload() {}
 
     def download() {
-//        def file = new File('web-app/spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
-        ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridReportType.name + '_Bulkload_Schematic.xlsx')
+//        def file = new File('web-app/spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
+        ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
         def file = resource.getFile()
         if (file.exists()) {
             try {
@@ -209,7 +212,7 @@ class RidTransactionController {
             }
         }
         else {
-            flash.alerts << 'Cannot find file: ' + params.ridReportType.name + '_Bulkload_Schematic.xlsx'
+            flash.alerts << 'Cannot find file: ' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx'
             redirect(action: "spreadsheetUpload")
         }
     }
@@ -236,7 +239,7 @@ class RidTransactionController {
             }
 
             if (RidTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
-                flash.alerts << "This spreadsheet has been uploaded before. Choose a new spreadsheet with a different name!"
+                flash.alerts << "This spreadsheet has been uploaded before. Change the file name, for example!"
                 redirect(action: "spreadsheetUpload")
                 return
             }

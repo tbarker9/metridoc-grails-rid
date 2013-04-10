@@ -1,6 +1,6 @@
 package metridoc.rid
 
-class RidDepartmentalAffiliation {
+class RidDepartment {
 
     static hasMany = [ridTransaction: RidTransaction]
 

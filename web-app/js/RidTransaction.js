@@ -43,20 +43,20 @@ $(function() {
 });
 
 $(function() {
-    var choiceUser = $("#user option:selected").attr("inForm");
+    var choiceUser = $("#rank option:selected").attr("inForm");
     if (choiceUser == "2") {
-        $("#otherUserDiv").show();
-        $("#otherUser").val("");
+        $("#otherRankDiv").show();
+        $("#otherRank").val("");
     }
     var choiceService = $("#serviceProvided option:selected").attr("inForm");
     if (choiceService == "2") {
         $("#otherServiceDiv").show();
         $("#otherService").val("");
     }
-    var choiceUserAffiliation = $("#userAffiliation option:selected").attr("inForm");
-    if (choiceUserAffiliation == "2") {
-        $("#otherUserAffiliationDiv").show();
-        $("#otherUserAffiliation").val("");
+    var choiceSchool = $("#school option:selected").attr("inForm");
+    if (choiceSchool == "2") {
+        $("#otherSchoolDiv").show();
+        $("#otherSchool").val("");
     }
     var choiceCourseSponsor = $("#courseSponsor option:selected").attr("inForm");
     if (choiceCourseSponsor == "2") {
@@ -104,15 +104,15 @@ $(function() {
 });
 
 $(function() {
-    $("#user").change(function() {
-        var choice = $("#user option:selected").attr("inForm");
+    $("#rank").change(function() {
+        var choice = $("#rank option:selected").attr("inForm");
         //alert(choice)
         if (choice == "2") {
-            $("#otherUserDiv").show();
+            $("#otherRankDiv").show();
         }
         else {
-            $("#otherUserDiv").hide();
-            $("#otherUser").val("");
+            $("#otherRankDiv").hide();
+            $("#otherRank").val("");
         }
     })
 });
@@ -131,14 +131,14 @@ $(function() {
 });
 
 $(function() {
-    $("#userAffiliation").change(function() {
-        var choice = $("#userAffiliation option:selected").attr("inForm");
+    $("#school").change(function() {
+        var choice = $("#school option:selected").attr("inForm");
         if (choice == "2") {
-            $("#otherUserAffiliationDiv").show();
+            $("#otherSchoolDiv").show();
         }
         else {
-            $("#otherUserAffiliationDiv").hide();
-            $("#otherUserAffiliation").val("");
+            $("#otherSchoolDiv").hide();
+            $("#otherSchool").val("");
         }
     })
 });
@@ -158,12 +158,12 @@ $(function() {
 
 $(function() {
     $("#resetButton").click(function() {
-        $("#otherUserDiv").hide();
-        $("#otherUser").val("");
+        $("#otherRankDiv").hide();
+        $("#otherRank").val("");
         $("#otherServiceDiv").hide();
         $("#otherService").val("");
-        $("#otherUserAffiliationDiv").hide();
-        $("#otherUserAffiliation").val("");
+        $("#otherSchoolDiv").hide();
+        $("#otherSchool").val("");
         $("#otherCourseSponsorDiv").hide();
         $("#otherCourseSponsor").val("");
         $("#otherUserGoalDiv").hide();
@@ -172,8 +172,8 @@ $(function() {
 });
 
 $(function() {
-    $("#ridReportType").change(function() {
-        var choiceType = $("#ridReportType").val();
+    $("#ridLibraryUnit").change(function() {
+        var choiceType = $("#ridLibraryUnit").val();
         var choiceMode = $("#currentModeOfConsultation").text();
         var choiceService = $("#currentServiceProvided").text();
         var choiceGoal = $("#currentUserGoal").text();
@@ -237,33 +237,31 @@ $(function() {
 });
 
 function removeRequired() {
-    $("#ridReportType").removeAttr("required");
+    $("#ridLibraryUnit").removeAttr("required");
     $("#dateOfConsultation").removeAttr("required");
     $("#staffPennkey").removeAttr("required");
     $("#modeOfConsultation").removeAttr("required");
     $("#serviceProvided").removeAttr("required");
     $("#prepTime").removeAttr("required");
     $("#eventLength").removeAttr("required");
-    $("#user").removeAttr("required");
-    $("#userAffiliation").removeAttr("required");
+    $("#rank").removeAttr("required");
+    $("#school").removeAttr("required");
     $("#interactTimes").removeAttr("required");
-    $("#departmentalAffilication").removeAttr("required");
     $("#courseSponsor").removeAttr("required");
-    $("#userQuestion").removeAttr("required");
+    $("#dp1").removeAttr("required");
 }
 
 function setRequired() {
-    $("#ridReportType").attr("required", "");
+    $("#ridLibraryUnit").attr("required", "");
     $("#dateOfConsultation").attr("required", "");
     $("#staffPennkey").attr("required", "");
     $("#modeOfConsultation").attr("required", "");
     $("#serviceProvided").attr("required", "");
     $("#prepTime").attr("required", "");
     $("#eventLength").attr("required", "");
-    $("#user").attr("required", "");
-    $("#userAffiliation").attr("required", "");
+    $("#rank").attr("required", "");
+    $("#school").attr("required", "");
     $("#interactTimes").attr("required", "");
-    $("#departmentalAffilication").attr("required", "");
     $("#courseSponsor").attr("required", "");
-    $("#userQuestion").attr("required", "");
+    $("#dp1").attr("required", "");
 }

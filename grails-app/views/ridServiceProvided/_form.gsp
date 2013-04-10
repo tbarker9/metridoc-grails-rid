@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidServiceProvided" %>
+<%@ page import="metridoc.rid.RidLibraryUnit; metridoc.rid.RidServiceProvided" %>
 
 <div class="control-group fieldcontain required">
     <label class="control-label" for="name">
@@ -26,16 +26,16 @@
 </div>
 
 
-<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridReportType', 'error')} required">
-    <label class="control-label" for="ridReportType">
-        <g:message code="ridServiceProvided.ridReportType.label" default="Report Type"/>
+<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridLibraryUnit', 'error')} required">
+    <label class="control-label" for="ridLibraryUnit">
+        <g:message code="ridServiceProvided.ridLibraryUnit.label" default="Library Unit"/>
         <span class="required-indicator">*</span>
     </label>
 
     <div class="controls">
-        <g:select id="ridReportType" style="width:120px" name="ridReportType.id"
-                  from="${metridoc.rid.RidReportType.list()}"
-                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridReportType?.id}"
+        <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.id"
+                  from="${RidLibraryUnit.list()}"
+                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridLibraryUnit?.id}"
                   class="many-to-one"/>
     </div>
 </div>

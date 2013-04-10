@@ -23,13 +23,13 @@ class RidTransactionService {
 //            }
         }
 
-        def TypeList = params.list('ridReportTypeSearch')
-        if (TypeList.size() > 0 && !TypeList.contains("0")) {
-            List<Long> tList = new LinkedList<Long>()
-            for (String id in TypeList)
-                tList.add(Long.valueOf(id))
+        def UnitList = params.list('ridLibraryUnitSearch')
+        if (UnitList.size() > 0 && !UnitList.contains("0")) {
+            List<Long> uList = new LinkedList<Long>()
+            for (String id in UnitList)
+                uList.add(Long.valueOf(id))
             query = query.where {
-                ridReportType in RidReportType.findAllByIdInList(tList)
+                ridLibraryUnit in RidLibraryUnit.findAllByIdInList(uList)
             }
         }
 
@@ -39,6 +39,16 @@ class RidTransactionService {
                 query = query.where {
                     staffPennkey ==~ ~s.trim()
                 }
+            }
+        }
+
+        def SchoolList = params.list('ridSchoolSearch')
+        if (SchoolList.size() > 0 && !SchoolList.contains("0")) {
+            List<Long> sList = new LinkedList<Long>()
+            for (String id in SchoolList)
+                sList.add(Long.valueOf(id))
+            query = query.where {
+                school in RidSchool.findAllByIdInList(sList)
             }
         }
 
@@ -66,54 +76,54 @@ class RidTransactionService {
     }
 
     def ajaxMethod(Map params) {
-        def userGoals = RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        def consultations = RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        def services = RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 1)
-        userGoals.addAll(RidUserGoal.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
-        consultations.addAll(RidModeOfConsultation.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
-        services.addAll(RidServiceProvided.findAllByRidReportTypeAndInForm(RidReportType.get(params.typeId), 2))
+        def userGoals = RidUserGoal.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 1)
+        def consultations = RidModeOfConsultation.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 1)
+        def services = RidServiceProvided.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 1)
         if (!params.goalID.isEmpty()) {
-            def goal = RidUserGoal.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.goalID)
+            def goal = RidUserGoal.findByRidLibraryUnitAndId(RidLibraryUnit.get(params.typeId), params.goalID)
             if (goal != null && !userGoals.contains(goal))
                 userGoals.add(0, goal)
         }
         if (!params.modeID.isEmpty()) {
-            def mode = RidModeOfConsultation.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.modeID)
+            def mode = RidModeOfConsultation.findByRidLibraryUnitAndId(RidLibraryUnit.get(params.typeId), params.modeID)
             if (mode != null && !consultations.contains(mode))
                 consultations.add(0, mode)
         }
         if (!params.serviceID.isEmpty()) {
-            def service = RidServiceProvided.findByRidReportTypeAndId(RidReportType.get(params.typeId), params.serviceID)
+            def service = RidServiceProvided.findByRidLibraryUnitAndId(RidLibraryUnit.get(params.typeId), params.serviceID)
             if (service != null && !userGoals.contains(service))
                 services.add(0, service)
         }
+        userGoals.sort{it.name}.addAll(RidUserGoal.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 2))
+        consultations.sort{it.name}.addAll(RidModeOfConsultation.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 2))
+        services.sort{it.name}.addAll(RidServiceProvided.findAllByRidLibraryUnitAndInForm(RidLibraryUnit.get(params.typeId), 2))
         return ['userGoal': userGoals,
                 'modeOfConsultation': consultations,
                 'serviceProvided': services]
     }
 
     def createNewInstanceMethod(Map params, RidTransaction ridTransactionInstance) {
-        String otherUser = params.otherUser
-        //println(otherUser)
-        if (otherUser != null && !otherUser.isEmpty()) {
-            if (RidUser.findAllByName(otherUser).size() == 0) {
-                def c = new RidUser(name: otherUser, inForm: 0)
+        String otherRank = params.otherRank
+        //println(otherRank)
+        if (otherRank != null && !otherRank.isEmpty()) {
+            if (RidRank.findAllByName(otherRank).size() == 0) {
+                def c = new RidRank(name: otherRank, inForm: 0)
                 c.save()
                 if (c.hasErrors()) println c.errors
             }
-            if (RidUser.findAllByName(otherUser).size() > 0)
-                ridTransactionInstance.user = RidUser.findByName(otherUser)
+            if (RidRank.findAllByName(otherRank).size() > 0)
+                ridTransactionInstance.rank = RidRank.findByName(otherRank)
         }
 
-        String otherUserAffiliation = params.otherUserAffiliation
-        if (otherUserAffiliation != null && !otherUserAffiliation.isEmpty()) {
-            if (RidUserAffiliation.findAllByName(otherUserAffiliation).size() == 0) {
-                def e = new RidUserAffiliation(name: otherUserAffiliation, inForm: 0)
+        String otherSchool = params.otherSchool
+        if (otherSchool != null && !otherSchool.isEmpty()) {
+            if (RidSchool.findAllByName(otherSchool).size() == 0) {
+                def e = new RidSchool(name: otherSchool, inForm: 0)
                 e.save()
                 if (e.hasErrors()) println e.errors
             }
-            if (RidUserAffiliation.findAllByName(otherUserAffiliation).size() > 0)
-                ridTransactionInstance.userAffiliation = RidUserAffiliation.findByName(otherUserAffiliation)
+            if (RidSchool.findAllByName(otherSchool).size() > 0)
+                ridTransactionInstance.school = RidSchool.findByName(otherSchool)
         }
 
         String otherCourseSponsor = params.otherCourseSponsor
@@ -129,47 +139,47 @@ class RidTransactionService {
 
         String otherModeOfConsultation = params.otherModeOfConsultation
         if (otherModeOfConsultation != null && !otherModeOfConsultation.isEmpty()) {
-            if (RidModeOfConsultation.findAllByNameAndRidReportType(otherModeOfConsultation,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+            if (RidModeOfConsultation.findAllByNameAndRidLibraryUnit(otherModeOfConsultation,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() == 0) {
                 def s = new RidModeOfConsultation(name: otherModeOfConsultation, inForm: 0,
-                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
+                        ridLibraryUnit: RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
                 s.save()
                 if (s.hasErrors()) println s.errors
             }
-            if (RidModeOfConsultation.findAllByNameAndRidReportType(otherModeOfConsultation,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
-                ridTransactionInstance.modeOfConsultation = RidModeOfConsultation.findByNameAndRidReportType(
-                        otherModeOfConsultation, RidReportType.get(Long.valueOf(params.ridReportType.id)))
+            if (RidModeOfConsultation.findAllByNameAndRidLibraryUnit(otherModeOfConsultation,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() > 0)
+                ridTransactionInstance.modeOfConsultation = RidModeOfConsultation.findByNameAndRidLibraryUnit(
+                        otherModeOfConsultation, RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
         }
 
         String otherService = params.otherService
         if (otherService != null && !otherService.isEmpty()) {
-            if (RidServiceProvided.findAllByNameAndRidReportType(otherService,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+            if (RidServiceProvided.findAllByNameAndRidLibraryUnit(otherService,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() == 0) {
                 def s = new RidServiceProvided(name: otherService, inForm: 0,
-                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
+                        ridLibraryUnit: RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
                 s.save()
                 if (s.hasErrors()) println s.errors
             }
-            if (RidServiceProvided.findAllByNameAndRidReportType(otherService,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
-                ridTransactionInstance.serviceProvided = RidServiceProvided.findByNameAndRidReportType(otherService,
-                        RidReportType.get(Long.valueOf(params.ridReportType.id)))
+            if (RidServiceProvided.findAllByNameAndRidLibraryUnit(otherService,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() > 0)
+                ridTransactionInstance.serviceProvided = RidServiceProvided.findByNameAndRidLibraryUnit(otherService,
+                        RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
         }
 
         String otherUserGoal = params.otherUserGoal
         if (otherUserGoal != null && !otherUserGoal.isEmpty()) {
-            if (RidUserGoal.findAllByNameAndRidReportType(otherUserGoal,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() == 0) {
+            if (RidUserGoal.findAllByNameAndRidLibraryUnit(otherUserGoal,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() == 0) {
                 def s = new RidUserGoal(name: otherUserGoal, inForm: 0,
-                        ridReportType: RidReportType.get(Long.valueOf(params.ridReportType.id)))
+                        ridLibraryUnit: RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
                 s.save()
                 if (s.hasErrors()) println s.errors
             }
-            if (RidUserGoal.findAllByNameAndRidReportType(otherUserGoal,
-                    RidReportType.get(Long.valueOf(params.ridReportType.id))).size() > 0)
-                ridTransactionInstance.userGoal = RidUserGoal.findByNameAndRidReportType(otherUserGoal,
-                        RidReportType.get(Long.valueOf(params.ridReportType.id)))
+            if (RidUserGoal.findAllByNameAndRidLibraryUnit(otherUserGoal,
+                    RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id))).size() > 0)
+                ridTransactionInstance.userGoal = RidUserGoal.findByNameAndRidLibraryUnit(otherUserGoal,
+                        RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
         }
     }
 }

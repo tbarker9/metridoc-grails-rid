@@ -59,7 +59,7 @@ class RidServiceProvidedController {
                 if (ridServiceProvidedInstance.version > version) {
                     ridServiceProvidedInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                             [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')] as Object[],
-                            "Another user has updated this RidServiceProvided while you were editing")
+                            "Another rank has updated this RidServiceProvided while you were editing")
                     chain(action: "list", model: [ridServiceProvidedError: ridServiceProvidedInstance])
                     return
                 }

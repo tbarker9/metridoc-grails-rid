@@ -12,9 +12,9 @@
             <g:form style="padding-top: 15px; padding-bottom: 35px">
                 <div class="control-group" >
                     <div class="controls" style="margin-left: 30px; float: left;">
-                        <label for="ridReportType" style="color: #48802c">Choose One Report Type</label>
-                        <g:select id="ridReportType" style="width:120px" name="ridReportType.name"
-                                  from="${metridoc.rid.RidReportType.list()}" optionKey="name" required=""/>
+                        <label for="ridLibraryUnit" style="color: #48802c">Choose Library Unit</label>
+                        <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.name"
+                                  from="${metridoc.rid.RidLibraryUnit.list()}" optionKey="name" required=""/>
                     </div>
 
                     <div class="controls" style="margin-right: 30px;float: right;">

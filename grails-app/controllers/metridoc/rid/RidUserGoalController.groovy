@@ -59,7 +59,7 @@ class RidUserGoalController {
                 if (ridUserGoalInstance.version > version) {
                     ridUserGoalInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                             [message(code: 'ridUserGoal.label', default: 'RidUserGoal')] as Object[],
-                            "Another user has updated this RidUserGoal while you were editing")
+                            "Another rank has updated this RidUserGoal while you were editing")
                     chain(action: "list", model: [ridUserGoalError: ridUserGoalInstance])
                     return
                 }

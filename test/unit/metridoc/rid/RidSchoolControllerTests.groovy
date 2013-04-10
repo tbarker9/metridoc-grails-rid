@@ -1,52 +1,48 @@
 package metridoc.rid
 
-import static org.junit.Assert.*
-
 import grails.test.mixin.*
-import grails.test.mixin.support.*
-import org.junit.*
+
 import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
-@TestFor(RidUserController)
-@Mock(RidUser)
-class RidUserControllerTests {
+@TestFor(RidSchoolController)
+@Mock(RidSchool)
+class RidSchoolControllerTests {
 
     void testInvalidSave() {
         def token = SynchronizerTokensHolder.store(session)
-        controller.params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken("/ridUser/list")
-        controller.params[SynchronizerTokensHolder.TOKEN_URI] = "/ridUser/list"
+        controller.params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken("/ridSchool/list")
+        controller.params[SynchronizerTokensHolder.TOKEN_URI] = "/ridSchool/list"
 
         controller.params.inForm = 1
         controller.save()
 
-        assert response.redirectedUrl == '/ridUser/list'
+        assert response.redirectedUrl == '/ridSchool/list'
         assert flash.message == null
-        assert RidUser.count() == 0
+        assert RidSchool.count() == 0
     }
 
     void testValidSave() {
         def token = SynchronizerTokensHolder.store(session)
-        controller.params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken("/ridUser/list")
-        controller.params[SynchronizerTokensHolder.TOKEN_URI] = "/ridUser/list"
+        controller.params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken("/ridSchool/list")
+        controller.params[SynchronizerTokensHolder.TOKEN_URI] = "/ridSchool/list"
 
         controller.flash.alerts = []
         controller.params.name = "test"
         controller.params.inForm = 1
         controller.save()
 
-        assert response.redirectedUrl == '/ridUser/list'
+        assert response.redirectedUrl == '/ridSchool/list'
         assert flash.message != null
         assert flash.alerts.size() == 0
-        assert RidUser.count() == 1
+        assert RidSchool.count() == 1
 
         // Cannot submit repeatedly
         response.reset()
         controller.save()
-        assert response.redirectedUrl == '/ridUser/list'
+        assert response.redirectedUrl == '/ridSchool/list'
         assert flash.alerts.get(0) == "Don't click the create button more than one time to make dulplicated submission!"
     }
 }
-

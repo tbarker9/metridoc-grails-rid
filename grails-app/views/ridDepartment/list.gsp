@@ -1,6 +1,6 @@
-<%@ page import="metridoc.rid.RidDepartmentalAffiliation" %>
+<%@ page import="metridoc.rid.RidDepartment" %>
 <g:set var="entityName"
-       value="${message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation')}"/>
+       value="${message(code: 'ridDepartment.label', default: 'RidDepartment')}"/>
 
 <md:report>
     <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
@@ -13,17 +13,17 @@
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName]"/>
 
-        <div id="list-ridDepartmentalAffiliation" class="content scaffold-list" role="main">
+        <div id="list-ridDepartment" class="content scaffold-list" role="main">
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-                <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}" data-target="#myModal" data-toggle="modal">
                     <i title="Create Departmental Affiliation" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
 
-            <g:hasErrors bean="${ridDepartmentalAffiliationError}">
+            <g:hasErrors bean="${ridDepartmentError}">
                 <div class="errors">
-                    <g:renderErrors bean="${ridDepartmentalAffiliationError}" as="list"/>
+                    <g:renderErrors bean="${ridDepartmentError}" as="list"/>
                 </div>
             </g:hasErrors>
 
@@ -32,30 +32,30 @@
                 <tr>
 
                     <g:sortableColumn property="name"
-                                      title="${message(code: 'ridDepartmentalAffiliation.name.label', default: 'Name')}"/>
+                                      title="${message(code: 'ridDepartment.name.label', default: 'Name')}"/>
                     <th>Number of RidTransaction</th>
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${ridDepartmentalAffiliationInstanceList}" status="i"
-                        var="ridDepartmentalAffiliationInstance">
+                <g:each in="${ridDepartmentInstanceList}" status="i"
+                        var="ridDepartmentInstance">
                     <tr>
 
                         <td>
-                            <a data-toggle="modal" href="edit/${ridDepartmentalAffiliationInstance.id}"
+                            <a data-toggle="modal" href="edit/${ridDepartmentInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
-                                ${fieldValue(bean: ridDepartmentalAffiliationInstance, field: "name")}
+                                ${fieldValue(bean: ridDepartmentInstance, field: "name")}
                             </a>
                         </td>
 
-                        <td>${ridDepartmentalAffiliationInstance?.ridTransaction?.size()}</td>
+                        <td>${ridDepartmentInstance?.ridTransaction?.size()}</td>
                     </tr>
                 </g:each>
                 </tbody>
             </table>
-            <g:if test="${ridDepartmentalAffiliationInstanceTotal > 10}">
+            <g:if test="${ridDepartmentInstanceTotal > 10}">
                 <div class="pagination">
-                    <g:paginate total="${ridDepartmentalAffiliationInstanceTotal}"/>
+                    <g:paginate total="${ridDepartmentInstanceTotal}"/>
                 </div>
             </g:if>
         </div>

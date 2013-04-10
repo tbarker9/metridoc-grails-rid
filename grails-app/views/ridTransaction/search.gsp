@@ -36,14 +36,14 @@
                     </div>
 
                     <div class="control-group fieldcontain">
-                        <label class="control-label" for="ridReportType">
-                            <g:message code="ridTransaction.ridReportType.label" default="Report Type"/>
+                        <label class="control-label" for="ridLibraryUnit">
+                            <g:message code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/>
                         </label>
 
                         <div class="controls">
-                            <g:select id="ridReportTypeSearch" style="width:150px" name="ridReportTypeSearch"
-                                      noSelection="${['0': 'All Types']}" optionKey="id" multiple="true" value="0"
-                                      from="${metridoc.rid.RidReportType.list()}"/>
+                            <g:select id="ridLibraryUnitSearch" style="width:150px" name="ridLibraryUnitSearch"
+                                      noSelection="${['0': 'All Units']}" optionKey="id" multiple="true" value="0"
+                                      from="${metridoc.rid.RidLibraryUnit.list()}"/>
                         </div>
                     </div>
 
@@ -55,6 +55,18 @@
                         <div class="controls">
                             <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
                                          maxlength="100" value=""/>
+                        </div>
+                    </div>
+
+                    <div class="control-group fieldcontain">
+                        <label class="control-label" for="ridSchool">
+                            <g:message code="ridTransaction.ridSchool.label" default="School"/>
+                        </label>
+
+                        <div class="controls">
+                            <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
+                                      noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
+                                      from="${metridoc.rid.RidSchool.where {inForm==1}.list()}"/>
                         </div>
                     </div>
 

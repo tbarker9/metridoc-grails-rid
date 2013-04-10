@@ -24,15 +24,15 @@
     </div>
 </div>
 
-<div class="control-group fieldcontain ${hasErrors(bean: ridUserGoalInstance, field: 'ridReportType', 'error')} required">
-    <label class="control-label" for="ridReportType">
-        <g:message code="ridUserGoalInstance.ridReportType.label" default="Report Type"/>
+<div class="control-group fieldcontain ${hasErrors(bean: ridUserGoalInstance, field: 'ridLibraryUnit', 'error')} required">
+    <label class="control-label" for="ridLibraryUnit">
+        <g:message code="ridUserGoalInstance.ridLibraryUnit.label" default="Library Unit"/>
         <span class="required-indicator">*</span>
     </label>
 
     <div class="controls">
-        <g:select id="ridReportType" style="width:120px" name="ridReportType.id"
-                  from="${metridoc.rid.RidReportType.list()}"
-                  optionKey="id" required="" value="${ridUserGoalInstance?.ridReportType?.id}" class="many-to-one"/>
+        <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.id"
+                  from="${metridoc.rid.RidLibraryUnit.list()}"
+                  optionKey="id" required="" value="${ridUserGoalInstance?.ridLibraryUnit?.id}" class="many-to-one"/>
     </div>
 </div>

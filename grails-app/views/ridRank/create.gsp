@@ -1,7 +1,7 @@
-<%@ page import="metridoc.rid.RidUserAffiliation" %>
-<g:set var="entityName" value="${message(code: 'ridUserAffiliation.label', default: 'RidUserAffiliation')}"/>
+<%@ page import="metridoc.rid.RidRank" %>
+<g:set var="entityName" value="${message(code: 'ridRank.label', default: 'RidRank')}"/>
 
-<div id="create-ridUserAffiliation" class="content scaffold-create" role="main">
+<div id="create-ridRank" class="content scaffold-create" role="main">
     <h1><g:message code="default.create.label" args="[entityName]"/></h1>
 
     <g:form class="form-horizontal" action="save" useToken="true">

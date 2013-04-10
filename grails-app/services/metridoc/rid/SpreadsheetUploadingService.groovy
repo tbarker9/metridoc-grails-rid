@@ -16,7 +16,7 @@ class SpreadsheetUploadingService {
         int colNum = 1
 
         List<String> itemNames = new ArrayList<String>()
-        for (int rowNum = 5; rowNum < 40; rowNum += 2) {
+        for (int rowNum = 5; rowNum < 42; rowNum += 2) {
             Row row = sheet.getRow(rowNum)
             if (!row) return false
             Cell cell = row.getCell(colNum)
@@ -32,10 +32,10 @@ class SpreadsheetUploadingService {
             }
         }
 
-        List<String> validNames = Arrays.asList('Report Type', 'Date of Consultation (mm/dd/yyyy)', 'Staff Pennkey',
+        List<String> validNames = Arrays.asList('Library Unit', 'Date of Consultation (mm/dd/yyyy)', 'Staff Pennkey',
                 'Consultation Mode', 'Service Provided', 'User Goal', 'Prep Time (enter in minutes)',
-                'Event Length (enter in minutes)', 'User Rank', 'User Affiliation', 'Interact Times', 'Course Name',
-                'Department Affiliation', 'Course Number', 'Faculty Sponsor', 'Course Sponsor', 'User Question',
+                'Event Length (enter in minutes)', 'User Name', 'Rank', 'School', 'Interact Times', 'Course Name',
+                'Department', 'Course Number', 'Faculty Sponsor', 'Course Sponsor', 'User Question',
                 'Notes'
         )
 
@@ -55,7 +55,7 @@ class SpreadsheetUploadingService {
 
         while (iterNext && ++colNum) {
             List<String> instance = new ArrayList<String>()
-            for (int rowNum = 5; rowNum < 40; rowNum += 2) {
+            for (int rowNum = 5; rowNum < 42; rowNum += 2) {
                 Row row = sheet.getRow(rowNum)
                 if (!row) {
                     iterNext = Boolean.FALSE
@@ -117,11 +117,11 @@ class SpreadsheetUploadingService {
             switch (i) {
                 case 0:
                     if (instance.get(i).empty) {
-                        flash.alerts << "Report Type Cannot be Empty at " + cellRef.formatAsString()
+                        flash.alerts << "Library Unit Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidReportType.findByName(instance.get(i))) {
-                        flash.alerts << "Invalid Report Type at " + cellRef.formatAsString()
+                    if (!RidLibraryUnit.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid Library at " + cellRef.formatAsString()
                         return false
                     }
                     break
@@ -156,8 +156,8 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Invalid Mode of Consultation at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidModeOfConsultation.findByNameAndRidReportType(
-                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
+                    if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(
+                            instance.get(i), RidLibraryUnit.findByName(instance.get(0)))) {
                         flash.alerts << "Mode of Consultation at " + cellRef.formatAsString() +
                                 " does NOT match the Report Type" + instance.get(0)
                         return false
@@ -172,8 +172,8 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Invalid Service Provided at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidServiceProvided.findByNameAndRidReportType(
-                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
+                    if (!RidServiceProvided.findByNameAndRidLibraryUnit(
+                            instance.get(i), RidLibraryUnit.findByName(instance.get(0)))) {
                         flash.alerts << "Service Provided at " + cellRef.formatAsString() +
                                 " does NOT match the Report Type" + instance.get(0)
                         return false
@@ -184,8 +184,8 @@ class SpreadsheetUploadingService {
                         flash.alerts << "Invalid User Goal at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!instance.get(i).empty && !RidUserGoal.findByNameAndRidReportType(
-                            instance.get(i), RidReportType.findByName(instance.get(0)))) {
+                    if (!instance.get(i).empty && !RidUserGoal.findByNameAndRidLibraryUnit(
+                            instance.get(i), RidLibraryUnit.findByName(instance.get(0)))) {
                         flash.alerts << "User Goal at " + cellRef.formatAsString() +
                                 " does NOT match the Report Type" + instance.get(0)
                         return false
@@ -230,26 +230,32 @@ class SpreadsheetUploadingService {
                     }
                     break
                 case 8:
-                    if (instance.get(i).empty) {
-                        flash.alerts << "User Cannot be Empty at " + cellRef.formatAsString()
-                        return false
-                    }
-                    if (!RidUser.findByName(instance.get(i))) {
-                        flash.alerts << "Invalid User at " + cellRef.formatAsString()
+                    if (instance.get(i).length() > 50) {
+                        flash.alerts << "User Name Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
                 case 9:
                     if (instance.get(i).empty) {
-                        flash.alerts << "User Affiliation Cannot be Empty at " + cellRef.formatAsString()
+                        flash.alerts << "Rank Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
-                    if (!RidUserAffiliation.findByName(instance.get(i))) {
-                        flash.alerts << "Invalid User Affiliation at " + cellRef.formatAsString()
+                    if (!RidRank.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid Rank at " + cellRef.formatAsString()
                         return false
                     }
                     break
                 case 10:
+                    if (instance.get(i).empty) {
+                        flash.alerts << "School Cannot be Empty at " + cellRef.formatAsString()
+                        return false
+                    }
+                    if (!RidSchool.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid School at " + cellRef.formatAsString()
+                        return false
+                    }
+                    break
+                case 11:
                     if (instance.get(i).empty) {
                         flash.alerts << "Interact Times Cannot be Empty at " + cellRef.formatAsString()
                         return false
@@ -268,35 +274,31 @@ class SpreadsheetUploadingService {
                         return false
                     }
                     break
-                case 11:
+                case 12:
                     if (instance.get(i).length() > 100) {
                         flash.alerts << "Course Name Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
-                case 12:
-                    if (instance.get(i).empty) {
-                        flash.alerts << "Departmental Affiliation Cannot be Empty at " + cellRef.formatAsString()
-                        return false
-                    }
-                    if (!RidDepartmentalAffiliation.findByName(instance.get(i))) {
-                        flash.alerts << "Invalid Departmental Affiliation at " + cellRef.formatAsString()
-                        return false
-                    }
-                    break
                 case 13:
-                    if (instance.get(i).length() > 100) {
-                        flash.alerts << "Course Number Too Long at " + cellRef.formatAsString()
+                    if (!instance.get(i).empty && !RidDepartment.findByName(instance.get(i))) {
+                        flash.alerts << "Invalid Department at " + cellRef.formatAsString()
                         return false
                     }
                     break
                 case 14:
                     if (instance.get(i).length() > 100) {
-                        flash.alerts << "Faculty Sponsor Too Long at " + cellRef.formatAsString()
+                        flash.alerts << "Course Number Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
                 case 15:
+                    if (instance.get(i).length() > 100) {
+                        flash.alerts << "Faculty Sponsor Too Long at " + cellRef.formatAsString()
+                        return false
+                    }
+                    break
+                case 16:
                     if (instance.get(i).empty) {
                         flash.alerts << "Course Sponsor Cannot be Empty at " + cellRef.formatAsString()
                         return false
@@ -306,17 +308,13 @@ class SpreadsheetUploadingService {
                         return false
                     }
                     break
-                case 16:
-                    if (instance.get(i).empty) {
-                        flash.alerts << "User Question Cannot be Empty at " + cellRef.formatAsString()
-                        return false
-                    }
-                    if (instance.get(i).length() > 500) {
+                case 17:
+                    if (!instance.get(i).empty && instance.get(i).length() > 500) {
                         flash.alerts << "User Question Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
-                case 17:
+                case 18:
                     if (instance.get(i).length() > 500) {
                         flash.alerts << "Notes Too Long at " + cellRef.formatAsString()
                         return false
@@ -341,22 +339,22 @@ class SpreadsheetUploadingService {
 
     def saveToDatabase(List<List<String>> allInstances, String spreadsheetName, FlashScope flash) {
         for (List<String> instance in allInstances) {
-            def type = RidReportType.findByName(instance.get(0))
-            def t = new RidTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(16),
+            def type = RidLibraryUnit.findByName(instance.get(0))
+            def t = new RidTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(17),
                     dateOfConsultation: new SimpleDateFormat("MM/dd/yyyy").parse(instance.get(1)),
-                    interactTimes: Integer.valueOf(instance.get(10)).intValue(),
+                    interactTimes: Integer.valueOf(instance.get(11)).intValue(),
                     prepTime: Integer.valueOf(instance.get(6)).intValue(),
                     eventLength: Integer.valueOf(instance.get(7)).intValue(),
-                    notes: instance.get(17), facultySponsor: instance.get(14), courseName: instance.get(11),
-                    courseNumber: instance.get(13), //librarian: "librarian", patronEmail: "sample@gmail.com",
-                    departmentalAffilication: RidDepartmentalAffiliation.findByName(instance.get(12)),
-                    courseSponsor: RidCourseSponsor.findByName(instance.get(15)),
-                    userGoal: RidUserGoal.findByNameAndRidReportType(instance.get(5), type),
-                    modeOfConsultation: RidModeOfConsultation.findByNameAndRidReportType(instance.get(3), type),
-                    user: RidUser.findByName(instance.get(8)),
-                    serviceProvided: RidServiceProvided.findByNameAndRidReportType(instance.get(4), type),
-                    userAffiliation: RidUserAffiliation.findByName(instance.get(9)),
-                    ridReportType: type,
+                    notes: instance.get(18), facultySponsor: instance.get(15), courseName: instance.get(12),
+                    courseNumber: instance.get(14), userName: instance.get(8),
+                    department: RidDepartment.findByName(instance.get(13)),
+                    courseSponsor: RidCourseSponsor.findByName(instance.get(16)),
+                    userGoal: RidUserGoal.findByNameAndRidLibraryUnit(instance.get(5), type),
+                    modeOfConsultation: RidModeOfConsultation.findByNameAndRidLibraryUnit(instance.get(3), type),
+                    rank: RidRank.findByName(instance.get(9)),
+                    serviceProvided: RidServiceProvided.findByNameAndRidLibraryUnit(instance.get(4), type),
+                    school: RidSchool.findByName(instance.get(10)),
+                    ridLibraryUnit: type,
                     spreadsheetName: spreadsheetName
             )
 

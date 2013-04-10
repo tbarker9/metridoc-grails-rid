@@ -1,13 +1,12 @@
-<%@ page import="metridoc.rid.RidDepartmentalAffiliation" %>
-<g:set var="entityName"
-       value="${message(code: 'ridDepartmentalAffiliation.label', default: 'RidDepartmentalAffiliation')}"/>
+<%@ page import="metridoc.rid.RidRank" %>
+<g:set var="entityName" value="${message(code: 'ridRank.label', default: 'RidRank')}"/>
 
-<div id="edit-ridDepartmentalAffiliation" class="content scaffold-edit" role="main">
+<div id="edit-ridRank" class="content scaffold-edit" role="main">
     <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
 
     <g:form class="form-horizontal" method="post" useToken="true">
-        <g:hiddenField name="id" value="${ridDepartmentalAffiliationInstance?.id}"/>
-        <g:hiddenField name="version" value="${ridDepartmentalAffiliationInstance?.version}"/>
+        <g:hiddenField name="id" value="${ridRankInstance?.id}"/>
+        <g:hiddenField name="version" value="${ridRankInstance?.version}"/>
         <div style="margin-top: 2em">
             <g:render template="form" plugin="metridocRid"/>
         </div>

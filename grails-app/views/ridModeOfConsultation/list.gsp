@@ -15,7 +15,7 @@
         <div id="list-ridModeOfConsultation" class="content scaffold-list" role="main">
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-                <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}" data-target="#myModal" data-toggle="modal">
                     <i title="Create Mode of Consultation" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
@@ -36,8 +36,8 @@
                     <g:sortableColumn property="inForm"
                                       title="${message(code: 'ridModeOfConsultation.inForm.label', default: 'In Form')}"/>
 
-                    <g:sortableColumn property="ridReportType"
-                                      title="${message(code: 'ridModeOfConsultation.ridReportType.label', default: 'Report Type')}"/>
+                    <g:sortableColumn property="ridLibraryUnit"
+                                      title="${message(code: 'ridModeOfConsultation.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
                     <th>Number of RidTransaction</th>
                 </tr>
@@ -47,7 +47,7 @@
                     <tr>
 
                         <td>
-                            <a data-toggle="modal" href="edit/${ridModeOfConsultationInstance.id}"
+                            <a data-toggle="modal" href="edit/${ridModeOfConsultationInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
                                 ${fieldValue(bean: ridModeOfConsultationInstance, field: "name")}
                             </a>
@@ -56,7 +56,7 @@
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
                         <td>${choices.get(ridModeOfConsultationInstance?.inForm)}</td>
 
-                        <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridReportType")}</td>
+                        <td>${fieldValue(bean: ridModeOfConsultationInstance, field: "ridLibraryUnit")}</td>
 
                         <td>${ridModeOfConsultationInstance?.ridTransaction?.size()}</td>
                     </tr>

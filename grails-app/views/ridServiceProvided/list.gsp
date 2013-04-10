@@ -15,7 +15,7 @@
         <div id="list-ridServiceProvided" class="content scaffold-list" role="main">
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-                <a data-tooltip="Creating" href="create" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}" data-target="#myModal" data-toggle="modal">
                     <i title="Create Service Provided" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
@@ -36,8 +36,8 @@
                     <g:sortableColumn property="inForm"
                                       title="${message(code: 'ridServiceProvided.inForm.label', default: 'In Form')}"/>
 
-                    <g:sortableColumn property="ridReportType"
-                                      title="${message(code: 'ridServiceProvided.ridReportType.label', default: 'Report Type')}"/>
+                    <g:sortableColumn property="ridLibraryUnit"
+                                      title="${message(code: 'ridServiceProvided.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
                     <th>Number of RidTransaction</th>
                 </tr>
@@ -47,7 +47,7 @@
                     <tr>
 
                         <td>
-                            <a data-toggle="modal" href="edit/${ridServiceProvidedInstance.id}" data-target="#myModal">
+                            <a data-toggle="modal" href="edit/${ridServiceProvidedInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}" data-target="#myModal">
                                 ${fieldValue(bean: ridServiceProvidedInstance, field: "name")}
                             </a>
                         </td>
@@ -55,7 +55,7 @@
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
                         <td>${choices.get(ridServiceProvidedInstance?.inForm)}</td>
 
-                        <td>${fieldValue(bean: ridServiceProvidedInstance, field: "ridReportType")}</td>
+                        <td>${fieldValue(bean: ridServiceProvidedInstance, field: "ridLibraryUnit")}</td>
 
                         <td>${ridServiceProvidedInstance?.ridTransaction?.size()}</td>
                     </tr>
