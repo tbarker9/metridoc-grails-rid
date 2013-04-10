@@ -1,7 +1,4 @@
-<%@ page import="metridoc.rid.RidDepartment; metridoc.rid.RidSchool; metridoc.rid.RidRank;
-metridoc.rid.RidLibraryUnit; java.text.SimpleDateFormat;
-metridoc.rid.RidUserGoal; metridoc.rid.RidLibraryUnit;
-metridoc.rid.RidLibraryUnit; metridoc.rid.RidDepartment; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidDepartment; metridoc.rid.RidSchool; metridoc.rid.RidRank; metridoc.rid.RidLibraryUnit; java.text.SimpleDateFormat; metridoc.rid.RidUserGoal; metridoc.rid.RidLibraryUnit; metridoc.rid.RidLibraryUnit; metridoc.rid.RidDepartment; metridoc.rid.RidCourseSponsor; metridoc.rid.RidTransaction" %>
 
 <r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
 <r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
