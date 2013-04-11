@@ -138,7 +138,7 @@ class MetridocRidBootStrap {
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save()
                         // for rank goal -- LIPPINCOTT
-                        //new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save()
+                        // new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save()
                         // for rank goal -- RIS
                         uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
                                 "Dissertation", "Research article", "Monograph", "Data Management",
@@ -290,8 +290,6 @@ class MetridocRidBootStrap {
                                     eventLength: i % 50, followUpContact: "Sample Contact", notes: "Sample Notes",
                                     facultySponsor: "Sample Sponsor", courseName: "Sample Course Name",
                                     courseNumber: "LIB001", dateOfConsultation: new Date(),
-                                    //otherUser: "others", otherUserAffiliation: "others", otherCourseSponsor: "others",
-                                    //otherService: "others",
                                     librarian: "librarian", patronEmail: "sample@gmail.com",
                                     department: RidDepartment.get(i%6+1),
                                     courseSponsor: RidCourseSponsor.get(1),
