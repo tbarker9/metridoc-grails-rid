@@ -42,11 +42,20 @@
                     <input id="resetButton" class="btn btn-success" type="reset" value="Reset"/>
                     <g:actionSubmit action="save" name="create" class="btn btn-danger"
                                     value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+
                     <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
-                        <g:actionSubmit action="remember" style="float: right" name="remember" class="btn btn-warning"
-                                        value="${message(code: 'default.button.remember.label', default: 'Remember as template')}"
+                        <g:if test="${params.tmp}">
+                            <g:hiddenField name="id" value="${params.tmp}"/>
+                            <g:actionSubmit class="btn btn-danger" action="delete" style="float: right"
+                                            value="Delete template" formnovalidate=""
+                                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+                        </g:if>
+                        <g:actionSubmit action="remember" style="float: right; margin-right: 5px"
+                                        name="remember" class="btn btn-warning"
+                                        value="${message(code: 'default.button.remember.label', default: 'Remember as new template')}"
                                         onmouseover="removeRequired()" onmouseout="setRequired()"/>
                     </g:if>
+
                 </fieldset>
             </g:form>
         </div>

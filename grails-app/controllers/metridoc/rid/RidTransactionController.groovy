@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile
 import java.text.SimpleDateFormat
 import org.apache.shiro.SecurityUtils
 import org.codehaus.groovy.grails.io.support.ClassPathResource
+import org.springframework.dao.DataIntegrityViolationException
 
 class RidTransactionController {
 
@@ -163,6 +164,7 @@ class RidTransactionController {
 
         [ridTransactionInstance: ridTransactionInstance]
     }
+    */
 
     def delete(Long id) {
         def ridTransactionInstance = RidTransaction.get(id)
@@ -172,17 +174,19 @@ class RidTransactionController {
             return
         }
 
+        def msg = message(code: 'ridTransaction.label', default: 'RidTransaction')
+        if (ridTransactionInstance.templateOwner && ridTransactionInstance.templateOwner.length())
+            msg = message(code: 'ridTransaction.label', default: 'RidTransaction Template')
         try {
             ridTransactionInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
+            flash.message = message(code: 'default.deleted.message', args: [msg, id])
             redirect(action: "list")
         }
         catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
+            flash.message = message(code: 'default.not.deleted.message', args: [msg, id])
             redirect(action: "show", id: id)
         }
     }
-    */
 
     def search() {}
 
