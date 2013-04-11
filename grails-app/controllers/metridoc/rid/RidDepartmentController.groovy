@@ -12,7 +12,8 @@ class RidDepartmentController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [ridDepartmentInstanceList: RidDepartment.list(params), ridDepartmentInstanceTotal: RidDepartment.count()]
+        def instances = RidDepartment.where {name != ""}
+        [ridDepartmentInstanceList: instances.list(params), ridDepartmentInstanceTotal: instances.count()]
     }
 
     def create() {

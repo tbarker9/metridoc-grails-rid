@@ -45,6 +45,7 @@
     </div>
 </div>
 
+
 <div class="row-fluid">
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'userName', 'error')} ">
@@ -53,6 +54,136 @@
             </label>
             <g:textField class="userInput" name="userName" style="width: 120px" maxlength="100"
                          value="${ridTransactionInstance?.userName}"/>
+        </div>
+    </div>
+
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'rank', 'error')} required">
+            <label for="rank">
+                <g:message code="ridTransaction.rank.label" default="Rank"/>
+                <span class="required-indicator">*</span>
+            </label>
+            <%
+                rankList = RidRank.findAllByInForm(1)
+                if (ridTransactionInstance?.rank?.inForm == 0)
+                    rankList.add(0, RidRank.findById(
+                            ridTransactionInstance?.rank?.id))
+                rankList = rankList.sort{ it.name }
+                rankList.addAll(RidRank.findAllByInForm(2))
+            %>
+            <select style="width:120px" id="rank" name="rank.id" required="" class="many-to-one">
+                <g:each in="${rankList}">
+                    <option value="${it.id}" inForm="${it.inForm}"
+                            <g:if test="${ridTransactionInstance?.rank?.id == it.id}">selected=""</g:if>>
+                        ${it.name}
+                    </option>
+                </g:each>
+            </select>
+        </div>
+
+        <div id="otherRankDiv" style="display:none"
+             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherRank', 'error')} ">
+            <label for="otherRank">
+                <g:message code="ridTransaction.otherRank.label" default="Other Rank"/>
+            </label>
+            <g:textField class="userInput" name="otherRank" style="width:120px" maxlength="50"
+                         value="${ridTransactionInstance?.otherRank}"/>
+        </div>
+    </div>
+
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'school', 'error')} required">
+            <label for="school">
+                <g:message code="ridTransaction.school.label" default="School"/>
+                <span class="required-indicator">*</span>
+            </label>
+            <% schoolList = RidSchool.findAllByInForm(1) %>
+            <% if (ridTransactionInstance?.school?.inForm == 0)
+                schoolList.add(0, RidSchool.findById(
+                        ridTransactionInstance?.school?.id))
+            schoolList = schoolList.sort{ it.name }
+            %>
+            <% schoolList.addAll(RidSchool.findAllByInForm(2)) %>
+            <select style="width:120px" id="school" name="school.id" required="" class="many-to-one">
+                <g:each in="${schoolList}">
+                    <option value="${it.id}" inForm="${it.inForm}"
+                            <g:if test="${ridTransactionInstance?.school?.id == it.id}">selected=""</g:if>>
+                        ${it.name}
+                    </option>
+                </g:each>
+            </select>
+        </div>
+
+        <div id="otherSchoolDiv" style="display:none;"
+             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherSchool', 'error')} ">
+            <label for="otherSchool">
+                <g:message code="ridTransaction.otherSchool.label" default="Other School"/>
+            </label>
+            <g:textField class="userInput" style="width:120px" name="otherSchool" maxlength="50"
+                         value="${ridTransactionInstance?.otherSchool}"/>
+        </div>
+    </div>
+    %{--<div class="span2">--}%
+    %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">--}%
+    %{--<label for="patronEmail">--}%
+    %{--<g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>--}%
+    %{--</label>--}%
+    %{--<g:field style="width:120px" class="userInput" type="email" name="patronEmail" maxlength="100" --}%
+    %{--value="${ridTransactionInstance?.patronEmail}"/>--}%
+    %{--</div>--}%
+    %{--</div>--}%
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactTimes', 'error')} required">
+            <label for="interactTimes">
+                <g:message code="ridTransaction.interactTimes.label" default="Interact Times"/>
+                <span class="required-indicator">*</span>
+            </label>
+            <g:field style="width:120px" class="userInput" name="interactTimes" type="number" max="50"
+                     value="${ridTransactionInstance.interactTimes}" required=""/>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsultation', 'error')} required">
+            <label for="modeOfConsultation">
+                <g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/>
+                <span class="required-indicator">*</span>
+            </label>
+
+            <div id="currentModeOfConsultation"
+                 style="display: none;">${ridTransactionInstance?.modeOfConsultation?.id}</div>
+            <%
+                modeList = metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(1,
+                        ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1))
+                if (ridTransactionInstance?.modeOfConsultation?.inForm == 0)
+                    modeList.add(0, metridoc.rid.RidModeOfConsultation.findById(
+                            ridTransactionInstance?.modeOfConsultation?.id))
+                modeList = modeList.sort{ it.name }
+                modeList.addAll(metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(2,
+                        ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
+            %>
+            <select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" required=""
+                    class="many-to-one">
+                <g:each in="${modeList}">
+                    <option value="${it.id}" inForm="${it.inForm}"
+                            <g:if test="${ridTransactionInstance?.modeOfConsultation?.id == it.id}">selected=""</g:if>>
+                        ${it.name}
+                    </option>
+                </g:each>
+            </select>
+            %{--<g:select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" from="${modeList}"--}%
+            %{--optionKey="id" required="" value="${ridTransactionInstance?.modeOfConsultation?.id}" class="many-to-one"/>--}%
+        </div>
+
+        <div id="otherModeOfConsultationDiv" style="display:none;"
+             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherModeOfConsultation', 'error')} ">
+            <label for="otherModeOfConsultation">
+                <g:message code="ridTransaction.otherModeOfConsultation.label" default="Other Consult-Mode"/>
+            </label>
+            <g:textField class="userInput" name="otherModeOfConsultation" style="width:120px"
+                         maxlength="100" value="${ridTransactionInstance?.otherModeOfConsultation}"/>
         </div>
     </div>
 
@@ -150,137 +281,6 @@
             </label>
             <g:field style="width:120px" class="userInput" name="eventLength" type="number"
                      value="${ridTransactionInstance.eventLength}" required=""/>
-        </div>
-    </div>
-</div>
-
-<div class="row-fluid">
-
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsultation', 'error')} required">
-            <label for="modeOfConsultation">
-                <g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/>
-                <span class="required-indicator">*</span>
-            </label>
-
-            <div id="currentModeOfConsultation"
-                 style="display: none;">${ridTransactionInstance?.modeOfConsultation?.id}</div>
-            <%
-                modeList = metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(1,
-                        ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1))
-                if (ridTransactionInstance?.modeOfConsultation?.inForm == 0)
-                    modeList.add(0, metridoc.rid.RidModeOfConsultation.findById(
-                            ridTransactionInstance?.modeOfConsultation?.id))
-                modeList = modeList.sort{ it.name }
-                modeList.addAll(metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(2,
-                        ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
-            %>
-            <select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" required=""
-                    class="many-to-one">
-                <g:each in="${modeList}">
-                    <option value="${it.id}" inForm="${it.inForm}"
-                            <g:if test="${ridTransactionInstance?.modeOfConsultation?.id == it.id}">selected=""</g:if>>
-                        ${it.name}
-                    </option>
-                </g:each>
-            </select>
-            %{--<g:select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" from="${modeList}"--}%
-            %{--optionKey="id" required="" value="${ridTransactionInstance?.modeOfConsultation?.id}" class="many-to-one"/>--}%
-        </div>
-
-        <div id="otherModeOfConsultationDiv" style="display:none;"
-             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherModeOfConsultation', 'error')} ">
-            <label for="otherModeOfConsultation">
-                <g:message code="ridTransaction.otherModeOfConsultation.label" default="Other Consult-Mode"/>
-            </label>
-            <g:textField class="userInput" name="otherModeOfConsultation" style="width:120px"
-                         maxlength="100" value="${ridTransactionInstance?.otherModeOfConsultation}"/>
-        </div>
-    </div>
-
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'rank', 'error')} required">
-            <label for="rank">
-                <g:message code="ridTransaction.rank.label" default="Rank"/>
-                <span class="required-indicator">*</span>
-            </label>
-            <%
-                rankList = RidRank.findAllByInForm(1)
-                if (ridTransactionInstance?.rank?.inForm == 0)
-                    rankList.add(0, RidRank.findById(
-                            ridTransactionInstance?.rank?.id))
-                rankList = rankList.sort{ it.name }
-                rankList.addAll(RidRank.findAllByInForm(2))
-            %>
-            <select style="width:120px" id="rank" name="rank.id" required="" class="many-to-one">
-                <g:each in="${rankList}">
-                    <option value="${it.id}" inForm="${it.inForm}"
-                            <g:if test="${ridTransactionInstance?.rank?.id == it.id}">selected=""</g:if>>
-                        ${it.name}
-                    </option>
-                </g:each>
-            </select>
-        </div>
-
-        <div id="otherRankDiv" style="display:none"
-             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherRank', 'error')} ">
-            <label for="otherRank">
-                <g:message code="ridTransaction.otherRank.label" default="Other Rank"/>
-            </label>
-            <g:textField class="userInput" name="otherRank" style="width:120px" maxlength="50"
-                         value="${ridTransactionInstance?.otherRank}"/>
-        </div>
-    </div>
-
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'school', 'error')} required">
-            <label for="school">
-                <g:message code="ridTransaction.school.label" default="School"/>
-                <span class="required-indicator">*</span>
-            </label>
-            <% schoolList = RidSchool.findAllByInForm(1) %>
-            <% if (ridTransactionInstance?.school?.inForm == 0)
-                schoolList.add(0, RidSchool.findById(
-                        ridTransactionInstance?.school?.id))
-                schoolList = schoolList.sort{ it.name }
-            %>
-            <% schoolList.addAll(RidSchool.findAllByInForm(2)) %>
-            <select style="width:120px" id="school" name="school.id" required="" class="many-to-one">
-                <g:each in="${schoolList}">
-                    <option value="${it.id}" inForm="${it.inForm}"
-                            <g:if test="${ridTransactionInstance?.school?.id == it.id}">selected=""</g:if>>
-                        ${it.name}
-                    </option>
-                </g:each>
-            </select>
-        </div>
-
-        <div id="otherSchoolDiv" style="display:none;"
-             class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'otherSchool', 'error')} ">
-            <label for="otherSchool">
-                <g:message code="ridTransaction.otherSchool.label" default="Other School"/>
-            </label>
-            <g:textField class="userInput" style="width:120px" name="otherSchool" maxlength="50"
-                         value="${ridTransactionInstance?.otherSchool}"/>
-        </div>
-    </div>
-    %{--<div class="span2">--}%
-    %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">--}%
-    %{--<label for="patronEmail">--}%
-    %{--<g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>--}%
-    %{--</label>--}%
-    %{--<g:field style="width:120px" class="userInput" type="email" name="patronEmail" maxlength="100" --}%
-    %{--value="${ridTransactionInstance?.patronEmail}"/>--}%
-    %{--</div>--}%
-    %{--</div>--}%
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactTimes', 'error')} required">
-            <label for="interactTimes">
-                <g:message code="ridTransaction.interactTimes.label" default="Interact Times"/>
-                <span class="required-indicator">*</span>
-            </label>
-            <g:field style="width:120px" class="userInput" name="interactTimes" type="number" max="50"
-                     value="${ridTransactionInstance.interactTimes}" required=""/>
         </div>
     </div>
 </div>
