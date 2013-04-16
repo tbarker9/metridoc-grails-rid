@@ -41,31 +41,16 @@ class RidTransactionControllerTests {
         assert model.ridTransactionInstance.dateOfConsultation != null
         assert model.ridTransactionInstance.staffPennkey == null
         assert model.ridTransactionInstance.ridLibraryUnit == null
-        assert model.ridTransactionInstance.templateOwner == ""
     }
 
     void testDuplicatedSubmission() {
         controller.flash.alerts = []
         // This only works if you do the test using "extends ControllerUnitTestCase"
         // controller.request.invalidToken = true
-        controller.remember()
+        controller.save()
         // for a redirecting calling, 302 should always be the status
         assert controller.response.status == 302
         assert response.redirectedUrl == '/ridTransaction/list'
-    }
-
-    void testValidSubmission() {
-        controller.params.dateOfConsultation = "09/09/2012"
-        def token = SynchronizerTokensHolder.store(session)
-        controller.params[SynchronizerTokensHolder.TOKEN_KEY] = token.generateToken("/ridTransaction/remember")
-        controller.params[SynchronizerTokensHolder.TOKEN_URI] = "/ridTransaction/remember"
-//        controller.ridTransactionService = [
-//                createNewInstanceMethod: { params, ridTransactionInstance ->
-//                }
-//        ]
-        controller.remember()
-        assert controller.response.status == 302
-        assert response.redirectedUrl.startsWith("/ridTransaction/show/")
     }
 
     void testValidSave() {
