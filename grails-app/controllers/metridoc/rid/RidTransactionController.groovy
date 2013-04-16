@@ -25,9 +25,9 @@ class RidTransactionController {
         render response as JSON
     }
 
-//    def index() {
-//        redirect(action: "list", params: params)
-//    }
+    def index() {
+        redirect(action: "create")
+    }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)

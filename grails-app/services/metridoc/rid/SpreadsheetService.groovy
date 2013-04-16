@@ -55,6 +55,7 @@ class SpreadsheetService {
         List<List<String>> allInstances = new ArrayList<ArrayList<String>>()
 
         while (iterNext && ++colNum) {
+            int emptyCount = 0
             List<String> instance = new ArrayList<String>()
             for (int rowNum = 5; rowNum < 42; rowNum += 2) {
                 Row row = sheet.getRow(rowNum)
@@ -64,14 +65,9 @@ class SpreadsheetService {
                 }
                 Cell cell = row.getCell(colNum)
                 if (!cell) {
-                    if (rowNum == 5) {
-                        iterNext = Boolean.FALSE
-                        break
-                    }
-                    else {
-                        instance.add("")
-                        continue
-                    }
+                    emptyCount ++
+                    instance.add("")
+                    continue
                 }
 
                 switch (cell.getCellType()) {
@@ -89,6 +85,7 @@ class SpreadsheetService {
                         instance.add(cell.getCellFormula().trim())
                         break
                     case Cell.CELL_TYPE_BLANK:
+                        emptyCount ++
                         instance.add("")
                         break
                     default:
@@ -97,6 +94,7 @@ class SpreadsheetService {
                 }
             }
 
+            if (emptyCount == 19) iterNext = Boolean.FALSE
             if (iterNext) {
                 if (checkValid(instance, allInstances.size(), flash))
                     allInstances.add(instance)
