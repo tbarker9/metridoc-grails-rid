@@ -9,65 +9,77 @@ class RidTransactionService {
             templateOwner == ""
         }
 
-        try {
-            Date start = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_start)
-            Date end = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_end)
-            query = query.where {
-                dateOfConsultation >= start && dateOfConsultation < end.next()
-            }
-        } catch (Exception e) {
+        if (params.dateOfConsultation_start && params.dateOfConsultation_end) {
+            try {
+                Date start = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_start)
+                Date end = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_end)
+                query = query.where {
+                    dateOfConsultation >= start && dateOfConsultation < end.next()
+                }
+            } catch (Exception e) {
 //            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
 //            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
 //            query = query.where {
 //                dateOfConsultation >= start && dateOfConsultation < end.next()
 //            }
-        }
-
-        def UnitList = params.list('ridLibraryUnitSearch')
-        if (UnitList.size() > 0 && !UnitList.contains("0")) {
-            List<Long> uList = new LinkedList<Long>()
-            for (String id in UnitList)
-                uList.add(Long.valueOf(id))
-            query = query.where {
-                ridLibraryUnit in RidLibraryUnit.findAllByIdInList(uList)
             }
         }
 
-        String[] staffPennkey_splits = params.staffPennkey.split(" ");
-        for (String s in staffPennkey_splits) {
-            if (!s.trim().isEmpty()) {
+        if (params.ridLibraryUnitSearch) {
+            def UnitList = params.list('ridLibraryUnitSearch')
+            if (UnitList.size() > 0 && !UnitList.contains("0")) {
+                List<Long> uList = new LinkedList<Long>()
+                for (String id in UnitList)
+                    uList.add(Long.valueOf(id))
                 query = query.where {
-                    staffPennkey ==~ ~s.trim()
+                    ridLibraryUnit in RidLibraryUnit.findAllByIdInList(uList)
                 }
             }
         }
 
-        def SchoolList = params.list('ridSchoolSearch')
-        if (SchoolList.size() > 0 && !SchoolList.contains("0")) {
-            List<Long> sList = new LinkedList<Long>()
-            for (String id in SchoolList)
-                sList.add(Long.valueOf(id))
-            query = query.where {
-                school in RidSchool.findAllByIdInList(sList)
-            }
-        }
-
-        String[] userQuestion_splits = params.userQuestion.split(" ");
-        for (String s in userQuestion_splits) {
-            if (!s.trim().isEmpty()) {
-                query = query.where {
-                    //userQuestion ==~ ~"^.+ba\$"
-                    //userQuestion ==~ ~"^k.*"
-                    userQuestion ==~ ~s.trim()
+        if (params.staffPennkey) {
+            String[] staffPennkey_splits = params.staffPennkey.split(" ");
+            for (String s in staffPennkey_splits) {
+                if (!s.trim().isEmpty()) {
+                    query = query.where {
+                        staffPennkey ==~ ~s.trim()
+                    }
                 }
             }
         }
 
-        String[] notes_splits = params.notes.split(" ");
-        for (String s in notes_splits) {
-            if (!s.trim().isEmpty()) {
+        if (params.ridSchoolSearch) {
+            def SchoolList = params.list('ridSchoolSearch')
+            if (SchoolList.size() > 0 && !SchoolList.contains("0")) {
+                List<Long> sList = new LinkedList<Long>()
+                for (String id in SchoolList)
+                    sList.add(Long.valueOf(id))
                 query = query.where {
-                    notes ==~ ~s.trim()
+                    school in RidSchool.findAllByIdInList(sList)
+                }
+            }
+        }
+
+        if (params.userQuestion) {
+            String[] userQuestion_splits = params.userQuestion.split(" ");
+            for (String s in userQuestion_splits) {
+                if (!s.trim().isEmpty()) {
+                    query = query.where {
+                        //userQuestion ==~ ~"^.+ba\$"
+                        //userQuestion ==~ ~"^k.*"
+                        userQuestion ==~ ~s.trim()
+                    }
+                }
+            }
+        }
+
+        if (params.notes) {
+            String[] notes_splits = params.notes.split(" ");
+            for (String s in notes_splits) {
+                if (!s.trim().isEmpty()) {
+                    query = query.where {
+                        notes ==~ ~s.trim()
+                    }
                 }
             }
         }

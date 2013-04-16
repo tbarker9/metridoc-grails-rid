@@ -12,7 +12,8 @@ class RidUserGoalController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [ridUserGoalInstanceList: RidUserGoal.list(params), ridUserGoalInstanceTotal: RidUserGoal.count()]
+        def instances = RidUserGoal.where {name != ""}
+        [ridUserGoalInstanceList: instances.list(params), ridUserGoalInstanceTotal: instances.count()]
     }
 
     def create() {

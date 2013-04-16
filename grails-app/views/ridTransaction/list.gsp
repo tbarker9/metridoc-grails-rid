@@ -20,10 +20,17 @@
         <g:render template="tabs" plugin="metridocRid"/>
 
         <div id="list-ridTransaction" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]"/></h1>
-            %{--<g:if test="${flash.message}">--}%
-            %{--<div class="message" role="status">${flash.message}</div>--}%
-            %{--</g:if>--}%
+            <h1>
+                <g:message code="default.list.label" args="[entityName]"/>
+                <g:if test="${ridTransactionAllList.size() > 0}">
+                    <g:link action="export" params="${params}">
+                        <i id="exportToFile"
+                           title="Save the current transaction list as an excel file" class="icon-save"></i>
+                    </g:link>
+                </g:if>
+            </h1>
+
+
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>

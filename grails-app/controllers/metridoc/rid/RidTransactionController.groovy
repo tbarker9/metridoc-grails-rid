@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat
 import org.apache.shiro.SecurityUtils
 import org.codehaus.groovy.grails.io.support.ClassPathResource
 import org.springframework.dao.DataIntegrityViolationException
+import org.apache.poi.ss.usermodel.Workbook
 
 class RidTransactionController {
 
@@ -16,7 +17,7 @@ class RidTransactionController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def ridTransactionService
-    def spreadsheetUploadingService
+    def spreadsheetService
     def scaffold = true
 
     def ajaxChooseType = {
@@ -33,7 +34,8 @@ class RidTransactionController {
         def query = RidTransaction.where {
             templateOwner == "" //|| templateOwner == null
         }
-        [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count()]
+        [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count(),
+                ridTransactionAllList: query.list()]
     }
 
     def templateList() {
@@ -195,14 +197,15 @@ class RidTransactionController {
         def queryResult = ridTransactionService.queryMethod(params)
 
         render(view: "list",
-                model: [ridTransactionInstanceList: queryResult.list(params), ridTransactionInstanceTotal: queryResult.count()])
+                model: [ridTransactionInstanceList: queryResult.list(params),
+                        ridTransactionInstanceTotal: queryResult.count(),
+                        ridTransactionAllList: queryResult.list()])
         return
     }
 
     def spreadsheetUpload() {}
 
     def download() {
-//        def file = new File('web-app/spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
         ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
         def file = resource.getFile()
         if (file.exists()) {
@@ -212,12 +215,10 @@ class RidTransactionController {
                 response.outputStream << file.newInputStream() // Performing a binary stream copy
             } catch (Exception e) {
                 flash.alerts << e.message
-                redirect(action: "spreadsheetUpload")
             }
         }
         else {
             flash.alerts << 'Cannot find file: ' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx'
-            redirect(action: "spreadsheetUpload")
         }
     }
 
@@ -230,13 +231,13 @@ class RidTransactionController {
                 return
             }
 
-            if (!spreadsheetUploadingService.checkFileType(uploadedFile.getContentType())) {
+            if (!spreadsheetService.checkFileType(uploadedFile.getContentType())) {
                 flash.alerts << "Invalid File Type. Only Excel Files are accepted!"
                 redirect(action: "spreadsheetUpload")
                 return
             }
 
-            if (!spreadsheetUploadingService.checkSpreadsheetFormat(uploadedFile)) {
+            if (!spreadsheetService.checkSpreadsheetFormat(uploadedFile)) {
                 flash.alerts << "Invalid Spreadsheet Format. Cannot Parse it."
                 redirect(action: "spreadsheetUpload")
                 return
@@ -248,13 +249,13 @@ class RidTransactionController {
                 return
             }
 
-            List<List<String>> allInstances = spreadsheetUploadingService.getInstancesFromSpreadsheet(uploadedFile, flash)
+            List<List<String>> allInstances = spreadsheetService.getInstancesFromSpreadsheet(uploadedFile, flash)
             if (!allInstances.size()) {
                 redirect(action: "spreadsheetUpload")
                 return
             }
 
-            if (spreadsheetUploadingService.saveToDatabase(allInstances, uploadedFile.originalFilename, flash)) {
+            if (spreadsheetService.saveToDatabase(allInstances, uploadedFile.originalFilename, flash)) {
                 flash.infos << "Spreadsheet successfully uploaded. " +
                         String.valueOf(allInstances.size()) + " instances uploaded."
                 redirect(action: "list")
@@ -267,5 +268,22 @@ class RidTransactionController {
             flash.alerts << "Don't click the uploading button more than one time to make dulplicated submission!"
             redirect(action: "spreadsheetUpload")
         }
+    }
+
+    def export() {
+        def queryResult = ridTransactionService.queryMethod(params)
+        if (queryResult.count()) {
+            Workbook wb = spreadsheetService.exportAsFile(queryResult.list())
+
+            try {
+                response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                response.setHeader("Content-disposition",
+                        "filename=Transaction_List_"+new Date().format("MMddyyyy-HHmmss"))
+                wb.write(response.outputStream) // Performing a binary stream copy
+            } catch (Exception e) {
+                flash.alerts << e.message
+            }
+        }
+
     }
 }

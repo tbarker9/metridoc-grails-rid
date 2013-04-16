@@ -106,7 +106,7 @@ class MetridocRidBootStrap {
                             new RidRank(name: otherPleaseIndicate, inForm: 2).save()
                         }
                         // ---------------------------------------------------------------------------------------------
-                        // for rank goal -- WIC
+                        // for user goal -- WIC
                         List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
                                 "Independent Research", "Improvement in Teaching")
                         for (String i in uGoal.sort()) {
@@ -117,7 +117,7 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save()
-                        // for rank goal -- HSL
+                        // for user goal -- HSL
                         uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
                         for (String i in uGoal.sort()) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("HSL"))) {
@@ -127,7 +127,7 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save()
-                        // for rank goal -- CDM
+                        // for user goal -- CDM
                         uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
                         for (String i in uGoal) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("CDM"))) {
@@ -137,9 +137,19 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save()
-                        // for rank goal -- LIPPINCOTT
-                        // new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save()
-                        // for rank goal -- RIS
+                        // for user goal -- LIPPINCOTT
+                        uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
+                        // since here the user goal is not required, this stands for null value
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save(validate: false)
+                        for (String i in uGoal.sort()) {
+                            if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("LIPPINCOTT"))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT"))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save()
+                        // for user goal -- RIS
                         uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
                                 "Dissertation", "Research article", "Monograph", "Data Management",
                                 "Independent Research", "Course Creation", "Grant Proposal")
@@ -283,7 +293,7 @@ class MetridocRidBootStrap {
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save()
                         // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
-                        for (int i = 0; i < 50; i++) {
+                        for (int i = 0; i < 25; i++) {
                             def t = new RidTransaction(staffPennkey: "012345667",
                                     userQuestion: RandomStringUtils.randomAlphanumeric(i % 50 + 1),
                                     interactTimes: i % 50, prepTime: i % 40,
