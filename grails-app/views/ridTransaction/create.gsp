@@ -46,6 +46,7 @@
                     <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
                         <g:if test="${params.tmp}">
                             <g:hiddenField name="id" value="${params.tmp}"/>
+                            <g:hiddenField name="isTemplate" value="true"/>
                             <g:actionSubmit class="btn btn-danger" action="delete" style="float: right"
                                             value="Delete template" formnovalidate=""
                                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>

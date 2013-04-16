@@ -31,16 +31,13 @@ class RidTransactionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def query = RidTransaction.where {
-            templateOwner == "" //|| templateOwner == null
-        }
-        [ridTransactionInstanceList: query.list(params), ridTransactionInstanceTotal: query.count(),
-                ridTransactionAllList: query.list()]
+        [ridTransactionInstanceList: RidTransaction.list(params), ridTransactionInstanceTotal: RidTransaction.count(),
+                ridTransactionAllList: RidTransaction.list()]
     }
 
     def templateList() {
         if (SecurityUtils.getSubject().getPrincipal()) {
-            def query = RidTransaction.where {
+            def query = RidTransactionTemplate.where {
                 templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
             }
             [ridTransactionInstanceList: query.list()]
@@ -52,13 +49,13 @@ class RidTransactionController {
 
     def create() {
         try {
-            def ridTransactionInstance = new RidTransaction(params)
-            if (params.tmp != null && RidTransaction.get(Long.valueOf(params.tmp))) {
-                ridTransactionInstance.properties = RidTransaction.get(Long.valueOf(params.tmp)).properties
-                ridTransactionInstance.templateOwner = ""
+            RidTransactionBase ridTransactionInstance = new RidTransaction(params)
+            if (params.tmp != null && RidTransactionTemplate.get(Long.valueOf(params.tmp))) {
+                ridTransactionInstance = RidTransactionTemplate.get(Long.valueOf(params.tmp))
             }
             [ridTransactionInstance: ridTransactionInstance]
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
+            flash.alerts << e.message
             if (params.tmp.equals("templateList"))
                 redirect(action: "templateList")
             else
@@ -71,10 +68,8 @@ class RidTransactionController {
             if (!params.dateOfConsultation.empty)
                 params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
             def ridTransactionInstance = new RidTransaction(params)
-            ridTransactionInstance.templateOwner = ""
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(flush: true)) {
-                //flash.alerts << ridTransactionInstance.errors
                 render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                 return
             }
@@ -91,16 +86,16 @@ class RidTransactionController {
         withForm {
             if (!params.dateOfConsultation.empty)
                 params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation)
-            def ridTransactionInstance = new RidTransaction(params)
+            def ridTransactionInstance = new RidTransactionTemplate(params)
             ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-            if (!ridTransactionInstance.save(validate: false, flush: true)) {
+            if (!ridTransactionInstance.save(flush: true)) {
                 render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                 return
             }
 
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction Template'), ridTransactionInstance.id])
-            redirect(action: "show", id: ridTransactionInstance.id)
+            redirect(action: "create")
         }.invalidToken {
             if (SecurityUtils.getSubject().getPrincipal())
                 flash.alerts << "Don't click the remember button more than one time to make dulplicated submission!"
@@ -144,7 +139,6 @@ class RidTransactionController {
         }
     }
 
-    /*
     def edit(Long id) {
         def ridTransactionInstance = RidTransaction.get(id)
         if (!ridTransactionInstance) {
@@ -166,10 +160,11 @@ class RidTransactionController {
 
         [ridTransactionInstance: ridTransactionInstance]
     }
-    */
 
     def delete(Long id) {
-        def ridTransactionInstance = RidTransaction.get(id)
+        RidTransactionBase ridTransactionInstance = RidTransaction.get(id)
+        if (params.isTemplate == 'true')
+            ridTransactionInstance = RidTransactionTemplate.get(id)
         if (!ridTransactionInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), id])
             redirect(action: "list")
@@ -177,7 +172,7 @@ class RidTransactionController {
         }
 
         def msg = message(code: 'ridTransaction.label', default: 'RidTransaction')
-        if (ridTransactionInstance.templateOwner && ridTransactionInstance.templateOwner.length())
+        if (ridTransactionInstance.properties.containsKey('templateOwner'))
             msg = message(code: 'ridTransaction.label', default: 'RidTransaction Template')
         try {
             ridTransactionInstance.delete(flush: true)

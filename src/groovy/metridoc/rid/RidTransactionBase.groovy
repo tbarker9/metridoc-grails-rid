@@ -1,11 +1,35 @@
 package metridoc.rid
 
-/**
- * Created with IntelliJ IDEA.
- * User: xiaofant
- * Date: 4/16/13
- * Time: 11:39 AM
- * To change this template use File | Settings | File Templates.
- */
 abstract class RidTransactionBase {
+
+    // statement of work
+    String userQuestion
+    Integer interactTimes = 1
+    Integer prepTime = 1
+    Integer eventLength = 1
+    String notes
+    String staffPennkey
+
+    // roles
+    String userName
+    String facultySponsor
+    String courseName
+    String courseNumber
+    String otherRank
+    String otherUserGoal
+    String otherModeOfConsultation
+    String otherSchool
+    String otherCourseSponsor
+
+    // description
+    String otherService
+    // Calendar dateOfConsultation = Calendar.getInstance()
+    Date dateOfConsultation = new Date()
+
+    String toString() {
+        String userQ = new String(userQuestion)
+        if (userQ != null && userQ.length() > 32)
+            userQ = userQ.substring(0, 32) + "..."
+        return "ID: ${id}; userQuestion: ${userQ}"
+    }
 }

@@ -297,10 +297,9 @@ class MetridocRidBootStrap {
                             def t = new RidTransaction(staffPennkey: "012345667",
                                     userQuestion: RandomStringUtils.randomAlphanumeric(i % 50 + 1),
                                     interactTimes: i % 50, prepTime: i % 40,
-                                    eventLength: i % 50, followUpContact: "Sample Contact", notes: "Sample Notes",
+                                    eventLength: i % 50, notes: "Sample Notes",
                                     facultySponsor: "Sample Sponsor", courseName: "Sample Course Name",
                                     courseNumber: "LIB001", dateOfConsultation: new Date(),
-                                    librarian: "librarian", patronEmail: "sample@gmail.com",
                                     department: RidDepartment.get(i%6+1),
                                     courseSponsor: RidCourseSponsor.get(1),
                                     userGoal: RidUserGoal.findByRidLibraryUnit(RidLibraryUnit.get(1)),
@@ -308,8 +307,7 @@ class MetridocRidBootStrap {
                                     rank: RidRank.get(1),
                                     serviceProvided: RidServiceProvided.findByRidLibraryUnit(RidLibraryUnit.get(1)),
                                     school: RidSchool.get(1),
-                                    ridLibraryUnit: RidLibraryUnit.get(1),
-                                    templateOwner: "",
+                                    ridLibraryUnit: RidLibraryUnit.get(1)
                             )
 
                             try {

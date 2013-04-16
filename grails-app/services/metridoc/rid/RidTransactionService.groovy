@@ -6,7 +6,7 @@ class RidTransactionService {
 
     def queryMethod(Map params) {
         def query = RidTransaction.where {
-            templateOwner == ""
+            id >= 0
         }
 
         if (params.dateOfConsultation_start && params.dateOfConsultation_end) {
@@ -114,9 +114,8 @@ class RidTransactionService {
                 'serviceProvided': services]
     }
 
-    def createNewInstanceMethod(Map params, RidTransaction ridTransactionInstance) {
+    def createNewInstanceMethod(Map params, RidTransactionBase ridTransactionInstance) {
         String otherRank = params.otherRank
-        //println(otherRank)
         if (otherRank != null && !otherRank.isEmpty()) {
             if (RidRank.findAllByName(otherRank).size() == 0) {
                 def c = new RidRank(name: otherRank, inForm: 0)
