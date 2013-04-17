@@ -85,7 +85,7 @@
             </table>
             <g:if test="${ridTransactionInstanceTotal > params.max}">
                 <div class="pagination">
-                    <g:paginate total="${ridTransactionInstanceTotal}" params="${params}" next="&gt;&gt;" prev="&lt;&lt;"/>
+                    <g:paginate action="query" total="${ridTransactionInstanceTotal}" params="${params}" next="&gt;&gt;" prev="&lt;&lt;"/>
                 </div>
             </g:if>
         </div>
