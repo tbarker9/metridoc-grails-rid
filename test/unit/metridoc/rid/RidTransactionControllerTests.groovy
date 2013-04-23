@@ -37,7 +37,7 @@ class RidTransactionControllerTests {
 
     void testCreate() {
         def model = controller.create()
-        assert model.ridTransactionInstance.prepTime == 1
+        assert model.ridTransactionInstance.prepTime == 0
         assert model.ridTransactionInstance.dateOfConsultation != null
         assert model.ridTransactionInstance.staffPennkey == null
         assert model.ridTransactionInstance.ridLibraryUnit == null
@@ -68,7 +68,7 @@ class RidTransactionControllerTests {
         params.staffPennkey = 'test123'
         params.userQuestion = 'testQ'
         params.dateOfConsultation = '02/03/2012'
-        params.interactTimes = 1
+        params.interactOccurrences = 1
         params.prepTime = 2
         params.eventLength = "3"
         params.notes = 'testN'
