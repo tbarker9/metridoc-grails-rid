@@ -11,8 +11,8 @@ import org.apache.poi.ss.usermodel.Workbook
 
 class RidTransactionController {
 
-    static homePage = [title: "Reference Instruction Database",
-            description: "Adds/Updates/Reviews Reference Instruction Transactions"]
+    static homePage = [title: "Research Consultation & Instruction Database",
+            description: "Add/Update/Review data on consultation and instructional activity"]
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 

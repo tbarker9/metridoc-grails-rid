@@ -19,9 +19,9 @@ class RidTransaction extends RidTransactionBase {
     static constraints = {
         // STATEMENT OF WORK
         userQuestion(blank: true, nullable: true, maxSize: 500)
-        interactTimes(nullable: false, min: 0, max: 50)
-        prepTime(nullable: false, min: 0, max: 50)
-        eventLength(nullable: false, min: 0, max: 50)
+        interactOccurrences(nullable: false, min: 0, max: 50)
+        prepTime(nullable: false, min: 0)
+        eventLength(nullable: false, min: 0)
         notes(blank: true, nullable: true, maxSize: 500)
         staffPennkey(blank: false, nullable: false, maxSize: 100)
         // ROLES
@@ -35,7 +35,7 @@ class RidTransaction extends RidTransactionBase {
         otherSchool(blank: true, nullable: true, maxSize: 50)
         department(nullable: true)
         userName(blank: true, nullable: true, maxSize: 50)
-        courseSponsor(nullable: false)
+        courseSponsor(nullable: true)
         otherCourseSponsor(blank: true, nullable: true, maxSize: 50)
         // DESCRIPTION
         serviceProvided(nullable: false)

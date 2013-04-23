@@ -23,11 +23,6 @@
                             <g:message code="ridTransaction.dateOfConsultation.label"
                                        default="Consultation Date Between"/>
                         </label>
-                        <%
-                            Calendar dateOfConsultation1 = Calendar.getInstance()
-                            Calendar dateOfConsultation2 = (Calendar) dateOfConsultation1.clone()
-                            dateOfConsultation2.add(Calendar.DAY_OF_YEAR, -(365 * 2))
-                        %>
                         <div class="controls">
                             <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
                             <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
@@ -53,8 +48,7 @@
                         </label>
 
                         <div class="controls">
-                            <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
-                                         maxlength="100" value=""/>
+                            <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey" value=""/>
                         </div>
                     </div>
 
@@ -71,13 +65,34 @@
                     </div>
 
                     <div class="control-group fieldcontain">
+                        <label class="control-label" for="ridDepartment">
+                            <g:message code="ridTransaction.ridDepartment.label" default="Department"/>
+                        </label>
+
+                        <div class="controls">
+                            <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
+                                      noSelection="${['0': 'All Departments']}" optionKey="id" multiple="true" value="0"
+                                      from="${metridoc.rid.RidDepartment.where {name!=""}.list()}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group fieldcontain">
+                        <label class="control-label" for="userName">
+                            <g:message code="ridTransaction.userName.label" default="User Name"/>
+                        </label>
+
+                        <div class="controls">
+                            <g:textField id="userName" style="width:150px" class="userInput" name="userName" value=""/>
+                        </div>
+                    </div>
+
+                    <div class="control-group fieldcontain">
                         <label class="control-label" for="userQuestion">
                             <g:message code="ridTransaction.userQuestion.label" default="User Question"/>
                         </label>
 
                         <div class="controls">
-                            <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion"
-                                         maxlength="100" value=""/>
+                            <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion" value=""/>
                         </div>
                     </div>
 
@@ -87,14 +102,13 @@
                         </label>
 
                         <div class="controls">
-                            <g:textField id="notes" style="width:350px" class="userInput" name="notes" maxlength="100"
-                                         value=""/>
+                            <g:textField id="notes" style="width:350px" class="userInput" name="notes" value=""/>
                         </div>
                     </div>
                 </fieldset>
                 <fieldset class="buttons">
-                    <input id="resetButton" class="btn btn-success" type="reset" value="Reset"/>
-                    <g:submitButton name="search" class="btn btn-primary"
+                    <input id="resetButton" class="btn btn-danger" type="reset" value="Reset"/>
+                    <g:submitButton name="search" class="btn btn-success"
                                     value="${message(code: 'default.button.search.label', default: 'Search')}"/>
                 </fieldset>
             </g:form>

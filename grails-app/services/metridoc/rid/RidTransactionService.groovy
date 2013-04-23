@@ -60,6 +60,31 @@ class RidTransactionService {
             }
         }
 
+        if (params.ridDepartmentSearch) {
+            def DepartmentList = params.list('ridDepartmentSearch')
+            if (DepartmentList.size() > 0 && !DepartmentList.contains("0")) {
+                List<Long> dList = new LinkedList<Long>()
+                for (String id in DepartmentList)
+                    dList.add(Long.valueOf(id))
+                query = query.where {
+                    department in RidDepartment.findAllByIdInList(dList)
+                }
+            }
+        }
+
+        if (params.userName) {
+            String[] userName_splits = params.userName.split(" ");
+            for (String s in userName_splits) {
+                if (!s.trim().isEmpty()) {
+                    query = query.where {
+                        //userQuestion ==~ ~"^.+ba\$"
+                        //userQuestion ==~ ~"^k.*"
+                        userName ==~ ~s.trim()
+                    }
+                }
+            }
+        }
+
         if (params.userQuestion) {
             String[] userQuestion_splits = params.userQuestion.split(" ");
             for (String s in userQuestion_splits) {

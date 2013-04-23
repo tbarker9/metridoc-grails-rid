@@ -18,13 +18,20 @@
                align="center">
                 <tr align="center">
                     <td colspan="2">
+                        <span id="ridLibraryUnit-label" class="property-label"><g:message
+                                code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/></span>
+                        :
+                        <span class="property-value" aria-labelledby="ridLibraryUnit-label"><g:fieldValue
+                            bean="${ridTransactionInstance}" field="ridLibraryUnit"/></span>
+                    </td>
+                    <td colspan="2">
                         <span id="dateOfConsultation-label" class="property-label"><g:message
                                 code="ridTransaction.dateOfConsultation.label" default="Date Of Consultation"/></span>
                         :
                         <span class="property-value" aria-labelledby="dateOfConsultation-label"><g:formatDate
                                 format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfConsultation}"/></span>
                     </td>
-                    <td colspan="3">
+                    <td colspan="2">
                         <span id="staffPennkey-label" class="property-label"><g:message
                                 code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/></span>
                         :
@@ -32,47 +39,11 @@
                                 bean="${ridTransactionInstance}" field="staffPennkey"/></span>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td>
-                        <span id="modeOfConsultation-label" class="property-label"><g:message
-                                code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="modeOfConsultation-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="modeOfConsultation"/></span>
-                    </td>
-                    <td>
-                        <span id="serviceProvided-label" class="property-label"><g:message
-                                code="ridTransaction.serviceProvided.label" default="Service Provided"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="serviceProvided-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="serviceProvided"/></span>
-                    </td>
-                    <td>
-                        <span id="userGoal-label" class="property-label"><g:message code="ridTransaction.userGoal.label"
-                                                                                    default="User Goal"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="userGoal-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="userGoal"/></span>
-                    </td>
-                    <td>
-                        <span id="prepTime-label" class="property-label"><g:message code="ridTransaction.prepTime.label"
-                                                                                    default="Prep Time"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="prepTime-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="prepTime"/></span>
-                    </td>
-                    <td>
-                        <span id="eventLength-label" class="property-label"><g:message
-                                code="ridTransaction.eventLength.label" default="Event Length"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="eventLength-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="eventLength"/></span>
-                    </td>
-                </tr>
+
                 <tr align="center">
                     <td>
                         <span id="userName-label" class="property-label"><g:message code="ridTransaction.userName.label"
-                                                                                default="User Name"/></span>
+                                                                                    default="User Name"/></span>
                         :<br/>
                         <span class="property-value" aria-labelledby="userName-label"><g:fieldValue
                                 bean="${ridTransactionInstance}" field="userName"/></span>
@@ -96,14 +67,53 @@
                     %{--:<br/>--}%
                     %{--<span class="property-value" aria-labelledby="patronEmail-label"><g:fieldValue bean="${ridTransactionInstance}" field="patronEmail"/></span>--}%
                     %{--</td>--}%
-                    <td>
-                        <span id="interactTimes-label" class="property-label"><g:message
-                                code="ridTransaction.interactTimes.label" default="Interact Times"/></span>
+                    <td colspan="2">
+                        <span id="interactOccurrences-label" class="property-label"><g:message
+                                code="ridTransaction.interactOccurrences.label" default="Interact Occurrences"/></span>
                         :<br/>
-                        <span class="property-value" aria-labelledby="interactTimes-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="interactTimes"/></span>
+                        <span class="property-value" aria-labelledby="interactOccurrences-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="interactOccurrences"/></span>
                     </td>
                 </tr>
+
+                <tr align="center">
+                    <td>
+                        <span id="modeOfConsultation-label" class="property-label"><g:message
+                                code="ridTransaction.modeOfConsultation.label" default="Consultation Mode"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="modeOfConsultation-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="modeOfConsultation"/></span>
+                    </td>
+                    <td>
+                        <span id="serviceProvided-label" class="property-label"><g:message
+                                code="ridTransaction.serviceProvided.label" default="Service Provided"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="serviceProvided-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="serviceProvided"/></span>
+                    </td>
+                    <td>
+                        <span id="userGoal-label" class="property-label"><g:message code="ridTransaction.userGoal.label"
+                                                                                    default="User Goal"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="userGoal-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="userGoal"/></span>
+                    </td>
+                    <td>
+                        <span id="prepTime-label" class="property-label"><g:message code="ridTransaction.prepTime.label"
+                                                                                    default="Prep Time (min)"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="prepTime-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="prepTime"/></span>
+                    </td>
+                    <td>
+                        <span id="eventLength-label" class="property-label"><g:message
+                                code="ridTransaction.eventLength.label" default="Event Length (min)"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="eventLength-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="eventLength"/></span>
+                    </td>
+                </tr>
+
                 <tr align="center">
                     <td>
                         <span id="courseName-label" class="property-label"><g:message
@@ -111,6 +121,13 @@
                         :<br/>
                         <span class="property-value" aria-labelledby="courseName-label"><g:fieldValue
                                 bean="${ridTransactionInstance}" field="courseName"/></span>
+                    </td>
+                    <td>
+                        <span id="courseSponsor-label" class="property-label"><g:message
+                                code="ridTransaction.courseSponsor.label" default="Course Sponsor"/></span>
+                        :<br/>
+                        <span class="property-value" aria-labelledby="courseSponsor-label"><g:fieldValue
+                                bean="${ridTransactionInstance}" field="courseSponsor"/></span>
                     </td>
                     <td>
                         <span id="department-label" class="property-label"><g:message
@@ -139,13 +156,6 @@
                         :<br/>
                         <span class="property-value" aria-labelledby="facultySponsor-label"><g:fieldValue
                                 bean="${ridTransactionInstance}" field="facultySponsor"/></span>
-                    </td>
-                    <td>
-                        <span id="courseSponsor-label" class="property-label"><g:message
-                                code="ridTransaction.courseSponsor.label" default="Course Sponsor"/></span>
-                        :<br/>
-                        <span class="property-value" aria-labelledby="courseSponsor-label"><g:fieldValue
-                                bean="${ridTransactionInstance}" field="courseSponsor"/></span>
                     </td>
                 </tr>
                 <tr align="center">

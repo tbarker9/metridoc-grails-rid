@@ -80,6 +80,8 @@ class MetridocRidBootStrap {
                         List<String> cSponsor = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
                                 "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
                                 "Independent Research")
+                        // since course sponsor is not required, this stands for null value
+                        new RidCourseSponsor(name: "", inForm: 1).save(validate: false)
                         for (String i in cSponsor.sort()) {
                             if (!RidCourseSponsor.findByName(i)) {
                                 def c = new RidCourseSponsor(name: i, inForm: 1)
@@ -109,6 +111,8 @@ class MetridocRidBootStrap {
                         // for user goal -- WIC
                         List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
                                 "Independent Research", "Improvement in Teaching")
+                        // since here the user goal is not required, this stands for null value
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save(validate: false)
                         for (String i in uGoal.sort()) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("WIC"))) {
                                 def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC"))
@@ -119,6 +123,7 @@ class MetridocRidBootStrap {
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save()
                         // for user goal -- HSL
                         uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save(validate: false)
                         for (String i in uGoal.sort()) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("HSL"))) {
                                 def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL"))
@@ -129,6 +134,7 @@ class MetridocRidBootStrap {
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save()
                         // for user goal -- CDM
                         uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save(validate: false)
                         for (String i in uGoal) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("CDM"))) {
                                 def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM"))
@@ -139,7 +145,6 @@ class MetridocRidBootStrap {
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save()
                         // for user goal -- LIPPINCOTT
                         uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation", "Independent Research")
-                        // since here the user goal is not required, this stands for null value
                         new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save(validate: false)
                         for (String i in uGoal.sort()) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("LIPPINCOTT"))) {
@@ -153,6 +158,7 @@ class MetridocRidBootStrap {
                         uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
                                 "Dissertation", "Research article", "Monograph", "Data Management",
                                 "Independent Research", "Course Creation", "Grant Proposal")
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save(validate: false)
                         for (String i in uGoal) {
                             if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("RIS"))) {
                                 def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS"))
@@ -296,7 +302,7 @@ class MetridocRidBootStrap {
                         for (int i = 0; i < 25; i++) {
                             def t = new RidTransaction(staffPennkey: "012345667",
                                     userQuestion: RandomStringUtils.randomAlphanumeric(i % 50 + 1),
-                                    interactTimes: i % 50, prepTime: i % 40,
+                                    interactOccurrences: i % 50, prepTime: i % 40,
                                     eventLength: i % 50, notes: "Sample Notes",
                                     facultySponsor: "Sample Sponsor", courseName: "Sample Course Name",
                                     courseNumber: "LIB001", dateOfConsultation: new Date(),

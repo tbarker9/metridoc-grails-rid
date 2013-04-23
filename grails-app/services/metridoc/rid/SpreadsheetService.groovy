@@ -35,7 +35,7 @@ class SpreadsheetService {
 
         List<String> validNames = Arrays.asList('Library Unit', 'Date of Consultation (mm/dd/yyyy)', 'Staff Pennkey',
                 'Consultation Mode', 'Service Provided', 'User Goal', 'Prep Time (enter in minutes)',
-                'Event Length (enter in minutes)', 'User Name', 'Rank', 'School', 'Interact Times', 'Course Name',
+                'Event Length (enter in minutes)', 'User Name', 'Rank', 'School', 'Interact Occurrences', 'Course Name',
                 'Department', 'Course Number', 'Faculty Sponsor', 'Course Sponsor', 'User Question',
                 'Notes'
         )
@@ -200,10 +200,6 @@ class SpreadsheetService {
                             flash.alerts << "Negative Prep Time at " + cellRef.formatAsString()
                             return false
                         }
-                        if (Integer.valueOf(instance.get(i).trim()) > 50) {
-                            flash.alerts << "Prep Time Too Large at " + cellRef.formatAsString()
-                            return false
-                        }
                     } catch (Exception e) {
                         flash.alerts << "Invalid Format for Prep Time at " + cellRef.formatAsString()
                         return false
@@ -217,10 +213,6 @@ class SpreadsheetService {
                     try {
                         if (Integer.valueOf(instance.get(i).trim()) < 0) {
                             flash.alerts << "Negative Event Length at " + cellRef.formatAsString()
-                            return false
-                        }
-                        if (Integer.valueOf(instance.get(i).trim()) > 50) {
-                            flash.alerts << "Event Length Too Large at " + cellRef.formatAsString()
                             return false
                         }
                     } catch (Exception e) {
@@ -256,20 +248,20 @@ class SpreadsheetService {
                     break
                 case 11:
                     if (instance.get(i).trim().empty) {
-                        flash.alerts << "Interact Times Cannot be Empty at " + cellRef.formatAsString()
+                        flash.alerts << "Interact Occurrences Cannot be Empty at " + cellRef.formatAsString()
                         return false
                     }
                     try {
                         if (Integer.valueOf(instance.get(i).trim()) < 0) {
-                            flash.alerts << "Negative Interact Times at " + cellRef.formatAsString()
+                            flash.alerts << "Negative Interact Occurrences at " + cellRef.formatAsString()
                             return false
                         }
                         if (Integer.valueOf(instance.get(i).trim()) > 50) {
-                            flash.alerts << "Interact Times Too Large at " + cellRef.formatAsString()
+                            flash.alerts << "Interact Occurrences Too Large at " + cellRef.formatAsString()
                             return false
                         }
                     } catch (Exception e) {
-                        flash.alerts << "Invalid Format for Interact Times at " + cellRef.formatAsString()
+                        flash.alerts << "Invalid Format for Interact Occurrences at " + cellRef.formatAsString()
                         return false
                     }
                     break
@@ -298,11 +290,7 @@ class SpreadsheetService {
                     }
                     break
                 case 16:
-                    if (instance.get(i).trim().empty) {
-                        flash.alerts << "Course Sponsor Cannot be Empty at " + cellRef.formatAsString()
-                        return false
-                    }
-                    if (!RidCourseSponsor.findByName(instance.get(i).trim())) {
+                    if (!instance.get(i).trim().empty && !RidCourseSponsor.findByName(instance.get(i).trim())) {
                         flash.alerts << "Invalid Course Sponsor at " + cellRef.formatAsString()
                         return false
                     }
@@ -341,7 +329,7 @@ class SpreadsheetService {
             def type = RidLibraryUnit.findByName(instance.get(0))
             def t = new RidTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(17),
                     dateOfConsultation: new SimpleDateFormat("MM/dd/yyyy").parse(instance.get(1)),
-                    interactTimes: Integer.valueOf(instance.get(11)).intValue(),
+                    interactOccurrences: Integer.valueOf(instance.get(11)).intValue(),
                     prepTime: Integer.valueOf(instance.get(6)).intValue(),
                     eventLength: Integer.valueOf(instance.get(7)).intValue(),
                     notes: instance.get(18), facultySponsor: instance.get(15), courseName: instance.get(12),
@@ -381,35 +369,32 @@ class SpreadsheetService {
         ft.color = Font.COLOR_RED
         red_bold.font = ft
 
-        int colNum = 2
-        // for test subList(0,1)
+        int rowNum = 1
         for (RidTransaction rid in ridTransactionList) {
-            sheet.getRow(5).createCell(colNum).setCellValue(rid.ridLibraryUnit.name)
-            sheet.getRow(5).getCell(colNum).setCellStyle(red_bold)
-            sheet.getRow(7).createCell(colNum).setCellValue(rid.dateOfConsultation.format("MM/dd/yyyy"))
-            sheet.getRow(9).createCell(colNum).setCellValue(rid.staffPennkey)
-            sheet.getRow(11).createCell(colNum).setCellValue(rid.modeOfConsultation.name)
-            sheet.getRow(13).createCell(colNum).setCellValue(rid.serviceProvided.name)
-            sheet.getRow(15).createCell(colNum).setCellValue(rid.userGoal.name)
-            sheet.getRow(17).createCell(colNum).setCellValue(String.valueOf(rid.prepTime))
-            sheet.getRow(19).createCell(colNum).setCellValue(String.valueOf(rid.eventLength))
-            sheet.getRow(21).createCell(colNum).setCellValue(rid.userName)
-            sheet.getRow(23).createCell(colNum).setCellValue(rid.rank.name)
-            sheet.getRow(25).createCell(colNum).setCellValue(rid.school.name)
-            sheet.getRow(27).createCell(colNum).setCellValue(String.valueOf(rid.interactTimes))
-            sheet.getRow(29).createCell(colNum).setCellValue(rid.courseName)
-            sheet.getRow(31).createCell(colNum).setCellValue(rid.department.name)
-            sheet.getRow(33).createCell(colNum).setCellValue(rid.courseNumber)
-            sheet.getRow(35).createCell(colNum).setCellValue(rid.facultySponsor)
-            sheet.getRow(37).createCell(colNum).setCellValue(rid.courseSponsor.name)
-            sheet.getRow(39).createCell(colNum).setCellValue(rid.userQuestion)
-            sheet.getRow(41).createCell(colNum).setCellValue(rid.notes)
+            Row row = sheet.createRow(rowNum++)
+            row.createCell(0).setCellValue(rid.ridLibraryUnit.name)
+            row.getCell(0).setCellStyle(red_bold)
+            row.createCell(1).setCellValue(rid.dateOfConsultation.format("MM/dd/yyyy"))
+            row.createCell(2).setCellValue(rid.staffPennkey)
+            row.createCell(3).setCellValue(rid.modeOfConsultation.name)
+            row.createCell(4).setCellValue(rid.serviceProvided.name)
+            row.createCell(5).setCellValue(rid.userGoal.name)
+            row.createCell(6).setCellValue(String.valueOf(rid.prepTime))
+            row.createCell(7).setCellValue(String.valueOf(rid.eventLength))
+            row.createCell(8).setCellValue(rid.userName)
+            row.createCell(9).setCellValue(rid.rank.name)
+            row.createCell(10).setCellValue(rid.school.name)
+            row.createCell(11).setCellValue(String.valueOf(rid.interactOccurrences))
+            row.createCell(12).setCellValue(rid.courseName)
+            row.createCell(13).setCellValue(rid.department.name)
+            row.createCell(14).setCellValue(rid.courseNumber)
+            row.createCell(15).setCellValue(rid.facultySponsor)
+            row.createCell(16).setCellValue(rid.courseSponsor.name)
+            row.createCell(17).setCellValue(rid.userQuestion)
+            row.createCell(18).setCellValue(rid.notes)
 
-            sheet.setColumnWidth(colNum, 4000);
-            for (int r = 5; r < 42; r += 2)
-                sheet.getRow(r).getCell(colNum).setCellType(Cell.CELL_TYPE_STRING)
-
-            colNum++
+            for (int c = 0; c < 19; c++)
+                row.getCell(c).setCellType(Cell.CELL_TYPE_STRING)
         }
 
         return wb

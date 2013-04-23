@@ -14,20 +14,20 @@ class RidTransactionTests {
     void testConstraints() {
         mockForConstraintsTests(RidTransaction)
 
-        def ridTransaction = new RidTransaction(interactTimes: 20)
+        def ridTransaction = new RidTransaction(interactOccurrences: 20)
         assert !ridTransaction.validate()
 
-        def ridTransaction2 = new RidTransaction(interactTimes: 60)
+        def ridTransaction2 = new RidTransaction(interactOccurrences: 60)
         assert !ridTransaction2.validate()
-        assert "max" == ridTransaction2.errors["interactTimes"]
+        assert "max" == ridTransaction2.errors["interactOccurrences"]
     }
 
     @Test
     void testDatabase() {
         mockForConstraintsTests(RidTransaction)
 
-        def ridTransaction = new RidTransaction(interactTimes: 20)
-        def ridTransaction2 = new RidTransaction(interactTimes: 60)
+        def ridTransaction = new RidTransaction(interactOccurrences: 20)
+        def ridTransaction2 = new RidTransaction(interactOccurrences: 60)
         try {
             ridTransaction.save(failOnError: true)
             ridTransaction2.save(failOnError: true)

@@ -4,8 +4,8 @@ abstract class RidTransactionBase {
 
     // statement of work
     String userQuestion
-    Integer interactTimes = 1
-    Integer prepTime = 1
+    Integer interactOccurrences = 1
+    Integer prepTime = 0
     Integer eventLength = 1
     String notes
     String staffPennkey

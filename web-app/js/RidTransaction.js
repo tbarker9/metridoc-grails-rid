@@ -7,7 +7,8 @@
 
 $(function() {
     var nowTemp = new Date();
-    var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+    var begin = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).setMonth(nowTemp.getMonth()-1);
+    var end = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
     var dateOfConsultation = $('#dp1').datepicker({
 //        onRender: function(date) {
@@ -19,8 +20,8 @@ $(function() {
         }).data('datepicker');
 
 
-    $('#dpd1').datepicker('setValue', now);
-    $('#dpd2').datepicker('setValue', now);
+    $('#dpd1').datepicker('setValue', begin);
+    $('#dpd2').datepicker('setValue', end);
     var checkin = $('#dpd1').datepicker().on('changeDate', function(ev) {
             if (ev.date.valueOf() > checkout.date.valueOf()) {
                 var newDate = new Date(ev.date)
@@ -246,8 +247,7 @@ function removeRequired() {
     $("#eventLength").removeAttr("required");
     $("#rank").removeAttr("required");
     $("#school").removeAttr("required");
-    $("#interactTimes").removeAttr("required");
-    $("#courseSponsor").removeAttr("required");
+    $("#interactOccurrences").removeAttr("required");
     $("#dp1").removeAttr("required");
 }
 
@@ -261,7 +261,6 @@ function setRequired() {
     $("#eventLength").attr("required", "");
     $("#rank").attr("required", "");
     $("#school").attr("required", "");
-    $("#interactTimes").attr("required", "");
-    $("#courseSponsor").attr("required", "");
+    $("#interactOccurrences").attr("required", "");
     $("#dp1").attr("required", "");
 }

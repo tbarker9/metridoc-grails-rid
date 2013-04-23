@@ -11,8 +11,8 @@
             <h1>
                 <g:message code="default.create.label" args="[entityName]"/>
                 <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
-                    <a data-toggle="modal" href="templateList" data-target="#myModal">
-                        <i title="Choose from template list" class="icon-list"></i>
+                    <a style="font-size: 14px" data-toggle="modal" href="templateList" data-target="#myModal">
+                        <i class="icon-file-alt">Use Template</i>
                     </a>
                 </g:if>
             </h1>
@@ -39,8 +39,8 @@
                     <g:render template="form" plugin="metridocRid"/>
                 </fieldset>
                 <fieldset class="buttons">
-                    <input id="resetButton" class="btn btn-success" type="reset" value="Reset"/>
-                    <g:actionSubmit action="save" name="create" class="btn btn-danger"
+                    <input id="resetButton" class="btn btn-danger" type="reset" value="Reset"/>
+                    <g:actionSubmit action="save" name="create" class="btn btn-success"
                                     value="${message(code: 'default.button.create.label', default: 'Create')}"/>
 
                     <g:if test="${SecurityUtils.getSubject().getPrincipal()}">

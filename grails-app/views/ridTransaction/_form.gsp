@@ -133,13 +133,13 @@
     %{--</div>--}%
     %{--</div>--}%
     <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactTimes', 'error')} required">
-            <label for="interactTimes">
-                <g:message code="ridTransaction.interactTimes.label" default="Interact Times"/>
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactOccurrences', 'error')} required">
+            <label for="interactOccurrences">
+                <g:message code="ridTransaction.interactOccurrences.label" default="Interact Occurrences"/>
                 <span class="required-indicator">*</span>
             </label>
-            <g:field style="width:120px" class="userInput" name="interactTimes" type="number" max="50"
-                     value="${ridTransactionInstance.interactTimes}" required=""/>
+            <g:field style="width:120px" class="userInput" name="interactOccurrences" type="number" max="50"
+                     value="${ridTransactionInstance.interactOccurrences}" required=""/>
         </div>
     </div>
 </div>
@@ -300,7 +300,6 @@
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseSponsor', 'error')} required">
             <label for="courseSponsor">
                 <g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor"/>
-                <span class="required-indicator">*</span>
             </label>
             <% courseSponsorList = RidCourseSponsor.findAllByInForm(1) %>
             <% if (ridTransactionInstance?.courseSponsor?.inForm == 0)
@@ -309,8 +308,8 @@
             courseSponsorList = courseSponsorList.sort{ it.name }
             %>
             <% courseSponsorList.addAll(RidCourseSponsor.findAllByInForm(2)) %>
-            <select style="width:120px" id="courseSponsor" name="courseSponsor.id" required="" class="many-to-one">
-                <g:each in="${schoolList}">
+            <select style="width:120px" id="courseSponsor" name="courseSponsor.id" class="many-to-one">
+                <g:each in="${courseSponsorList}">
                     <option value="${it.id}" inForm="${it.inForm}"
                             <g:if test="${ridTransactionInstance?.courseSponsor?.id == it.id}">selected=""</g:if>>
                         ${it.name}
