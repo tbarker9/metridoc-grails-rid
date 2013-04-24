@@ -79,7 +79,6 @@ $(function() {
 $(function() {
     $("#modeOfConsultation").change(function() {
         var choice = $("#modeOfConsultation option:selected").attr("inForm");
-        //alert(choice)
         if (choice == "2") {
             $("#otherModeOfConsultationDiv").show();
         }
@@ -93,7 +92,6 @@ $(function() {
 $(function() {
     $("#userGoal").change(function() {
         var choice = $("#userGoal option:selected").attr("inForm");
-        //alert(choice)
         if (choice == "2") {
             $("#otherUserGoalDiv").show();
         }
@@ -107,7 +105,6 @@ $(function() {
 $(function() {
     $("#rank").change(function() {
         var choice = $("#rank option:selected").attr("inForm");
-        //alert(choice)
         if (choice == "2") {
             $("#otherRankDiv").show();
         }

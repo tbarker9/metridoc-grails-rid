@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidTransaction" %>
+<%@ page import="metridoc.rid.RidDepartment; metridoc.rid.RidTransaction" %>
 <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 
 <md:report>
@@ -71,8 +71,9 @@
 
                         <div class="controls">
                             <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
-                                      noSelection="${['0': 'All Departments']}" optionKey="id" multiple="true" value="0"
-                                      from="${metridoc.rid.RidDepartment.where {name!=""}.list()}"/>
+                                      noSelection="${['0': 'All Departments']}" multiple="true" value="0"
+                                      optionKey="id" optionValue="${{it.name.empty ? 'NOT SPECIFIED':it.name}}"
+                                      from="${metridoc.rid.RidDepartment.list()}"/>
                         </div>
                     </div>
 

@@ -132,7 +132,7 @@
                     <td>
                         <span id="department-label" class="property-label"><g:message
                                 code="ridTransaction.department.label"
-                                default="Departmental"/></span>
+                                default="Department"/></span>
                         :<br/>
                         %{--<span class="property-value" aria-labelledby="department-label"><g:link controller="ridDepartmentalAffiliation" action="show" id="${ridTransactionInstance?.department?.id}">${ridTransactionInstance?.department?.encodeAsHTML()}</g:link></span>--}%
                         <span class="property-value" aria-labelledby="department-label"><g:fieldValue
