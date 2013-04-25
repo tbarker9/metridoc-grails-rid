@@ -71,9 +71,11 @@
 
                         <div class="controls">
                             <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
-                                      noSelection="${['0': 'All Departments']}" multiple="true" value="0"
-                                      optionKey="id" optionValue="${{it.name.empty ? 'NOT SPECIFIED':it.name}}"
-                                      from="${metridoc.rid.RidDepartment.list()}"/>
+                                      noSelection="${['0': 'All Departments']}" multiple="true" value="0" optionKey="id"
+                                      //optionValue="${{it.name.empty ? 'NOT SPECIFIED':it.name}}"
+                                      //from="${metridoc.rid.RidDepartment.list()}"
+                                      from="${metridoc.rid.RidDepartment.where{ name!="" }.list()}"
+                            />
                         </div>
                     </div>
 
