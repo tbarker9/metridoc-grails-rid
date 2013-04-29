@@ -16,3 +16,7 @@
     border-top: 0px;
     border-bottom: 1px solid #dddddd;
 }
+
+tr>td:first-child, tr>th:first-child {
+    padding-left: 0em;
+}

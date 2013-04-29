@@ -6,7 +6,7 @@
     <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
     <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin_2.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_tables_for_admin_5.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
@@ -30,24 +30,23 @@
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
-
                     <g:sortableColumn property="name"
                                       title="${message(code: 'ridDepartment.name.label', default: 'Name')}"/>
+                    <g:sortableColumn property="fullName"
+                                      title="${message(code: 'ridDepartment.fullName.label', default: 'Full Name')}"/>
                     <th>Number of RidTransaction</th>
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${ridDepartmentInstanceList}" status="i"
-                        var="ridDepartmentInstance">
+                <g:each in="${ridDepartmentInstanceList}" var="ridDepartmentInstance">
                     <tr>
-
                         <td>
                             <a data-toggle="modal" href="edit/${ridDepartmentInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
                                 ${fieldValue(bean: ridDepartmentInstance, field: "name")}
                             </a>
                         </td>
-
+                        <td>${fieldValue(bean: ridDepartmentInstance, field: "fullName")}</td>
                         <td>${ridDepartmentInstance?.ridTransaction?.size()}</td>
                     </tr>
                 </g:each>

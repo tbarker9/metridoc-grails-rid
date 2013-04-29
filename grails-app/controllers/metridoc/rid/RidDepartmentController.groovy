@@ -16,6 +16,11 @@ class RidDepartmentController {
         [ridDepartmentInstanceList: instances.list(params), ridDepartmentInstanceTotal: instances.count()]
     }
 
+    def departmentList() {
+        def instances = RidDepartment.where {name != ""}.sort('name')
+        [ridDepartmentInstanceList: instances.list(), ridDepartmentInstanceTotal: instances.count()]
+    }
+
     def create() {
         [ridDepartmentInstance: new RidDepartment(params)]
     }
