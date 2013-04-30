@@ -1,0 +1,13 @@
+The importing here means that user can upload an excel file containing the information to create
+instances of RidTransaction. When user uploads a spreadsheet (excel file), the server checks it,
+parses it and then saves it in the database if all the information and format are validated, otherwise
+throws errors to user. The exporting stands for user can download a spreadsheet contain particular
+instances to the local.
+
+I use HSSF/XSSF in [Apache POI|http://poi.apache.org/spreadsheet/index.html] to deal with excel
+[importing and exporting|http://www.andykhan.com/jexcelapi/tutorial.html].
+Apache POI is a Java API for Microsoft Documents. HSSF is the POI Project's pure Java implementation of the
+Excel '97(-2007) file format. XSSF is the POI Project's pure Java implementation of the Excel 2007 OOXML (.xlsx)
+file format. HSSF and XSSF provide ways to read spreadsheets create, modify, read and write XLS spreadsheets.
+They provide: low level structures for those with special needs, an event model API for efficient read-only access,
+and a full user model API for creating, reading and modifying XLS files.

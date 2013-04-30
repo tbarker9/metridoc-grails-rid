@@ -1,0 +1,3 @@
+The web user interface is implemented using Grails.
+We uses [jQuery|http://jquery.com/] and [Twitter Bootstrap|http://twitter.github.io/bootstrap/]
+(a kind of CSS style template implemented by Twitter) to improve the visual effect.

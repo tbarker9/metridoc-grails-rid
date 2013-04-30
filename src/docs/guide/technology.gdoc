@@ -1,0 +1,19 @@
+All in all, this is a web application, so it contains the back-end part and the front-end part.
+
+At the back-end part, we use MySQL database. The integration tool we use is called
+[Jenkins|http://project.library.upenn.edu/jenkins/], and it is an open source continuous integration
+tool written in Java, and it is free. The servlet container we use to actually run the application is
+[Jetty|http://www.eclipse.org/jetty/], which has very similar functionality to tomcat.
+Jenkins builds the software and deploys it to the Jetty instance.
+
+At the front-end part, we use [Grails|http://www.grails.org/] as the MVC development framework.
+Grails is an open source web application framework which uses the Groovy programming language (which is in
+turn based on the Java platform). Groovy is an object-oriented programming language for the Java platform.
+It is a dynamic language and also supports functional programming, such as closure.
+
+Besides, we use jQuery with the help of [Bootstrap|http://twitter.github.io/bootstrap/index.html]
+(a kind of CSS style template implemented by Twitter) to implement a wonderful user interface.
+In order to let user views web-pages friendlier in their mobile devices, we also use media query to
+automatically and dynamically re-format web pages.
+
+
