@@ -201,5 +201,5 @@ log4j = {
 //sets the layout for all pages
 metridoc.style.layout = "main"
 
-
-
+// for grails doc
+grails.doc.authors = "Xiaofan Tong; Thomas Barker"
