@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>3 Database Design (Bank-end) 0.1-SNAPSHOT</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8"/>
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8"/>
+    <script type="text/javascript">
+function addJsClass() {
+    var classes = document.body.className.split(" ");
+    classes.push("js");
+    document.body.className = classes.join(" ");
+}
+    </script>
+</head>
+
+<body class="body" onload="addJsClass();">
+<div id="navigation">
+    <ul>
+        <li>
+            <div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)">
+                <a href="../guide/index.html" class="button">Table of contents</a>
+
+                <div id="nav-summary-childs" style="display:none;">
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/introduction.html"><strong>1</strong><span>Introduction</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/technology.html"><strong>2</strong><span>Technology</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/databaseDesign.html"><strong>3</strong><span>Database Design (Bank-end)</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/webUI.html"><strong>4</strong><span>Web User Interface (Front-end)</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/unitTests.html"><strong>5</strong><span>Unit Tests</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/conclusion.html"><strong>6</strong><span>Insight and Conclusion</span></a>
+                    </div>
+                    
+                    <div class="toc-item" style="margin-left:0"><a href="../guide/appendix.html"><strong>7</strong><span>Appendix -- Relationship among domain classes</span></a>
+                    </div>
+                    
+                </div>
+            </div>
+        </li>
+        <li class="separator selected">
+            <a id="ref-button" onclick="localToggle(); return false;" href="#">Quick Reference</a>
+        </li>
+    </ul>
+</div>
+<div id="header">
+    <div class="images clearfix">
+        
+        
+    </div>
+    <p>Brief summary/description of the plugin.
+</p>
+</div>
+
+
+<table id="colset" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td id="col1">
+            <div id="main" class="corner-all">
+
+                
+                    <div class="toc-item prev-left"><a href="../guide/technology.html">&lt;&lt; <strong>2</strong><span>Technology</span></a></div>
+                
+
+                <span id='toggle-col1' class="toggle">(<a href="#" onclick="localToggle(); return false;">Quick Reference</a>)</span>
+
+                
+                    <div class="toc-item next-right"><a href="../guide/webUI.html"><strong>4</strong><span>Web User Interface (Front-end)</span> >></a></div>
+                
+
+
+                <div class="project">
+                    <h1>3 Database Design (Bank-end) - Reference Documentation</h1>
+
+                    <p><strong>Authors:</strong> Xiaofan Tong; Thomas Barker</p>
+
+                    <p><strong>Version:</strong> 0.1-SNAPSHOT</p>
+
+                    
+                </div>
+
+                
+
+                
+
+<h1 id="databaseDesign">3 Database Design (Bank-end)</h1>
+There are a total of nine tables related to Reference Instruction Database.
+<ul class="star">
+<li>"rid_transaction" is the most important table. It represents one consultation record, and contains fields such as user name, user question, event length, so on and so forth. This table has fields related to all of the following tables.</li>
+<li>"rid_course_sponsor" records different kinds of course sponsors, such as SAS, SEAS, Wharton, etc.</li>
+<li>"rid_department" records different kinds of departments, such as BURS, CAMB, CBE, etc.</li>
+<li>"rid_school" records different kinds of schools, such as GSE, Vet, Nursing, etc.</li>
+<li>"rid_rank" records different kinds of user ranks, such as Undergrad student, Grad student, PhD/PostDoc, etc.</li>
+<li>"rid_service_provided" records different kinds of services provided, such as Course design, Research assistance, etc.</li>
+<li>"rid_user_goal" records different kinds of course sponsor, such as Senior Thesis, Master Thesis, Independent Research, etc.</li>
+<li>"rid_mode_of_consultation" records different modes of consultation, such as Email, Phone, In Person, etc.</li>
+<li>"rid_library_unit" records different kinds of library units, such as WIC, HSL, CDM, etc. The above three tables are grouped by library units. That means different library unit has different service provided, user goal and different mode of consultation accordingly.</li>
+</ul><p class="paragraph"/>The following ER model shows the details of each table and relationship among them.<p class="paragraph"/><img border="0" class="center" src="../img/../../../src/docs/img/ERModel.png"></img><p class="paragraph"/><blockquote class="note">
+Please note that the ‘version’ item with BIGINT type in each table stands for the version of the content in this
+table, and is updated (added by one) each time when the content of this table is revised.
+</blockquote>
+
+
+                <div style="clear:both;margin-top:15px;"></div>
+                
+                    <div class="toc-item prev-left"><a href="../guide/technology.html">&lt;&lt; <strong>2</strong><span>Technology</span></a></div>
+                
+                    <div class="toc-item next-right"><a href="../guide/webUI.html"><strong>4</strong><span>Web User Interface (Front-end)</span> >></a></div>
+                
+                <div style="clear:both"></div>
+            </div>
+        </td>
+        <td id="col2">
+            <div class="local clearfix">
+                <div class="local-title">
+                    <a href="../guide/index.html" target="mainFrame">Quick Reference</a>
+                    <span class="toggle">(<a href="#" onclick="localToggle(); return false;">hide</a>)</span>
+                </div>
+                <div class="menu">
+                    
+                    <div class="menu-block"><h1 class="menu-title" onclick="toggleRef(this.parentNode.childNodes[1])">commandline</h1><div class="menu-sub">
+                        
+                            
+                            <div class="menu-item"><a href="../ref/commandline/configure-for-job-only.html">configure-for-job-only</a>
+                            </div>
+                            
+                            <div class="menu-item"><a href="../ref/commandline/flush-cache.html">flush-cache</a>
+                            </div>
+                            
+                            </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div id="footer">
+    
+    
+</div>
+
+<script type="text/javascript" src="../js/docs.js"></script>
+
+</body>
+</html>
