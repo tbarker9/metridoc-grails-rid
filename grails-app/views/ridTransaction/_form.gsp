@@ -123,15 +123,7 @@
                          value="${ridTransactionInstance?.otherSchool}"/>
         </div>
     </div>
-    %{--<div class="span2">--}%
-    %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'patronEmail', 'error')} ">--}%
-    %{--<label for="patronEmail">--}%
-    %{--<g:message code="ridTransaction.patronEmail.label" default="Patron Email"/>--}%
-    %{--</label>--}%
-    %{--<g:field style="width:120px" class="userInput" type="email" name="patronEmail" maxlength="100" --}%
-    %{--value="${ridTransactionInstance?.patronEmail}"/>--}%
-    %{--</div>--}%
-    %{--</div>--}%
+
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'interactOccurrences', 'error')} required">
             <label for="interactOccurrences">
@@ -352,15 +344,7 @@
                          value="${ridTransactionInstance?.courseNumber}"/>
         </div>
     </div>
-    %{--<div class="span2">--}%
-    %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'librarian', 'error')} ">--}%
-    %{--<label for="librarian">--}%
-    %{--<g:message code="ridTransaction.librarian.label" default="Librarian"/>--}%
-    %{--</label>--}%
-    %{--<g:textField class="userInput" name="librarian" style="width: 120px" maxlength="100" --}%
-    %{--value="${ridTransactionInstance?.librarian}"/>--}%
-    %{--</div>--}%
-    %{--</div>--}%
+
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">
             <label for="facultySponsor">
@@ -370,14 +354,6 @@
                          value="${ridTransactionInstance?.facultySponsor}"/>
         </div>
     </div>
-    %{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">--}%
-    %{--<label for="facultySponsor">--}%
-    %{--<g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>--}%
-
-    %{--</label>--}%
-    %{--<g:textArea class="userInput" name="facultySponsor" cols="40" rows="5" maxlength="300"--}%
-    %{--value="${ridTransactionInstance?.facultySponsor}"/>--}%
-    %{--</div>--}%
 </div>
 
 <div class="row-fluid">
@@ -403,23 +379,3 @@
         </div>
     </div>
 </div>
-
-
-
-%{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'followUpContact', 'error')} ">--}%
-%{--<label for="followUpContact">--}%
-%{--<g:message code="ridTransaction.followUpContact.label" default="Follow Up Contact"/>--}%
-
-%{--</label>--}%
-%{--<g:textField class="userInput" name="followUpContact" maxlength="50" value="${ridTransactionInstance?.followUpContact}"/>--}%
-%{--</div>--}%
-
-
-%{--<div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">--}%
-%{--<label for="facultySponsor">--}%
-%{--<g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>--}%
-
-%{--</label>--}%
-%{--<g:textArea class="userInput" name="facultySponsor" cols="40" rows="5" maxlength="300"--}%
-%{--value="${ridTransactionInstance?.facultySponsor}"/>--}%
-%{--</div>--}%

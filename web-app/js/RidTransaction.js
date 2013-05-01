@@ -261,3 +261,8 @@ function setRequired() {
     $("#interactOccurrences").attr("required", "");
     $("#dp1").attr("required", "");
 }
+
+function setDepartment(id) {
+    $('#myDepartment').modal('hide');
+    $('#department').val(id).attr('selected',true);
+}

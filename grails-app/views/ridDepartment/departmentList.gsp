@@ -2,6 +2,7 @@
 <g:set var="entityName"
        value="${message(code: 'ridDepartment.label', default: 'RidDepartment')}"/>
 
+<r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
 <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
 <!--[if !IE]><!-->
@@ -20,7 +21,8 @@
         </thead>
         <tbody>
         <g:each in="${ridDepartmentInstanceList}" var="ridDepartmentInstance">
-            <tr>
+            <tr style="cursor: pointer;"
+                onclick="setDepartment(${fieldValue(bean: ridDepartmentInstance, field: "id")})">
                 <td>${fieldValue(bean: ridDepartmentInstance, field: "name")}</td>
                 <td>${fieldValue(bean: ridDepartmentInstance, field: "fullName")}</td>
             </tr>

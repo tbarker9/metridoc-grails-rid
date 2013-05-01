@@ -13,4 +13,7 @@
     $('#myModal').on('hidden', function () {
         $(this).removeData('modal');
     });
+    $('#myDepartment').on('hidden', function () {
+        $(this).removeData('modal');
+    });
 </script>
