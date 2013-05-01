@@ -1,2 +1,4 @@
 pom.xml*
 classes
+test-classes
+test-reports

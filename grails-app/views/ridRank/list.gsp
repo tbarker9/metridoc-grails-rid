@@ -10,7 +10,8 @@
 
     <div class="md-application-content">
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName]"/>
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+                  model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridRank" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]"/>

@@ -5,7 +5,9 @@
     <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
     <div class="md-application-content">
         <g:render template="tabs" plugin="metridocRid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName]"/>
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName + ' Creation']"/>
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+                  model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="create-ridTransaction" class="content scaffold-create" role="main">
             <h1>

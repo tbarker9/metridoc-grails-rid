@@ -15,11 +15,11 @@ Here is the way I use instead to test duplicated submissions:
 
         ...
 
-        form.firstSubmitted() // pass
+        controller.firstFormSubmitted() // pass
 
         ...
 
-        form.duplicatedSubmitted() // fail
+        controller.duplicatedFormSubmitted() // fail
     }
 {code}
 {note}
