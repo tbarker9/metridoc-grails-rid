@@ -17,7 +17,8 @@ class MetridocRidBootStrap {
                     println "Creating test data for RID database"
                     RidTransaction.withNewTransaction {
                         // for Library unit
-                        List<String> lUnit = Arrays.asList("WIC", "HSL", "CDM", "LIPPINCOTT", "RIS")
+                        List<String> lUnit = Arrays.asList("WIC", "HSL", "CDM", "LIPPINCOTT", "RIS",
+                                "Science Libraries")
                         for (String i in lUnit.sort()) {
                             if (!RidLibraryUnit.findByName(i)) {
                                 def gt = new RidLibraryUnit(name: i)
@@ -25,6 +26,7 @@ class MetridocRidBootStrap {
                                 if (gt.hasErrors()) println gt.errors
                             }
                         }
+                        new RidLibraryUnit(name: "General").save()
                         // for department
                         List<String> dps = Arrays.asList(
                                 "AAMW","ABIO","ACCT","ADMN","ADMS","AFAM","AFRC","AFST","AMCS","AMCV","AMES",
@@ -71,8 +73,8 @@ class MetridocRidBootStrap {
                                 "COMMUNITY ORAL HEALTH","DEMOGRAPHY","ENDODONTICS","DENTAL","DESIGN OF ENVIRONMENT",
                                 "MICROBIOLOGY","ORAL MEDICINE","ORTHODONTICS","ORAL SURGERY AND PHARMACOLOGY",
                                 "PEDIATRIC DENTISTRY","PERIODONTICS","PATHOLOGY","RADIOLOGY","RESTORATIVE DENTISTRY",
-                                "DECISION SCIENCES","ORGANIZATIONAL DYNAMICS"," CENTER FOR",
-                                "EAST ASIAN LANGUAGES AND CIVILIZATIONS","ECOLOGICAL ARCHITECTURE",
+                                "DECISION SCIENCES","ORGANIZATIONAL DYNAMICS",
+                                "CENTER FOR EAST ASIAN LANGUAGES AND CIVILIZATIONS","ECOLOGICAL ARCHITECTURE",
                                 "ENGINEERING & APPLIED SCIENCE","APPLIED ECONOMICS","ECONOMICS","EDUCATION",
                                 "ELECTRICAL ENGINEERING","CHG TO 'EE'","EARTH AND ENVIRONMENTAL SCIENCE",
                                 "EXECUTIVE MASTERS IN TECHNOLOGY MGMT.","CHG TO 'EAS'","ENGLISH",
@@ -82,18 +84,19 @@ class MetridocRidBootStrap {
                                 "GOVERNMENT ADMINISTRATION","GRADUATE ARTS & SCIENCES",
                                 "GENOMICS AND COMPUTATIONAL BIOLOGY","GENETICS","GENERAL HONORS",
                                 "EARTH AND ENVIRONMENTAL SCIENCE","GRADUATE ENGINEERING HOLDS",
-                                "GERMANIC LANGUAGES AND LITERATURES","SCHOOL OF DESIGN","GENDER",
-                                "SEXUALITY & WOMEN'S STUDIES","CHG TO 'HCMG'","HEALTH CARE MANAGEMENT","HUMAN GENETICS",
-                                "HISTORY","HEALTH AND SOCIETIES","HISTORIC PRESERVATION",
-                                "HISTORY & SOCIOLOGY OF SCIENCE","CHG TO 'HSPV'","HUMANITIES",
+                                "GERMANIC LANGUAGES AND LITERATURES","SCHOOL OF DESIGN",
+                                "GENDER, SEXUALITY & WOMEN'S STUDIES","CHG TO 'HCMG'",
+                                "HEALTH CARE MANAGEMENT","HUMAN GENETICS", "HISTORY","HEALTH AND SOCIETIES",
+                                "HISTORIC PRESERVATION", "HISTORY & SOCIOLOGY OF SCIENCE","CHG TO 'HSPV'","HUMANITIES",
                                 "INTL DEVL & APPROPRIATE TECHNOLOGY","IMMUNOLOGY","INSTITUTE OF NEUROLOGICAL SCIENCES",
                                 "INTERNATIONAL STUDIES","INTERNATIONAL PROGRAMS","INTERNATIONAL RELATIONS",
                                 "INTERNATIONAL STUDIES","INTEGRATED PRODUCT DESIGN","JUDICIAL INQUIRY OFFICER",
                                 "JEWISH STUDIES PROGRAM","LATIN AMERICAN AND LATINO STUDIES",
-                                "LANDSCAPE ARCH & REGIONAL PLANNING","LAUDER INSTITUTE","LAW","LOGIC",
-                                "INFORMATION AND COMPUTATION","LEGAL STUDIES AND BUSINESS ETHICS","LIBERAL STUDIES",
-                                "LINGUISTICS","LIFE SCIENCES MANAGEMENT","LATIN AMERICAN AND LATINO STUDIES",
-                                "MASTER OF APPLIED POSITIVE PSYCHOLOGY","MATHEMATICS","MECH ENGR AND APPLIED MECHANICS",
+                                "LANDSCAPE ARCH & REGIONAL PLANNING","LAUDER INSTITUTE","LAW",
+                                "LOGIC, INFORMATION AND COMPUTATION","LEGAL STUDIES AND BUSINESS ETHICS",
+                                "LIBERAL STUDIES", "LINGUISTICS","LIFE SCIENCES MANAGEMENT",
+                                "LATIN AMERICAN AND LATINO STUDIES", "MASTER OF APPLIED POSITIVE PSYCHOLOGY",
+                                "MATHEMATICS","MECH ENGR AND APPLIED MECHANICS",
                                 "MEDICAL","DEPARTMENT OF MEDICAL ETHICS","MANAGEMENT","MICROBIOLOGY (DENTAL SCHOOL)",
                                 "MICROBIOLOGY","MARKET & SOCIAL SYSTEMS ENGINEERING","MARKETING",
                                 "MODERN MIDDLE EASTERN STUDIES","MASTER OF MEDICAL PHYSICS","MOLECULAR BIOLOGY",
@@ -102,11 +105,11 @@ class MetridocRidBootStrap {
                                 "NEUROSCIENCE","NAVAL SCIENCE","NURSING","OB/GYN",
                                 "OPERATIONS AND INFORMATION MANAGEMENT","OPERATIONS RESERACH","ORIENTAL STUDIES",
                                 "PARASITOLOGY","PATHOLOGY","PEDIATRICS","PHILOSOPHY","PHARMACOLOGY","PHYSIOLOGY",
-                                "PHYSICS","PHILOSOPHY","POLITICS AND ECON.",
-                                "PUBLIC POLICY & MANAGEMENT","PRESIDENT'S OFFICE","PROVOST","POLITICAL SCIENCE",
-                                "PENN - SUMMER OF SERVICE","PSYCHOLOGY","PATHOBIOLOGY","PUBLIC HEALTH STUDIES",
-                                "PSYCHIATRY","RADIOLOGY","REAL ESTATE","REGISTRARS OFFICE","RELIGIOUS STUDIES",
-                                "ROMANCE LANGUAGES","ROMANCE PHILOLOGY","REGIONAL SCIENCES","RESEARCH MEDICINE",
+                                "PHYSICS","PHILOSOPHY, POLITICS AND ECON.", "PUBLIC POLICY & MANAGEMENT",
+                                "PRESIDENT'S OFFICE","PROVOST","POLITICAL SCIENCE", "PENN - SUMMER OF SERVICE",
+                                "PSYCHOLOGY","PATHOBIOLOGY","PUBLIC HEALTH STUDIES", "PSYCHIATRY","RADIOLOGY",
+                                "REAL ESTATE","REGISTRARS OFFICE","RELIGIOUS STUDIES", "ROMANCE LANGUAGES",
+                                "ROMANCE PHILOLOGY","REGIONAL SCIENCES","RESEARCH MEDICINE",
                                 "SOUTH ASIA REGIONAL STUDIES","SOUTH ASIA STUDIES","SCHOOL OF ENGINEERING",
                                 "CHG TO 'SYS'","SOCIAL GERONTOLOGY","SLAVIC LANGUAGES","SOCIOLOGY","SUMMER SESSIONS",
                                 "SOCIAL SYSTEMS SCIENCE","STATISTICS","STUDENT HEALTH INSURANCE","SOCIAL WORK",
@@ -241,10 +244,37 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save()
+                        // for user goal -- Science Libraries
+                        uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
+                                "Dissertation", "Research article", "Monograph", "Data Management",
+                                "Independent Research", "Course Creation", "Grant Proposal")
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save(validate: false)
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("Science Libraries"))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries"))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save()
+                        // for user goal -- General
+                        uGoal = Arrays.asList("Research Paper", "Course Project", "Senior Thesis", "Master Thesis",
+                                "Dissertation", "Research article", "Monograph", "Data Management",
+                                "Independent Research", "Course Creation", "Grant Proposal")
+                        new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General")).save(validate: false)
+                        for (String i in uGoal) {
+                            if (!RidUserGoal.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("General"))) {
+                                def p = new RidUserGoal(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General"))
+                                p.save()
+                                if (p.hasErrors()) println p.errors
+                            }
+                        }
+                        new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("General")).save()
                         // ---------------------------------------------------------------------------------------------
                         // for mode of consutlation -- WIC
                         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                                 "Video or web conference", "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save(validate: false)
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("WIC"))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC"))
@@ -256,6 +286,7 @@ class MetridocRidBootStrap {
                         // for mode of consutlation -- HSL
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                                 "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save(validate: false)
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("HSL"))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL"))
@@ -266,6 +297,7 @@ class MetridocRidBootStrap {
                         // for mode of consutlation -- CDM
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                                 "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save(validate: false)
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("CDM"))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM"))
@@ -276,6 +308,7 @@ class MetridocRidBootStrap {
                         // for mode of consutlation -- LIPPINCOTT
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                                 "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save(validate: false)
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("LIPPINCOTT"))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT"))
@@ -286,9 +319,32 @@ class MetridocRidBootStrap {
                         // for mode of consutlation -- RIS
                         cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                                 "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save(validate: false)
                         for (String i in cMode) {
                             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("RIS"))) {
                                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS"))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // for mode of consutlation -- Science Libraries
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save(validate: false)
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("Science Libraries"))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries"))
+                                c.save()
+                                if (c.hasErrors()) println c.errors
+                            }
+                        }
+                        // for mode of consutlation -- General
+                        cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                                "In person (in library)", "In person (outside library)")
+                        new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General")).save(validate: false)
+                        for (String i in cMode) {
+                            if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("General"))) {
+                                def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General"))
                                 c.save()
                                 if (c.hasErrors()) println c.errors
                             }
@@ -298,6 +354,7 @@ class MetridocRidBootStrap {
                         List<String> sProvided = Arrays.asList("Course design", "Research assistance",
                                 "Instructional support (apart from course design)", "Tour",
                                 "Tech/Software instruction", "Mobile technology", "Assistance to undergraduates")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save(validate: false)
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("WIC"))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC"))
@@ -316,6 +373,7 @@ class MetridocRidBootStrap {
                                 "Consumer health", "Admin/policy questions", "Citation management instruction",
                                 "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
                                 "Comprehensive Lit Search/Systematic Reviews")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save(validate: false)
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("HSL"))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL"))
@@ -334,6 +392,7 @@ class MetridocRidBootStrap {
                                 "Admin/policy questions", "Citation management instruction",
                                 "Scholarly Commons/Repository Services", "Creating faculty profiles/selected works/VIVO",
                                 "Coursera/MOOCs support", "Research practice support")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save(validate: false)
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("CDM"))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM"))
@@ -349,6 +408,7 @@ class MetridocRidBootStrap {
                                 "Tech/Software instruction", "Search instruction",
                                 "Literature search", "Bibliometrics or citation metrics",
                                 "Admin/policy questions", "Citation management instruction")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save(validate: false)
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("LIPPINCOTT"))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT"))
@@ -363,6 +423,7 @@ class MetridocRidBootStrap {
                                 "Tech/Software instruction", "Mobile technology", "Correct an Operational or Service Breakdown",
                                 "Admin/policy questions", "Bibliometrics or citation metrics", "Copyright",
                                 "Scholarly Commons/Repository Services")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save(validate: false)
                         for (String i in sProvided) {
                             if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("RIS"))) {
                                 def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS"))
@@ -371,6 +432,36 @@ class MetridocRidBootStrap {
                             }
                         }
                         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save()
+                        // for service provided -- Science Libraries
+                        sProvided = Arrays.asList("Research assistance", "Clinic", "Tour",
+                                "Acquisitions/Collections", "Citation management instruction", "Instructional Support",
+                                "Tech/Software instruction", "Mobile technology", "Correct an Operational or Service Breakdown",
+                                "Admin/policy questions", "Bibliometrics or citation metrics", "Copyright",
+                                "Scholarly Commons/Repository Services")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save(validate: false)
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("Science Libraries"))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries"))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save()
+                        // for service provided -- General
+                        sProvided = Arrays.asList("Research assistance", "Clinic", "Tour",
+                                "Acquisitions/Collections", "Citation management instruction", "Instructional Support",
+                                "Tech/Software instruction", "Mobile technology", "Correct an Operational or Service Breakdown",
+                                "Admin/policy questions", "Bibliometrics or citation metrics", "Copyright",
+                                "Scholarly Commons/Repository Services")
+                        new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General")).save(validate: false)
+                        for (String i in sProvided) {
+                            if (!RidServiceProvided.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("General"))) {
+                                def s = new RidServiceProvided(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General"))
+                                s.save()
+                                if (s.hasErrors()) println s.errors
+                            }
+                        }
+                        new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("General")).save()
                         // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
                         for (int i = 0; i < 25; i++) {

@@ -13,10 +13,8 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <g:sortableColumn property="name"
-                              title="${message(code: 'ridDepartment.name.label', default: 'Name')}"/>
-            <g:sortableColumn property="fullName"
-                              title="${message(code: 'ridDepartment.fullName.label', default: 'Full Name')}"/>
+            <th>${message(code: 'ridDepartment.name.label', default: 'Name')}</th>
+            <th>${message(code: 'ridDepartment.fullName.label', default: 'Full Name')}</th>
         </tr>
         </thead>
         <tbody>

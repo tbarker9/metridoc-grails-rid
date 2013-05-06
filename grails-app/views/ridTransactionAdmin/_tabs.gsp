@@ -4,6 +4,15 @@
             plugin="metridocRid"
             model="[controllerName: controllerName,
                     actionName: actionName,
+                    linkController: 'ridLibraryUnit',
+                    linkAction: 'list',
+                    linkText: 'Library Unit',
+            ]"/>
+    <g:render
+            template="/ridTransaction/tabLabel"
+            plugin="metridocRid"
+            model="[controllerName: controllerName,
+                    actionName: actionName,
                     linkController: 'ridCourseSponsor',
                     linkAction: 'list',
                     linkText: 'Course Sponsor',

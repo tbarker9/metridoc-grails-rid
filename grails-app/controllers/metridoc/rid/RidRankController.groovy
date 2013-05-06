@@ -79,23 +79,4 @@ class RidRankController {
             redirect(action: "list")
         }
     }
-
-    def delete(Long id) {
-        def ridRankInstance = RidRank.get(id)
-        if (!ridRankInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridRank.label', default: 'RidRank'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridRankInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridRank.label', default: 'RidRank'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridRank.label', default: 'RidRank'), id])
-            redirect(action: "list")
-        }
-    }
 }

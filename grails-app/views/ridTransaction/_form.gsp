@@ -141,7 +141,6 @@
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'modeOfConsultation', 'error')} required">
             <label for="modeOfConsultation">
                 <g:message code="ridTransaction.modeOfConsultation.label" default="Mode Of Consultation"/>
-                <span class="required-indicator">*</span>
             </label>
 
             <div id="currentModeOfConsultation"
@@ -156,7 +155,7 @@
                 modeList.addAll(metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(2,
                         ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
             %>
-            <select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id" required=""
+            <select style="width:120px" id="modeOfConsultation" name="modeOfConsultation.id"
                     class="many-to-one">
                 <g:each in="${modeList}">
                     <option value="${it.id}" inForm="${it.inForm}"
@@ -183,7 +182,6 @@
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'serviceProvided', 'error')} required">
             <label for="serviceProvided">
                 <g:message code="ridTransaction.serviceProvided.label" default="Service Provided"/>
-                <span class="required-indicator">*</span>
             </label>
 
             <div id="currentServiceProvided" style="display: none;">${ridTransactionInstance?.serviceProvided?.id}</div>
@@ -197,7 +195,7 @@
                 serviceList.addAll(metridoc.rid.RidServiceProvided.findAllByInFormAndRidLibraryUnit(2,
                         ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
             %>
-            <select style="width:120px" id="serviceProvided" name="serviceProvided.id" required="" class="many-to-one">
+            <select style="width:120px" id="serviceProvided" name="serviceProvided.id" class="many-to-one">
                 <g:each in="${serviceList}">
                     <option value="${it.id}" inForm="${it.inForm}"
                             <g:if test="${ridTransactionInstance?.serviceProvided?.id == it.id}">selected=""</g:if>>

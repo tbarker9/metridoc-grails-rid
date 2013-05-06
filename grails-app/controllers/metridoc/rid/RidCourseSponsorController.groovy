@@ -94,22 +94,22 @@ class RidCourseSponsorController {
         }
     }
 
-    def delete(Long id) {
-        def ridCourseSponsorInstance = RidCourseSponsor.get(id)
-        if (!ridCourseSponsorInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridCourseSponsorInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
-            redirect(action: "list")
-        }
-    }
+//    def delete(Long id) {
+//        def ridCourseSponsorInstance = RidCourseSponsor.get(id)
+//        if (!ridCourseSponsorInstance) {
+//            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
+//            redirect(action: "list")
+//            return
+//        }
+//
+//        try {
+//            ridCourseSponsorInstance.delete(flush: true)
+//            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
+//            redirect(action: "list")
+//        }
+//        catch (DataIntegrityViolationException e) {
+//            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), id])
+//            redirect(action: "list")
+//        }
+//    }
 }

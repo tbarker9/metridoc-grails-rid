@@ -81,22 +81,4 @@ class RidUserGoalController {
         }
     }
 
-    def delete(Long id) {
-        def ridUserGoalInstance = RidUserGoal.get(id)
-        if (!ridUserGoalInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridUserGoalInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), id])
-            redirect(action: "list")
-        }
-    }
 }

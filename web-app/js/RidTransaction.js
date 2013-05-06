@@ -238,8 +238,6 @@ function removeRequired() {
     $("#ridLibraryUnit").removeAttr("required");
     $("#dateOfConsultation").removeAttr("required");
     $("#staffPennkey").removeAttr("required");
-    $("#modeOfConsultation").removeAttr("required");
-    $("#serviceProvided").removeAttr("required");
     $("#prepTime").removeAttr("required");
     $("#eventLength").removeAttr("required");
     $("#rank").removeAttr("required");
@@ -252,8 +250,6 @@ function setRequired() {
     $("#ridLibraryUnit").attr("required", "");
     $("#dateOfConsultation").attr("required", "");
     $("#staffPennkey").attr("required", "");
-    $("#modeOfConsultation").attr("required", "");
-    $("#serviceProvided").attr("required", "");
     $("#prepTime").attr("required", "");
     $("#eventLength").attr("required", "");
     $("#rank").attr("required", "");

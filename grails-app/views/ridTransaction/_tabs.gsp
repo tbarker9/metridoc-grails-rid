@@ -14,15 +14,6 @@
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridTransaction',
-                    linkAction: 'list',
-                    linkText: 'RidTransaction List',
-                    icon: 'icon-list-alt']"/>
-    <g:render
-            template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
-            model="[controllerName: controllerName,
-                    actionName: actionName,
-                    linkController: 'ridTransaction',
                     linkAction: 'search',
                     linkText: 'Search RidTransaction',
                     icon: 'icon-search']"/>
@@ -35,6 +26,15 @@
                     linkAction: 'spreadsheetUpload',
                     linkText: 'Spreadsheet Upload',
                     icon: 'icon-cloud-upload']"/>
+    <g:render
+            template="/ridTransaction/tabLabel"
+            plugin="metridocRid"
+            model="[controllerName: controllerName,
+                    actionName: actionName,
+                    linkController: 'ridTransaction',
+                    linkAction: 'list',
+                    linkText: 'RidTransaction List',
+                    icon: 'icon-list-alt']"/>
 </ul>
 
 

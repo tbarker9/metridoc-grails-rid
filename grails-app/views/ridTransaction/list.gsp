@@ -25,7 +25,7 @@
                 <g:if test="${ridTransactionAllList.size() > 0}">
                     <g:link action="export" params="${params}">
                         <i id="exportToFile"
-                           title="Save the current transaction list as an excel file" class="icon-save"></i>
+                           title="Save the current transaction list as an excel file" class="icon-download-alt"></i>
                     </g:link>
                 </g:if>
             </h1>

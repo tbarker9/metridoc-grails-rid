@@ -80,22 +80,4 @@ class RidSchoolController {
         }
     }
 
-    def delete(Long id) {
-        def ridSchoolInstance = RidSchool.get(id)
-        if (!ridSchoolInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridSchool.label', default: 'RidSchool'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridSchoolInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridSchool.label', default: 'RidSchool'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridSchool.label', default: 'RidSchool'), id])
-            redirect(action: "list")
-        }
-    }
 }

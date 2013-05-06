@@ -12,7 +12,8 @@ class RidModeOfConsultationController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [ridModeOfConsultationInstanceList: RidModeOfConsultation.list(params), ridModeOfConsultationInstanceTotal: RidModeOfConsultation.count()]
+        def instances = RidModeOfConsultation.where {name != ""}
+        [ridModeOfConsultationInstanceList: instances.list(params), ridModeOfConsultationInstanceTotal: instances.count()]
     }
 
     def create() {
@@ -80,22 +81,4 @@ class RidModeOfConsultationController {
         }
     }
 
-    def delete(Long id) {
-        def ridModeOfConsultationInstance = RidModeOfConsultation.get(id)
-        if (!ridModeOfConsultationInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridModeOfConsultationInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation'), id])
-            redirect(action: "list")
-        }
-    }
 }

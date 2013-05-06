@@ -12,7 +12,8 @@ class RidServiceProvidedController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [ridServiceProvidedInstanceList: RidServiceProvided.list(params), ridServiceProvidedInstanceTotal: RidServiceProvided.count()]
+        def instances = RidServiceProvided.where {name != ""}
+        [ridServiceProvidedInstanceList: instances.list(params), ridServiceProvidedInstanceTotal: instances.count()]
     }
 
     def create() {
@@ -80,22 +81,4 @@ class RidServiceProvidedController {
         }
     }
 
-    def delete(Long id) {
-        def ridServiceProvidedInstance = RidServiceProvided.get(id)
-        if (!ridServiceProvidedInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            ridServiceProvidedInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'ridServiceProvided.label', default: 'RidServiceProvided'), id])
-            redirect(action: "list")
-        }
-    }
 }
