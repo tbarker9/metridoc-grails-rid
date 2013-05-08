@@ -4,7 +4,7 @@
 <div id="edit-ridLibraryUnit" class="content scaffold-edit" role="main">
     <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
 
-    <g:form class="form-horizontal" method="post" useToken="true">
+    <g:form class="form-horizontal" method="post" enctype="multipart/form-data" useToken="true">
         <g:hiddenField name="id" value="${ridLibraryUnitInstance?.id}"/>
         <g:hiddenField name="version" value="${ridLibraryUnitInstance?.version}"/>
         <div style="margin-top: 2em">

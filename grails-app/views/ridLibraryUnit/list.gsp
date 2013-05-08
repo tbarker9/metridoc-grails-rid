@@ -1,4 +1,4 @@
-<%@ page import="metridoc.rid.RidLibraryUnit" %>
+<%@ page import="org.codehaus.groovy.grails.io.support.ClassPathResource; metridoc.rid.RidLibraryUnit" %>
 <g:set var="entityName" value="${message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit')}" />
 
 <md:report>
@@ -34,6 +34,7 @@
                     <g:sortableColumn property="name"
                                       title="${message(code: 'ridLibraryUnit.name.label', default: 'Name')}"/>
                     <th>Number of RidTransaction</th>
+                    <th>Spreadsheet File</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,11 +42,24 @@
                     <tr>
                         <td>
                             <a data-toggle="modal" href="edit/${ridLibraryUnitInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
-                               data-target="#myModal">
-                                ${fieldValue(bean: ridLibraryUnitInstance, field: "name")}
-                            </a>
+                               data-target="#myModal">${fieldValue(bean: ridLibraryUnitInstance, field: "name")}</a>
                         </td>
                         <td>${ridLibraryUnitInstance?.ridTransaction?.size()}</td>
+                        <%
+                            ClassPathResource resource =
+                                new ClassPathResource('spreadsheet/' + ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx')
+                        %>
+                        <td>
+                            <g:if test="${resource.exists()}">
+                                <g:link action="download"
+                                        params="${[sname: ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx']}">
+                                    ${ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx'}
+                                </g:link>
+                            </g:if>
+                            <g:else>
+                                <span style="color: #ff0000;">WARNING: NO spreadsheet!</span>
+                            </g:else>
+                        </td>
                     </tr>
                 </g:each>
                 </tbody>

@@ -202,9 +202,9 @@ class RidTransactionController {
 
     def download() {
         ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
-        def file = resource.getFile()
-        if (file.exists()) {
+        if (resource.exists()) {
             try {
+                def file = resource.getFile()
                 response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
                 response.setHeader("Content-disposition", "filename=${file.name}")
                 response.outputStream << file.newInputStream() // Performing a binary stream copy
@@ -219,7 +219,7 @@ class RidTransactionController {
 
     def upload() {
         withForm {
-            MultipartFile uploadedFile = request.getFile("spreadsheetUpload");
+            MultipartFile uploadedFile = request.getFile("spreadsheetUpload")
             if (uploadedFile == null || uploadedFile.empty) {
                 flash.alerts << "No file was provided"
                 redirect(action: "spreadsheetUpload")

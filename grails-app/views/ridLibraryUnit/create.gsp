@@ -4,7 +4,7 @@
 <div id="create-ridLibraryUnit" class="content scaffold-create" role="main">
     <h1><g:message code="default.create.label" args="[entityName]"/></h1>
 
-    <g:form class="form-horizontal" action="save" useToken="true">
+    <g:form class="form-horizontal" action="save" enctype="multipart/form-data" useToken="true">
         <div style="margin-top: 2em">
             <g:render template="form" plugin="metridoc-rid"/>
         </div>
