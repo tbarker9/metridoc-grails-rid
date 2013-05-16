@@ -8,8 +8,11 @@
 class MetridocRidBootStrap {
 
     def ridBootStrapService
+    def ridSpreadsheetBootstrapService
     def init = { servletContext ->
         ridBootStrapService.bootStrapContents()
+        ridSpreadsheetBootstrapService.downloadSpreadsheets()
     }
+
     def destroy = {}
 }
