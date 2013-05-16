@@ -7,8 +7,8 @@ import org.junit.rules.TemporaryFolder
 import org.springframework.core.io.ClassPathResource
 
 
-@TestFor(RidSpreadsheetBootStrapService)
-class RidSpreadsheetBootStrapServiceTests {
+@TestFor(RidManageLibraryUnitSpreadsheetsService)
+class RidManageLibraryUnitSpreadsheetsServiceTests {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder()
@@ -22,7 +22,5 @@ class RidSpreadsheetBootStrapServiceTests {
         service.unitSpreadsheetDir = dest
         service.transferSpreadsheets()
         assert new File(temporaryFolder.getRoot().canonicalPath + "/dest/Transaction_list.xlsx").exists()
-
-
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
 
-class RidTransactionController extends RidSpreadsheetTransferMethodController {
+class RidTransactionController {
 
     static homePage = [title: "Research Consultation & Instruction Database",
             description: "Add/Update/Review data on consultation and instructional activity"]
@@ -17,7 +17,7 @@ class RidTransactionController extends RidSpreadsheetTransferMethodController {
 
     def ridTransactionService
     def spreadsheetService
-    def ridSpreadsheetBootStrapService
+    def ridManageLibraryUnitSpreadsheetsService
     def scaffold = true
 
     def ajaxChooseType = {
@@ -261,5 +261,9 @@ class RidTransactionController extends RidSpreadsheetTransferMethodController {
             }
         }
 
+    }
+
+    def download() {
+        ridManageLibraryUnitSpreadsheetsService.download(response, flash, params)
     }
 }

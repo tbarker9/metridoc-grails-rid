@@ -3,12 +3,12 @@ package metridoc.rid
 import org.codehaus.groovy.grails.io.support.ClassPathResource
 import org.springframework.web.multipart.MultipartFile
 
-class RidLibraryUnitController extends RidSpreadsheetTransferMethodController {
+class RidLibraryUnitController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def spreadsheetService
-    def ridSpreadsheetBootStrapService
+    def ridManageLibraryUnitSpreadsheetsService
 
     def index() {
         redirect(action: "list", params: params)
@@ -155,7 +155,20 @@ class RidLibraryUnitController extends RidSpreadsheetTransferMethodController {
         }
     }
 
-
+    def download() {
+        ridManageLibraryUnitSpreadsheetsService.download(response, flash, params)
+//        def file = new File(ridManageLibraryUnitSpreadsheetService.DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
+//        if (!file.exists()) {
+//            flash.message = "File not found"
+//        }
+//        try {
+//            response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+//            response.setHeader("Content-disposition", "filename=${file.name}")
+//            response.outputStream << file.newInputStream() // Performing a binary stream copy
+//        } catch (Exception e) {
+//            flash.alerts << e.message
+//        }
+    }
 
     def spreadsheetUpload() {
 
