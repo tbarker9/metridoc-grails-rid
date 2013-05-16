@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
 
-class RidTransactionController {
+class RidTransactionController extends RidSpreadsheetTransferMethodController {
 
     static homePage = [title: "Research Consultation & Instruction Database",
             description: "Add/Update/Review data on consultation and instructional activity"]
@@ -198,20 +198,6 @@ class RidTransactionController {
     }
 
     def spreadsheetUpload() {}
-
-    def download() {
-        def file = new File(ridSpreadsheetBootStrapService.DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
-        if (!file.exists()) {
-            flash.message = "File not found"
-        }
-        try {
-            response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-            response.setHeader("Content-disposition", "filename=${file.name}")
-            response.outputStream << file.newInputStream() // Performing a binary stream copy
-        } catch (Exception e) {
-            flash.alerts << e.message
-        }
-    }
 
     def upload() {
         withForm {
