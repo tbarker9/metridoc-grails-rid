@@ -8,6 +8,7 @@ class RidLibraryUnitController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def spreadsheetService
+    def ridSpreadsheetBootStrapService
 
     def index() {
         redirect(action: "list", params: params)
@@ -60,7 +61,7 @@ class RidLibraryUnitController {
                         flash.alerts << e.message
                     }
                 }
-                try{
+                try {
                     uploadedFile.transferTo(new File(resource.path))
                 } catch (Exception e) {
                     flash.alerts << e.message
@@ -87,7 +88,7 @@ class RidLibraryUnitController {
     }
 
     def update(Long id, Long version) {
-        withForm{
+        withForm {
             def ridLibraryUnitInstance = RidLibraryUnit.get(id)
             def oldname = ridLibraryUnitInstance.name
             if (!ridLibraryUnitInstance) {
@@ -139,7 +140,7 @@ class RidLibraryUnitController {
                         flash.alerts << e.message
                     }
                 }
-                try{
+                try {
                     uploadedFile.transferTo(new File(r.path))
                 } catch (Exception e) {
                     flash.alerts << e.message
@@ -155,19 +156,16 @@ class RidLibraryUnitController {
     }
 
     def download() {
-        ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.sname)
-        if (resource.exists()) {
-            try {
-                def file = resource.getFile()
-                response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-                response.setHeader("Content-disposition", "filename=${file.name}")
-                response.outputStream << file.newInputStream() // Performing a binary stream copy
-            } catch (Exception e) {
-                flash.alerts << e.message
-            }
+        def file = new File(ridSpreadsheetBootStrapService.DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
+        if (!file.exists()) {
+            flash.message = "File not found"
         }
-        else {
-            flash.alerts << 'Cannot find file: ' + params.sname
+        try {
+            response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response.setHeader("Content-disposition", "filename=${file.name}")
+            response.outputStream << file.newInputStream() // Performing a binary stream copy
+        } catch (Exception e) {
+            flash.alerts << e.message
         }
     }
 

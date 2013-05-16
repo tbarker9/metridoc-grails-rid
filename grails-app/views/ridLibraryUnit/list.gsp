@@ -1,5 +1,5 @@
 <%@ page import="org.codehaus.groovy.grails.io.support.ClassPathResource; metridoc.rid.RidLibraryUnit" %>
-<g:set var="entityName" value="${message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit')}" />
+<g:set var="entityName" value="${message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit')}"/>
 
 <md:report>
     <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
@@ -41,13 +41,14 @@
                 <g:each in="${ridLibraryUnitInstanceList}" var="ridLibraryUnitInstance">
                     <tr>
                         <td>
-                            <a data-toggle="modal" href="edit/${ridLibraryUnitInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                            <a data-toggle="modal"
+                               href="edit/${ridLibraryUnitInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">${fieldValue(bean: ridLibraryUnitInstance, field: "name")}</a>
                         </td>
                         <td>${ridLibraryUnitInstance?.ridTransaction?.size()}</td>
                         <%
-                            ClassPathResource resource =
-                                new ClassPathResource('spreadsheet/' + ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx')
+                            File resource =
+                                new File(System.getProperty("user.home") + "/.metridoc/files/rid/libraryUnit/" + ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx')
                         %>
                         <td>
                             <g:if test="${resource.exists()}">

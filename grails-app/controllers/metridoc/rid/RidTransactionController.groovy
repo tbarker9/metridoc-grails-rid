@@ -1,13 +1,12 @@
 package metridoc.rid
 
 import grails.converters.JSON
+import org.apache.poi.ss.usermodel.Workbook
+import org.apache.shiro.SecurityUtils
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
-import org.apache.shiro.SecurityUtils
-import org.codehaus.groovy.grails.io.support.ClassPathResource
-import org.springframework.dao.DataIntegrityViolationException
-import org.apache.poi.ss.usermodel.Workbook
 
 class RidTransactionController {
 
@@ -18,6 +17,7 @@ class RidTransactionController {
 
     def ridTransactionService
     def spreadsheetService
+    def ridSpreadsheetBootStrapService
     def scaffold = true
 
     def ajaxChooseType = {
@@ -41,8 +41,7 @@ class RidTransactionController {
                 templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
             }
             [ridTransactionInstanceList: query.list()]
-        }
-        else {
+        } else {
             redirect(action: "create")
         }
     }
@@ -201,19 +200,16 @@ class RidTransactionController {
     def spreadsheetUpload() {}
 
     def download() {
-        ClassPathResource resource = new ClassPathResource('spreadsheet/' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
-        if (resource.exists()) {
-            try {
-                def file = resource.getFile()
-                response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-                response.setHeader("Content-disposition", "filename=${file.name}")
-                response.outputStream << file.newInputStream() // Performing a binary stream copy
-            } catch (Exception e) {
-                flash.alerts << e.message
-            }
+        def file = new File(ridSpreadsheetBootStrapService.DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
+        if (!file.exists()) {
+            flash.message = "File not found"
         }
-        else {
-            flash.alerts << 'Cannot find file: ' + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx'
+        try {
+            response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            response.setHeader("Content-disposition", "filename=${file.name}")
+            response.outputStream << file.newInputStream() // Performing a binary stream copy
+        } catch (Exception e) {
+            flash.alerts << e.message
         }
     }
 
@@ -254,8 +250,7 @@ class RidTransactionController {
                 flash.infos << "Spreadsheet successfully uploaded. " +
                         String.valueOf(allInstances.size()) + " instances uploaded."
                 redirect(action: "list")
-            }
-            else {
+            } else {
                 redirect(action: "spreadsheetUpload")
                 return
             }
@@ -273,7 +268,7 @@ class RidTransactionController {
             try {
                 response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
                 response.setHeader("Content-disposition",
-                        "filename=Transaction_List_"+new Date().format("MMddyyyy-HHmmss"))
+                        "filename=Transaction_List_" + new Date().format("MMddyyyy-HHmmss"))
                 wb.write(response.outputStream) // Performing a binary stream copy
             } catch (Exception e) {
                 flash.alerts << e.message
