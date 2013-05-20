@@ -21,6 +21,6 @@ class RidManageLibraryUnitSpreadsheetsServiceTests {
         assert dest.exists()
         service.unitSpreadsheetDir = dest
         service.transferSpreadsheets()
-        assert new File(temporaryFolder.getRoot().canonicalPath + "/dest/Transaction_list.xlsx").exists()
+        assert new File(temporaryFolder.getRoot().canonicalPath + "/dest/Transaction_List.xlsx").exists()
     }
 }
