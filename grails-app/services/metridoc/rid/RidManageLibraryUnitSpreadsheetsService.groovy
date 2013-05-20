@@ -33,7 +33,10 @@ class RidManageLibraryUnitSpreadsheetsService {
                 if (it.isFile()) {
                     if (!(new File(unitSpreadsheetDir, it.getName())).exists()) {
                         log.info "Transferring " + it.getName()
-                        it.renameTo(new File(unitSpreadsheetDir, it.getName()))
+                        //it.renameTo(new File(unitSpreadsheetDir, it.getName()))
+                        new File(unitSpreadsheetDir, it.getName()).withOutputStream { os ->
+                            os << it.newDataInputStream()
+                        }
                     } else {
                         log.info it.getName() + " is already in " + unitSpreadsheetDir
                     }
