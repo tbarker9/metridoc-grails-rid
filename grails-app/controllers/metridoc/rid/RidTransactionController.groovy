@@ -264,6 +264,8 @@ class RidTransactionController {
     }
 
     def download() {
-        ridManageLibraryUnitSpreadsheetsService.download(response, flash, params)
+        if (ridManageLibraryUnitSpreadsheetsService.download(response, flash, params) == false) {
+            redirect(action: "index")
+        }
     }
 }

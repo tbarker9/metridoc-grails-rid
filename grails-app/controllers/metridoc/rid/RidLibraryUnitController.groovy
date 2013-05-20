@@ -156,18 +156,9 @@ class RidLibraryUnitController {
     }
 
     def download() {
-        ridManageLibraryUnitSpreadsheetsService.download(response, flash, params)
-//        def file = new File(ridManageLibraryUnitSpreadsheetService.DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
-//        if (!file.exists()) {
-//            flash.message = "File not found"
-//        }
-//        try {
-//            response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-//            response.setHeader("Content-disposition", "filename=${file.name}")
-//            response.outputStream << file.newInputStream() // Performing a binary stream copy
-//        } catch (Exception e) {
-//            flash.alerts << e.message
-//        }
+        if (ridManageLibraryUnitSpreadsheetsService.download(response, flash, params) == false) {
+            redirect(action: "index")
+        }
     }
 
     def spreadsheetUpload() {

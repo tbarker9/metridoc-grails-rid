@@ -14,7 +14,7 @@ class RidManageLibraryUnitSpreadsheetsServiceTests {
     public TemporaryFolder temporaryFolder = new TemporaryFolder()
 
     @Test
-    void "SpreadsheetService's method downloadSpreadsheets() should transfer spreadsheets into local directory .metridoc/files"() {
+    void "SpreadsheetService method downloadSpreadsheets should transfer spreadsheets into local hidden directory metridoc under subdirectory files"() {
         assert new ClassPathResource("spreadsheet/Transaction_List.xlsx").exists()
 
         File dest = temporaryFolder.newFolder("dest")

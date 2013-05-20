@@ -8,7 +8,7 @@ class RidManageLibraryUnitSpreadsheetsService {
     File unitSpreadsheetDir = new File(DEFAULT_SPREADSHEET_DIRECTORY)
 
     def download(response, flash, params) {
-        def file = new File(DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
+        def file = new File(DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
         if (!file.exists()) {
             flash.message = "File not found"
         }
@@ -18,6 +18,7 @@ class RidManageLibraryUnitSpreadsheetsService {
             response.outputStream << file.newInputStream() // Performing a binary stream copy
         } catch (Exception e) {
             flash.alerts << e.message
+            return false
         }
     }
 
