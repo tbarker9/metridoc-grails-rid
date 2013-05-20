@@ -15,7 +15,7 @@
         <g:hiddenField name="id" value="${ridCourseSponsorInstance?.id}"/>
         <g:hiddenField name="version" value="${ridCourseSponsorInstance?.version}"/>
         <div style="margin-top: 2em">
-            <g:render template="form" plugin="metridocRid"/>
+            <tmpl:form/>
             %{--<tmpl:form/>--}%
         </div>
         <fieldset class="buttons">

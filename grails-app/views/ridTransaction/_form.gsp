@@ -1,9 +1,9 @@
 <%@ page import="metridoc.rid.RidDepartment;metridoc.rid.RidSchool;metridoc.rid.RidRank;java.text.SimpleDateFormat;metridoc.rid.RidUserGoal;metridoc.rid.RidLibraryUnit;metridoc.rid.RidLibraryUnit;metridoc.rid.RidDepartment;metridoc.rid.RidCourseSponsor;metridoc.rid.RidTransaction" %>
 
-<r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
-<r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
-<r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
-<r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
+<r:external dir="datepicker/css" file="datepicker.css"/>
+<r:external dir="datepicker/js" file="bootstrap-datepicker.js"/>
+<r:external dir="css" file="ridtrans.css"/>
+<r:external dir="js" file="RidTransaction.js"/>
 
 <div class="row-fluid">
     <div class="span3">
@@ -68,7 +68,7 @@
                 if (ridTransactionInstance?.rank?.inForm == 0)
                     rankList.add(0, RidRank.findById(
                             ridTransactionInstance?.rank?.id))
-                rankList = rankList.sort{ it.name }
+                rankList = rankList.sort { it.name }
                 rankList.addAll(RidRank.findAllByInForm(2))
             %>
             <select style="width:120px" id="rank" name="rank.id" required="" class="many-to-one">
@@ -101,7 +101,7 @@
             <% if (ridTransactionInstance?.school?.inForm == 0)
                 schoolList.add(0, RidSchool.findById(
                         ridTransactionInstance?.school?.id))
-            schoolList = schoolList.sort{ it.name }
+            schoolList = schoolList.sort { it.name }
             %>
             <% schoolList.addAll(RidSchool.findAllByInForm(2)) %>
             <select style="width:120px" id="school" name="school.id" required="" class="many-to-one">
@@ -151,7 +151,7 @@
                 if (ridTransactionInstance?.modeOfConsultation?.inForm == 0)
                     modeList.add(0, metridoc.rid.RidModeOfConsultation.findById(
                             ridTransactionInstance?.modeOfConsultation?.id))
-                modeList = modeList.sort{ it.name }
+                modeList = modeList.sort { it.name }
                 modeList.addAll(metridoc.rid.RidModeOfConsultation.findAllByInFormAndRidLibraryUnit(2,
                         ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
             %>
@@ -191,7 +191,7 @@
                 if (ridTransactionInstance?.serviceProvided?.inForm == 0)
                     serviceList.add(0, metridoc.rid.RidServiceProvided.findById(
                             ridTransactionInstance?.serviceProvided?.id))
-                serviceList = serviceList.sort{ it.name }
+                serviceList = serviceList.sort { it.name }
                 serviceList.addAll(metridoc.rid.RidServiceProvided.findAllByInFormAndRidLibraryUnit(2,
                         ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
             %>
@@ -226,7 +226,7 @@
                 if (ridTransactionInstance?.userGoal?.inForm == 0)
                     goalList.add(0, metridoc.rid.RidUserGoal.findById(
                             ridTransactionInstance?.userGoal?.id))
-                goalList = goalList.sort{ it.name }
+                goalList = goalList.sort { it.name }
                 goalList.addAll(metridoc.rid.RidUserGoal.findAllByInFormAndRidLibraryUnit(2,
                         ridTransactionInstance?.ridLibraryUnit ?: RidLibraryUnit.get(1)))
             %>
@@ -295,7 +295,7 @@
             <% if (ridTransactionInstance?.courseSponsor?.inForm == 0)
                 courseSponsorList.add(0, RidCourseSponsor.findById(
                         ridTransactionInstance?.courseSponsorn?.id))
-            courseSponsorList = courseSponsorList.sort{ it.name }
+            courseSponsorList = courseSponsorList.sort { it.name }
             %>
             <% courseSponsorList.addAll(RidCourseSponsor.findAllByInForm(2)) %>
             <select style="width:120px" id="courseSponsor" name="courseSponsor.id" class="many-to-one">
@@ -328,7 +328,7 @@
                 </a>
             </label>
             <g:select style="width:120px" id="department" name="department.id"
-                      from="${RidDepartment.list().sort{it.name}}" optionKey="id"
+                      from="${RidDepartment.list().sort { it.name }}" optionKey="id"
                       value="${ridTransactionInstance?.department?.id}" class="many-to-one"/>
         </div>
     </div>

@@ -3,9 +3,9 @@
 
 
 <div id="list-ridTransaction" class="content scaffold-list" role="main">
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="table.css"/>
     <!--[if !IE]><!-->
-    %{--<r:external dir="css" file="floating_tables_for_admin_2.css" plugin="metridoc-rid"/>--}%
+    %{--<r:external dir="css" file="floating_tables_for_admin_2.css" />--}%
     <!--<![endif]-->
 
     <h1 style="padding-bottom: 10px">Choose a template from the list</h1>

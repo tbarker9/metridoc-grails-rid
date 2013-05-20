@@ -2,21 +2,22 @@
 <g:set var="entityName" value="${message(code: 'ridModeOfConsultation.label', default: 'RidModeOfConsultation')}"/>
 
 <md:report>
-    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="pagination.css"/>
+    <r:external dir="css" file="table.css"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin_4.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_tables_for_admin_4.css"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
-        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <g:render template="/ridTransactionAdmin/tabs"/>
+        <g:render template="/ridTransactionAdmin/modal"
                   model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridModeOfConsultation" class="content scaffold-list" role="main">
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}" data-target="#myModal" data-toggle="modal">
+                <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                   data-target="#myModal" data-toggle="modal">
                     <i title="Create Mode of Consultation" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
@@ -48,7 +49,8 @@
                     <tr>
 
                         <td>
-                            <a data-toggle="modal" href="edit/${ridModeOfConsultationInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                            <a data-toggle="modal"
+                               href="edit/${ridModeOfConsultationInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
                                 ${fieldValue(bean: ridModeOfConsultationInstance, field: "name")}
                             </a>

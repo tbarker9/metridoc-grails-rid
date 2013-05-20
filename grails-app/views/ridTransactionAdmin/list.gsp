@@ -11,22 +11,22 @@
             <hr width="96%" align="center"/>
 
             <div style="font-size: 14px">
-                <g:render template="tabs" plugin="metridoc-rid"/>
+                <g:render template="tabs"/>
             </div>
 
 
             %{--<div id="controllerList" style="padding-left: 150px;">--}%
-                %{--<ul>--}%
-                    %{--<g:each var="c" in="${grailsApplication.controllerClasses}">--}%
-                        %{--<g:if test="${c.shortName.contains('Rid') && !c.shortName.contains('RidTransaction')}">--}%
-                            %{--<li class="controller" style="padding-top: 10px;">--}%
-                                %{--<g:link controller="${c.logicalPropertyName}">--}%
-                                    %{--${c.shortName}--}%
-                                %{--</g:link>--}%
-                            %{--</li>--}%
-                        %{--</g:if>--}%
-                    %{--</g:each>--}%
-                %{--</ul>--}%
+            %{--<ul>--}%
+            %{--<g:each var="c" in="${grailsApplication.controllerClasses}">--}%
+            %{--<g:if test="${c.shortName.contains('Rid') && !c.shortName.contains('RidTransaction')}">--}%
+            %{--<li class="controller" style="padding-top: 10px;">--}%
+            %{--<g:link controller="${c.logicalPropertyName}">--}%
+            %{--${c.shortName}--}%
+            %{--</g:link>--}%
+            %{--</li>--}%
+            %{--</g:if>--}%
+            %{--</g:each>--}%
+            %{--</ul>--}%
             %{--</div>--}%
         </div>
     </div>

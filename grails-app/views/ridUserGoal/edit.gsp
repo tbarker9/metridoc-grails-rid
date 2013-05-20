@@ -8,7 +8,7 @@
         <g:hiddenField name="id" value="${ridUserGoalInstance?.id}"/>
         <g:hiddenField name="version" value="${ridUserGoalInstance?.version}"/>
         <div style="margin-top: 2em">
-            <g:render template="form" plugin="metridocRid"/>
+            <tmpl:form/>
         </div>
         <fieldset class="buttons">
             <g:actionSubmit style="float: right; margin-left: 1em" class="btn btn-success" action="update"

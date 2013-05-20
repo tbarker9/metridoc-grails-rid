@@ -3,12 +3,12 @@
 
 <md:report>
     <div class="md-application-content">
-        <r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
-        <r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
-        <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
-        <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
+        <r:external dir="datepicker/css" file="datepicker.css"/>
+        <r:external dir="datepicker/js" file="bootstrap-datepicker.js"/>
+        <r:external dir="css" file="ridtrans.css"/>
+        <r:external dir="js" file="RidTransaction.js"/>
 
-        <g:render template="tabs" plugin="metridocRid"/>
+        <tmpl:tabs/>
 
         <div id="search-ridTransaction" class="content scaffold-search" role="main">
             <h1><g:message code="RidTransaction Search"/></h1>
@@ -23,6 +23,7 @@
                             <g:message code="ridTransaction.dateOfConsultation.label"
                                        default="Consultation Date Between"/>
                         </label>
+
                         <div class="controls">
                             <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
                             <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
@@ -48,7 +49,8 @@
                         </label>
 
                         <div class="controls">
-                            <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey" value=""/>
+                            <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
+                                         value=""/>
                         </div>
                     </div>
 
@@ -60,7 +62,7 @@
                         <div class="controls">
                             <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
                                       noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
-                                      from="${metridoc.rid.RidSchool.where {inForm==1}.list()}"/>
+                                      from="${metridoc.rid.RidSchool.where { inForm == 1 }.list()}"/>
                         </div>
                     </div>
 
@@ -72,10 +74,9 @@
                         <div class="controls">
                             <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
                                       noSelection="${['0': 'All Departments']}" multiple="true" value="0" optionKey="id"
-                                      //optionValue="${{it.name.empty ? 'NOT SPECIFIED':it.name}}"
-                                      //from="${metridoc.rid.RidDepartment.list()}"
-                                      from="${metridoc.rid.RidDepartment.where{ name!="" }.list()}"
-                            />
+                            //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
+                            //from="${metridoc.rid.RidDepartment.list()}"
+                                      from="${metridoc.rid.RidDepartment.where { name != "" }.list()}"/>
                         </div>
                     </div>
 
@@ -95,7 +96,8 @@
                         </label>
 
                         <div class="controls">
-                            <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion" value=""/>
+                            <g:textField id="userQuestion" style="width:350px" class="userInput" name="userQuestion"
+                                         value=""/>
                         </div>
                     </div>
 

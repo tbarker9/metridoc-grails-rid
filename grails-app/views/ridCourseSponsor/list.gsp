@@ -2,15 +2,15 @@
 <g:set var="entityName" value="${message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor')}"/>
 
 <md:report>
-    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="pagination.css"/>
+    <r:external dir="css" file="table.css"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin_1.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_tables_for_admin_1.css"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
-        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <g:render template="/ridTransactionAdmin/tabs"/>
+        <g:render template="/ridTransactionAdmin/modal"
                   model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridCourseSponsor" class="content scaffold-list" role="main">

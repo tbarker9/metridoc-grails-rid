@@ -10,14 +10,14 @@
 %{--<body>--}%
 
 <md:report>
-    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="pagination.css"/>
+    <r:external dir="css" file="table.css"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_table.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="floating_table.css"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
-        <g:render template="tabs" plugin="metridocRid"/>
+        <tmpl:tabs/>
 
         <div id="list-ridTransaction" class="content scaffold-list" role="main">
             <h1>
@@ -85,7 +85,8 @@
             </table>
             <g:if test="${ridTransactionInstanceTotal > params.max}">
                 <div class="pagination">
-                    <g:paginate action="query" total="${ridTransactionInstanceTotal}" params="${params}" next="&gt;&gt;" prev="&lt;&lt;"/>
+                    <g:paginate action="query" total="${ridTransactionInstanceTotal}" params="${params}" next="&gt;&gt;"
+                                prev="&lt;&lt;"/>
                 </div>
             </g:if>
         </div>

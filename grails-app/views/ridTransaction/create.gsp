@@ -2,11 +2,11 @@
 <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 
 <md:report>
-    <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
+    <r:external dir="js" file="RidTransaction.js"/>
     <div class="md-application-content">
-        <g:render template="tabs" plugin="metridocRid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid" model="[title: entityName + ' Creation']"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <tmpl:tabs/>
+        <g:render template="/ridTransactionAdmin/modal" model="[title: entityName + ' Creation']"/>
+        <g:render template="/ridTransactionAdmin/modal"
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="create-ridTransaction" class="content scaffold-create" role="main">
@@ -27,7 +27,7 @@
 
             <g:form controller="RidTransaction" useToken="true">
                 <fieldset class="form">
-                    <g:render template="form" plugin="metridocRid"/>
+                    <tmpl:form/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input id="resetButton" class="btn btn-danger" type="reset" value="Reset"/>

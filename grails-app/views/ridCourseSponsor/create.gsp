@@ -6,7 +6,7 @@
 
     <g:form class="form-horizontal" action="save" useToken="true">
         <div style="margin-top: 2em">
-            <g:render template="form" plugin="metridoc-rid"/>
+            <tmpl:form/>
         </div>
         <fieldset class="buttons">
             <g:submitButton style="float: right" name="create" class="btn btn-danger"

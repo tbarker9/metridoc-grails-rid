@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridTransaction',
@@ -10,7 +10,7 @@
                     icon: 'icon-plus-sign-alt']"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridTransaction',
@@ -19,7 +19,7 @@
                     icon: 'icon-search']"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridTransaction',
@@ -28,7 +28,7 @@
                     icon: 'icon-cloud-upload']"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridTransaction',

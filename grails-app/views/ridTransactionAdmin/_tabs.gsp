@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridLibraryUnit',
@@ -10,16 +10,16 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridCourseSponsor',
                     linkAction: 'list',
                     linkText: 'Course Sponsor',
-                    ]"/>
+            ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridRank',
@@ -28,7 +28,7 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridDepartment',
@@ -37,7 +37,7 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridSchool',
@@ -46,7 +46,7 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridModeOfConsultation',
@@ -55,7 +55,7 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridUserGoal',
@@ -64,7 +64,7 @@
             ]"/>
     <g:render
             template="/ridTransaction/tabLabel"
-            plugin="metridocRid"
+
             model="[controllerName: controllerName,
                     actionName: actionName,
                     linkController: 'ridServiceProvided',

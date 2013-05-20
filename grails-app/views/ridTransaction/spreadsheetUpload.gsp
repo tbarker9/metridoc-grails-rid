@@ -5,12 +5,13 @@
     <div id="downloadModal" class="modal hide fade" role="dialog">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">x</button>
+
             <h3 style="color: #48802c;">Download Spreadsheet</h3>
         </div>
 
         <div class="modal-body">
             <g:form style="padding-top: 15px; padding-bottom: 35px">
-                <div class="control-group" >
+                <div class="control-group">
                     <div class="controls" style="margin-left: 30px; float: left;">
                         <label for="ridLibraryUnit" style="color: #48802c">Choose Library Unit</label>
                         <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.name"
@@ -28,7 +29,7 @@
     </div>
 
     <div class="md-application-content">
-        <g:render template="tabs" plugin="metridocRid"/>
+        <tmpl:tabs/>
 
         <div id="spreadsheetUpload-ridTransaction" class="content scaffold-search" role="main">
             <h1><g:message code="Upload Spreadsheet"/></h1>

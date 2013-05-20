@@ -3,8 +3,8 @@
 
 <md:report>
     <div class="md-application-content">
-        <g:render template="tabs" plugin="metridocRid"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <tmpl:tabs/>
+        <g:render template="/ridTransactionAdmin/modal"
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="edit-ridTransaction" class="content scaffold-edit" role="main">
@@ -22,7 +22,7 @@
                 <g:hiddenField name="id" value="${ridTransactionInstance?.id}"/>
                 <g:hiddenField name="version" value="${ridTransactionInstance?.version}"/>
                 <fieldset class="form">
-                    <g:render template="form" plugin="metridocRid"/>
+                    <tmpl:form/>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:actionSubmit class="btn btn-success" action="update"

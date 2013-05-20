@@ -8,11 +8,11 @@
         <g:hiddenField name="id" value="${ridModeOfConsultationInstance?.id}"/>
         <g:hiddenField name="version" value="${ridModeOfConsultationInstance?.version}"/>
         <div style="margin-top: 2em">
-            <g:render template="form" plugin="metridocRid"/>
+            <tmpl:form/>
         </div>
         <fieldset class="buttons">
-        <g:actionSubmit style="float: right; margin-left: 1em" class="btn btn-success" action="update"
-                        value="${message(code: 'default.button.update.label', default: 'Update')}"/>
+            <g:actionSubmit style="float: right; margin-left: 1em" class="btn btn-success" action="update"
+                            value="${message(code: 'default.button.update.label', default: 'Update')}"/>
         </fieldset>
     </g:form>
 </div>
