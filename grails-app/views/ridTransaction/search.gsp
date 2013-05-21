@@ -3,10 +3,10 @@
 
 <md:report>
     <div class="md-application-content">
-        <r:external dir="datepicker/css" file="datepicker.css"/>
-        <r:external dir="datepicker/js" file="bootstrap-datepicker.js"/>
-        <r:external dir="css" file="ridtrans.css"/>
-        <r:external dir="js" file="RidTransaction.js"/>
+        <r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
+        <r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
+        <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
+        <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
 
         <tmpl:tabs/>
 

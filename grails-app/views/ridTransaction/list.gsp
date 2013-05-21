@@ -10,10 +10,10 @@
 %{--<body>--}%
 
 <md:report>
-    <r:external dir="css" file="pagination.css"/>
-    <r:external dir="css" file="table.css"/>
+    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_table.css"/>
+    <r:external dir="css" file="floating_table.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">

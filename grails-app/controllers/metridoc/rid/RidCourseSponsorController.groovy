@@ -1,8 +1,5 @@
 package metridoc.rid
 
-import org.springframework.dao.DataIntegrityViolationException
-import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
-
 class RidCourseSponsorController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -13,7 +10,7 @@ class RidCourseSponsorController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def instances = RidCourseSponsor.where {name != ""}
+        def instances = RidCourseSponsor.where { name != "" }
         [ridCourseSponsorInstanceList: instances.list(params), ridCourseSponsorInstanceTotal: instances.count()]
     }
 
@@ -32,7 +29,7 @@ class RidCourseSponsorController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -89,7 +86,7 @@ class RidCourseSponsorController {
             flash.message = message(code: 'default.updated.message', args: [message(code: 'ridCourseSponsor.label', default: 'RidCourseSponsor'), ridCourseSponsorInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }

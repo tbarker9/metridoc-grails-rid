@@ -71,7 +71,7 @@ class RidLibraryUnitController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit'), ridLibraryUnitInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -150,7 +150,7 @@ class RidLibraryUnitController {
             flash.message = message(code: 'default.updated.message', args: [message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit'), ridLibraryUnitInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }

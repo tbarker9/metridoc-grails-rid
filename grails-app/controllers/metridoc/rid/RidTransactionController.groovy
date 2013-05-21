@@ -76,7 +76,7 @@ class RidTransactionController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
             redirect(action: "show", id: ridTransactionInstance.id)
         }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -97,7 +97,7 @@ class RidTransactionController {
             redirect(action: "create")
         }.invalidToken {
             if (SecurityUtils.getSubject().getPrincipal())
-                flash.alerts << "Don't click the remember button more than one time to make dulplicated submission!"
+                flash.alerts << "Don't click the remember button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -133,7 +133,7 @@ class RidTransactionController {
             flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidTransaction'), ridTransactionInstance.id])
             redirect(action: "show", id: ridTransactionInstance.id)
         }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -241,7 +241,7 @@ class RidTransactionController {
                 return
             }
         }.invalidToken {
-            flash.alerts << "Don't click the uploading button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the uploading button more than one time to make duplicated submission!"
             redirect(action: "spreadsheetUpload")
         }
     }

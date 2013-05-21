@@ -4,7 +4,7 @@
 
 <md:report>
     <div style="font-size: 12px">
-        <g:render template="/ridTransactionAdmin/tabs"/>
+        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
     </div>
 
     <div class="md-application-content">

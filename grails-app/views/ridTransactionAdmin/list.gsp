@@ -11,7 +11,7 @@
             <hr width="96%" align="center"/>
 
             <div style="font-size: 14px">
-                <g:render template="tabs"/>
+                <g:render template="tabs" plugin="metridoc-rid"/>
             </div>
 
 

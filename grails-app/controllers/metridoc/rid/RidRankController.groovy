@@ -1,7 +1,5 @@
 package metridoc.rid
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class RidRankController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -30,7 +28,7 @@ class RidRankController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridRank.label', default: 'RidRank'), ridRankInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -75,7 +73,7 @@ class RidRankController {
             flash.message = message(code: 'default.updated.message', args: [message(code: 'ridRank.label', default: 'RidRank'), ridRankInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }

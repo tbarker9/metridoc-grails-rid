@@ -1,7 +1,5 @@
 package metridoc.rid
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class RidUserGoalController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -12,7 +10,7 @@ class RidUserGoalController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def instances = RidUserGoal.where {name != ""}
+        def instances = RidUserGoal.where { name != "" }
         [ridUserGoalInstanceList: instances.list(params), ridUserGoalInstanceTotal: instances.count()]
     }
 
@@ -31,7 +29,7 @@ class RidUserGoalController {
             flash.message = message(code: 'default.created.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), ridUserGoalInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
@@ -76,7 +74,7 @@ class RidUserGoalController {
             flash.message = message(code: 'default.updated.message', args: [message(code: 'ridUserGoal.label', default: 'RidUserGoal'), ridUserGoalInstance.id])
             redirect(action: "list")
         }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make dulplicated submission!"
+            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }

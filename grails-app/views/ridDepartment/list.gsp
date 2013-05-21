@@ -3,15 +3,15 @@
        value="${message(code: 'ridDepartment.label', default: 'RidDepartment')}"/>
 
 <md:report>
-    <r:external dir="css" file="pagination.css"/>
-    <r:external dir="css" file="table.css"/>
+    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
+    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
     <!--[if !IE]><!-->
-    <r:external dir="css" file="floating_tables_for_admin_5.css"/>
+    <r:external dir="css" file="floating_tables_for_admin_5.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
-        <g:render template="/ridTransactionAdmin/tabs"/>
-        <g:render template="/ridTransactionAdmin/modal"
+        <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridDepartment" class="content scaffold-list" role="main">

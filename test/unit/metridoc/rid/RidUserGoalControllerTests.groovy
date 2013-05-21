@@ -1,10 +1,7 @@
 package metridoc.rid
 
-import static org.junit.Assert.*
-
-import grails.test.mixin.*
-import grails.test.mixin.support.*
-import org.junit.*
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 /**
@@ -46,7 +43,7 @@ class RidUserGoalControllerTests {
         response.reset()
         controller.save()
         assert response.redirectedUrl == '/ridUserGoal/list'
-        assert flash.alerts.get(0) == "Don't click the create button more than one time to make dulplicated submission!"
+        assert flash.alerts.get(0) == "Don't click the create button more than one time to make duplicated submission!"
     }
 }
 

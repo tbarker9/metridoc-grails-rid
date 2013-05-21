@@ -1,7 +1,7 @@
 package metridoc.rid
 
-import grails.test.mixin.*
-
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
 import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 /**
@@ -43,7 +43,7 @@ class RidRankControllerTests {
         response.reset()
         controller.save()
         assert response.redirectedUrl == '/ridRank/list'
-        assert flash.alerts.get(0) == "Don't click the create button more than one time to make dulplicated submission!"
+        assert flash.alerts.get(0) == "Don't click the create button more than one time to make duplicated submission!"
     }
 }
 

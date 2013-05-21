@@ -2,7 +2,7 @@
 <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 
 <md:report>
-<r:external dir="css" file="ridtrans.css"/>
+<r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <div class="md-application-content">
 <tmpl:tabs/>
 

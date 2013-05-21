@@ -4,7 +4,7 @@
 <md:report>
     <div class="md-application-content">
         <tmpl:tabs/>
-        <g:render template="/ridTransactionAdmin/modal"
+        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="edit-ridTransaction" class="content scaffold-edit" role="main">
