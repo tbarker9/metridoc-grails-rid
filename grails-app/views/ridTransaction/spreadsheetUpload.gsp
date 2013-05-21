@@ -12,13 +12,13 @@
         <div class="modal-body">
             <g:form style="padding-top: 15px; padding-bottom: 35px">
                 <div class="control-group">
-                    <div class="controls" style="margin-left: 30px; float: left;">
+                    <div class="controls" style="margin-left: 45px; float: left;">
                         <label for="ridLibraryUnit" style="color: #48802c">Choose Library Unit</label>
                         <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.name"
                                   from="${metridoc.rid.RidLibraryUnit.list()}" optionKey="name" required=""/>
                     </div>
 
-                    <div class="controls" style="margin-right: 30px;float: right;">
+                    <div class="controls" style="margin-right: 45px;float: right;">
                         <button class="btn" type="submit" name="_action_download">
                             <i class="icon-download-alt"></i> Download
                         </button>
@@ -47,14 +47,27 @@
                             $('input[id=spreadsheetUpload]').change(function () {
                                 var fileName = $(this).val().replace("C:\\fakepath\\", "");
                                 $('#spreadsheetUploadPath').val(fileName);
+                                checkInput();
                             });
                         </g:javascript>
-                    </div>
 
-                    <div class="controls">
-                        <button class="btn" type="submit" name="_action_upload">
+                        <button class="btn" type="submit" id="submit" name="_action_upload" disabled="true">
                             <i class="icon-upload-alt"></i> Upload
                         </button>
+
+                        <g:javascript>
+                            function checkInput() {
+                                if ($('input[id=spreadsheetUpload]').valueOf() != "") {
+                                    document.getElementById("submit").disabled = "";
+                                }
+                            }
+                        </g:javascript>
+
+                    </div>
+
+                    <h1><g:message code="Download Blank Spreadsheet"/></h1>
+
+                    <div class="controls" style="padding-top: 15px">
                         <a href="#downloadModal" role="button" class="btn" data-toggle="modal">
                             <i class="icon-download-alt"></i> Download Spreadsheet
                         </a>

@@ -10,14 +10,23 @@
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="create-ridTransaction" class="content scaffold-create" role="main">
-            <h1>
+        <!--<h1>
                 <g:message code="default.create.label" args="[entityName]"/>
-                <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
+        <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
+            <a style="font-size: 14px" data-toggle="modal" href="templateList" data-target="#myModal">
+                <i class="icon-file-alt">Use Template</i>
+            </a>
+        </g:if>
+            </h1>-->
+
+            <g:if test="${SecurityUtils.getSubject().getPrincipal()}">
+                <h1>
                     <a style="font-size: 14px" data-toggle="modal" href="templateList" data-target="#myModal">
                         <i class="icon-file-alt">Use Template</i>
                     </a>
-                </g:if>
-            </h1>
+                </h1>
+            </g:if>
+
 
             <g:hasErrors bean="${ridTransactionInstance}">
                 <div class="errors">

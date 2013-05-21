@@ -11,7 +11,7 @@
         <tmpl:tabs/>
 
         <div id="search-ridTransaction" class="content scaffold-search" role="main">
-            <h1><g:message code="RidTransaction Search"/></h1>
+        <!--<h1><g:message code="RidTransaction Search"/></h1>-->
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
