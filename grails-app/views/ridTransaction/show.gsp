@@ -4,8 +4,9 @@
 <md:report>
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <div class="md-application-content">
+<tmpl:toggle/>
 <tmpl:tabs/>
-
+<g:if test="${session.transType == "consultation"}">
 <div id="show-ridTransaction" class="content scaffold-show" role="main">
 <h1><g:message code="default.show.label" args="[entityName]"/></h1>
 %{--<g:if test="${flash.message}">--}%
@@ -253,5 +254,7 @@
 </g:form>
 
 </div>
+</g:if>
+<g:else>Not implemented</g:else>
 </div>
 </md:report>

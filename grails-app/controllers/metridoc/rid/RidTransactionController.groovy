@@ -26,6 +26,7 @@ class RidTransactionController {
     }
 
     def index() {
+        session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
         redirect(action: "create")
     }
 
@@ -267,5 +268,16 @@ class RidTransactionController {
         if (ridManageLibraryUnitSpreadsheetsService.download(response, flash, params) == false) {
             redirect(action: "index")
         }
+    }
+
+    def consultation() {
+
+        session.setAttribute("transType", new String("consultation"))
+        redirect(action: "create")
+    }
+
+    def instructional() {
+        session.setAttribute("transType", new String("instructional"))
+        redirect(action: "create")
     }
 }

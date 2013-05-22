@@ -8,11 +8,13 @@
 #dateOfConsultation_end_day {
     width: 60px;
 }
+
 #dateOfConsultation_month,
 #dateOfConsultation_start_month,
 #dateOfConsultation_end_month {
     width: 100px;
 }
+
 #dateOfConsultation_year,
 #dateOfConsultation_start_year,
 #dateOfConsultation_end_year {
@@ -25,4 +27,9 @@ label {
 
 .row-fluid {
     width: 1000px;
+}
+
+.nav-pills > .active a,
+.nav-pills > .active a:hover {
+    background-color: #48802c;
 }
