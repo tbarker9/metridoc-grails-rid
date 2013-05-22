@@ -2,31 +2,6 @@
 <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
 
 <md:report>
-    <div id="downloadModal" class="modal hide fade" role="dialog">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">x</button>
-
-            <h3 style="color: #48802c;">Download Spreadsheet</h3>
-        </div>
-
-        <div class="modal-body">
-            <g:form style="padding-top: 15px; padding-bottom: 35px">
-                <div class="control-group">
-                    <div class="controls" style="margin-left: 45px; float: left;">
-                        <label for="ridLibraryUnit" style="color: #48802c">Choose Library Unit</label>
-                        <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.name"
-                                  from="${metridoc.rid.RidLibraryUnit.list()}" optionKey="name" required=""/>
-                    </div>
-
-                    <div class="controls" style="margin-right: 45px;float: right;">
-                        <button class="btn" type="submit" name="_action_download">
-                            <i class="icon-download-alt"></i> Download
-                        </button>
-                    </div>
-                </div>
-            </g:form>
-        </div>
-    </div>
 
     <div class="md-application-content">
         <tmpl:tabs/>
@@ -67,10 +42,18 @@
 
                     <h1><g:message code="Download Blank Spreadsheet"/></h1>
 
-                    <div class="controls" style="padding-top: 15px">
-                        <a href="#downloadModal" role="button" class="btn" data-toggle="modal">
-                            <i class="icon-download-alt"></i> Download Spreadsheet
-                        </a>
+                    <div class="control-group">
+                        <div class="controls" style="margin-left: 45px; float: left;">
+                            <label for="ridLibraryUnit" style="color: #48802c">Choose Library Unit</label>
+                            <g:select id="ridLibraryUnit" style="width:150px" name="ridLibraryUnit.name"
+                                      from="${metridoc.rid.RidLibraryUnit.list()}" optionKey="name" required=""/>
+                        </div>
+
+                        <div class="controls" style="margin-left: 5px;float: left;">
+                            <button class="btn" type="submit" name="_action_download" style="color: #48802c">
+                                <i class="icon-download-alt"></i> Download Spreadsheet
+                            </button>
+                        </div>
                     </div>
                 </div>
             </g:form>
