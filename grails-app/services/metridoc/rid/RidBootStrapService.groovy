@@ -57,6 +57,7 @@ class RidBootStrapService {
                         // ---------------------------------------------------------------------------------------------
                         // for ridTransaction (only for demo)
                         for (int i = 0; i < 20; i++) {
+                            def rand = new Random()
                             def t = new RidInsTransaction(staffPennkey: "012345667",
                                     eventLength: i % 50, notes: "Sample Notes",
                                     sessionDescription: "Sample description",
@@ -67,7 +68,7 @@ class RidBootStrapService {
                                     school: RidSchool.get(1),
                                     location: RidLocation.get(1 % 3 + 1),
                                     attendanceTotal: 42,
-                                    ridLibraryUnit: RidLibraryUnit.get(1),
+                                    ridLibraryUnit: RidLibraryUnit.get(rand.nextInt(4) + 1),
 
                             )
 

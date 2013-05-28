@@ -248,7 +248,7 @@ class RidTransactionService {
                 'serviceProvided': services]
     }
 
-    def createNewInstanceMethod(Map params, RidConsTransactionBase ridTransactionInstance) {
+    def createNewConsInstanceMethod(Map params, RidConsTransactionBase ridTransactionInstance) {
         String otherRank = params.otherRank
         if (otherRank != null && !otherRank.isEmpty()) {
             if (RidRank.findAllByName(otherRank).size() == 0) {
@@ -326,6 +326,32 @@ class RidTransactionService {
                 ridTransactionInstance.userGoal = RidUserGoal.findByNameAndRidLibraryUnit(otherUserGoal,
                         RidLibraryUnit.get(Long.valueOf(params.ridLibraryUnit.id)))
         }
+    }
+
+    def createNewInsInstanceMethod(Map params, RidInsTransactionBase ridTransactionInstance) {
+        String otherRank = params.otherRank
+        if (otherRank != null && !otherRank.isEmpty()) {
+            if (RidRank.findAllByName(otherRank).size() == 0) {
+                def c = new RidRank(name: otherRank, inForm: 0)
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+            if (RidRank.findAllByName(otherRank).size() > 0)
+                ridTransactionInstance.rank = RidRank.findByName(otherRank)
+        }
+
+        String otherLocation = params.otherLocation
+        if (otherLocation != null && !otherLocation.isEmpty()) {
+            if (RidLocation.findAllByName(otherLocation).size() == 0) {
+                def e = new RidLocation(name: otherLocation, inForm: 0)
+                e.save()
+                if (e.hasErrors()) println e.errors
+            }
+            if (RidLocation.findAllByName(otherLocation).size() > 0)
+                ridTransactionInstance.location = RidLocation.findByName(otherLocation)
+        }
+
+
     }
 
 }

@@ -15,15 +15,7 @@ class TestDataService {
             }
         }
 
-        // for location
-        List<String> loc = Arrays.asList("Classroom", "Library conference room", "Lecture hall")
-        for (String i in loc.sort()) {
-            if (!RidLocation.findByName(i)) {
-                def nl = new RidLocation(name: i)
-                nl.save()
-                if (nl.hasErrors()) println nl.errors
-            }
-        }
+
         new RidLibraryUnit(name: "General").save()
         // for department
         List<String> dps = Arrays.asList(
@@ -149,6 +141,20 @@ class TestDataService {
 
         if (!RidSchool.findByName(outsidePleaseIndicate)) {
             new RidSchool(name: outsidePleaseIndicate, inForm: 2).save()
+        }
+
+        // for location
+        List<String> loc = Arrays.asList("Classroom", "Library conference room", "Lecture hall")
+        for (String i in loc.sort()) {
+            if (!RidLocation.findByName(i)) {
+                def nl = new RidLocation(name: i, inForm: 1)
+                nl.save()
+                if (nl.hasErrors()) println nl.errors
+            }
+        }
+        def otherLocation = "Other location (please indicate)"
+        if (!RidSchool.findByName(otherLocation)) {
+            new RidSchool(name: otherLocation, inForm: 2).save()
         }
 
         // for course sponsor

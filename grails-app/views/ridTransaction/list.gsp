@@ -126,6 +126,11 @@
                         <g:sortableColumn property="ridLibraryUnit"
                                           title="${message(code: 'ridTransaction.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
+                        <g:sortableColumn property="ridLocation"
+                                          title="${message(code: 'ridTransaction.ridLocation.label', default: 'Location')}"/>
+
+                        <g:sortableColumn property="notes"
+                                          title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}"/>
                     </tr>
                     </thead>
                     <tbody>
@@ -141,6 +146,10 @@
                             %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
 
                             <td>${fieldValue(bean: ridTransactionInstance, field: "ridLibraryUnit")}</td>
+
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "location")}</td>
+
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
 
                         </tr>
                     </g:each>

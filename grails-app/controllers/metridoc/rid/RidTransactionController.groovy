@@ -43,39 +43,72 @@ class RidTransactionController {
 
     def templateList() {
         if (SecurityUtils.getSubject().getPrincipal()) {
-            def query = RidConsTransactionTemplate.where {
-                templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
+            if (session.getAttribute("transType") == "consultation") {
+                def query = RidConsTransactionTemplate.where {
+                    templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
+                }
+                [ridTransactionInstanceList: query.list()]
+            } else {
+                def query = RidInsTransactionTemplate.where {
+                    templateOwner == SecurityUtils.getSubject().getPrincipal().toString()
+                }
+                [ridTransactionInstanceList: query.list()]
             }
-            [ridTransactionInstanceList: query.list()]
         } else {
             redirect(action: "create")
         }
     }
 
     def create() {
-        try {
-            RidConsTransactionBase ridTransactionInstance = new RidConsTransaction(params)
-            if (params.tmp != null && RidConsTransactionTemplate.get(Long.valueOf(params.tmp))) {
-                ridTransactionInstance = RidConsTransactionTemplate.get(Long.valueOf(params.tmp))
+        session.setAttribute("prev", new String("create"))
+        if (session.getAttribute("transType") == "consultation") {
+            try {
+                RidConsTransactionBase ridTransactionInstance = new RidConsTransaction(params)
+                if (params.tmp != null && RidConsTransactionTemplate.get(Long.valueOf(params.tmp))) {
+                    ridTransactionInstance = RidConsTransactionTemplate.get(Long.valueOf(params.tmp))
+                }
+                [ridTransactionInstance: ridTransactionInstance]
+            } catch (Exception e) {
+                flash.alerts << e.message
+                if (params.tmp.equals("templateList"))
+                    redirect(action: "templateList")
+                else
+                    [ridTransactionInstance: new RidConsTransaction(params)]
             }
-            [ridTransactionInstance: ridTransactionInstance]
-        } catch (Exception e) {
-            flash.alerts << e.message
-            if (params.tmp.equals("templateList"))
-                redirect(action: "templateList")
-            else
-                [ridTransactionInstance: new RidConsTransaction(params)]
+        } else {
+            try {
+                RidInsTransactionBase ridTransactionInstance = new RidInsTransaction(params)
+                if (params.tmp != null && RidInsTransactionTemplate.get(Long.valueOf(params.tmp))) {
+                    ridTransactionInstance = RidInsTransactionTemplate.get(Long.valueOf(params.tmp))
+                }
+                [ridTransactionInstance: ridTransactionInstance]
+            } catch (Exception e) {
+                flash.alerts << e.message
+                if (params.tmp.equals("templateList"))
+                    redirect(action: "templateList")
+                else
+                    [ridTransactionInstance: new RidInsTransaction(params)]
+            }
         }
-        //session.setAttribute("prev", "create") Throws up errors whenever I try to set a flash or session variable
-
     }
 
     def save() {
         withForm {
-            if (!params.dateOfConsultation.empty)
-                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-            def ridTransactionInstance = new RidConsTransaction(params)
-            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
+            def ridTransactionInstance
+            if (session.getAttribute("transType") == "consultation") {
+
+                if (!params.dateOfConsultation.empty)
+                    params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+                ridTransactionInstance = new RidConsTransaction(params)
+                ridTransactionService.createNewConsInstanceMethod(params, ridTransactionInstance)
+            } else {
+
+                if (!params.dateOfInstruction.empty)
+                    params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
+                ridTransactionInstance = new RidInsTransaction(params)
+                ridTransactionService.createNewInsInstanceMethod(params, ridTransactionInstance)
+            }
+
             if (!ridTransactionInstance.save(flush: true)) {
                 render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                 return
@@ -91,9 +124,18 @@ class RidTransactionController {
 
     def remember() {
         withForm {
-            if (!params.dateOfConsultation.empty)
-                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation)
-            def ridTransactionInstance = new RidConsTransactionTemplate(params)
+            def ridTransactionInstance
+            if (session.getAttribute("transType") == "consultation") {
+
+                if (!params.dateOfConsultation.empty)
+                    params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+                ridTransactionInstance = new RidConsTransaction(params)
+            } else {
+
+                if (!params.dateOfInstruction.empty)
+                    params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
+                ridTransactionInstance = new RidInsTransaction(params)
+            }
             ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
             ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
             if (!ridTransactionInstance.save(flush: true)) {
@@ -147,40 +189,77 @@ class RidTransactionController {
     }
 
     def edit(Long id) {
-        def ridTransactionInstance = RidConsTransaction.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
-            redirect(action: "list")
-            return
-        }
+        if (session.getAttribute("transType") == "consultation") {
+            def ridTransactionInstance = RidConsTransaction.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
 
-        [ridTransactionInstance: ridTransactionInstance]
+            [ridTransactionInstance: ridTransactionInstance]
+        } else {
+            def ridTransactionInstance = RidInsTransaction.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
+
+            [ridTransactionInstance: ridTransactionInstance]
+        }
     }
 
     def show(Long id) {
-        def ridTransactionInstance = RidConsTransaction.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
-            redirect(action: "list")
-            return
-        }
+        if (session.getAttribute("transType") == "consultation") {
+            def ridTransactionInstance = RidConsTransaction.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
 
-        [ridTransactionInstance: ridTransactionInstance]
+            [ridTransactionInstance: ridTransactionInstance]
+        } else {
+            def ridTransactionInstance = RidInsTransaction.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
+
+            [ridTransactionInstance: ridTransactionInstance]
+        }
     }
 
     def delete(Long id) {
-        RidConsTransactionBase ridTransactionInstance = RidConsTransaction.get(id)
-        if (params.isTemplate == 'true')
-            ridTransactionInstance = RidConsTransactionTemplate.get(id)
-        if (!ridTransactionInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
-            redirect(action: "list")
-            return
-        }
+        if (session.getAttribute("transType") == "consultation") {
+            RidConsTransactionBase ridTransactionInstance = RidConsTransaction.get(id)
+            if (params.isTemplate == 'true')
+                ridTransactionInstance = RidConsTransactionTemplate.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
 
-        def msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction')
-        if (ridTransactionInstance.properties.containsKey('templateOwner'))
-            msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction Template')
+            def msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction')
+            if (ridTransactionInstance.properties.containsKey('templateOwner'))
+                msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction Template')
+        } else {
+            RidInsTransactionBase ridTransactionInstance = RidInsTransaction.get(id)
+            if (params.isTemplate == 'true')
+                ridTransactionInstance = RidInsTransactionTemplate.get(id)
+            if (!ridTransactionInstance) {
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                redirect(action: "list")
+                return
+            }
+
+            def msg = message(code: 'ridTransaction.label', default: 'RidInsTransaction')
+            if (ridTransactionInstance.properties.containsKey('templateOwner'))
+                msg = message(code: 'ridTransaction.label', default: 'RidInsTransaction Template')
+        }
         try {
             ridTransactionInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [msg, id])
@@ -192,7 +271,9 @@ class RidTransactionController {
         }
     }
 
-    def search() {}
+    def search() {
+        session.setAttribute("prev", new String("search"))
+    }
 
     def query(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -205,7 +286,9 @@ class RidTransactionController {
         return
     }
 
-    def spreadsheetUpload() {}
+    def spreadsheetUpload() {
+        session.setAttribute("prev", new String("spreadsheetUpload"))
+    }
 
     def upload() {
         withForm {
@@ -227,11 +310,18 @@ class RidTransactionController {
                 redirect(action: "spreadsheetUpload")
                 return
             }
-
-            if (RidConsTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
-                flash.alerts << "This spreadsheet has been uploaded before. Change the file name, for example!"
-                redirect(action: "spreadsheetUpload")
-                return
+            if (session.getAttribute("transType") == "consultation") {
+                if (RidConsTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
+                    flash.alerts << "This spreadsheet has been uploaded before. Change the file name, for example!"
+                    redirect(action: "spreadsheetUpload")
+                    return
+                }
+            } else {
+                if (RidInsTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
+                    flash.alerts << "This spreadsheet has been uploaded before. Change the file name, for example!"
+                    redirect(action: "spreadsheetUpload")
+                    return
+                }
             }
 
             List<List<String>> allInstances = spreadsheetService.getInstancesFromSpreadsheet(uploadedFile, flash)
@@ -280,14 +370,12 @@ class RidTransactionController {
     def consultation() {
 
         session.setAttribute("transType", new String("consultation"))
-        //redirect(action: session.getAttribute("prev"))
-        redirect(action: "create")
+        redirect(action: session.getAttribute("prev"))
     }
 
     def instructional() {
 
         session.setAttribute("transType", new String("instructional"))
-        //redirect(action: session.getAttribute("prev"))
-        redirect(action: "create")
+        redirect(action: session.getAttribute("prev"))
     }
 }

@@ -195,6 +195,21 @@
                 </div>
 
                 <div class="control-group fieldcontain">
+                    <label class="control-label" for="ridLocation">
+                        <g:message code="ridTransaction.ridLocation.label" default="Location"/>
+                    </label>
+
+                    <div class="controls">
+                        <g:select id="ridLocationSearch" style="width:150px" name="ridLocationSearch"
+                                  noSelection="${['0': 'All Locations']}" multiple="true" value="0"
+                                  optionKey="id"
+                        //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
+                        //from="${metridoc.rid.RidLocation.list()}"
+                                  from="${metridoc.rid.RidLocation.where { name != "" }.list()}"/>
+                    </div>
+                </div>
+
+                <div class="control-group fieldcontain">
                     <label class="control-label" for="userName">
                         <g:message code="ridTransaction.userName.label" default="User Name"/>
                     </label>
@@ -202,6 +217,16 @@
                     <div class="controls">
                         <g:textField id="userName" style="width:150px" class="userInput" name="userName"
                                      value=""/>
+                    </div>
+                </div>
+
+                <div class="control-group fieldcontain">
+                    <label class="control-label" for="notes">
+                        <g:message code="ridTransaction.notes.label" default="Notes"/>
+                    </label>
+
+                    <div class="controls">
+                        <g:textField id="notes" style="width:350px" class="userInput" name="notes" value=""/>
                     </div>
                 </div>
 
