@@ -33,7 +33,7 @@
                     actionName: actionName,
                     linkController: 'ridTransaction',
                     linkAction: 'list',
-                    linkText: 'RidTransaction List',
+                    linkText: 'RidConsTransaction List',
                     icon: 'icon-list-alt']"/> -->
 </ul>
 

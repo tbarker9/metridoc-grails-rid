@@ -1,5 +1,5 @@
-<%@ page import="org.apache.shiro.SecurityUtils; metridoc.rid.RidTransaction" %>
-<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
+<%@ page import="org.apache.shiro.SecurityUtils; metridoc.rid.RidConsTransaction; metridoc.rid.RidInsTransaction" %>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidConsTransaction')}"/>
 
 <md:report>
     <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>

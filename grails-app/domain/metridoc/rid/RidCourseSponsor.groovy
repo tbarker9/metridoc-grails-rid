@@ -2,7 +2,7 @@ package metridoc.rid
 
 class RidCourseSponsor {
 
-    static hasMany = [ridTransaction: RidTransaction]
+    static hasMany = [ridTransaction: RidConsTransaction]
 
     String name
     Integer inForm = 0

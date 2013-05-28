@@ -2,7 +2,8 @@ package metridoc.rid
 
 class RidSchool {
 
-    static hasMany = [ridTransaction: RidTransaction]
+    static hasMany = [ridConsTransaction: RidConsTransaction,
+            ridInsTransaction: RidInsTransaction]
 
     String name
     Integer inForm = 0
@@ -14,6 +15,7 @@ class RidSchool {
     static constraints = {
         name(blank: false, nullable: false, unique: true)
         inForm(nullable: false, inList: [0, 1, 2])
-        ridTransaction(nullable: true)
+        ridConsTransaction(nullable: true)
+        ridInsTransaction(nullable: true)
     }
 }

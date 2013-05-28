@@ -5,16 +5,16 @@
 //    })
 //})
 
-$(function() {
+$(function () {
     var nowTemp = new Date();
-    var begin = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).setMonth(nowTemp.getMonth()-1);
+    var begin = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0).setMonth(nowTemp.getMonth() - 1);
     var end = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
 
     var dateOfConsultation = $('#dp1').datepicker({
 //        onRender: function(date) {
 //            return date.valueOf() < now.valueOf() ? 'disabled' : '';
 //        }
-    }).on('changeDate', function(ev) {
+    }).on('changeDate',function (ev) {
             dateOfConsultation.hide();
             $('#dp1').blur();
         }).data('datepicker');
@@ -22,17 +22,17 @@ $(function() {
 
     $('#dpd1').datepicker('setValue', begin);
     $('#dpd2').datepicker('setValue', end);
-    var checkin = $('#dpd1').datepicker().on('changeDate', function(ev) {
-            if (ev.date.valueOf() > checkout.date.valueOf()) {
-                var newDate = new Date(ev.date)
-                newDate.setDate(newDate.getDate());
-                checkout.setValue(newDate);
-            }
-            checkin.hide();
-            $('#dpd2')[0].focus();
-        }).data('datepicker');
+    var checkin = $('#dpd1').datepicker().on('changeDate',function (ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate());
+            checkout.setValue(newDate);
+        }
+        checkin.hide();
+        $('#dpd2')[0].focus();
+    }).data('datepicker');
     var checkout = $('#dpd2').datepicker()
-        .on('changeDate', function(ev) {
+        .on('changeDate',function (ev) {
             if (ev.date.valueOf() < checkin.date.valueOf()) {
                 var newDate = new Date(ev.date)
                 newDate.setDate(newDate.getDate());
@@ -43,7 +43,7 @@ $(function() {
 
 });
 
-$(function() {
+$(function () {
     var choiceUser = $("#rank option:selected").attr("inForm");
     if (choiceUser == "2") {
         $("#otherRankDiv").show();
@@ -76,8 +76,8 @@ $(function() {
     }
 });
 
-$(function() {
-    $("#modeOfConsultation").change(function() {
+$(function () {
+    $("#modeOfConsultation").change(function () {
         var choice = $("#modeOfConsultation option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherModeOfConsultationDiv").show();
@@ -89,8 +89,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#userGoal").change(function() {
+$(function () {
+    $("#userGoal").change(function () {
         var choice = $("#userGoal option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherUserGoalDiv").show();
@@ -102,8 +102,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#rank").change(function() {
+$(function () {
+    $("#rank").change(function () {
         var choice = $("#rank option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherRankDiv").show();
@@ -115,8 +115,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#serviceProvided").change(function() {
+$(function () {
+    $("#serviceProvided").change(function () {
         var choice = $("#serviceProvided option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherServiceDiv").show();
@@ -128,8 +128,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#school").change(function() {
+$(function () {
+    $("#school").change(function () {
         var choice = $("#school option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherSchoolDiv").show();
@@ -141,8 +141,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#courseSponsor").change(function() {
+$(function () {
+    $("#courseSponsor").change(function () {
         var choice = $("#courseSponsor option:selected").attr("inForm");
         if (choice == "2") {
             $("#otherCourseSponsorDiv").show();
@@ -154,8 +154,8 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#resetButton").click(function() {
+$(function () {
+    $("#resetButton").click(function () {
         $("#otherRankDiv").hide();
         $("#otherRank").val("");
         $("#otherServiceDiv").hide();
@@ -169,14 +169,14 @@ $(function() {
     })
 });
 
-$(function() {
-    $("#ridLibraryUnit").change(function() {
+$(function () {
+    $("#ridLibraryUnit").change(function () {
         var choiceType = $("#ridLibraryUnit").val();
         var choiceMode = $("#currentModeOfConsultation").text();
         var choiceService = $("#currentServiceProvided").text();
         var choiceGoal = $("#currentUserGoal").text();
         $.ajax({
-            //url: '${g.createLink(controller: 'RidTransaction', action: 'ajaxChooseType')}',
+            //url: '${g.createLink(controller: 'RidConsTransaction', action: 'ajaxChooseType')}',
             url: 'ajaxChooseType',
             type: 'POST',
             dataType: 'json',
@@ -186,24 +186,24 @@ $(function() {
                 serviceID: choiceService,
                 goalID: choiceGoal
             },
-            success: function(data) {
-                $.each(data, function(index, itemList) {
-                    $('#'+index+' > option').remove();
-                    $.each(itemList, function(id, element) {
-                        $('#'+index).append($("<option>", {
+            success: function (data) {
+                $.each(data, function (index, itemList) {
+                    $('#' + index + ' > option').remove();
+                    $.each(itemList, function (id, element) {
+                        $('#' + index).append($("<option>", {
                             text: element.name
                         }).attr('value', element.id).attr('inForm', element.inForm));
                     });
-                    if(itemList.length==0)
-                        $('#'+index).attr("disabled","");
+                    if (itemList.length == 0)
+                        $('#' + index).attr("disabled", "");
                     else
-                        $('#'+index).removeAttr("disabled");
+                        $('#' + index).removeAttr("disabled");
                 });
             },
-            error: function(request, status, error) {
+            error: function (request, status, error) {
                 alert(error);
             },
-            complete: function() {
+            complete: function () {
                 var choiceService = $("#serviceProvided > option:first").attr("inForm");
                 if (choiceService == "2") {
                     $("#otherServiceDiv").show();
@@ -260,5 +260,5 @@ function setRequired() {
 
 function setDepartment(id) {
     $('#myDepartment').modal('hide');
-    $('#department').val(id).attr('selected',true);
+    $('#department').val(id).attr('selected', true);
 }

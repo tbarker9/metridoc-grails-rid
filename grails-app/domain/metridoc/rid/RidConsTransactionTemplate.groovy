@@ -1,6 +1,6 @@
 package metridoc.rid
 
-class RidTransactionTemplate extends RidTransactionBase {
+class RidConsTransactionTemplate extends RidConsTransactionBase {
 
     static belongsTo = [department: RidDepartment,
             courseSponsor: RidCourseSponsor,

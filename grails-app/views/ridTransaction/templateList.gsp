@@ -1,5 +1,5 @@
-<%@ page import="metridoc.rid.RidTransaction" %>
-<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
+<%@ page import="metridoc.rid.RidConsTransaction" %>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidConsTransaction')}"/>
 
 
 <div id="list-ridTransaction" class="content scaffold-list" role="main">

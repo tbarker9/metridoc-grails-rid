@@ -2,7 +2,7 @@ package metridoc.rid
 
 class RidModeOfConsultation {
 
-    static hasMany = [ridTransaction: RidTransaction]
+    static hasMany = [ridTransaction: RidConsTransaction]
     static belongsTo = [ridLibraryUnit: RidLibraryUnit]
 
     String name

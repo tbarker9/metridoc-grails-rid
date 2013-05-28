@@ -1,13 +1,12 @@
 package metridoc.rid
 
+import org.apache.poi.ss.usermodel.*
 import org.apache.poi.ss.util.CellReference
+import org.codehaus.groovy.grails.io.support.ClassPathResource
 import org.codehaus.groovy.grails.web.servlet.FlashScope
 import org.springframework.web.multipart.MultipartFile
 
 import java.text.SimpleDateFormat
-
-import org.apache.poi.ss.usermodel.*
-import org.codehaus.groovy.grails.io.support.ClassPathResource
 
 class SpreadsheetService {
 
@@ -41,7 +40,7 @@ class SpreadsheetService {
         )
 
         if (validNames.size() != itemNames.size()) return false
-        for (int i = 0 ; i < itemNames.size(); i++) {
+        for (int i = 0; i < itemNames.size(); i++) {
             if (!itemNames.get(i).trim().equals(validNames.get(i).trim())) return false
         }
         return true
@@ -65,7 +64,7 @@ class SpreadsheetService {
                 }
                 Cell cell = row.getCell(colNum)
                 if (!cell) {
-                    emptyCount ++
+                    emptyCount++
                     instance.add("")
                     continue
                 }
@@ -85,7 +84,7 @@ class SpreadsheetService {
                         instance.add(cell.getCellFormula().trim())
                         break
                     case Cell.CELL_TYPE_BLANK:
-                        emptyCount ++
+                        emptyCount++
                         instance.add("")
                         break
                     default:
@@ -327,7 +326,7 @@ class SpreadsheetService {
     def saveToDatabase(List<List<String>> allInstances, String spreadsheetName, FlashScope flash) {
         for (List<String> instance in allInstances) {
             def type = RidLibraryUnit.findByName(instance.get(0))
-            def t = new RidTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(17),
+            def t = new RidConsTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(17),
                     dateOfConsultation: new SimpleDateFormat("MM/dd/yyyy").parse(instance.get(1)),
                     interactOccurrences: Integer.valueOf(instance.get(11)).intValue(),
                     prepTime: Integer.valueOf(instance.get(6)).intValue(),
@@ -358,7 +357,7 @@ class SpreadsheetService {
         return true
     }
 
-    def exportAsFile(List<RidTransaction> ridTransactionList) {
+    def exportAsFile(List<RidConsTransaction> ridTransactionList) {
         ClassPathResource resource = new ClassPathResource('spreadsheet/Transaction_List.xlsx')
         Workbook wb = WorkbookFactory.create(resource.getFile().newInputStream())
         Sheet sheet = wb.getSheetAt(0)
@@ -370,7 +369,7 @@ class SpreadsheetService {
         red_bold.font = ft
 
         int rowNum = 1
-        for (RidTransaction rid in ridTransactionList) {
+        for (RidConsTransaction rid in ridTransactionList) {
             Row row = sheet.createRow(rowNum++)
             row.createCell(0).setCellValue(rid.ridLibraryUnit.name)
             row.getCell(0).setCellStyle(red_bold)

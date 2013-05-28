@@ -1,5 +1,5 @@
-<%@ page import="metridoc.rid.RidTransaction" %>
-<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidTransaction')}"/>
+<%@ page import="metridoc.rid.RidConsTransaction; metridoc.rid.RidInsTransaction" %>
+<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidConsTransaction')}"/>
 
 <md:report>
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>

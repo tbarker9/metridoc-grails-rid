@@ -18,7 +18,7 @@
             %{--<div id="controllerList" style="padding-left: 150px;">--}%
             %{--<ul>--}%
             %{--<g:each var="c" in="${grailsApplication.controllerClasses}">--}%
-            %{--<g:if test="${c.shortName.contains('Rid') && !c.shortName.contains('RidTransaction')}">--}%
+            %{--<g:if test="${c.shortName.contains('Rid') && !c.shortName.contains('RidConsTransaction')}">--}%
             %{--<li class="controller" style="padding-top: 10px;">--}%
             %{--<g:link controller="${c.logicalPropertyName}">--}%
             %{--${c.shortName}--}%

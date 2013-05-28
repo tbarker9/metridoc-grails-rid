@@ -2,32 +2,32 @@ package metridoc.rid
 
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
-import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
-import org.apache.shiro.util.ThreadContext
-import org.apache.shiro.subject.Subject
 import org.apache.shiro.SecurityUtils
+import org.apache.shiro.subject.Subject
+import org.apache.shiro.util.ThreadContext
+import org.codehaus.groovy.grails.web.servlet.mvc.SynchronizerTokensHolder
 
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
 @TestFor(RidTransactionController)
-@Mock(RidTransaction)
+@Mock(RidConsTransaction)
 class RidTransactionControllerTests {
     def serviceMocker
 
     void setUp() {
         serviceMocker = mockFor(RidTransactionService, true)  // mock the service
-        serviceMocker.demand.createNewInstanceMethod { params, ridTransactionInstance ->  }
-        serviceMocker.demand.ajaxMethod {params -> return [book:"Great"] }
+        serviceMocker.demand.createNewInstanceMethod { params, ridTransactionInstance -> }
+        serviceMocker.demand.ajaxMethod { params -> return [book: "Great"] }
         controller.ridTransactionService = serviceMocker.createMock(); // inject it into the controller
 
         // Mocks the SecurityUtils
-        def subject = [getPrincipal: {863},
-                isAuthenticated: {true}
-        ]as Subject
+        def subject = [getPrincipal: { 863 },
+                isAuthenticated: { true }
+        ] as Subject
         ThreadContext.put(ThreadContext.SECURITY_MANAGER_KEY,
-                [getSubject: {subject} as SecurityManager])
-        SecurityUtils.metaClass.static.getSubject = {subject}
+                [getSubject: { subject } as SecurityManager])
+        SecurityUtils.metaClass.static.getSubject = { subject }
     }
 
     void testAjaxReturn() {
@@ -60,8 +60,8 @@ class RidTransactionControllerTests {
 
         controller.flash.alerts = []
         mockDomain(RidCourseSponsor, [
-                [name:'testCourseSponsor', inForm: 1],
-                [name:'testCourseSponsor2', inForm: 0]
+                [name: 'testCourseSponsor', inForm: 1],
+                [name: 'testCourseSponsor2', inForm: 0]
         ])
         assert RidCourseSponsor.count() == 2
 
@@ -87,9 +87,9 @@ class RidTransactionControllerTests {
 
         assert controller.flash.alerts.size() == 0
         assert response.redirectedUrl == '/ridTransaction/show/1'
-        assert RidTransaction.count() == 1
-        assert RidTransaction.get(1).prepTime == 2
-        assert RidTransaction.get(1).eventLength == 3
-        assert RidTransaction.get(1).courseSponsor.name == 'testCourseSponsor2'
+        assert RidConsTransaction.count() == 1
+        assert RidConsTransaction.get(1).prepTime == 2
+        assert RidConsTransaction.get(1).eventLength == 3
+        assert RidConsTransaction.get(1).courseSponsor.name == 'testCourseSponsor2'
     }
 }

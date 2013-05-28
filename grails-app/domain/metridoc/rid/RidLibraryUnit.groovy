@@ -5,7 +5,8 @@ class RidLibraryUnit {
     static hasMany = [userGoal: RidUserGoal,
             modeOfConsultation: RidModeOfConsultation,
             serviceProvided: RidServiceProvided,
-            ridTransaction: RidTransaction]
+            ridConsTransaction: RidConsTransaction,
+            ridInsTransaction: RidInsTransaction]
 
     String name
 

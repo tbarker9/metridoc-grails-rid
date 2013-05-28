@@ -1,6 +1,6 @@
 package metridoc.rid
 
-abstract class RidTransactionBase {
+abstract class RidConsTransactionBase {
 
     // statement of work
     String userQuestion

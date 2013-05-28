@@ -2,8 +2,8 @@ package metridoc.rid
 
 class RidDepartment {
 
-    static hasMany = [ridTransaction: RidTransaction]
-
+    static hasMany = [ridConsTransaction: RidConsTransaction,
+            ridInsTransaction: RidInsTransaction]
     String name
     String fullName
 
@@ -14,6 +14,7 @@ class RidDepartment {
     static constraints = {
         name(blank: false, nullable: false, unique: true)
         fullName(blank: true, nullable: true)
-        ridTransaction(nullable: true)
+        ridConsTransaction(nullable: true)
+        ridInsTransaction(nullable: true)
     }
 }
