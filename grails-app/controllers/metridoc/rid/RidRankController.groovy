@@ -5,10 +5,12 @@ class RidRankController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+        session.setAttribute("prev", new String("RidRank"))
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+        session.setAttribute("prev", new String("RidRank"))
         params.max = Math.min(max ?: 10, 100)
         [ridRankInstanceList: RidRank.list(params), ridRankInstanceTotal: RidRank.count()]
     }

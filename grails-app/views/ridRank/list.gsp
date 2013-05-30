@@ -9,6 +9,7 @@
     <!--<![endif]-->
 
     <div class="md-application-content">
+        <g:render template="/ridTransactionAdmin/toggle" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: entityName + ' Create/Edit']"/>
@@ -54,8 +55,13 @@
 
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
                         <td>${choices.get(ridRankInstance?.inForm)}</td>
+                        <g:if test="${session.transType == "consultation"}">
+                            <td>${ridRankInstance?.ridConsTransaction?.size()}</td>
+                        </g:if>
+                        <g:else>
+                            <td>${ridRankInstance?.ridInsTransaction?.size()}</td>
+                        </g:else>
 
-                        <td>${ridRankInstance?.ridTransaction?.size()}</td>
                     </tr>
                 </g:each>
                 </tbody>

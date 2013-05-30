@@ -11,6 +11,7 @@ class RidLibraryUnitController {
     def ridManageLibraryUnitSpreadsheetsService
 
     def index() {
+        session.setAttribute("prev", new String("RidLibraryUnit"))
         redirect(action: "list", params: params)
     }
 

@@ -9,6 +9,7 @@
     <!--<![endif]-->
 
     <div class="md-application-content">
+        <g:render template="/ridTransactionAdmin/toggle" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: entityName + ' Create/Edit']"/>

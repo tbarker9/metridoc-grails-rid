@@ -5,10 +5,12 @@ class RidSchoolController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+        session.setAttribute("prev", new String("RidSchool"))
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+        session.setAttribute("prev", new String("RidSchool"))
         params.max = Math.min(max ?: 10, 100)
         [ridSchoolInstanceList: RidSchool.list(params), ridSchoolInstanceTotal: RidSchool.count()]
     }

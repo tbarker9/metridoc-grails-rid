@@ -123,68 +123,118 @@ class RidTransactionController {
     }
 
     def remember() {
-        withForm {
-            def ridTransactionInstance
-            if (session.getAttribute("transType") == "consultation") {
-
+        if (session.getAttribute("transType") == "consultation") {
+            withForm {
+                def ridTransactionInstance
                 if (!params.dateOfConsultation.empty)
                     params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
                 ridTransactionInstance = new RidConsTransaction(params)
-            } else {
-
+                ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
+                ridTransactionService.createNewConsInstanceMethod(params, ridTransactionInstance)
+                if (!ridTransactionInstance.save(flush: true)) {
+                    render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction Template'), ridTransactionInstance.id])
+                redirect(action: "create")
+            }.invalidToken {
+                if (SecurityUtils.getSubject().getPrincipal())
+                    flash.alerts << "Don't click the remember button more than one time to make duplicated submission!"
+                redirect(action: "list")
+            }
+        } else {
+            withForm {
                 if (!params.dateOfInstruction.empty)
                     params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
                 ridTransactionInstance = new RidInsTransaction(params)
+                if (!ridTransactionInstance.save(flush: true)) {
+                    render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction Template'), ridTransactionInstance.id])
+                redirect(action: "create")
+            }.invalidToken {
+                if (SecurityUtils.getSubject().getPrincipal())
+                    flash.alerts << "Don't click the remember button more than one time to make duplicated submission!"
+                redirect(action: "list")
             }
-            ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
-            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-            if (!ridTransactionInstance.save(flush: true)) {
-                render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
-                return
-            }
-
-            flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction Template'), ridTransactionInstance.id])
-            redirect(action: "create")
-        }.invalidToken {
-            if (SecurityUtils.getSubject().getPrincipal())
-                flash.alerts << "Don't click the remember button more than one time to make duplicated submission!"
-            redirect(action: "list")
         }
+
     }
 
     def update(Long id, Long version) {
-        withForm {
-            def ridTransactionInstance = RidConsTransaction.get(id)
-            if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
-                redirect(action: "list")
-                return
-            }
+        if (session.getAttribute("transType") == "consultation") {
+            withForm {
 
-            if (version != null) {
-                if (ridTransactionInstance.version > version) {
-                    ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                            [message(code: 'ridTransaction.label', default: 'RidConsTransaction')] as Object[],
-                            "Another rank has updated this RidConsTransaction while you were editing")
+                def ridTransactionInstance = RidConsTransaction.get(id)
+                if (!ridTransactionInstance) {
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                    redirect(action: "list")
+                    return
+                }
+
+                if (version != null) {
+                    if (ridTransactionInstance.version > version) {
+                        ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                                [message(code: 'ridTransaction.label', default: 'RidConsTransaction')] as Object[],
+                                "Another rank has updated this RidConsTransaction while you were editing")
+                        render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
+                        return
+                    }
+                }
+
+                if (!params.dateOfConsultation.empty)
+                    params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
+                ridTransactionInstance.properties = params
+                ridTransactionService.createNewConsInstanceMethod(params, ridTransactionInstance)
+                if (!ridTransactionInstance.save(flush: true)) {
                     render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-            }
 
-            if (!params.dateOfConsultation.empty)
-                params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-            ridTransactionInstance.properties = params
-            ridTransactionService.createNewInstanceMethod(params, ridTransactionInstance)
-            if (!ridTransactionInstance.save(flush: true)) {
-                render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
-                return
-            }
 
-            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
-            redirect(action: "show", id: ridTransactionInstance.id)
-        }.invalidToken {
-            flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
-            redirect(action: "list")
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+                redirect(action: "show", id: ridTransactionInstance.id)
+            }.invalidToken {
+                flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
+                redirect(action: "list")
+            }
+        } else {
+            withForm {
+
+                def ridTransactionInstance = RidInsTransaction.get(id)
+                if (!ridTransactionInstance) {
+                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                    redirect(action: "list")
+                    return
+                }
+
+                if (version != null) {
+                    if (ridTransactionInstance.version > version) {
+                        ridTransactionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+                                [message(code: 'ridTransaction.label', default: 'RidInsTransaction')] as Object[],
+                                "Another rank has updated this RidInsTransaction while you were editing")
+                        render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
+                        return
+                    }
+                }
+
+                if (!params.dateOfInstruction.empty)
+                    params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
+                ridTransactionInstance.properties = params
+                ridTransactionService.createNewInsInstanceMethod(params, ridTransactionInstance)
+                if (!ridTransactionInstance.save(flush: true)) {
+                    render(view: "edit", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+
+
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), ridTransactionInstance.id])
+                redirect(action: "show", id: ridTransactionInstance.id)
+            }.invalidToken {
+                flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
+                redirect(action: "list")
+            }
         }
     }
 
@@ -246,6 +296,16 @@ class RidTransactionController {
             def msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction')
             if (ridTransactionInstance.properties.containsKey('templateOwner'))
                 msg = message(code: 'ridTransaction.label', default: 'RidConsTransaction Template')
+
+            try {
+                ridTransactionInstance.delete(flush: true)
+                flash.message = message(code: 'default.deleted.message', args: [msg, id])
+                redirect(action: "list")
+            }
+            catch (DataIntegrityViolationException e) {
+                flash.message = message(code: 'default.not.deleted.message', args: [msg, id])
+                redirect(action: "show", id: id)
+            }
         } else {
             RidInsTransactionBase ridTransactionInstance = RidInsTransaction.get(id)
             if (params.isTemplate == 'true')
@@ -259,16 +319,17 @@ class RidTransactionController {
             def msg = message(code: 'ridTransaction.label', default: 'RidInsTransaction')
             if (ridTransactionInstance.properties.containsKey('templateOwner'))
                 msg = message(code: 'ridTransaction.label', default: 'RidInsTransaction Template')
+            try {
+                ridTransactionInstance.delete(flush: true)
+                flash.message = message(code: 'default.deleted.message', args: [msg, id])
+                redirect(action: "list")
+            }
+            catch (DataIntegrityViolationException e) {
+                flash.message = message(code: 'default.not.deleted.message', args: [msg, id])
+                redirect(action: "show", id: id)
+            }
         }
-        try {
-            ridTransactionInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [msg, id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [msg, id])
-            redirect(action: "show", id: id)
-        }
+
     }
 
     def search() {

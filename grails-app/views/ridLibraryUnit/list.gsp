@@ -4,11 +4,13 @@
 <md:report>
     <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
     <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+
     <!--[if !IE]><!-->
     <r:external dir="css" file="floating_tables_for_admin_6.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 
     <div class="md-application-content">
+        <g:render template="/ridTransactionAdmin/toggle" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: entityName + ' Create/Edit']"/>
@@ -45,7 +47,12 @@
                                href="edit/${ridLibraryUnitInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">${fieldValue(bean: ridLibraryUnitInstance, field: "name")}</a>
                         </td>
-                        <td>${ridLibraryUnitInstance?.ridTransaction?.size()}</td>
+                        <g:if test="${session.transType == "consultation"}">
+                            <td>${ridLibraryUnitInstance?.ridConsTransaction?.size()}</td>
+                        </g:if>
+                        <g:else>
+                            <td>${ridLibraryUnitInstance?.ridInsTransaction?.size()}</td>
+                        </g:else>
                         <%
                             File resource =
                                 new File(System.getProperty("user.home") + "/.metridoc/files/rid/libraryUnit/" + ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx')

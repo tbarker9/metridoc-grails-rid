@@ -22,7 +22,7 @@
 
     <div class="span3">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'dateOfInstruction', 'error')} required">
-            <label for="dateOfInstruction">
+            <label for="dateOfInstruction" style="width: 150px; margin-left: -37px">
                 <g:message code="ridTransaction.dateOfInstruction.label" default="Date Of Instruction"/>
                 <span class="required-indicator">*</span>
             </label>
@@ -248,6 +248,17 @@
 <div class="row-fluid">
 
     <div class="span4">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'sessionDescription', 'error')} ">
+            <label for="sessionDescription">
+                <g:message code="ridTransaction.sessionDescription.label" default="Session Description"/>
+            </label>
+            <br/>
+            <g:textArea class="userInput" name="sessionDescription" cols="40" rows="5" maxlength="500"
+                        value="${ridTransactionInstance?.notes}"/>
+        </div>
+    </div>
+
+    <div class="span4">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'notes', 'error')} ">
             <label for="notes">
                 <g:message code="ridTransaction.notes.label" default="Notes"/>
@@ -257,5 +268,6 @@
                         value="${ridTransactionInstance?.notes}"/>
         </div>
     </div>
+
 </div>
 

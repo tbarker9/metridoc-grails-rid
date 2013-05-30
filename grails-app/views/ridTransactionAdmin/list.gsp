@@ -2,6 +2,7 @@
 <g:set var="entityName" value="RidTransactionAdmin"/>
 
 <md:report>
+    <r:external dir="css" file="ridtrans_admin.css" plugin="metridoc-rid"/>
     <div class="md-application-content">
         <div id="list-ridTransactionAdmin" class="content scaffold-list" role="main">
             <h1><g:message code="default.list.label" args="[entityName]"/></h1>
@@ -11,6 +12,7 @@
             <hr width="96%" align="center"/>
 
             <div style="font-size: 14px">
+                <g:render template="toggle" plugin="metridoc-rid"/>
                 <g:render template="tabs" plugin="metridoc-rid"/>
             </div>
 

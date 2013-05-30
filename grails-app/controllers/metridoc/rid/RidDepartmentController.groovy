@@ -5,10 +5,12 @@ class RidDepartmentController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+        session.setAttribute("prev", new String("RidDepartment"))
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+        session.setAttribute("prev", new String("RidDepartment"))
         params.max = Math.min(max ?: 10, 100)
         def instances = RidDepartment.where { name != "" }
         [ridDepartmentInstanceList: instances.list(params), ridDepartmentInstanceTotal: instances.count()]

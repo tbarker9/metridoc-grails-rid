@@ -10,6 +10,7 @@
     <!--<![endif]-->
 
     <div class="md-application-content">
+        <g:render template="/ridTransactionAdmin/toggle" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
                   model="[title: entityName + ' Create/Edit']"/>
@@ -50,7 +51,12 @@
                             </a>
                         </td>
                         <td>${fieldValue(bean: ridDepartmentInstance, field: "fullName")}</td>
-                        <td>${ridDepartmentInstance?.ridTransaction?.size()}</td>
+                        <g:if test="${session.transType == "consultation"}">
+                            <td>${ridDepartmentInstance?.ridConsTransaction?.size()}</td>
+                        </g:if>
+                        <g:else>
+                            <td>${ridDepartmentInstance?.ridInsTransaction?.size()}</td>
+                        </g:else>
                     </tr>
                 </g:each>
                 </tbody>

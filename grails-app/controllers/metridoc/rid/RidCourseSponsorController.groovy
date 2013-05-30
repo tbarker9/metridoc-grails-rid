@@ -5,10 +5,18 @@ class RidCourseSponsorController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
+        if (session.getAttribute("transType") == "instructional") {
+            session.setAttribute("prev", new String("RidLibraryUnit"))
+            redirect(controller: RidLibraryUnit, action: "index")
+        }
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+        if (session.getAttribute("transType") == "instructional") {
+            session.setAttribute("prev", new String("RidLibraryUnit"))
+            redirect(controller: RidLibraryUnit, action: "index")
+        }
         params.max = Math.min(max ?: 10, 100)
         def instances = RidCourseSponsor.where { name != "" }
         [ridCourseSponsorInstanceList: instances.list(params), ridCourseSponsorInstanceTotal: instances.count()]
