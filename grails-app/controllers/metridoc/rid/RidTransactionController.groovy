@@ -455,4 +455,8 @@ class RidTransactionController {
         session.setAttribute("transType", new String("instructional"))
         redirect(action: session.getAttribute("prev"))
     }
+
+    def switchMode() {
+        redirect(controller: "RidAdminTransaction", action: "index")
+    }
 }

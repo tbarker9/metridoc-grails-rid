@@ -17,4 +17,6 @@
                     linkAction: 'instructional',
                     linkText: 'Instructional']"/>
 
+    <tmpl:adminToggle/>
+
 </ul>

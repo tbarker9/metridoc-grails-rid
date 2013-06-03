@@ -276,7 +276,7 @@
             </label>
             <br/>
             <g:textArea class="userInput" name="sessionDescription" cols="40" rows="5" maxlength="500"
-                        value="${ridTransactionInstance?.sessionDescription}"/>
+                        value="${ridTransactionInstance?.sessionDescription}" onkeydown="isFull(this)"/>
         </div>
     </div>
 
@@ -294,29 +294,5 @@
 
 </div>
 
-<script type="text/javascript">
-    function isFull(obj) {
 
-        if (obj.value.length >= 499) {
-            obj.style.borderColor = "#FF0000";
-            obj.style.background = "-webkit-gradient(linear, left top, left 25, from(#FFF0F5), color-stop(4%, #EEE0E5), to(#FFF0F5))";
-            /*Chrome and Safari*/
-            obj.style.background = "-moz-linear-gradient(top, #FFF0F5 #EEE0E5 1px, #FFF0F5 25px)";
-            /* Firefox Browsers */
-            obj.style.filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr = '#EEE0E5', EndColorStr = '#FFF0F5')";
-        }
-        else {
-            obj.style.borderColor = "#CCCCCC";
-            obj.style.backgroundColor = "#efefef";
-            obj.style.background = "-webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF))";
-            /*Chrome and Safari*/
-            obj.style.background = "-moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px)";
-            /* Firefox Browsers */
-            obj.style.filter = "progid:DXImageTransform.Microsoft.gradient(startColorStr = '#EEEEEE', EndColorStr = '#FFFFFF')";
-
-
-        }
-    }
-
-</script>
 

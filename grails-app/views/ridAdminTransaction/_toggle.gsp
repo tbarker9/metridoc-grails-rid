@@ -17,5 +17,5 @@
                     linkController: 'ridAdminTransaction',
                     linkAction: 'instructional',
                     linkText: 'Instructional']"/>
-
+    <tmpl:/ridAdminTransaction/adminToggle/>
 </ul>

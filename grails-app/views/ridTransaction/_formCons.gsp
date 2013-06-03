@@ -363,7 +363,7 @@
             </label>
             <br/>
             <g:textArea class="userInput" name="userQuestion" cols="40" rows="5" maxlength="500"
-                        value="${ridTransactionInstance?.userQuestion}"/>
+                        value="${ridTransactionInstance?.userQuestion}" onkeydown="isFull(this)"/>
         </div>
     </div>
 
@@ -374,7 +374,7 @@
             </label>
             <br/>
             <g:textArea class="userInput" name="notes" cols="40" rows="5" maxlength="500"
-                        value="${ridTransactionInstance?.notes}"/>
+                        value="${ridTransactionInstance?.notes}" onkeydown="isFull(this)"/>
         </div>
     </div>
 </div>

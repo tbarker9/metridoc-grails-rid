@@ -10,6 +10,7 @@
 
     <div class="md-application-content">
         <g:render template="/ridAdminTransaction/toggle" plugin="metridoc-rid"/>
+
         <g:render template="/ridAdminTransaction/tabs" plugin="metridoc-rid"/>
         <g:render template="/ridAdminTransaction/modal" plugin="metridocRID"
                   model="[title: entityName + ' Create/Edit']"/>
