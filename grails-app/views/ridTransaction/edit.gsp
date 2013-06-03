@@ -1,12 +1,16 @@
 <%@ page import="metridoc.rid.RidConsTransaction; metridoc.rid.RidInsTransaction" %>
-<g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidConsTransaction')}"/>
-
+<g:if test="${session.transType == "consultation"}">
+    <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidConsTransaction')}"/>
+</g:if>
+<g:else>
+    <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidInsTransaction')}"/>
+</g:else>
 <md:report>
     <div class="md-application-content">
         <tmpl:toggle/>
         <tmpl:tabs/>
 
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <g:render template="/ridAdminTransaction/modal" plugin="metridocRid"
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="edit-ridTransaction" class="content scaffold-edit" role="main">

@@ -5,7 +5,7 @@ abstract class RidInsTransactionBase {
     // statement of work
     Integer prepTime = 0
     Integer eventLength = 1
-    Integer attendanceTotal
+    Integer attendanceTotal = 1
     String notes
     String staffPennkey
     String sessionDescription

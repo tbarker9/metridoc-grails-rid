@@ -13,9 +13,9 @@
         <tmpl:toggle/>
         <tmpl:tabs/>
 
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <g:render template="/ridAdminTransaction/modal" plugin="metridocRid"
                   model="[title: entityName + ' Creation']"/>
-        <g:render template="/ridTransactionAdmin/modal" plugin="metridocRid"
+        <g:render template="/ridAdminTransaction/modal" plugin="metridocRid"
                   model="[title: 'Academic Departments', myID: 'myDepartment']"/>
 
         <div id="create-ridTransaction" class="content scaffold-create" role="main">
