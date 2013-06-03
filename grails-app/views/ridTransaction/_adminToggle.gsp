@@ -7,7 +7,7 @@
                         actionName: actionName,
                         linkController: 'ridTransaction',
                         linkAction: 'switchMode',
-                        linkText: 'Admin Controls']"/>
+                        linkText: 'Administration']"/>
     </g:if>
 
     <g:else>
