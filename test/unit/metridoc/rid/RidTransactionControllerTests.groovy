@@ -17,7 +17,7 @@ class RidTransactionControllerTests {
 
     void setUp() {
         serviceMocker = mockFor(RidTransactionService, true)  // mock the service
-        session.setAttribute('transType', "consultation")
+        controller.session.setAttribute('transType', "consultation")
         serviceMocker.demand.createNewConsInstanceMethod { params, ridTransactionInstance -> }
         serviceMocker.demand.ajaxMethod { params -> return [book: "Great"] }
         controller.ridTransactionService = serviceMocker.createMock(); // inject it into the controller
