@@ -15,6 +15,8 @@ class RidTransactionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    static boolean isProtected = true
+
     def ridTransactionService
     def spreadsheetService
     def ridManageLibraryUnitSpreadsheetsService
@@ -93,32 +95,43 @@ class RidTransactionController {
     }
 
     def save() {
-        withForm {
-            def ridTransactionInstance
-            if (session.getAttribute("transType") == "consultation") {
+        if (session.getAttribute("transType") == "consultation") {
+            withForm {
+                def ridTransactionInstance
+
 
                 if (!params.dateOfConsultation.empty)
                     params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
                 ridTransactionInstance = new RidConsTransaction(params)
                 ridTransactionService.createNewConsInstanceMethod(params, ridTransactionInstance)
-            } else {
+                if (!ridTransactionInstance.save(flush: true)) {
+                    render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+                redirect(action: "show", id: ridTransactionInstance.id)
+            }.invalidToken {
+                flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
+                redirect(action: "list")
+            }
+        } else {
+            withForm {
+                def ridTransactionInstance
 
                 if (!params.dateOfInstruction.empty)
                     params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
                 ridTransactionInstance = new RidInsTransaction(params)
                 ridTransactionService.createNewInsInstanceMethod(params, ridTransactionInstance)
+                if (!ridTransactionInstance.save(flush: true)) {
+                    render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
+                    return
+                }
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+                redirect(action: "show", id: ridTransactionInstance.id)
+            }.invalidToken {
+                flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
+                redirect(action: "list")
             }
-
-            if (!ridTransactionInstance.save(flush: true)) {
-                render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
-                return
-            }
-
-            flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
-            redirect(action: "show", id: ridTransactionInstance.id)
-        }.invalidToken {
-            flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
-            redirect(action: "list")
         }
     }
 
@@ -128,7 +141,7 @@ class RidTransactionController {
                 def ridTransactionInstance
                 if (!params.dateOfConsultation.empty)
                     params.dateOfConsultation = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation);
-                ridTransactionInstance = new RidConsTransaction(params)
+                ridTransactionInstance = new RidConsTransactionTemplate(params)
                 ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
                 ridTransactionService.createNewConsInstanceMethod(params, ridTransactionInstance)
                 if (!ridTransactionInstance.save(flush: true)) {
@@ -144,14 +157,17 @@ class RidTransactionController {
             }
         } else {
             withForm {
+                def ridTransactionInstance
                 if (!params.dateOfInstruction.empty)
                     params.dateOfInstruction = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfInstruction);
-                ridTransactionInstance = new RidInsTransaction(params)
+                ridTransactionInstance = new RidInsTransactionTemplate(params)
+                ridTransactionInstance.templateOwner = SecurityUtils.getSubject().getPrincipal().toString()
+                ridTransactionService.createNewInsInstanceMethod(params, ridTransactionInstance)
                 if (!ridTransactionInstance.save(flush: true)) {
                     render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction Template'), ridTransactionInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction Template'), ridTransactionInstance.id])
                 redirect(action: "create")
             }.invalidToken {
                 if (SecurityUtils.getSubject().getPrincipal())
