@@ -17,11 +17,10 @@ class RidTransactionControllerTests {
 
     void setUp() {
         serviceMocker = mockFor(RidTransactionService, true)  // mock the service
-        session.transType = "consultation"
         serviceMocker.demand.createNewConsInstanceMethod { params, ridTransactionInstance -> }
         serviceMocker.demand.ajaxMethod { params -> return [book: "Great"] }
         controller.ridTransactionService = serviceMocker.createMock(); // inject it into the controller
-
+        getSession().setAttribute("transType", "consultation")
         // Mocks the SecurityUtils
         def subject = [getPrincipal: { 863 },
                 isAuthenticated: { true }
