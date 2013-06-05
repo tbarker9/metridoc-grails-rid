@@ -7,7 +7,7 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="name" required="" value="${ridLibraryUnitInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridInstance?.name}"/>
     </div>
 </div>
 

@@ -7,7 +7,7 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="name" required="" value="${ridRankInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridInstance?.name}"/>
     </div>
 </div>
 
@@ -21,7 +21,7 @@
         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
         %{--<g:select name="inForm" from="${ridRankInstance.constraints.inForm.inList}" required="" value="${fieldValue(bean: ridRankInstance, field: 'inForm')}" valueMessagePrefix="ridRank.inForm"/>--}%
         <g:select name="inForm" from="${choices}" required=""
-                  value="${ridRankInstance?.inForm}" keys="${ridRankInstance.constraints.inForm.inList}"/>
+                  value="${ridInstance?.inForm}" keys="${ridInstance.constraints.inForm.inList}"/>
     </div>
 </div>
 

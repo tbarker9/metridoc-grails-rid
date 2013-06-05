@@ -27,7 +27,16 @@ class RidAdminTransactionController {
 
     def instructional() {
         session.setAttribute("transType", new String("instructional"))
-        redirect(controller: session.getAttribute("prev"), action: "index")
+
+        if (session.getAttribute("prev").equals("RidAdminCourseSponsor") ||
+                session.getAttribute("prev").equals("RidAdminModeOfConsultation") ||
+                session.getAttribute("prev").equals("RidAdminServiceProvided") ||
+                session.getAttribute("prev").equals("RidAdminUserGoal")) {
+            redirect(controller: "RidAdminLibraryUnit", action: "index")
+
+        } else {
+            redirect(controller: session.getAttribute("prev"), action: "index")
+        }
     }
 
     def switchMode() {

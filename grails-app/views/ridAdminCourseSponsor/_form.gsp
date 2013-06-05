@@ -7,7 +7,7 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="name" required="" value="${ridCourseSponsorInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridInstance?.name}"/>
     </div>
 </div>
 
@@ -20,7 +20,7 @@
     <div class="controls">
         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
         <g:select name="inForm" from="${choices}" required=""
-                  value="${ridCourseSponsorInstance?.inForm}"
-                  keys="${ridCourseSponsorInstance.constraints.inForm.inList}"/>
+                  value="${ridInstance?.inForm}"
+                  keys="${ridInstance.constraints.inForm.inList}"/>
     </div>
 </div>

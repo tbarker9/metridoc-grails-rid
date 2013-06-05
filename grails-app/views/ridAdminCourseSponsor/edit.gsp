@@ -12,8 +12,8 @@
 %{--</ul>--}%
 %{--</g:hasErrors>--}%
     <g:form class="form-horizontal" method="post" useToken="true">
-        <g:hiddenField name="id" value="${ridCourseSponsorInstance?.id}"/>
-        <g:hiddenField name="version" value="${ridCourseSponsorInstance?.version}"/>
+        <g:hiddenField name="id" value="${ridInstance?.id}"/>
+        <g:hiddenField name="version" value="${ridInstance?.version}"/>
         <div style="margin-top: 2em">
             <tmpl:form/>
             %{--<tmpl:form/>--}%

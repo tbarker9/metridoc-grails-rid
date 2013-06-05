@@ -11,24 +11,24 @@
             </g:if>
             <ol class="property-list ridCourseSponsor">
 
-                <g:if test="${ridCourseSponsorInstance?.name}">
+                <g:if test="${ridInstance?.name}">
                     <li class="fieldcontain">
                         <span id="name-label" class="property-label"><g:message code="ridCourseSponsor.name.label"
                                                                                 default="Name"/></span>
 
                         <span class="property-value" aria-labelledby="name-label"><g:fieldValue
-                                bean="${ridCourseSponsorInstance}" field="name"/></span>
+                                bean="${ridInstance}" field="name"/></span>
 
                     </li>
                 </g:if>
 
-                <g:if test="${ridCourseSponsorInstance?.inForm}">
+                <g:if test="${ridnstance?.inForm}">
                     <li class="fieldcontain">
                         <span id="inForm-label" class="property-label"><g:message code="ridCourseSponsor.inForm.label"
                                                                                   default="In Form"/></span>
 
                         <span class="property-value" aria-labelledby="inForm-label"><g:fieldValue
-                                bean="${ridCourseSponsorInstance}" field="inForm"/></span>
+                                bean="${ridInstance}" field="inForm"/></span>
 
                     </li>
                 </g:if>
@@ -47,8 +47,8 @@
             </ol>
             <g:form>
                 <fieldset class="buttons">
-                    <g:hiddenField name="id" value="${ridCourseSponsorInstance?.id}"/>
-                    <g:actionSubmit class="btn btn-success" action="edit" id="${ridCourseSponsorInstance?.id}"
+                    <g:hiddenField name="id" value="${ridInstance?.id}"/>
+                    <g:actionSubmit class="btn btn-success" action="edit" id="${ridInstance?.id}"
                                     value="${message(code: 'default.button.edit.label', default: 'Edit')}"/>
                     <g:actionSubmit class="btn btn-danger" action="delete"
                                     value="${message(code: 'default.button.delete.label', default: 'Delete')}"

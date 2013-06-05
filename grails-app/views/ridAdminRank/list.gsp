@@ -24,9 +24,9 @@
                 </a>
             </h1>
 
-            <g:hasErrors bean="${ridRankError}">
+            <g:hasErrors bean="${DomainClassError}">
                 <div class="errors">
-                    <g:renderErrors bean="${ridRankError}" as="list"/>
+                    <g:renderErrors bean="${DomainClassError}" as="list"/>
                 </div>
             </g:hasErrors>
 
@@ -43,33 +43,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${ridRankInstanceList}" status="i" var="ridRankInstance">
+                <g:each in="${ridInstanceList}" status="i" var="ridInstance">
                     <tr>
 
                         <td>
                             <a data-toggle="modal"
-                               href="edit/${ridRankInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                               href="edit/${ridInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
-                                ${fieldValue(bean: ridRankInstance, field: "name")}
+                                ${fieldValue(bean: ridInstance, field: "name")}
                             </a>
                         </td>
 
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
-                        <td>${choices.get(ridRankInstance?.inForm)}</td>
+                        <td>${choices.get(ridInstance?.inForm)}</td>
                         <g:if test="${session.transType == "consultation"}">
-                            <td>${ridRankInstance?.ridConsTransaction?.size()}</td>
+                            <td>${ridInstance?.ridConsTransaction?.size()}</td>
                         </g:if>
                         <g:else>
-                            <td>${ridRankInstance?.ridInsTransaction?.size()}</td>
+                            <td>${ridInstance?.ridInsTransaction?.size()}</td>
                         </g:else>
 
                     </tr>
                 </g:each>
                 </tbody>
             </table>
-            <g:if test="${ridRankInstanceTotal > 10}">
+            <g:if test="${ridInstanceTotal > 10}">
                 <div class="pagination">
-                    <g:paginate total="${ridRankInstanceTotal}"/>
+                    <g:paginate total="${ridInstanceTotal}"/>
                 </div>
             </g:if>
         </div>

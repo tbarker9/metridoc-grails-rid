@@ -7,7 +7,7 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="name" required="" value="${ridDepartmentInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridInstance?.name}"/>
     </div>
 </div>
 
@@ -17,6 +17,6 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="fullName" value="${ridDepartmentInstance?.fullName}"/>
+        <g:textField class="userInput" name="fullName" value="${ridInstance?.fullName}"/>
     </div>
 </div>

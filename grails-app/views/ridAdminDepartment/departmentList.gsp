@@ -18,11 +18,11 @@
         </tr>
         </thead>
         <tbody>
-        <g:each in="${ridDepartmentInstanceList}" var="ridDepartmentInstance">
+        <g:each in="${ridInstanceList}" var="ridInstance">
             <tr style="cursor: pointer;"
-                onclick="setDepartment(${fieldValue(bean: ridDepartmentInstance, field: "id")})">
-                <td>${fieldValue(bean: ridDepartmentInstance, field: "name")}</td>
-                <td>${fieldValue(bean: ridDepartmentInstance, field: "fullName")}</td>
+                onclick="setDepartment(${fieldValue(bean: ridInstance, field: "id")})">
+                <td>${fieldValue(bean: ridInstance, field: "name")}</td>
+                <td>${fieldValue(bean: ridInstance, field: "fullName")}</td>
             </tr>
         </g:each>
         </tbody>

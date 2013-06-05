@@ -7,7 +7,7 @@
     </label>
 
     <div class="controls">
-        <g:textField class="userInput" name="name" required="" value="${ridServiceProvidedInstance?.name}"/>
+        <g:textField class="userInput" name="name" required="" value="${ridInstance?.name}"/>
     </div>
 </div>
 
@@ -20,13 +20,13 @@
     <div class="controls">
         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
         <g:select name="inForm" from="${choices}" required=""
-                  value="${ridServiceProvidedInstance?.inForm}"
-                  keys="${ridServiceProvidedInstance.constraints.inForm.inList}"/>
+                  value="${ridInstance?.inForm}"
+                  keys="${ridInstance.constraints.inForm.inList}"/>
     </div>
 </div>
 
 
-<div class="control-group fieldcontain ${hasErrors(bean: ridServiceProvidedInstance, field: 'ridLibraryUnit', 'error')} required">
+<div class="control-group fieldcontain ${hasErrors(bean: ridInstance, field: 'ridLibraryUnit', 'error')} required">
     <label class="control-label" for="ridLibraryUnit">
         <g:message code="ridServiceProvided.ridLibraryUnit.label" default="Library Unit"/>
         <span class="required-indicator">*</span>
@@ -35,7 +35,7 @@
     <div class="controls">
         <g:select id="ridLibraryUnit" style="width:120px" name="ridLibraryUnit.id"
                   from="${RidLibraryUnit.list()}"
-                  optionKey="id" required="" value="${ridServiceProvidedInstance?.ridLibraryUnit?.id}"
+                  optionKey="id" required="" value="${ridInstance?.ridLibraryUnit?.id}"
                   class="many-to-one"/>
     </div>
 </div>

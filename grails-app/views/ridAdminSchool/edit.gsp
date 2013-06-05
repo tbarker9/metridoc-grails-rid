@@ -5,8 +5,8 @@
     <h1><g:message code="default.edit.label" args="[entityName]"/></h1>
 
     <g:form class="form-horizontal" method="post" useToken="true">
-        <g:hiddenField name="id" value="${ridSchoolInstance?.id}"/>
-        <g:hiddenField name="version" value="${ridSchoolInstance?.version}"/>
+        <g:hiddenField name="id" value="${ridInstance?.id}"/>
+        <g:hiddenField name="version" value="${ridInstance?.version}"/>
         <div style="margin-top: 2em">
             <tmpl:form/>
         </div>

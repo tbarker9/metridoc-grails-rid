@@ -25,9 +25,9 @@
                 </a>
             </h1>
 
-            <g:hasErrors bean="${ridLibraryUnitError}">
+            <g:hasErrors bean="${ridDomainClassError}">
                 <div class="errors">
-                    <g:renderErrors bean="${ridLibraryUnitError}" as="list"/>
+                    <g:renderErrors bean="${ridDomainClassError}" as="list"/>
                 </div>
             </g:hasErrors>
 
@@ -41,28 +41,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                <g:each in="${ridLibraryUnitInstanceList}" var="ridLibraryUnitInstance">
+                <g:each in="${ridInstanceList}" var="ridInstance">
                     <tr>
                         <td>
                             <a data-toggle="modal"
-                               href="edit/${ridLibraryUnitInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
-                               data-target="#myModal">${fieldValue(bean: ridLibraryUnitInstance, field: "name")}</a>
+                               href="edit/${ridInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                               data-target="#myModal">${fieldValue(bean: ridInstance, field: "name")}</a>
                         </td>
                         <g:if test="${session.transType == "consultation"}">
-                            <td>${ridLibraryUnitInstance?.ridConsTransaction?.size()}</td>
+                            <td>${ridInstance?.ridConsTransaction?.size()}</td>
                         </g:if>
                         <g:else>
-                            <td>${ridLibraryUnitInstance?.ridInsTransaction?.size()}</td>
+                            <td>${ridInstance?.ridInsTransaction?.size()}</td>
                         </g:else>
                         <%
                             File resource =
-                                new File(System.getProperty("user.home") + "/.metridoc/files/rid/libraryUnit/" + ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx')
+                                new File(System.getProperty("user.home") + "/.metridoc/files/rid/libraryUnit/" + ridInstance.name + '_Bulkload_Schematic.xlsx')
                         %>
                         <td>
                             <g:if test="${resource.exists()}">
                                 <g:link action="download"
-                                        params="${[sname: ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx']}">
-                                    ${ridLibraryUnitInstance.name + '_Bulkload_Schematic.xlsx'}
+                                        params="${[sname: ridInstance.name + '_Bulkload_Schematic.xlsx']}">
+                                    ${ridInstance.name + '_Bulkload_Schematic.xlsx'}
                                 </g:link>
                             </g:if>
                             <g:else>
@@ -73,9 +73,9 @@
                 </g:each>
                 </tbody>
             </table>
-            <g:if test="${ridLibraryUnitInstanceTotal > 10}">
+            <g:if test="${ridInstanceTotal > 10}">
                 <div class="pagination">
-                    <g:paginate total="${ridLibraryUnitInstanceTotal}"/>
+                    <g:paginate total="${ridInstanceTotal}"/>
                 </div>
             </g:if>
         </div>

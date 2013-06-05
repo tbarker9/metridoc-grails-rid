@@ -30,9 +30,9 @@
         %{--<div class="message" role="status">${flash.message}</div>--}%
         %{--</g:if>--}%
 
-            <g:hasErrors bean="${ridCourseSponsorError}">
+            <g:hasErrors bean="${ridDomainClassError}">
                 <div class="errors">
-                    <g:renderErrors bean="${ridCourseSponsorError}" as="list"/>
+                    <g:renderErrors bean="${ridDomainClassError}" as="list"/>
                 </div>
             </g:hasErrors>
 
@@ -51,29 +51,29 @@
                 </thead>
 
                 <tbody>
-                <g:each in="${ridCourseSponsorInstanceList}" status="i" var="ridCourseSponsorInstance">
+                <g:each in="${ridInstanceList}" status="i" var="ridInstance">
                     <tr>
                         <td>
                             <a data-toggle="modal"
-                               href="edit/${ridCourseSponsorInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
+                               href="edit/${ridInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                                data-target="#myModal">
-                                ${fieldValue(bean: ridCourseSponsorInstance, field: "name")}
+                                ${fieldValue(bean: ridInstance, field: "name")}
                             </a>
                         </td>
 
                         <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
-                        <td>${choices.get(ridCourseSponsorInstance?.inForm)}</td>
+                        <td>${choices.get(ridInstance?.inForm)}</td>
 
-                        <td>${ridCourseSponsorInstance?.ridTransaction?.size()}</td>
+                        <td>${ridInstance?.ridTransaction?.size()}</td>
 
                     </tr>
                 </g:each>
                 </tbody>
             </table>
 
-            <g:if test="${ridCourseSponsorInstanceTotal > 10}">
+            <g:if test="${ridInstanceTotal > 10}">
                 <div class="pagination">
-                    <g:paginate total="${ridCourseSponsorInstanceTotal}"/>
+                    <g:paginate total="${ridInstanceTotal}"/>
                 </div>
             </g:if>
         </div>
