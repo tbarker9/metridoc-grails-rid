@@ -7,6 +7,9 @@ grails.project.repos.metridocInternalRepo.url = "svn:http://svn2.library.upenn.i
 //name of the repository
 grails.project.repos.default = "metridocInternalRepo"
 
+grails.project.target.level = 1.6
+grails.project.source.level = 1.6
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
