@@ -16,8 +16,8 @@
                   model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridRank" class="content scaffold-list" role="main">
-            <h1><g:message code="default.list.label" args="[entityName]"/>
-
+            <h1>
+                <g:message code="default.list.label" args="[entityName]"/>
                 <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                    data-target="#myModal" data-toggle="modal">
                     <i title="Create Rank" class="icon-plus-sign-alt"></i>
@@ -34,7 +34,8 @@
                 <thead>
                 <tr>
 
-                    <g:sortableColumn property="name" title="${message(code: 'ridRank.name.label', default: 'Name')}"/>
+                    <g:sortableColumn property="name"
+                                      title="${message(code: 'ridRank.name.label', default: 'Name')}"/>
 
                     <g:sortableColumn property="inForm"
                                       title="${message(code: 'ridRank.inForm.label', default: 'In Form')}"/>
@@ -42,30 +43,7 @@
                     <th>Number of RidTransaction</th>
                 </tr>
                 </thead>
-                <tbody>
-                <g:each in="${ridInstanceList}" status="i" var="ridInstance">
-                    <tr>
-
-                        <td>
-                            <a data-toggle="modal"
-                               href="edit/${ridInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
-                               data-target="#myModal">
-                                ${fieldValue(bean: ridInstance, field: "name")}
-                            </a>
-                        </td>
-
-                        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
-                        <td>${choices.get(ridInstance?.inForm)}</td>
-                        <g:if test="${session.transType == "consultation"}">
-                            <td>${ridInstance?.ridConsTransaction?.size()}</td>
-                        </g:if>
-                        <g:else>
-                            <td>${ridInstance?.ridInsTransaction?.size()}</td>
-                        </g:else>
-
-                    </tr>
-                </g:each>
-                </tbody>
+                <g:render template="/ridAdminBase/baseListWithoutLibUnit" plugin="metridoc-rid"/>
             </table>
             <g:if test="${ridInstanceTotal > 10}">
                 <div class="pagination">

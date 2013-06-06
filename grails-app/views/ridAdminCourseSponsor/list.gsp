@@ -16,19 +16,13 @@
                   model="[title: entityName + ' Create/Edit']"/>
 
         <div id="list-ridCourseSponsor" class="content scaffold-list" role="main">
-
             <h1>
                 <g:message code="default.list.label" args="[entityName]"/>
-
                 <a data-tooltip="Creating" href="create?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
                    data-target="#myModal" data-toggle="modal">
                     <i title="Create Course Sponsor" class="icon-plus-sign-alt"></i>
                 </a>
             </h1>
-
-        %{--<g:if test="${flash.message}">--}%
-        %{--<div class="message" role="status">${flash.message}</div>--}%
-        %{--</g:if>--}%
 
             <g:hasErrors bean="${ridDomainClassError}">
                 <div class="errors">
@@ -49,28 +43,8 @@
                     <th>Number of RidTransaction</th>
                 </tr>
                 </thead>
-
-                <tbody>
-                <g:each in="${ridInstanceList}" status="i" var="ridInstance">
-                    <tr>
-                        <td>
-                            <a data-toggle="modal"
-                               href="edit/${ridInstance.id}?dummy=${org.apache.commons.lang.math.RandomUtils.nextInt()}"
-                               data-target="#myModal">
-                                ${fieldValue(bean: ridInstance, field: "name")}
-                            </a>
-                        </td>
-
-                        <% def choices = ['NO', 'YES, and no indication needed', 'YES, and indication required'] %>
-                        <td>${choices.get(ridInstance?.inForm)}</td>
-
-                        <td>${ridInstance?.ridTransaction?.size()}</td>
-
-                    </tr>
-                </g:each>
-                </tbody>
+                <g:render template="/ridAdminBase/baseListWithoutLibUnit" plugin="metridoc-rid"/>
             </table>
-
             <g:if test="${ridInstanceTotal > 10}">
                 <div class="pagination">
                     <g:paginate total="${ridInstanceTotal}"/>
