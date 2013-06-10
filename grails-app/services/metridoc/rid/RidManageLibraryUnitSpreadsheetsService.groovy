@@ -8,7 +8,13 @@ class RidManageLibraryUnitSpreadsheetsService {
     File unitSpreadsheetDir = new File(DEFAULT_SPREADSHEET_DIRECTORY)
 
     def download(response, flash, params) {
-        def file = new File(DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
+        //Clunky fix for spreadsheet download problem
+        def file
+        if (params?.ridLibraryUnit?.name != null)
+            file = new File(DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.ridLibraryUnit.name + '_Bulkload_Schematic.xlsx')
+        else
+            file = new File(DEFAULT_SPREADSHEET_DIRECTORY + "/" + params.sname)
+
         if (!file.exists()) {
             flash.message = "File not found"
         }

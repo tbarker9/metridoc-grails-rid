@@ -61,6 +61,7 @@
                         <td>
                             <g:if test="${resource.exists()}">
                                 <g:link action="download"
+                                        id="ridLibraryUnit" name="ridInstance.name"
                                         params="${[sname: ridInstance.name + '_Bulkload_Schematic.xlsx']}">
                                     ${ridInstance.name + '_Bulkload_Schematic.xlsx'}
                                 </g:link>
