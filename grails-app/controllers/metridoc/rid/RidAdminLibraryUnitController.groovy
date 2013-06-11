@@ -12,10 +12,12 @@ class RidAdminLibraryUnitController extends RidAdminBaseController {
     def save() {
         withForm {
             def ridInstance = new RidLibraryUnit(params)
+
             if (!ridInstance.save(flush: true)) {
                 chain(action: "list", model: [ridDomainClassError: ridInstance])
                 return
             }
+
             // automatically create default values
             new RidUserGoal(name: "", inForm: 1, ridLibraryUnit: ridInstance).save(validate: false)
             new RidServiceProvided(name: "", inForm: 1, ridLibraryUnit: ridInstance).save(validate: false)
@@ -54,7 +56,9 @@ class RidAdminLibraryUnitController extends RidAdminBaseController {
                 }
             }
 
-            flash.message = message(code: 'default.created.message', args: [message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit'), ridInstance.id])
+            flash.message = message(code: 'default.created.message', args: [message(code: 'ridLibraryUnit.label',
+                    default: 'RidLibraryUnit'),
+                    ridInstance.id])
             redirect(action: "list")
         }.invalidToken {
             flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
@@ -66,12 +70,13 @@ class RidAdminLibraryUnitController extends RidAdminBaseController {
         withForm {
             def ridInstance = RidLibraryUnit.get(id)
             def oldname = ridInstance.name
+
             if (!ridInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit'), id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridLibraryUnit.label',
+                        default: 'RidLibraryUnit'), id])
                 redirect(action: "list")
                 return
             }
-
             if (version != null) {
                 if (ridInstance.version > version) {
                     ridInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
@@ -122,7 +127,9 @@ class RidAdminLibraryUnitController extends RidAdminBaseController {
                 }
             }
 
-            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridLibraryUnit.label', default: 'RidLibraryUnit'), ridInstance.id])
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'ridLibraryUnit.label',
+                    default: 'RidLibraryUnit'),
+                    ridInstance.id])
             redirect(action: "list")
         }.invalidToken {
             flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
@@ -136,7 +143,5 @@ class RidAdminLibraryUnitController extends RidAdminBaseController {
         }
     }
 
-    def spreadsheetUpload() {
-
-    }
+    def spreadsheetUpload() {}
 }

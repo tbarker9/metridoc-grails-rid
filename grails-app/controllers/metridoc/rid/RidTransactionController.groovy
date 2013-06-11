@@ -17,15 +17,14 @@ class RidTransactionController {
 
     static boolean isProtected = true
 
-    def ridTransactionService
-    def spreadsheetService
-    def ridManageLibraryUnitSpreadsheetsService
-    //def scaffold = true
-
     def ajaxChooseType = {
         def response = ridTransactionService.ajaxMethod(params)
         render response as JSON
     }
+
+    def ridTransactionService
+    def spreadsheetService
+    def ridManageLibraryUnitSpreadsheetsService
 
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
@@ -34,16 +33,20 @@ class RidTransactionController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+
         if (session.getAttribute("transType") == "consultation") {
-            [ridTransactionInstanceList: RidConsTransaction.list(params), ridTransactionInstanceTotal: RidConsTransaction.count(),
+            [ridTransactionInstanceList: RidConsTransaction.list(params),
+                    ridTransactionInstanceTotal: RidConsTransaction.count(),
                     ridTransactionAllList: RidConsTransaction.list()]
         } else {
-            [ridTransactionInstanceList: RidInsTransaction.list(params), ridTransactionInstanceTotal: RidInsTransaction.count(),
+            [ridTransactionInstanceList: RidInsTransaction.list(params),
+                    ridTransactionInstanceTotal: RidInsTransaction.count(),
                     ridTransactionAllList: RidInsTransaction.list()]
         }
     }
 
     def templateList() {
+
         if (SecurityUtils.getSubject().getPrincipal()) {
             if (session.getAttribute("transType") == "consultation") {
                 def query = RidConsTransactionTemplate.where {
@@ -63,6 +66,7 @@ class RidTransactionController {
 
     def create() {
         session.setAttribute("prev", new String("create"))
+
         if (session.getAttribute("transType") == "consultation") {
             try {
                 RidConsTransactionBase ridTransactionInstance = new RidConsTransaction(params)
@@ -95,6 +99,7 @@ class RidTransactionController {
     }
 
     def save() {
+
         if (session.getAttribute("transType") == "consultation") {
             withForm {
                 def ridTransactionInstance
@@ -108,7 +113,10 @@ class RidTransactionController {
                     render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+
+                flash.message = message(code: 'default.created.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), ridTransactionInstance.id])
                 redirect(action: "show", id: ridTransactionInstance.id)
             }.invalidToken {
                 flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
@@ -126,7 +134,10 @@ class RidTransactionController {
                     render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+
+                flash.message = message(code: 'default.created.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), ridTransactionInstance.id])
                 redirect(action: "show", id: ridTransactionInstance.id)
             }.invalidToken {
                 flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
@@ -136,6 +147,7 @@ class RidTransactionController {
     }
 
     def remember() {
+
         if (session.getAttribute("transType") == "consultation") {
             withForm {
                 def ridTransactionInstance
@@ -148,7 +160,10 @@ class RidTransactionController {
                     render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction Template'), ridTransactionInstance.id])
+
+                flash.message = message(code: 'default.created.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction Template'), ridTransactionInstance.id])
                 redirect(action: "create")
             }.invalidToken {
                 if (SecurityUtils.getSubject().getPrincipal())
@@ -167,7 +182,10 @@ class RidTransactionController {
                     render(view: "create", model: [ridTransactionInstance: ridTransactionInstance])
                     return
                 }
-                flash.message = message(code: 'default.created.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction Template'), ridTransactionInstance.id])
+
+                flash.message = message(code: 'default.created.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidInsTransaction Template'), ridTransactionInstance.id])
                 redirect(action: "create")
             }.invalidToken {
                 if (SecurityUtils.getSubject().getPrincipal())
@@ -179,12 +197,14 @@ class RidTransactionController {
     }
 
     def update(Long id, Long version) {
+
         if (session.getAttribute("transType") == "consultation") {
             withForm {
-
                 def ridTransactionInstance = RidConsTransaction.get(id)
                 if (!ridTransactionInstance) {
-                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                    flash.message = message(code: 'default.not.found.message',
+                            args: [message(code: 'ridTransaction.label',
+                                    default: 'RidConsTransaction'), id])
                     redirect(action: "list")
                     return
                 }
@@ -208,8 +228,9 @@ class RidTransactionController {
                     return
                 }
 
-
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), ridTransactionInstance.id])
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), ridTransactionInstance.id])
                 redirect(action: "show", id: ridTransactionInstance.id)
             }.invalidToken {
                 flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
@@ -217,10 +238,11 @@ class RidTransactionController {
             }
         } else {
             withForm {
-
                 def ridTransactionInstance = RidInsTransaction.get(id)
                 if (!ridTransactionInstance) {
-                    flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                    flash.message = message(code: 'default.not.found.message',
+                            args: [message(code: 'ridTransaction.label',
+                                    default: 'RidInsTransaction'), id])
                     redirect(action: "list")
                     return
                 }
@@ -245,7 +267,9 @@ class RidTransactionController {
                 }
 
 
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), ridTransactionInstance.id])
+                flash.message = message(code: 'default.updated.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidInsTransaction'), ridTransactionInstance.id])
                 redirect(action: "show", id: ridTransactionInstance.id)
             }.invalidToken {
                 flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
@@ -255,10 +279,13 @@ class RidTransactionController {
     }
 
     def edit(Long id) {
+
         if (session.getAttribute("transType") == "consultation") {
             def ridTransactionInstance = RidConsTransaction.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -267,7 +294,9 @@ class RidTransactionController {
         } else {
             def ridTransactionInstance = RidInsTransaction.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidInsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -277,10 +306,13 @@ class RidTransactionController {
     }
 
     def show(Long id) {
+
         if (session.getAttribute("transType") == "consultation") {
             def ridTransactionInstance = RidConsTransaction.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -289,7 +321,9 @@ class RidTransactionController {
         } else {
             def ridTransactionInstance = RidInsTransaction.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidInsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -299,12 +333,15 @@ class RidTransactionController {
     }
 
     def delete(Long id) {
+
         if (session.getAttribute("transType") == "consultation") {
             RidConsTransactionBase ridTransactionInstance = RidConsTransaction.get(id)
             if (params.isTemplate == 'true')
                 ridTransactionInstance = RidConsTransactionTemplate.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidConsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidConsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -327,7 +364,9 @@ class RidTransactionController {
             if (params.isTemplate == 'true')
                 ridTransactionInstance = RidInsTransactionTemplate.get(id)
             if (!ridTransactionInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'ridTransaction.label', default: 'RidInsTransaction'), id])
+                flash.message = message(code: 'default.not.found.message',
+                        args: [message(code: 'ridTransaction.label',
+                                default: 'RidInsTransaction'), id])
                 redirect(action: "list")
                 return
             }
@@ -368,6 +407,7 @@ class RidTransactionController {
     }
 
     def upload() {
+
         withForm {
             MultipartFile uploadedFile = request.getFile("spreadsheetUpload")
             if (uploadedFile == null || uploadedFile.empty) {
@@ -387,6 +427,7 @@ class RidTransactionController {
                 redirect(action: "spreadsheetUpload")
                 return
             }
+
             if (session.getAttribute("transType") == "consultation") {
                 if (RidConsTransaction.findBySpreadsheetName(uploadedFile.originalFilename)) {
                     flash.alerts << "This spreadsheet has been uploaded before. Change the file name, for example!"
@@ -423,6 +464,7 @@ class RidTransactionController {
 
     def export() {
         def queryResult = ridTransactionService.queryMethod(params)
+
         if (queryResult.count()) {
             Workbook wb = spreadsheetService.exportAsFile(queryResult.list())
 
@@ -445,13 +487,11 @@ class RidTransactionController {
     }
 
     def consultation() {
-
         session.setAttribute("transType", new String("consultation"))
         redirect(action: session.getAttribute("prev"))
     }
 
     def instructional() {
-
         session.setAttribute("transType", new String("instructional"))
         redirect(action: session.getAttribute("prev"))
     }

@@ -33,7 +33,6 @@ class RidAdminTransactionController {
                 session.getAttribute("prev").equals("RidAdminServiceProvided") ||
                 session.getAttribute("prev").equals("RidAdminUserGoal")) {
             redirect(controller: "RidAdminLibraryUnit", action: "index")
-
         } else {
             redirect(controller: session.getAttribute("prev"), action: "index")
         }
