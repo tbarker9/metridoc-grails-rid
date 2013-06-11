@@ -14,7 +14,8 @@ webUI:
   Form: Duplicated Form Submissions Handling
 unitTests:
   title: Unit Tests
-conclusion:
+personal:
   title: Insight and Conclusion
+  conclusion: Persional experiences
 appendix:
   title: Appendix -- Relationship among domain classes
