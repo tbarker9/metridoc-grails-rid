@@ -34,7 +34,9 @@ abstract class RidAdminBaseController {
                 return
             }
 
-            flash.message = message(code: 'default.created.message', args: [message(code: 'domainClass.label', default: 'domainClass'), ridInstance.id])
+            flash.message = message(code: 'default.created.message', args: [message(code: 'domainClass.label',
+                    default: 'domainClass'),
+                    ridInstance.id])
             redirect(action: "list")
         }.invalidToken {
             flash.alerts << "Don't click the create button more than one time to make duplicated submission!"
@@ -45,7 +47,8 @@ abstract class RidAdminBaseController {
     def edit(Long id) {
         def ridInstance = domainClass.get(id)
         if (!ridInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'domainClass.label', default: 'domainClass'), id])
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'domainClass.label',
+                    default: 'domainClass'), id])
             redirect(action: "list")
             return
         }
@@ -58,7 +61,8 @@ abstract class RidAdminBaseController {
             def ridInstance = domainClass.get(id)
             def oldname = ridInstance.name
             if (!ridInstance) {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'domainClass.label', default: 'domainClass'), id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'domainClass.label',
+                        default: 'domainClass'), id])
                 redirect(action: "list")
                 return
             }
@@ -80,15 +84,13 @@ abstract class RidAdminBaseController {
                 return
             }
 
-
-
-            flash.message = message(code: 'default.updated.message', args: [message(code: 'domainClass.label', default: 'domainClass'), ridInstance.id])
+            flash.message = message(code: 'default.updated.message', args: [message(code: 'domainClass.label',
+                    default: 'domainClass'),
+                    ridInstance.id])
             redirect(action: "list")
         }.invalidToken {
             flash.alerts << "Don't click the update button more than one time to make duplicated submission!"
             redirect(action: "list")
         }
     }
-
-
 }
