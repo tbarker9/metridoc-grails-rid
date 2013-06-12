@@ -28,6 +28,7 @@ class RidTransactionController {
 
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
+        session.setAttribute("display", new String("pills"))
         redirect(action: "create")
     }
 
@@ -466,7 +467,7 @@ class RidTransactionController {
         def queryResult = ridTransactionService.queryMethod(params, session.getAttribute("transType"))
 
         if (queryResult.count()) {
-            Workbook wb = spreadsheetService.exportAsFile(queryResult.list())
+            Workbook wb = spreadsheetService.exportAsFile(queryResult.list(), session.getAttribute("transType"))
 
             try {
                 response.setContentType('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
@@ -498,5 +499,22 @@ class RidTransactionController {
 
     def switchMode() {
         redirect(controller: "RidAdminTransaction", action: "index")
+    }
+
+    //Temporary display changing methods
+
+    def pills() {
+        session.setAttribute("display", new String("pills"))
+        redirect(action: session.getAttribute("prev"))
+    }
+
+    def tabs() {
+        session.setAttribute("display", new String("tabs"))
+        redirect(action: session.getAttribute("prev"))
+    }
+
+    def dropdown() {
+        session.setAttribute("display", new String("dropdown"))
+        redirect(action: session.getAttribute("prev"))
     }
 }

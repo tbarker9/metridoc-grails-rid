@@ -357,7 +357,7 @@ class SpreadsheetService {
         return true
     }
 
-    def exportAsFile(List<RidConsTransaction> ridTransactionList) {
+    def exportAsFile(List ridTransactionList, String transType) {
         ClassPathResource resource = new ClassPathResource('spreadsheet/Transaction_List.xlsx')
         Workbook wb = WorkbookFactory.create(resource.getFile().newInputStream())
         Sheet sheet = wb.getSheetAt(0)
@@ -369,33 +369,58 @@ class SpreadsheetService {
         red_bold.font = ft
 
         int rowNum = 1
-        for (RidConsTransaction rid in ridTransactionList) {
-            Row row = sheet.createRow(rowNum++)
-            row.createCell(0).setCellValue(rid.ridLibraryUnit.name)
-            row.getCell(0).setCellStyle(red_bold)
-            row.createCell(1).setCellValue(rid.dateOfConsultation.format("MM/dd/yyyy"))
-            row.createCell(2).setCellValue(rid.staffPennkey)
-            row.createCell(3).setCellValue(rid.modeOfConsultation.name)
-            row.createCell(4).setCellValue(rid.serviceProvided.name)
-            row.createCell(5).setCellValue(rid.userGoal.name)
-            row.createCell(6).setCellValue(String.valueOf(rid.prepTime))
-            row.createCell(7).setCellValue(String.valueOf(rid.eventLength))
-            row.createCell(8).setCellValue(rid.userName)
-            row.createCell(9).setCellValue(rid.rank.name)
-            row.createCell(10).setCellValue(rid.school.name)
-            row.createCell(11).setCellValue(String.valueOf(rid.interactOccurrences))
-            row.createCell(12).setCellValue(rid.courseName)
-            row.createCell(13).setCellValue(rid.department.name)
-            row.createCell(14).setCellValue(rid.courseNumber)
-            row.createCell(15).setCellValue(rid.facultySponsor)
-            row.createCell(16).setCellValue(rid.courseSponsor.name)
-            row.createCell(17).setCellValue(rid.userQuestion)
-            row.createCell(18).setCellValue(rid.notes)
+        if (transType.equals("consultation")) {
+            for (RidConsTransaction rid in ridTransactionList) {
+                Row row = sheet.createRow(rowNum++)
+                row.createCell(0).setCellValue(rid.ridLibraryUnit.name)
+                row.getCell(0).setCellStyle(red_bold)
+                row.createCell(1).setCellValue(rid.dateOfConsultation.format("MM/dd/yyyy"))
+                row.createCell(2).setCellValue(rid.staffPennkey)
+                row.createCell(3).setCellValue(rid.modeOfConsultation.name)
+                row.createCell(4).setCellValue(rid.serviceProvided.name)
+                row.createCell(5).setCellValue(rid.userGoal.name)
+                row.createCell(6).setCellValue(String.valueOf(rid.prepTime))
+                row.createCell(7).setCellValue(String.valueOf(rid.eventLength))
+                row.createCell(8).setCellValue(rid.userName)
+                row.createCell(9).setCellValue(rid.rank.name)
+                row.createCell(10).setCellValue(rid.school.name)
+                row.createCell(11).setCellValue(String.valueOf(rid.interactOccurrences))
+                row.createCell(12).setCellValue(rid.courseName)
+                row.createCell(13).setCellValue(rid.department.name)
+                row.createCell(14).setCellValue(rid.courseNumber)
+                row.createCell(15).setCellValue(rid.facultySponsor)
+                row.createCell(16).setCellValue(rid.courseSponsor.name)
+                row.createCell(17).setCellValue(rid.userQuestion)
+                row.createCell(18).setCellValue(rid.notes)
 
-            for (int c = 0; c < 19; c++)
-                row.getCell(c).setCellType(Cell.CELL_TYPE_STRING)
+                for (int c = 0; c < 19; c++)
+                    row.getCell(c).setCellType(Cell.CELL_TYPE_STRING)
+            }
+        } else {
+            //TODO: Add spreadsheet for InsTransactions
+            //Placeholder spreadsheet generation
+            for (RidInsTransaction rid in ridTransactionList) {
+                Row row = sheet.createRow(rowNum++)
+                row.createCell(0).setCellValue(rid.ridLibraryUnit.name)
+                row.getCell(0).setCellStyle(red_bold)
+                row.createCell(1).setCellValue(rid.dateOfInstruction.format("MM/dd/yyyy"))
+                row.createCell(2).setCellValue(rid.staffPennkey)
+                row.createCell(3).setCellValue(String.valueOf(rid.prepTime))
+                row.createCell(4).setCellValue(String.valueOf(rid.eventLength))
+                row.createCell(5).setCellValue(rid.userName)
+                row.createCell(6).setCellValue(rid.rank.name)
+                row.createCell(7).setCellValue(rid.school.name)
+                row.createCell(8).setCellValue(String.valueOf(rid.attendanceTotal))
+                row.createCell(9).setCellValue(rid.courseName)
+                row.createCell(10).setCellValue(rid.department.name)
+                row.createCell(11).setCellValue(rid.courseNumber)
+                row.createCell(12).setCellValue(rid.facultySponsor)
+                row.createCell(13).setCellValue(rid.notes)
+
+                for (int c = 0; c < 14; c++)
+                    row.getCell(c).setCellType(Cell.CELL_TYPE_STRING)
+            }
         }
-
         return wb
     }
 }
