@@ -24,6 +24,7 @@ class RidConsTransaction extends RidConsTransactionBase {
         eventLength(nullable: false, min: 0)
         notes(blank: true, nullable: true, maxSize: 500)
         staffPennkey(blank: false, nullable: false, maxSize: 100)
+
         // ROLES
         facultySponsor(blank: true, nullable: true, maxSize: 100)
         courseName(blank: true, nullable: true, maxSize: 100)
@@ -37,6 +38,7 @@ class RidConsTransaction extends RidConsTransactionBase {
         userName(blank: true, nullable: true, maxSize: 50)
         courseSponsor(nullable: true)
         otherCourseSponsor(blank: true, nullable: true, maxSize: 50)
+
         // DESCRIPTION
         serviceProvided(nullable: false)
         otherService(blank: true, nullable: true, maxSize: 100)

@@ -463,7 +463,7 @@ class RidTransactionController {
     }
 
     def export() {
-        def queryResult = ridTransactionService.queryMethod(params)
+        def queryResult = ridTransactionService.queryMethod(params, session.getAttribute("transType"))
 
         if (queryResult.count()) {
             Workbook wb = spreadsheetService.exportAsFile(queryResult.list())

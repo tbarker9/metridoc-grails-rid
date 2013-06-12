@@ -22,6 +22,7 @@ class RidInsTransaction extends RidInsTransactionBase {
         staffPennkey(blank: false, nullable: false, maxSize: 100)
         location(blank: false, nullable: false)
         otherLocation(blank: true, nullable: true, maxSize: 50)
+
         // ROLES
         facultySponsor(blank: true, nullable: true, maxSize: 100)
         courseName(blank: true, nullable: true, maxSize: 100)
@@ -32,6 +33,7 @@ class RidInsTransaction extends RidInsTransactionBase {
         department(nullable: true)
         userName(blank: true, nullable: true, maxSize: 50)
         coInstructor(blank: true, nullable: true, maxSize: 50)
+
         // DESCRIPTION
         ridLibraryUnit(nullable: false)
         attendanceTotal(blank: false, nullable: false, min: 0)
