@@ -1,14 +1,19 @@
-<g:if test="${session.display == "dropdown"}">
-    <tmpl:toggleDD/>
+<div class="btn-group pull-right">
 
-</g:if>
-<g:elseif test="${session.display == "tabs"}">
-</g:elseif>
-<g:else>
-    <ul class="nav nav-pills">
+    <g:if test="${session.transType == "consultation"}">
+        <a class="btn" data-toggle="dropdown">Consultation
+            <span class="caret"></span></a>
+    </g:if>
+    <g:else>
+        <a class="btn" data-toggle="dropdown">Instructional
+            <span class="caret"></span></a>
+    </g:else>
+
+
+    <ul class="dropdown-menu">
 
         <g:render
-                template="toggleLabel"
+                template="toggleLabelDD"
                 plugin="metridocRid"
                 model="[controllerName: controllerName,
                         actionName: actionName,
@@ -16,7 +21,7 @@
                         linkAction: 'consultation',
                         linkText: 'Consultation']"/>
         <g:render
-                template="toggleLabel"
+                template="toggleLabelDD"
                 plugin="metridocRid"
                 model="[controllerName: controllerName,
                         actionName: actionName,
@@ -24,7 +29,6 @@
                         linkAction: 'instructional',
                         linkText: 'Instructional']"/>
 
-        <tmpl:adminToggle/>
-
     </ul>
-</g:else>
+
+</div>
