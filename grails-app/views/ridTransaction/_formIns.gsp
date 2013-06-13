@@ -214,12 +214,12 @@
             <label for="department">
                 <g:message code="ridTransaction.department.label" default="Department"/>
                 <a style="font-size: 14px" data-toggle="modal"
-                   href="../ridDepartment/departmentList" data-target="#myDepartment">
+                   href="../ridAdminDepartment/departmentList" data-target="#myDepartment">
                     <i class="icon-file-alt"></i>
                 </a>
             </label>
             <g:select style="width:120px" id="department" name="department.id"
-                      from="${RidDepartment.list().sort { it.name }}" optionKey="id"
+                      from="${metridoc.rid.RidDepartment.list().sort { it.name }}" optionKey="id"
                       value="${ridTransactionInstance?.department?.id}" class="many-to-one"/>
         </div>
     </div>

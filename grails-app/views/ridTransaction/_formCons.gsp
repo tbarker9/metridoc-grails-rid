@@ -324,7 +324,7 @@
             <label for="department">
                 <g:message code="ridTransaction.department.label" default="Department"/>
                 <a style="font-size: 14px" data-toggle="modal"
-                   href="../ridDepartment/departmentList" data-target="#myDepartment">
+                   href="../ridAdminDepartment/departmentList" data-target="#myDepartment">
                     <i class="icon-file-alt"></i>
                 </a>
             </label>
