@@ -19,79 +19,103 @@
 
         <g:form class="form-horizontal" action="query" method="GET">
             <fieldset class="form">
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="dateOfConsultation">
-                        <g:message code="ridTransaction.dateOfConsultation.label"
-                                   default="Consultation Date Between"/>
-                    </label>
+                <div class="row-fluid">
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="dateOfConsultation">
+                                <g:message code="ridTransaction.dateOfConsultation.label"
+                                           default="Consultation Date Between"/>
+                            </label>
 
-                    <div class="controls">
-                        <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
-                        <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
-                        <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
+                            <div class="controls">
+                                <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
+                                <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
+                                <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridLibraryUnit">
+                                <g:message code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:select id="ridLibraryUnitSearch" style="width:150px" name="ridLibraryUnitSearch"
+                                          noSelection="${['0': 'All Units']}" optionKey="id" multiple="true" value="0"
+                                          from="${metridoc.rid.RidLibraryUnit.list()}"/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridLibraryUnit">
-                        <g:message code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/>
-                    </label>
+                <div class="row-fluid">
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="staffPennkey">
+                                <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
+                            </label>
 
-                    <div class="controls">
-                        <g:select id="ridLibraryUnitSearch" style="width:150px" name="ridLibraryUnitSearch"
-                                  noSelection="${['0': 'All Units']}" optionKey="id" multiple="true" value="0"
-                                  from="${metridoc.rid.RidLibraryUnit.list()}"/>
+                            <div class="controls">
+                                <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
+                                             value=""/>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="userName">
+                                <g:message code="ridTransaction.userName.label" default="User Name"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:textField id="userName" style="width:150px" class="userInput" name="userName"
+                                             value=""/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="staffPennkey">
-                        <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
-                    </label>
+                <div class="row-fluid">
 
-                    <div class="controls">
-                        <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
-                                     value=""/>
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridSchool">
+                                <g:message code="ridTransaction.ridSchool.label" default="School"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
+                                          noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
+                                          from="${metridoc.rid.RidSchool.where { inForm == 1 }.list()}"/>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridDepartment">
+                                <g:message code="ridTransaction.ridDepartment.label" default="Department"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
+                                          noSelection="${['0': 'All Departments']}" multiple="true" value="0"
+                                          optionKey="id"
+                                //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
+                                //from="${metridoc.rid.RidDepartment.list()}"
+                                          from="${metridoc.rid.RidDepartment.where { name != "" }.list()}"/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridSchool">
-                        <g:message code="ridTransaction.ridSchool.label" default="School"/>
-                    </label>
-
-                    <div class="controls">
-                        <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
-                                  noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
-                                  from="${metridoc.rid.RidSchool.where { inForm == 1 }.list()}"/>
-                    </div>
-                </div>
-
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridDepartment">
-                        <g:message code="ridTransaction.ridDepartment.label" default="Department"/>
-                    </label>
-
-                    <div class="controls">
-                        <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
-                                  noSelection="${['0': 'All Departments']}" multiple="true" value="0"
-                                  optionKey="id"
-                        //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
-                        //from="${metridoc.rid.RidDepartment.list()}"
-                                  from="${metridoc.rid.RidDepartment.where { name != "" }.list()}"/>
-                    </div>
-                </div>
-
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="userName">
-                        <g:message code="ridTransaction.userName.label" default="User Name"/>
-                    </label>
-
-                    <div class="controls">
-                        <g:textField id="userName" style="width:150px" class="userInput" name="userName"
-                                     value=""/>
-                    </div>
-                </div>
 
                 <div class="control-group fieldcontain">
                     <label class="control-label" for="userQuestion">
@@ -131,67 +155,101 @@
 
         <g:form class="form-horizontal" action="query" method="GET">
             <fieldset class="form">
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="dateOfInstruction">
-                        <g:message code="ridTransaction.dateOfInstruction.label"
-                                   default="Consultation Date Between"/>
-                    </label>
+                <div class="row-fluid">
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="dateOfInstruction">
+                                <g:message code="ridTransaction.dateOfInstruction.label"
+                                           default="Instruction Date Between"/>
+                            </label>
 
-                    <div class="controls">
-                        <input type="text" name="dateOfConsultation_start" style="width: 150px" id="dpd1"/>
-                        <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
-                        <input type="text" name="dateOfConsultation_end" style="width: 150px" id="dpd2"/>
+                            <div class="controls">
+                                <input type="text" name="dateOfInstruction_start" style="width: 150px" id="dpd1"/>
+                                <span style="font-size: 12px; color: #666666">&nbsp;&nbsp;and&nbsp;&nbsp;</span>
+                                <input type="text" name="dateOfInstruction_end" style="width: 150px" id="dpd2"/>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridLibraryUnit">
+                                <g:message code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:select id="ridLibraryUnitSearch" style="width:150px" name="ridLibraryUnitSearch"
+                                          noSelection="${['0': 'All Units']}" optionKey="id" multiple="true" value="0"
+                                          from="${metridoc.rid.RidLibraryUnit.list()}"/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridLibraryUnit">
-                        <g:message code="ridTransaction.ridLibraryUnit.label" default="Library Unit"/>
-                    </label>
+                <div class="row-fluid">
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="staffPennkey">
+                                <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
+                            </label>
 
-                    <div class="controls">
-                        <g:select id="ridLibraryUnitSearch" style="width:150px" name="ridLibraryUnitSearch"
-                                  noSelection="${['0': 'All Units']}" optionKey="id" multiple="true" value="0"
-                                  from="${metridoc.rid.RidLibraryUnit.list()}"/>
+                            <div class="controls">
+                                <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
+                                             value=""/>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="userName">
+                                <g:message code="ridTransaction.userName.label" default="User Name"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:textField id="userName" style="width:150px" class="userInput" name="userName"
+                                             value=""/>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="staffPennkey">
-                        <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
-                    </label>
+                <div class="row-fluid">
 
-                    <div class="controls">
-                        <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
-                                     value=""/>
+                    <div class="span2 ">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridSchool">
+                                <g:message code="ridTransaction.ridSchool.label" default="School"/>
+                            </label>
+
+                            <div class="controls">
+                                <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
+                                          noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
+                                          from="${metridoc.rid.RidSchool.where { inForm == 1 }.list()}"/>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridSchool">
-                        <g:message code="ridTransaction.ridSchool.label" default="School"/>
-                    </label>
+                    <div class="span2 offset2">
+                        <div class="control-group fieldcontain">
+                            <label class="control-label" for="ridDepartment">
+                                <g:message code="ridTransaction.ridDepartment.label" default="Department"/>
+                            </label>
 
-                    <div class="controls">
-                        <g:select id="ridSchoolSearch" style="width:150px" name="ridSchoolSearch"
-                                  noSelection="${['0': 'All Schools']}" optionKey="id" multiple="true" value="0"
-                                  from="${metridoc.rid.RidSchool.where { inForm == 1 }.list()}"/>
+                            <div class="controls">
+                                <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
+                                          noSelection="${['0': 'All Departments']}" multiple="true" value="0"
+                                          optionKey="id"
+                                //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
+                                //from="${metridoc.rid.RidDepartment.list()}"
+                                          from="${metridoc.rid.RidDepartment.where { name != "" }.list()}"/>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="ridDepartment">
-                        <g:message code="ridTransaction.ridDepartment.label" default="Department"/>
-                    </label>
-
-                    <div class="controls">
-                        <g:select id="ridDepartmentSearch" style="width:150px" name="ridDepartmentSearch"
-                                  noSelection="${['0': 'All Departments']}" multiple="true" value="0"
-                                  optionKey="id"
-                        //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
-                        //from="${metridoc.rid.RidDepartment.list()}"
-                                  from="${metridoc.rid.RidDepartment.where { name != "" }.list()}"/>
-                    </div>
                 </div>
 
                 <div class="control-group fieldcontain">
@@ -206,17 +264,6 @@
                         //optionValue="${{ it.name.empty ? 'NOT SPECIFIED' : it.name }}"
                         //from="${metridoc.rid.RidLocation.list()}"
                                   from="${metridoc.rid.RidLocation.where { name != "" }.list()}"/>
-                    </div>
-                </div>
-
-                <div class="control-group fieldcontain">
-                    <label class="control-label" for="userName">
-                        <g:message code="ridTransaction.userName.label" default="User Name"/>
-                    </label>
-
-                    <div class="controls">
-                        <g:textField id="userName" style="width:150px" class="userInput" name="userName"
-                                     value=""/>
                     </div>
                 </div>
 

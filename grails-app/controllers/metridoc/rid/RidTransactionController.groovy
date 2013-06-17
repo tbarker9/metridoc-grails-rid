@@ -28,7 +28,7 @@ class RidTransactionController {
 
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
-        session.setAttribute("display", new String("pills"))
+        session.setAttribute("display", new String("dropdown"))
         redirect(action: "create")
     }
 
@@ -66,6 +66,9 @@ class RidTransactionController {
     }
 
     def create() {
+        if (session?.getAttribute("transType") == null) {
+            session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
+        }
         session.setAttribute("prev", new String("create"))
 
         if (session.getAttribute("transType") == "consultation") {

@@ -10,7 +10,7 @@
     <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
     <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
     <div class="md-application-content">
-        <tmpl:displayMode/>
+
         <tmpl:toggle/>
         <tmpl:tabs/>
 

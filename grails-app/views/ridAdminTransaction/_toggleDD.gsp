@@ -14,21 +14,21 @@
 
         <g:if test="${session.transType == "consultation"}">
             <g:render
-                    template="toggleLabelDD"
+                    template="/ridAdminTransaction/toggleLabelDD"
                     plugin="metridocRid"
                     model="[controllerName: controllerName,
                             actionName: actionName,
-                            linkController: 'ridTransaction',
+                            linkController: 'ridAdminTransaction',
                             linkAction: 'instructional',
                             linkText: 'Instructional']"/>
         </g:if>
         <g:else>
             <g:render
-                    template="toggleLabelDD"
+                    template="/ridAdminTransaction/toggleLabelDD"
                     plugin="metridocRid"
                     model="[controllerName: controllerName,
                             actionName: actionName,
-                            linkController: 'ridTransaction',
+                            linkController: 'ridAdminTransaction',
                             linkAction: 'consultation',
                             linkText: 'Consultation']"/>
 
