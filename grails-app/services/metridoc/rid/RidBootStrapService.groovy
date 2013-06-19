@@ -88,7 +88,9 @@ class RidBootStrapService {
                 break
 
             case Environment.PRODUCTION:
-                testDataService.populateTestFields()
+                if (!RidLibraryUnit.first()) {
+                    testDataService.populateTestFields()
+                }
                 break
         }
     }
