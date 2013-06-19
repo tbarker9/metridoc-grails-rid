@@ -87,7 +87,9 @@ class RidBootStrapService {
                 }
                 break
 
-            case Environment.PRODUCTION: break
+            case Environment.PRODUCTION:
+                testDataService.populateTestFields()
+                break
         }
     }
 
