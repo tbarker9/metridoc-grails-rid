@@ -1,5 +1,6 @@
 <g:if test="${session.display == "dropdown"}">
     <g:render template="/ridAdminTransaction/toggleDD" plugin="metridoc-rid"/>
+    <br>
 
 </g:if>
 <g:elseif test="${session.display == "tabs"}">

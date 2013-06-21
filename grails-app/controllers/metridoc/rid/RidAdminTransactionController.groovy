@@ -5,13 +5,14 @@ class RidAdminTransactionController {
     static homePage = [title: "RID Transaction Administration", adminOnly: true,
             description: "Updates Lookup Tables for RID Transaction Database"]
 
-    static accessControl = {
-        role(name: "ROLE_ADMIN")
-    }
+    static accessControl = { role(name: "ROLE_ADMIN") }
+
+    def ridStatisticsService
 
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
         session.setAttribute("prev", new String("RidAdminLibraryUnit"))
+        session.setAttribute("display", new String("dropdown"))
         redirect(controller: "RidAdminLibraryUnit", action: "index")
     }
 
@@ -22,7 +23,11 @@ class RidAdminTransactionController {
 
     def consultation() {
         session.setAttribute("transType", new String("consultation"))
-        redirect(controller: session.getAttribute("prev"), action: "index")
+        if (session.getAttribute("prev").equals("stats")) {
+            redirect(controller: "RidAdminTransaction", action: "stats")
+        } else {
+            redirect(controller: session.getAttribute("prev"), action: "index")
+        }
     }
 
     def instructional() {
@@ -33,9 +38,32 @@ class RidAdminTransactionController {
                 session.getAttribute("prev").equals("RidAdminServiceProvided") ||
                 session.getAttribute("prev").equals("RidAdminUserGoal")) {
             redirect(controller: "RidAdminLibraryUnit", action: "index")
+        } else if (session.getAttribute("prev").equals("stats")) {
+            redirect(controller: "RidAdminTransaction", action: "stats")
         } else {
             redirect(controller: session.getAttribute("prev"), action: "index")
         }
+    }
+
+    def stats() {
+        def queryResult = ridStatisticsService.getStats(params, session.getAttribute("transType"))
+        render(view: "/ridAdminTransaction/stats",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", "stats")
+        return
+    }
+
+    def statSearch() {
+        session.setAttribute("prev", new String("statSearch"))
+    }
+
+    def statQuery(Integer max) {
+        def queryResult = ridStatisticsService.searchStats(params, session.getAttribute("transType"))
+
+        render(view: "searchStatResults",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", new String("statSearch"))
+        return
     }
 
     def switchMode() {
