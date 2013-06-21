@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat
 class RidTransactionService {
 
     def queryMethod(Map params, String transType) {
+
         if (transType == "consultation") {
             def query = RidConsTransaction.where {
                 id >= 0
@@ -17,13 +18,7 @@ class RidTransactionService {
                     query = query.where {
                         dateOfConsultation >= start && dateOfConsultation < end.next()
                     }
-                } catch (Exception e) {
-//            Date start = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_start)
-//            Date end = Date.parse("E MMM dd H:m:s z yyyy", params.dateOfConsultation_end)
-//            query = query.where {
-//                dateOfConsultation >= start && dateOfConsultation < end.next()
-//            }
-                }
+                } catch (Exception e) {}
             }
 
             if (params.ridLibraryUnitSearch) {
@@ -37,6 +32,7 @@ class RidTransactionService {
                     }
                 }
             }
+
 
             if (params.staffPennkey) {
                 String[] staffPennkey_splits = params.staffPennkey.split(" ");
@@ -350,8 +346,5 @@ class RidTransactionService {
             if (RidLocation.findAllByName(otherLocation).size() > 0)
                 ridTransactionInstance.location = RidLocation.findByName(otherLocation)
         }
-
-
     }
-
 }

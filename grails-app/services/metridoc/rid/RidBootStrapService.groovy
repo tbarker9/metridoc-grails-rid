@@ -94,5 +94,4 @@ class RidBootStrapService {
                 break
         }
     }
-
 }

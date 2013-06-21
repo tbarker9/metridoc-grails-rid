@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat
 class SpreadsheetService {
 
     def checkSpreadsheetFormat(MultipartFile uploadedFile) {
+
         Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
         Sheet sheet = wb.getSheetAt(0)
         int colNum = 1
@@ -47,6 +48,7 @@ class SpreadsheetService {
     }
 
     def getInstancesFromSpreadsheet(MultipartFile uploadedFile, FlashScope flash) {
+
         Workbook wb = WorkbookFactory.create(uploadedFile.inputStream)
         Sheet sheet = wb.getSheetAt(0)
         int colNum = 1
@@ -110,6 +112,7 @@ class SpreadsheetService {
     }
 
     def checkValid(List<String> instance, int count, FlashScope flash) {
+
         for (int i = 0; i < instance.size(); i++) {
             CellReference cellRef = new CellReference(5 + i * 2, count + 2)
             switch (i) {
@@ -123,6 +126,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 1:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Date of Consultation Cannot be Empty at " + cellRef.formatAsString()
@@ -135,6 +139,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 2:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Stuff Pennkey Cannot be Empty at " + cellRef.formatAsString()
@@ -145,6 +150,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 3:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Mode of Consultation Cannot be Empty at " + cellRef.formatAsString()
@@ -161,6 +167,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 4:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Service Provided Cannot be Empty at " + cellRef.formatAsString()
@@ -177,6 +184,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 5:
                     if (!instance.get(i).trim().empty && !RidUserGoal.findByName(instance.get(i).trim())) {
                         flash.alerts << "Invalid User Goal at " + cellRef.formatAsString()
@@ -189,6 +197,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 6:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Prep Time Cannot be Empty at " + cellRef.formatAsString()
@@ -204,6 +213,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 7:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Event Length Cannot be Empty at " + cellRef.formatAsString()
@@ -219,12 +229,14 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 8:
                     if (instance.get(i).trim().length() > 50) {
                         flash.alerts << "User Name Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 9:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Rank Cannot be Empty at " + cellRef.formatAsString()
@@ -235,6 +247,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 10:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "School Cannot be Empty at " + cellRef.formatAsString()
@@ -245,6 +258,7 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 11:
                     if (instance.get(i).trim().empty) {
                         flash.alerts << "Interact Occurrences Cannot be Empty at " + cellRef.formatAsString()
@@ -264,42 +278,49 @@ class SpreadsheetService {
                         return false
                     }
                     break
+
                 case 12:
                     if (instance.get(i).trim().length() > 100) {
                         flash.alerts << "Course Name Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 13:
                     if (!instance.get(i).trim().empty && !RidDepartment.findByName(instance.get(i).trim())) {
                         flash.alerts << "Invalid Department at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 14:
                     if (instance.get(i).trim().length() > 100) {
                         flash.alerts << "Course Number Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 15:
                     if (instance.get(i).trim().length() > 100) {
                         flash.alerts << "Faculty Sponsor Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 16:
                     if (!instance.get(i).trim().empty && !RidCourseSponsor.findByName(instance.get(i).trim())) {
                         flash.alerts << "Invalid Course Sponsor at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 17:
                     if (!instance.get(i).empty && instance.get(i).trim().length() > 500) {
                         flash.alerts << "User Question Too Long at " + cellRef.formatAsString()
                         return false
                     }
                     break
+
                 case 18:
                     if (instance.get(i).trim().length() > 500) {
                         flash.alerts << "Notes Too Long at " + cellRef.formatAsString()
@@ -324,6 +345,7 @@ class SpreadsheetService {
     }
 
     def saveToDatabase(List<List<String>> allInstances, String spreadsheetName, FlashScope flash) {
+
         for (List<String> instance in allInstances) {
             def type = RidLibraryUnit.findByName(instance.get(0))
             def t = new RidConsTransaction(staffPennkey: instance.get(2), userQuestion: instance.get(17),
@@ -358,6 +380,7 @@ class SpreadsheetService {
     }
 
     def exportAsFile(List ridTransactionList, String transType) {
+
         ClassPathResource resource = new ClassPathResource('spreadsheet/Transaction_List.xlsx')
         Workbook wb = WorkbookFactory.create(resource.getFile().newInputStream())
         Sheet sheet = wb.getSheetAt(0)

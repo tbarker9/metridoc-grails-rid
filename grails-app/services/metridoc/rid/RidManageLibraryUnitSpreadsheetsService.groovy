@@ -52,5 +52,4 @@ class RidManageLibraryUnitSpreadsheetsService {
             log.error "Can't find classpath ${resource.path}, so can't transfer spreadsheets to the local directory .metridoc/files: "
         }
     }
-
 }

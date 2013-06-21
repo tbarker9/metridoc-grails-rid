@@ -1,3 +1,16 @@
+<style type="text/css">
+.nav-tabs .active a,
+.nav-tabs .active a:hover {
+    font-size: 15px;
+}
+
+.nav-tabs  a,
+.nav-tabs  a:hover {
+    font-size: 13px;
+}
+
+</style>
+
 <g:if test="${session.display == "tabs"}">
     <tmpl:tabsWithToggle/>
 

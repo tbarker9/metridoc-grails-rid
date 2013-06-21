@@ -26,6 +26,7 @@ class RidTransactionController {
     def spreadsheetService
     def ridManageLibraryUnitSpreadsheetsService
 
+
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
         session.setAttribute("display", new String("dropdown"))
@@ -406,6 +407,8 @@ class RidTransactionController {
         return
     }
 
+
+
     def spreadsheetUpload() {
         session.setAttribute("prev", new String("spreadsheetUpload"))
     }
@@ -481,7 +484,6 @@ class RidTransactionController {
                 flash.alerts << e.message
             }
         }
-
     }
 
     def download() {

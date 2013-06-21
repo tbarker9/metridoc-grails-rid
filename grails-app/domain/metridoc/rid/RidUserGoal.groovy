@@ -5,8 +5,8 @@ class RidUserGoal {
     static hasMany = [ridTransaction: RidConsTransaction]
     static belongsTo = [ridLibraryUnit: RidLibraryUnit]
 
-    String name
     Integer inForm = 0
+    String name
 
     String toString() {
         return "${name}"

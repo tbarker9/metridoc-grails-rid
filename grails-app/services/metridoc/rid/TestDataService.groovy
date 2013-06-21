@@ -14,9 +14,9 @@ class TestDataService {
                 if (gt.hasErrors()) println gt.errors
             }
         }
-
-
         new RidLibraryUnit(name: "General").save()
+
+        // ---------------------------------------------------------------------------------------------
         // for department
         List<String> dps = Arrays.asList(
                 "AAMW", "ABIO", "ACCT", "ADMN", "ADMS", "AFAM", "AFRC", "AFST", "AMCS", "AMCV", "AMES",
@@ -123,6 +123,8 @@ class TestDataService {
                 if (da.hasErrors()) println da.errors
             }
         }
+
+        // ---------------------------------------------------------------------------------------------
         // for school
         List<String> schools = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
                 "Dental", "SP2", "Design", "UPHS", "CHOP", "Annenberg", "Law")
@@ -143,6 +145,7 @@ class TestDataService {
             new RidSchool(name: outsidePleaseIndicate, inForm: 2).save()
         }
 
+        // ---------------------------------------------------------------------------------------------
         // for location
         List<String> loc = Arrays.asList("Classroom", "Library conference room", "Lecture hall")
         for (String i in loc.sort()) {
@@ -157,6 +160,7 @@ class TestDataService {
             new RidSchool(name: otherLocation, inForm: 2).save()
         }
 
+        // ---------------------------------------------------------------------------------------------
         // for course sponsor
         List<String> cSponsor = Arrays.asList("SAS", "SEAS", "Wharton", "GSE", "Vet", "Nursing", "Med",
                 "Dental", "SP2", "Design", "Annenberg", "Law", "Coursera",
@@ -170,10 +174,11 @@ class TestDataService {
                 if (c.hasErrors()) println c.errors
             }
         }
-
         if (!RidCourseSponsor.findByName(outsidePleaseIndicate)) {
             new RidCourseSponsor(name: outsidePleaseIndicate, inForm: 2).save()
         }
+
+        // ---------------------------------------------------------------------------------------------
         // for rank
         List<String> ranks = Arrays.asList("Undergrad student", "Grad student", "PhD/PostDoc",
                 "Clinical: intern, resident, fellow", "Clinical: other", "Faculty", "Alumni", "Staff")
@@ -188,6 +193,7 @@ class TestDataService {
         if (!RidRank.findByName(otherPleaseIndicate)) {
             new RidRank(name: otherPleaseIndicate, inForm: 2).save()
         }
+
         // ---------------------------------------------------------------------------------------------
         // for user goal -- WIC
         List<String> uGoal = Arrays.asList("Senior Thesis", "Master Thesis", "Dissertation",
@@ -274,8 +280,9 @@ class TestDataService {
             }
         }
         new RidUserGoal(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("General")).save()
+
         // ---------------------------------------------------------------------------------------------
-        // for mode of consutlation -- WIC
+        // for mode of consultation -- WIC
         List<String> cMode = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
                 "Video or web conference", "In person (in library)", "In person (outside library)")
         new RidModeOfConsultation(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save(validate: false)
@@ -353,6 +360,7 @@ class TestDataService {
                 if (c.hasErrors()) println c.errors
             }
         }
+
         // ---------------------------------------------------------------------------------------------
         // for service provided -- WIC
         List<String> sProvided = Arrays.asList("Course design", "Research assistance",
@@ -466,6 +474,5 @@ class TestDataService {
             }
         }
         new RidServiceProvided(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("General")).save()
-
     }
 }
