@@ -8,7 +8,7 @@ class RidInsTransactionTemplate extends RidInsTransactionBase {
             ridLibraryUnit: RidLibraryUnit,
             location: RidLocation]
 
-    static transients = ['otherUser', 'otherSchool', 'otherLocation']
+    static transients = ['otherRank', 'otherUser', 'otherSchool', 'otherLocation']
 
     //Records the owner/creator of this template
     //Leaves it blank if this is NOT a template

@@ -16,9 +16,8 @@
 
     <div class="md-application-content">
 
-    <g:render template="/ridAdminTransaction/toggle" plugin="metridoc-rid"/>
-
-    <g:render template="/ridAdminTransaction/tabs" plugin="metridoc-rid"/>
+    <tmpl:toggle/>
+    <tmpl:tabs/>
     <g:if test="${session.transType == "consultation"}">
 
         <g:if test="${statResults.transactionSum == 0}">

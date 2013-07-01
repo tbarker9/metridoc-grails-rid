@@ -25,7 +25,7 @@ class RidTransactionController {
     def ridTransactionService
     def spreadsheetService
     def ridManageLibraryUnitSpreadsheetsService
-
+    def ridStatisticsService
 
     def index() {
         session.setAttribute("transType", new String("consultation"))//Sets default mode to consultation
@@ -490,6 +490,35 @@ class RidTransactionController {
         if (ridManageLibraryUnitSpreadsheetsService.download(response, flash, params) == false) {
             redirect(action: "index")
         }
+    }
+
+    def stats() {
+        def queryResult = ridStatisticsService.getStats(params, session.getAttribute("transType"))
+        render(view: "/ridTransaction/stats",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", "stats")
+        return
+    }
+
+    def statSearch() {
+        session.setAttribute("prev", new String("statSearch"))
+    }
+
+    def statGraph() {
+        def queryResult = ridStatisticsService.statGraph(params, session.getAttribute("transType"))
+        render(view: "/ridTransaction/statGraph",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", "statGraph")
+        return
+    }
+
+    def statQuery(Integer max) {
+        def queryResult = ridStatisticsService.searchStats(params, session.getAttribute("transType"))
+
+        render(view: "/ridTransaction/searchStatResults",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", new String("statSearch"))
+        return
     }
 
     def consultation() {

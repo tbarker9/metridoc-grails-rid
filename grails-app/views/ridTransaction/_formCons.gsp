@@ -70,6 +70,8 @@
                     rankList.add(0, RidRank.findById(
                             ridTransactionInstance?.rank?.id))
                 rankList = rankList.sort { it.name }
+            %>
+            <%
                 rankList.addAll(RidRank.findAllByInForm(2))
             %>
             <select style="width:120px" id="rank" name="rank.id" required="" class="many-to-one">
@@ -288,6 +290,16 @@
     </div>
 
     <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseNumber', 'error')} ">
+            <label for="courseNumber">
+                <g:message code="ridTransaction.courseNumber.label" default="Course Number"/>
+            </label>
+            <g:textField class="userInput" name="courseNumber" style="width: 120px" maxlength="100"
+                         value="${ridTransactionInstance?.courseNumber}"/>
+        </div>
+    </div>
+
+    <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseSponsor', 'error')} required">
             <label for="courseSponsor">
                 <g:message code="ridTransaction.courseSponsor.label" default="Course Sponsor"/>
@@ -334,15 +346,6 @@
         </div>
     </div>
 
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseNumber', 'error')} ">
-            <label for="courseNumber">
-                <g:message code="ridTransaction.courseNumber.label" default="Course Number"/>
-            </label>
-            <g:textField class="userInput" name="courseNumber" style="width: 120px" maxlength="100"
-                         value="${ridTransactionInstance?.courseNumber}"/>
-        </div>
-    </div>
 
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">

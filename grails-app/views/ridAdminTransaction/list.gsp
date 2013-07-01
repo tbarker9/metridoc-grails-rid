@@ -13,7 +13,6 @@
 
             <div style="font-size: 14px">
                 <g:render template="toggle" plugin="metridoc-rid"/>
-                <g:render template="adminToggle" plugin="metridoc-rid"/>
                 <g:render template="tabs" plugin="metridoc-rid"/>
             </div>
 

@@ -208,6 +208,16 @@
         </div>
     </div>
 
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseNumber', 'error')} ">
+            <label for="courseNumber">
+                <g:message code="ridTransaction.courseNumber.label" default="Course Number"/>
+            </label>
+            <g:textField class="userInput" name="courseNumber" style="width: 120px" maxlength="100"
+                         value="${ridTransactionInstance?.courseNumber}"/>
+        </div>
+    </div>
+
 
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bea: ridTransactionInstance, field: 'department', 'error')}">
@@ -224,15 +234,6 @@
         </div>
     </div>
 
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'courseNumber', 'error')} ">
-            <label for="courseNumber">
-                <g:message code="ridTransaction.courseNumber.label" default="Course Number"/>
-            </label>
-            <g:textField class="userInput" name="courseNumber" style="width: 120px" maxlength="100"
-                         value="${ridTransactionInstance?.courseNumber}"/>
-        </div>
-    </div>
 
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">

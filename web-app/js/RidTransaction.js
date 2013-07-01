@@ -44,8 +44,8 @@ $(function () {
 });
 
 $(function () {
-    var choiceUser = $("#rank option:selected").attr("inForm");
-    if (choiceUser == "2") {
+    var choiceRank = $("#rank option:selected").attr("inForm");
+    if (choiceRank == "2") {
         $("#otherRankDiv").show();
         $("#otherRank").val("");
     }
