@@ -54,10 +54,10 @@ class RidStatisticsReport {
     ArrayList yearUserGoals = new ArrayList()
     ArrayList<ArrayList> monthUserGoals = new ArrayList()
 
-    ArrayList modesOfConsultation = new ArrayList()
-    ArrayList totalModesOfConsultation = new ArrayList()
-    ArrayList yearModesOfConsultation = new ArrayList()
-    ArrayList<ArrayList> monthModesOfConsultation = new ArrayList()
+    ArrayList modeOfConsultation = new ArrayList()
+    ArrayList totalModeOfConsultation = new ArrayList()
+    ArrayList yearModeOfConsultation = new ArrayList()
+    ArrayList<ArrayList> monthModeOfConsultation = new ArrayList()
 
     ArrayList schools = new ArrayList()
     ArrayList totalSchools = new ArrayList()
@@ -69,10 +69,10 @@ class RidStatisticsReport {
     ArrayList yearCourseSponsors = new ArrayList()
     ArrayList<ArrayList> monthCourseSponsors = new ArrayList()
 
-    ArrayList servicesProvided = new ArrayList()
-    ArrayList totalServicesProvided = new ArrayList()
-    ArrayList yearServicesProvided = new ArrayList()
-    ArrayList<ArrayList> monthServicesProvided = new ArrayList()
+    ArrayList serviceProvided = new ArrayList()
+    ArrayList totalServiceProvided = new ArrayList()
+    ArrayList yearServiceProvided = new ArrayList()
+    ArrayList<ArrayList> monthServiceProvided = new ArrayList()
 
     ArrayList libraryUnits = new ArrayList()
     ArrayList totalLibraryUnits = new ArrayList()

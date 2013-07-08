@@ -52,6 +52,6 @@ grails.project.dependency.resolution = {
         build(":tomcat:$grailsVersion") {
             export = false
         }
-
+        runtime ":jquery:1.10.0"
     }
 }

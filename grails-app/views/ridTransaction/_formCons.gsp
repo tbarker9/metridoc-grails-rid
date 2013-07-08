@@ -4,6 +4,8 @@
 <r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
 <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
+<g:javascript library="jquery" plugin="jquery"/>
+<g:setProvider library="jquery"/>
 
 
 <div class="row-fluid">

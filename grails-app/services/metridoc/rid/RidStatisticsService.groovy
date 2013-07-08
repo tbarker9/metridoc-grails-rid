@@ -16,15 +16,13 @@ class RidStatisticsService {
         }
         results.totalTransactions = query.count()
 
-        query = RidConsTransaction.where {
-            id >= 0
-        }
+
 
         try {
             Date begin = new Date().minus(365);
             Date end = new Date()
             query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next()
+                dateOfConsultation > begin.previous() && dateOfConsultation < end
             }
         } catch (Exception e) {}
         results.yearTransactions = query.count()
@@ -36,9 +34,7 @@ class RidStatisticsService {
 
 
         for (int m = 12; m >= 0; m--) {
-            query = RidConsTransaction.where {
-                id >= 0
-            }
+
             int mIO
             int mEL
             int mPT
@@ -60,13 +56,15 @@ class RidStatisticsService {
             }
 
             end.set(date: 1, month: newMonth, year: newYear)
-            query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next()
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end
             }
 
             results.monthTransactions.add(query.count())
             results.months.add(begin)
             for (i in query) {
+
                 mIO += i.interactOccurrences
                 mEL += i.eventLength
                 mPT += i.prepTime
@@ -158,9 +156,6 @@ class RidStatisticsService {
 
 
         for (int m = 12; m >= 0; m--) {
-            query = RidConsTransaction.where {
-                id >= 0
-            }
 
             Date begin = new Date()
             Date end = new Date()
@@ -178,9 +173,11 @@ class RidStatisticsService {
             }
 
             end.set(date: 1, month: newMonth, year: newYear)
-            query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next() && department != null
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && department != null
             }
+
 
             dptList = query.list { order("department") }
             dptCount = dptList.countBy { it.department.name }
@@ -264,9 +261,6 @@ class RidStatisticsService {
 
 
         for (int m = 12; m >= 0; m--) {
-            query = RidConsTransaction.where {
-                id >= 0
-            }
 
             Date begin = new Date()
             Date end = new Date()
@@ -284,11 +278,11 @@ class RidStatisticsService {
             }
 
             end.set(date: 1, month: newMonth, year: newYear)
-            query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next()
-            }
-            allCourses = query.where {
-                id >= 0 && courseName != "" && courseName != null
+            end = end.minus(1)
+
+            allCourses = RidConsTransaction.where {
+                dateOfConsultation > begin.previous() && dateOfConsultation < end &&
+                        id >= 0 && courseName != "" && courseName != null
             }.list() { order("courseName") }.countBy { it.courseName }
             for (map in allCourses) {
                 if (map.getValue() == null) {
@@ -380,9 +374,6 @@ class RidStatisticsService {
 
 
         for (int m = 12; m >= 0; m--) {
-            query = RidConsTransaction.where {
-                id >= 0
-            }
 
             Date begin = new Date()
             Date end = new Date()
@@ -400,8 +391,9 @@ class RidStatisticsService {
             }
 
             end.set(date: 1, month: newMonth, year: newYear)
-            query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next() && rank != null
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && rank != null
             }
 
             rankList = query.list { order("rank") }
@@ -429,65 +421,541 @@ class RidStatisticsService {
         results.monthRanks.add(tempMonthRank)
         otherIndex = results.ranks.indexOf("Other (Please indicate)")
 
-/*
+        //User goals
 
-        def dptlist = query.list { order("department") }
-        testCount = dptlist.countBy { it.department }
-        def tempDept = ""
-        tempCount = 0
-        def bestDept = ""
-        bestCount = 0
-        for (i in testCount) {
-            if (i.value > bestCount && !i.key.equals(null) && !i.key.toString().equals("")) {
-                bestCount = i.value
-                bestDept = i.key.toString()
+//Cludgy code to remove Hibernate proxy classes
+        def allUserGoals = RidUserGoal.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allUserGoals) {
+            results.userGoals.add(d.getKey())
+        }
+
+
+        for (t in results.userGoals) {
+            results.totalUserGoals.add(0)
+            results.yearUserGoals.add(0)
+            results.monthUserGoals.add(new ArrayList())
+        }
+        for (t in results.totalUserGoals) {
+            t = 0
+        }
+        for (t in results.yearUserGoals) {
+            t = 0
+        }
+        for (t in results.monthUserGoals) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
             }
         }
-        results.department = bestDept
-        results.departmentCount = bestCount
 
-        def cnlist = query.list { order("courseName") }
-        testCount = cnlist.countBy { it.courseName }
-        def tempCourse = ""
-        tempCount = 0
-        def bestCourse = ""
-        bestCount = 0
-        for (i in testCount) {
-            if (i.value > bestCount && !i.key.equals(null) && !i.key.toString().equals("")) {
-                bestCount = i.value
-                bestCourse = i.key.toString()
+        query = RidConsTransaction.where {
+            id >= 0 && userGoal != null
+        }
+
+        def userGoalList = query.list { order("userGoal") }
+        def userGoalCount = userGoalList.countBy { it.userGoal.name }
+
+        for (each in userGoalCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.userGoals.indexOf(each.getKey())
+                results.totalUserGoals[index] = each.getValue()
             }
         }
-        results.courseName = bestCourse
-        results.courseMax = bestCount
 
-        def rlist = query.list { order("rank") }
-        rlist.removeAll { it.rank.toString().equals("") || it.rank.equals(null) }
-        results.rank = rlist.countBy { it.rank }
 
-        def ulist = query.list { order("userGoal") }
-        ulist.removeAll { it.userGoal.toString().equals("") || it.userGoal.equals(null) }
-        results.userGoal = ulist.countBy { it.userGoal }
+        for (int m = 12; m >= 0; m--) {
 
-        def mlist = query.list { order("modeOfConsultation") }
-        mlist.removeAll { it.modeOfConsultation.toString().equals("") || it.modeOfConsultation.equals(null) }
-        results.modeOfConsultation = mlist.countBy { it.modeOfConsultation }
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
 
-        def slist = query.list { order("school") }
-        slist.removeAll { it.school.toString().equals("") || it.school.equals(null) }
-        results.school = slist.countBy { it.school }
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && userGoal != null
+            }
 
-        def clist = query.list { order("courseSponsor") }
-        clist.removeAll { it.courseSponsor.toString().equals("") || it.courseSponsor.equals(null) }
-        results.courseSponsor = clist.countBy { it.courseSponsor }
+            userGoalList = query.list { order("userGoal") }
+            userGoalCount = userGoalList.countBy { it.userGoal.name }
 
-        def splist = query.list { order("serviceProvided") }
-        splist.removeAll { it.serviceProvided.toString().equals("") || it.serviceProvided.equals(null) }
-        results.serviceProvided = splist.countBy { it.serviceProvided }
+            for (int d = 0; d < results.userGoals.size(); d++) {
+                if (userGoalCount.containsKey(results.userGoals[d].toString())) {
+                    results.yearUserGoals[d] += userGoalCount.get(results.userGoals[d])
+                    results.monthUserGoals[d][abs(m - 12)] += (userGoalCount.get(results.userGoals[d]))
+                }
 
-        def llist = query.list { order("ridLibraryUnit") }
-        llist.removeAll { it.ridLibraryUnit.toString().equals("") || it.ridLibraryUnit.equals(null) }
-        results.libraryUnit = llist.countBy { it.ridLibraryUnit }*/
+            }
+        }
+        //Push "Other" options to the end to end of list
+
+        otherIndex = results.userGoals.indexOf("Other (please indicate)")
+
+        def tempUserGoal = results.userGoals.remove(otherIndex)
+        def tempTotalUserGoal = results.totalUserGoals.remove(otherIndex)
+        def tempYearUserGoal = results.yearUserGoals.remove(otherIndex)
+        def tempMonthUserGoal = results.monthUserGoals.remove(otherIndex)
+        results.userGoals.add(tempUserGoal)
+        results.totalUserGoals.add(tempTotalUserGoal)
+        results.yearUserGoals.add(tempYearUserGoal)
+        results.monthUserGoals.add(tempMonthUserGoal)
+
+//Mode of Consultation
+
+//Cludgy code to remove Hibernate proxy classes
+        def allModeOfConsultation = RidModeOfConsultation.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allModeOfConsultation) {
+            results.modeOfConsultation.add(d.getKey())
+        }
+
+
+        for (t in results.modeOfConsultation) {
+            results.totalModeOfConsultation.add(0)
+            results.yearModeOfConsultation.add(0)
+            results.monthModeOfConsultation.add(new ArrayList())
+        }
+        for (t in results.totalModeOfConsultation) {
+            t = 0
+        }
+        for (t in results.yearModeOfConsultation) {
+            t = 0
+        }
+        for (t in results.monthModeOfConsultation) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
+            }
+        }
+
+        query = RidConsTransaction.where {
+            id >= 0 && modeOfConsultation != null
+        }
+
+        def modeOfConsultationList = query.list { order("modeOfConsultation") }
+        def modeOfConsultationCount = modeOfConsultationList.countBy { it.modeOfConsultation.name }
+
+        for (each in modeOfConsultationCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.modeOfConsultation.indexOf(each.getKey())
+                results.totalModeOfConsultation[index] = each.getValue()
+            }
+        }
+
+
+        for (int m = 12; m >= 0; m--) {
+
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
+
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && modeOfConsultation != null
+            }
+
+            modeOfConsultationList = query.list { order("modeOfConsultation") }
+            modeOfConsultationCount = modeOfConsultationList.countBy { it.modeOfConsultation.name }
+
+            for (int d = 0; d < results.modeOfConsultation.size(); d++) {
+                if (modeOfConsultationCount.containsKey(results.modeOfConsultation[d].toString())) {
+                    results.yearModeOfConsultation[d] += modeOfConsultationCount.get(results.modeOfConsultation[d])
+                    results.monthModeOfConsultation[d][abs(m - 12)] += (modeOfConsultationCount.get(results.modeOfConsultation[d]))
+                }
+
+            }
+        }
+
+//Schools
+
+//Cludgy code to remove Hibernate proxy classes
+        def allSchools = RidSchool.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allSchools) {
+            results.schools.add(d.getKey())
+        }
+
+
+        for (t in results.schools) {
+            results.totalSchools.add(0)
+            results.yearSchools.add(0)
+            results.monthSchools.add(new ArrayList())
+        }
+        for (t in results.totalSchools) {
+            t = 0
+        }
+        for (t in results.yearSchools) {
+            t = 0
+        }
+        for (t in results.monthSchools) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
+            }
+        }
+
+        query = RidConsTransaction.where {
+            id >= 0 && school != null
+        }
+
+        def schoolList = query.list { order("school") }
+        def schoolCount = schoolList.countBy { it.school.name }
+
+        for (each in schoolCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.schools.indexOf(each.getKey())
+                results.totalSchools[index] = each.getValue()
+            }
+        }
+
+
+        for (int m = 12; m >= 0; m--) {
+
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
+
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && school != null
+            }
+
+            schoolList = query.list { order("school") }
+            schoolCount = schoolList.countBy { it.school.name }
+
+            for (int d = 0; d < results.schools.size(); d++) {
+                if (schoolCount.containsKey(results.schools[d].toString())) {
+                    results.yearSchools[d] += schoolCount.get(results.schools[d])
+                    results.monthSchools[d][abs(m - 12)] += (schoolCount.get(results.schools[d]))
+                }
+
+            }
+        }
+        //Push "Other" options to the end to end of list
+
+        otherIndex = results.schools.indexOf("Penn Other (please indicate)")
+
+        def tempSchool = results.schools.remove(otherIndex)
+        def tempTotalSchool = results.totalSchools.remove(otherIndex)
+        def tempYearSchool = results.yearSchools.remove(otherIndex)
+        def tempMonthSchool = results.monthSchools.remove(otherIndex)
+        results.schools.add(tempSchool)
+        results.totalSchools.add(tempTotalSchool)
+        results.yearSchools.add(tempYearSchool)
+        results.monthSchools.add(tempMonthSchool)
+
+        otherIndex = results.schools.indexOf("Outside Penn (please indicate)")
+
+        tempSchool = results.schools.remove(otherIndex)
+        tempTotalSchool = results.totalSchools.remove(otherIndex)
+        tempYearSchool = results.yearSchools.remove(otherIndex)
+        tempMonthSchool = results.monthSchools.remove(otherIndex)
+        results.schools.add(tempSchool)
+        results.totalSchools.add(tempTotalSchool)
+        results.yearSchools.add(tempYearSchool)
+        results.monthSchools.add(tempMonthSchool)
+
+        otherIndex = results.schools.indexOf("Other location (please indicate)")
+
+        tempSchool = results.schools.remove(otherIndex)
+        tempTotalSchool = results.totalSchools.remove(otherIndex)
+        tempYearSchool = results.yearSchools.remove(otherIndex)
+        tempMonthSchool = results.monthSchools.remove(otherIndex)
+        results.schools.add(tempSchool)
+        results.totalSchools.add(tempTotalSchool)
+        results.yearSchools.add(tempYearSchool)
+        results.monthSchools.add(tempMonthSchool)
+
+//Course Sponsors
+
+//Cludgy code to remove Hibernate proxy classes
+        def allCourseSponsors = RidCourseSponsor.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allCourseSponsors) {
+            results.courseSponsors.add(d.getKey())
+        }
+
+
+        for (t in results.courseSponsors) {
+            results.totalCourseSponsors.add(0)
+            results.yearCourseSponsors.add(0)
+            results.monthCourseSponsors.add(new ArrayList())
+        }
+        for (t in results.totalCourseSponsors) {
+            t = 0
+        }
+        for (t in results.yearCourseSponsors) {
+            t = 0
+        }
+        for (t in results.monthCourseSponsors) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
+            }
+        }
+
+        query = RidConsTransaction.where {
+            id >= 0 && courseSponsor != null
+        }
+
+        def courseSponsorList = query.list { order("courseSponsor") }
+        def courseSponsorCount = courseSponsorList.countBy { it.courseSponsor.name }
+
+        for (each in courseSponsorCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.courseSponsors.indexOf(each.getKey())
+                results.totalCourseSponsors[index] = each.getValue()
+            }
+        }
+
+
+        for (int m = 12; m >= 0; m--) {
+
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
+
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && courseSponsor != null
+            }
+
+            courseSponsorList = query.list { order("courseSponsor") }
+            courseSponsorCount = courseSponsorList.countBy { it.courseSponsor.name }
+
+            for (int d = 0; d < results.courseSponsors.size(); d++) {
+                if (courseSponsorCount.containsKey(results.courseSponsors[d].toString())) {
+                    results.yearCourseSponsors[d] += courseSponsorCount.get(results.courseSponsors[d])
+                    results.monthCourseSponsors[d][abs(m - 12)] += (courseSponsorCount.get(results.courseSponsors[d]))
+                }
+
+            }
+        }
+        //Push "Other" options to the end to end of list
+
+        otherIndex = results.courseSponsors.indexOf("Outside Penn (please indicate)")
+
+        def tempCourseSponsor = results.courseSponsors.remove(otherIndex)
+        def tempTotalCourseSponsor = results.totalCourseSponsors.remove(otherIndex)
+        def tempYearCourseSponsor = results.yearCourseSponsors.remove(otherIndex)
+        def tempMonthCourseSponsor = results.monthCourseSponsors.remove(otherIndex)
+        results.courseSponsors.add(tempCourseSponsor)
+        results.totalCourseSponsors.add(tempTotalCourseSponsor)
+        results.yearCourseSponsors.add(tempYearCourseSponsor)
+        results.monthCourseSponsors.add(tempMonthCourseSponsor)
+
+//Services provided
+
+//Cludgy code to remove Hibernate proxy classes
+        def allServiceProvided = RidServiceProvided.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allServiceProvided) {
+            results.serviceProvided.add(d.getKey())
+        }
+
+
+        for (t in results.serviceProvided) {
+            results.totalServiceProvided.add(0)
+            results.yearServiceProvided.add(0)
+            results.monthServiceProvided.add(new ArrayList())
+        }
+        for (t in results.totalServiceProvided) {
+            t = 0
+        }
+        for (t in results.yearServiceProvided) {
+            t = 0
+        }
+        for (t in results.monthServiceProvided) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
+            }
+        }
+
+        query = RidConsTransaction.where {
+            id >= 0 && serviceProvided != null
+        }
+
+        def serviceProvidedList = query.list { order("serviceProvided") }
+        def serviceProvidedCount = serviceProvidedList.countBy { it.serviceProvided.name }
+
+        for (each in serviceProvidedCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.serviceProvided.indexOf(each.getKey())
+                results.totalServiceProvided[index] = each.getValue()
+            }
+        }
+
+
+        for (int m = 12; m >= 0; m--) {
+
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
+
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && serviceProvided != null
+            }
+
+            serviceProvidedList = query.list { order("serviceProvided") }
+            serviceProvidedCount = serviceProvidedList.countBy { it.serviceProvided.name }
+
+            for (int d = 0; d < results.serviceProvided.size(); d++) {
+                if (serviceProvidedCount.containsKey(results.serviceProvided[d].toString())) {
+                    results.yearServiceProvided[d] += serviceProvidedCount.get(results.serviceProvided[d])
+                    results.monthServiceProvided[d][abs(m - 12)] += (serviceProvidedCount.get(results.serviceProvided[d]))
+                }
+
+            }
+        }
+        //Push "Other" options to the end to end of list
+
+        otherIndex = results.serviceProvided.indexOf("Other (please indicate)")
+
+        def tempServiceProvided = results.serviceProvided.remove(otherIndex)
+        def tempTotalServiceProvided = results.totalServiceProvided.remove(otherIndex)
+        def tempYearServiceProvided = results.yearServiceProvided.remove(otherIndex)
+        def tempMonthServiceProvided = results.monthServiceProvided.remove(otherIndex)
+        results.serviceProvided.add(tempServiceProvided)
+        results.totalServiceProvided.add(tempTotalServiceProvided)
+        results.yearServiceProvided.add(tempYearServiceProvided)
+        results.monthServiceProvided.add(tempMonthServiceProvided)
+
+//Library Units
+
+//Cludgy code to remove Hibernate proxy classes
+        def allLibraryUnits = RidLibraryUnit.where { name != "" }.list() { order("name") }.countBy { it.name }
+
+        for (d in allLibraryUnits) {
+            results.libraryUnits.add(d.getKey())
+        }
+
+
+        for (t in results.libraryUnits) {
+            results.totalLibraryUnits.add(0)
+            results.yearLibraryUnits.add(0)
+            results.monthLibraryUnits.add(new ArrayList())
+        }
+        for (t in results.totalLibraryUnits) {
+            t = 0
+        }
+        for (t in results.yearLibraryUnits) {
+            t = 0
+        }
+        for (t in results.monthLibraryUnits) {
+            for (int i = 0; i <= 12; i++) {
+                t.add(0)
+            }
+        }
+
+        query = RidConsTransaction.where {
+            id >= 0 && ridLibraryUnit != null
+        }
+
+        def libraryUnitList = query.list { order("ridLibraryUnit") }
+        def libraryUnitCount = libraryUnitList.countBy { it.ridLibraryUnit.name }
+
+        for (each in libraryUnitCount) {
+            if (each.getKey() != "" && each.getKey() != null) {
+                int index = results.libraryUnits.indexOf(each.getKey())
+                results.totalLibraryUnits[index] = each.getValue()
+            }
+        }
+
+
+        for (int m = 12; m >= 0; m--) {
+            Date begin = new Date()
+            Date end = new Date()
+            int newMonth = begin.getAt(MONTH) - m
+            int newYear = begin.getAt(YEAR)
+            if (newMonth < 0) {
+                newMonth += 12
+                newYear -= 1
+            }
+            begin.set([date: 1, month: newMonth, year: newYear])
+            newMonth += 1
+            if (newMonth == 12) {
+                newMonth = 0
+                newYear += 1
+            }
+
+            end.set(date: 1, month: newMonth, year: newYear)
+            end = end.minus(1)
+            query = RidConsTransaction.where {
+                id >= 0 && dateOfConsultation > begin.previous() && dateOfConsultation < end && ridLibraryUnit != null
+            }
+
+            libraryUnitList = query.list { order("ridLibraryUnit") }
+            libraryUnitCount = libraryUnitList.countBy { it.ridLibraryUnit.name }
+
+            for (int d = 0; d < results.libraryUnits.size(); d++) {
+                if (libraryUnitCount.containsKey(results.libraryUnits[d].toString())) {
+                    results.yearLibraryUnits[d] += libraryUnitCount.get(results.libraryUnits[d])
+                    results.monthLibraryUnits[d][abs(m - 12)] += (libraryUnitCount.get(results.libraryUnits[d]))
+                }
+
+            }
+        }
+
+
+
+
+
 
         return results
     }
@@ -502,7 +970,7 @@ class RidStatisticsService {
             Date begin = new Date().minus(30);
             Date end = new Date()
             query = query.where {
-                dateOfConsultation >= begin && dateOfConsultation < end.next()
+                dateOfConsultation > begin.previous() && dateOfConsultation < end
             }
         } catch (Exception e) {}
         /*
@@ -565,7 +1033,7 @@ class RidStatisticsService {
                     Date start = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_start)
                     Date end = new SimpleDateFormat("MM/dd/yyyy").parse(params.dateOfConsultation_end)
                     query = query.where {
-                        dateOfConsultation >= start && dateOfConsultation < end.next()
+                        dateOfConsultation > begin.previous() && dateOfConsultation < end
                     }
                 } catch (Exception e) {}
             }
