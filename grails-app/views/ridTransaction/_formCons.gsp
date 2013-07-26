@@ -1,11 +1,30 @@
 <%@ page import="metridoc.rid.RidDepartment;metridoc.rid.RidSchool;metridoc.rid.RidRank;java.text.SimpleDateFormat;metridoc.rid.RidUserGoal;metridoc.rid.RidLibraryUnit;metridoc.rid.RidLibraryUnit;metridoc.rid.RidDepartment;metridoc.rid.RidCourseSponsor;metridoc.rid.RidConsTransaction;metridoc.rid.RidInsTransaction" %>
 
-<r:external dir="datepicker/css" file="datepicker.css" plugin="metridoc-rid"/>
-<r:external dir="datepicker/js" file="bootstrap-datepicker.js" plugin="metridoc-rid"/>
-<r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
-<r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
+<r:require module="datePicker"/>
+<r:external dir="select2-3.4.0" file="select2edit.css" plugin="metridoc-rid"/>
+<r:external dir="select2-3.4.0" file="select2.js" plugin="metridoc-rid"/>
+
 <g:javascript library="jquery" plugin="jquery"/>
 <g:setProvider library="jquery"/>
+
+%{--<script>
+        $(document).ready(function() { $("#department").select2(
+                {matcher: function(term, text, opt){
+
+                    return text.toUpperCase().indexOf(term.toUpperCase())==0
+                    || opt.attr("alt").toUpperCase().indexOf(term.toUpperCase())>=0;}});
+
+        });
+    </script>
+    <script>
+        $(document).ready(function() { $("#department2").select2(
+                {matcher: function(term, text, opt){
+
+                    return text.toUpperCase().indexOf(term.toUpperCase())==0
+                            || opt.attr("alt").toUpperCase().indexOf(term.toUpperCase())>=0;}});
+
+        });
+    </script>--}%
 
 
 <div class="row-fluid">
@@ -333,6 +352,91 @@
         </div>
     </div>
 
+
+    <div class="span2">
+        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">
+            <label for="facultySponsor">
+                <g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>
+            </label>
+            <g:textField class="userInput" name="facultySponsor" style="width: 120px" maxlength="300"
+                         value="${ridTransactionInstance?.facultySponsor}"/>
+        </div>
+    </div>
+</div>
+%{--
+<div class="row-fluid">
+    <div class="span4" id="dept2Span" style="display:none">
+        <div class="fieldcontain ${hasErrors(bea: ridTransactionInstance, field: 'department', 'error')}">
+            <label for="department">
+                <g:message code="ridTransaction.department.label" default="Department"/>
+                <a style="font-size: 14px" data-toggle="modal"
+                   href="../ridAdminDepartment/departmentList" data-target="#myDepartment">
+                    <i class="icon-file-alt"></i>
+                </a>
+            </label>
+
+            <select id="department2" name="department.id" class="many-to-one" style="width:300px">
+
+                <g:each in="${RidDepartment.list().sort { it.name }}">
+                    <option alt="${it.fullName}" value="${it.id}">${it.fullName}
+
+                    </option>
+                </g:each>
+
+            </select>
+
+        </div>
+
+
+    </div>--}%
+%{--<div class ="row-fluid">
+    <div class="span2" id="deptSpan" style="display:inline">
+        <div class="fieldcontain ${hasErrors(bea: ridTransactionInstance, field: 'department', 'error')}">
+            <label for="department">
+                <g:message code="ridTransaction.department.label" default="Department"/>
+                <a style="font-size: 14px" data-toggle="modal"
+                   href="../ridAdminDepartment/departmentList" data-target="#myDepartment">
+                    <i class="icon-file-alt"></i>
+                </a>
+            </label>
+
+            <select id="department" name="department.id" class="many-to-one" style="width:120px">
+
+                <g:each in="${RidDepartment.list().sort { it.name }}">
+                    <option alt="${it.fullName}" value="${it.id}">${it.name}
+
+                    </option>
+                </g:each>
+
+            </select>
+
+        </div>
+
+    </div>
+    <div class="span3" style="margin-top:35px">
+        <input type="checkbox" id="fullDeptNames" ></input>   Show full department names
+    </div>
+</div>
+
+
+    <script>
+        $('#fullDeptNames').click(function(){
+            if(this.checked){
+            $('#deptSpan').css({'display' : 'none'});
+            $('#dept2Span').css({'display' : 'inline'});
+
+            }
+            else{
+                $('#deptSpan').css({'display' : 'inline'});
+                $('#dept2Span').css({'display' : 'none'});
+            }
+        })
+    </script>
+
+
+</div>--}%
+
+<div class="row-fluid">
     <div class="span2">
         <div class="fieldcontain ${hasErrors(bea: ridTransactionInstance, field: 'department', 'error')}">
             <label for="department">
@@ -345,17 +449,6 @@
             <g:select style="width:120px" id="department" name="department.id"
                       from="${RidDepartment.list().sort { it.name }}" optionKey="id"
                       value="${ridTransactionInstance?.department?.id}" class="many-to-one"/>
-        </div>
-    </div>
-
-
-    <div class="span2">
-        <div class="fieldcontain ${hasErrors(bean: ridTransactionInstance, field: 'facultySponsor', 'error')} ">
-            <label for="facultySponsor">
-                <g:message code="ridTransaction.facultySponsor.label" default="Faculty Sponsor"/>
-            </label>
-            <g:textField class="userInput" name="facultySponsor" style="width: 120px" maxlength="300"
-                         value="${ridTransactionInstance?.facultySponsor}"/>
         </div>
     </div>
 </div>
@@ -381,6 +474,10 @@
             <g:textArea class="userInput" name="notes" cols="40" rows="5" maxlength="500"
                         value="${ridTransactionInstance?.notes}" onkeydown="isFull(this)"/>
         </div>
+    </div>
+
+    <div class="span2">
+        <textarea style="display:none;" id="deptFullName"></textarea>
     </div>
 </div>
 

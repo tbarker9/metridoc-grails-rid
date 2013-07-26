@@ -505,12 +505,22 @@ class RidTransactionController {
     }
 
     def statGraph() {
-        def queryResult = ridStatisticsService.statGraph(params, session.getAttribute("transType"))
+        def queryResult = ridStatisticsService.getStats(params, session.getAttribute("transType"))
         render(view: "/ridTransaction/statGraph",
                 model: [statResults: queryResult])
         session.setAttribute("prev", "statGraph")
         return
     }
+
+    /*
+    def statGraph() {
+        def queryResult = ridStatisticsService.statGraph(params, session.getAttribute("transType"))
+        render(view: "/ridTransaction/statGraph",
+                model: [statResults: queryResult])
+        session.setAttribute("prev", "statGraph")
+        return
+    }*/
+
 
     def statQuery(Integer max) {
         def queryResult = ridStatisticsService.searchStats(params, session.getAttribute("transType"))

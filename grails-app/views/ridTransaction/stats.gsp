@@ -7,9 +7,8 @@
     <g:set var="entityName" value="${message(code: 'ridTransaction.label', default: 'RidInsTransaction')}"/>
 </g:else>
 <md:report>
-<r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-<r:external dir="css" file="table.css" plugin="metridoc-rid"/>
-<r:external dir="js" file="RidStatistics.js" plugin="metridoc-rid"/>
+<r:require module="tableModule"/>
+<r:require module="statistics"/>
 <!--[if !IE]><!-->
 <r:external dir="css" file="floating_tables_for_admin_5.css" plugin="metridoc-rid"/>
 <!--<![endif]-->

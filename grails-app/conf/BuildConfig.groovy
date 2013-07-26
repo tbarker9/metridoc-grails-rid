@@ -11,31 +11,19 @@ grails.project.target.level = 1.6
 grails.project.source.level = 1.6
 
 grails.project.dependency.resolution = {
-    // inherit Grails' default dependencies
-    inherits("global") {
-        // uncomment to disable ehcache
-        // excludes 'ehcache'
-    }
+    inherits("global")
     log "warn" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     repositories {
         grailsCentral()
-        // uncomment the below to enable remote dependency resolution
-        // from public Maven repositories
-        //mavenLocal()
+        mavenLocal()
         mavenCentral()
-
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
         mavenRepo "http://metridoc.googlecode.com/svn/maven/repository/"
     }
     dependencies {
-        //get this to play nice with intellij, not actually needed
         build("org.tmatesoft.svnkit:svnkit:1.3.5") {
             excludes "jna", "trilead-ssh2", "sqljet"
         }
         build("com.google.code.maven-svn-wagon:maven-svn-wagon:1.4")
-        //for excel file parser
         compile("org.apache.poi:poi:3.8-beta3")
         compile("org.apache.poi:poi-ooxml:3.8-beta3") {
             excludes 'poi'
@@ -46,9 +34,10 @@ grails.project.dependency.resolution = {
 
     plugins {
         build(":rest-client-builder:1.0.3")
-        //compile(":metridoc-core:0.53-SNAPSHOT")
-        compile(":metridoc-core:0.54.4-SNAPSHOT")
-        build ":release:$grailsVersion"
+        compile(":metridoc-core:0.7-SNAPSHOT")
+        //TODO: Remove when we upgrade metridoc core
+        compile ":hibernate:$grailsVersion"
+        build ":release:2.2.1"
         build(":tomcat:$grailsVersion") {
             export = false
         }

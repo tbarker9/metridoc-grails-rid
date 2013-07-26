@@ -15,9 +15,7 @@
 %{--<body>--}%
 
 <md:report>
-    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="ridtrans.css" plugin="metridoc-rid"/>
+    <r:require module="tableModule"/>
     <!--[if !IE]><!-->
     <r:external dir="css" file="floating_table.css" plugin="metridoc-rid"/>
     <!--<![endif]-->

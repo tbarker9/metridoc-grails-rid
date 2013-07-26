@@ -2,9 +2,7 @@
 <g:set var="entityName" value="${message(code: 'ridServiceProvided.label', default: 'RidServiceProvided')}"/>
 
 <md:report>
-    <r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
-    <!--[if !IE]><!-->
+    <r:require module="tableModule"/><!--[if !IE]><!-->
     <r:external dir="css" file="floating_tables_for_admin_4.css" plugin="metridoc-rid"/>
     <!--<![endif]-->
 

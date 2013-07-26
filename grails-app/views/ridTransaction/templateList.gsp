@@ -12,7 +12,7 @@
 </g:else>
 
 <div id="list-ridTransaction" class="content scaffold-list" role="main">
-    <r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+    <r:require module="tableModule"/>
     <!--[if !IE]><!-->
     %{--<r:external dir="css" file="floating_tables_for_admin_2.css" />--}%
     <!--<![endif]-->

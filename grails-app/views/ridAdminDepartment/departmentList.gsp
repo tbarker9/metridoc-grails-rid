@@ -3,8 +3,7 @@
        value="${message(code: 'ridDepartment.label', default: 'RidDepartment')}"/>
 
 <r:external dir="js" file="RidTransaction.js" plugin="metridoc-rid"/>
-<r:external dir="css" file="pagination.css" plugin="metridoc-rid"/>
-<r:external dir="css" file="table.css" plugin="metridoc-rid"/>
+<r:require module="tableModule"/>
 <!--[if !IE]><!-->
 %{--<r:external dir="css" file="floating_tables_for_admin_6.css" plugin="metridoc-rid"/>--}%
 <!--<![endif]-->
