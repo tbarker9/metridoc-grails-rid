@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="0" name="RidAdminCourseSponsorControllerTests" package="metridoc.rid" tests="2" time="0.896" timestamp="2013-07-26T16:35:00">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminCourseSponsorControllerTests" name="testInvalidSave" time="0.636" />
+
+      <testcase classname="metridoc.rid.RidAdminCourseSponsorControllerTests" name="testValidSave" time="0.119" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:01,162 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:01,312 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:01,387 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="1" name="RidAdminDepartmentControllerTests" package="metridoc.rid" tests="2" time="0.381" timestamp="2013-07-26T16:35:01">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminDepartmentControllerTests" name="testInvalidSave" time="0.184" />
+
+      <testcase classname="metridoc.rid.RidAdminDepartmentControllerTests" name="testValidSave" time="0.102" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:01,631 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:01,737 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:01,777 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="2" name="RidAdminModeOfConsultationControllerTests" package="metridoc.rid" tests="2" time="0.437" timestamp="2013-07-26T16:35:01">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminModeOfConsultationControllerTests" name="testInvalidSave" time="0.209" />
+
+      <testcase classname="metridoc.rid.RidAdminModeOfConsultationControllerTests" name="testValidSave" time="0.082" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:02,040 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:02,125 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:02,186 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="3" name="RidAdminRankControllerTests" package="metridoc.rid" tests="2" time="0.323" timestamp="2013-07-26T16:35:02">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminRankControllerTests" name="testInvalidSave" time="0.153" />
+
+      <testcase classname="metridoc.rid.RidAdminRankControllerTests" name="testValidSave" time="0.074" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:02,423 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:02,503 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:02,543 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="4" name="RidAdminSchoolControllerTests" package="metridoc.rid" tests="2" time="0.337" timestamp="2013-07-26T16:35:02">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminSchoolControllerTests" name="testInvalidSave" time="0.146" />
+
+      <testcase classname="metridoc.rid.RidAdminSchoolControllerTests" name="testValidSave" time="0.094" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:02,743 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:02,834 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:02,880 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+2013-07-26 12:35:02,881 [Timer-0] ERROR transaction.JDBCTransaction  - JDBC begin failed
+Message: Data source is closed
+    Line | Method
+->> 1362 | createDataSource in org.apache.commons.dbcp.BasicDataSource
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+|   1044 | getConnection    in     ''
+|     37 | doCall . . . . . in grails.plugins.reloadconfig.ReloadConfigUtility$_configureWatcher_closure1
+|    512 | mainLoop         in java.util.TimerThread
+^    462 | run . . . . . .  in     ''
+
+Exception in thread "Timer-0" org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.TransactionException: JDBC begin failed: 
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:596)
+	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTransactionManager.super$3$doBegin(GrailsHibernateTransactionManager.groovy)
+	at sun.reflect.GeneratedMethodAccessor526.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1082)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1106)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:128)
+	at org.codehaus.groovy.grails.orm.hibernate.GrailsHibernateTransactionManager.doBegin(GrailsHibernateTransactionManager.groovy:32)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:371)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:329)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:105)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:172)
+	at org.springframework.aop.framework.Cglib2AopProxy$DynamicAdvisedInterceptor.intercept(Cglib2AopProxy.java:622)
+	at grails.plugins.reloadconfig.ReloadConfigService$$EnhancerByCGLIB$$3fddd9fd.checkNow(<generated>)
+	at grails.plugins.reloadconfig.ReloadConfigService$checkNow.call(Unknown Source)
+	at grails.plugins.reloadconfig.ReloadConfigUtility$_configureWatcher_closure1.doCall(ReloadConfigUtility.groovy:37)
+	at grails.plugins.reloadconfig.ReloadConfigUtility$_configureWatcher_closure1.doCall(ReloadConfigUtility.groovy)
+	at sun.reflect.GeneratedMethodAccessor815.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.springsource.loaded.ri.ReflectiveInterceptor.jlrMethodInvoke(ReflectiveInterceptor.java:1265)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:90)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:233)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1082)
+	at groovy.lang.ExpandoMetaClass.invokeMethod(ExpandoMetaClass.java:1106)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:906)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at TimerTask1_groovyProxy.run(Object.java)
+	at java.util.TimerThread.mainLoop(Timer.java:512)
+	at java.util.TimerThread.run(Timer.java:462)
+Caused by: org.hibernate.TransactionException: JDBC begin failed: 
+	at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:92)
+	at org.hibernate.impl.SessionImpl.beginTransaction(SessionImpl.java:1473)
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:555)
+	... 33 more
+Caused by: java.sql.SQLException: Data source is closed
+	at org.apache.commons.dbcp.BasicDataSource.createDataSource(BasicDataSource.java:1362)
+	at org.apache.commons.dbcp.BasicDataSource.getConnection(BasicDataSource.java:1044)
+	at grails.plugins.reloadconfig.ReloadConfigUtility$_configureWatcher_closure1.doCall(ReloadConfigUtility.groovy:37)
+	... 2 more
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="5" name="RidAdminServiceProvidedControllerTests" package="metridoc.rid" tests="2" time="0.318" timestamp="2013-07-26T16:35:02">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminServiceProvidedControllerTests" name="testInvalidSave" time="0.151" />
+
+      <testcase classname="metridoc.rid.RidAdminServiceProvidedControllerTests" name="testValidSave" time="0.072" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:03,087 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:03,163 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:03,204 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="6" name="RidAdminUserGoalControllerTests" package="metridoc.rid" tests="2" time="0.314" timestamp="2013-07-26T16:35:03">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidAdminUserGoalControllerTests" name="testInvalidSave" time="0.171" />
+
+      <testcase classname="metridoc.rid.RidAdminUserGoalControllerTests" name="testValidSave" time="0.067" />
+
+      <system-out><![CDATA[--Output from testInvalidSave--
+2013-07-26 12:35:03,422 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testValidSave--
+2013-07-26 12:35:03,500 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:03,539 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testInvalidSave--
+--Output from testValidSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="7" name="RidConsTransactionTests" package="metridoc.rid" tests="2" time="0.405" timestamp="2013-07-26T16:35:03">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidConsTransactionTests" name="testDatabase" time="0.299" />
+
+      <testcase classname="metridoc.rid.RidConsTransactionTests" name="testConstraints" time="0.037" />
+
+      <system-out><![CDATA[--Output from testDatabase--
+Validation error occurred during call to save():
+- Field error in object 'metridoc.rid.RidConsTransaction' on field 'staffPennkey': rejected value [null]; codes [metridoc.rid.RidConsTransaction.staffPennkey.nullable.error.metridoc.rid.RidConsTransaction.staffPennkey,metridoc.rid.RidConsTransaction.staffPennkey.nullable.error.staffPennkey,metridoc.rid.RidConsTransaction.staffPennkey.nullable.error.java.lang.String,metridoc.rid.RidConsTransaction.staffPennkey.nullable.error,ridConsTransaction.staffPennkey.nullable.error.metridoc.rid.RidConsTransaction.staffPennkey,ridConsTransaction.staffPennkey.nullable.error.staffPennkey,ridConsTransaction.staffPennkey.nullable.error.java.lang.String,ridConsTransaction.staffPennkey.nullable.error,metridoc.rid.RidConsTransaction.staffPennkey.nullable.metridoc.rid.RidConsTransaction.staffPennkey,metridoc.rid.RidConsTransaction.staffPennkey.nullable.staffPennkey,metridoc.rid.RidConsTransaction.staffPennkey.nullable.java.lang.String,metridoc.rid.RidConsTransaction.staffPennkey.nullable,ridConsTransaction.staffPennkey.nullable.metridoc.rid.RidConsTransaction.staffPennkey,ridConsTransaction.staffPennkey.nullable.staffPennkey,ridConsTransaction.staffPennkey.nullable.java.lang.String,ridConsTransaction.staffPennkey.nullable,nullable.metridoc.rid.RidConsTransaction.staffPennkey,nullable.staffPennkey,nullable.java.lang.String,nullable]; arguments [staffPennkey,class metridoc.rid.RidConsTransaction]; default message [Property [{0}] of class [{1}] cannot be null]
+- Field error in object 'metridoc.rid.RidConsTransaction' on field 'serviceProvided': rejected value [null]; codes [metridoc.rid.RidConsTransaction.serviceProvided.nullable.error.metridoc.rid.RidConsTransaction.serviceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable.error.serviceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable.error.metridoc.rid.RidServiceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable.error,ridConsTransaction.serviceProvided.nullable.error.metridoc.rid.RidConsTransaction.serviceProvided,ridConsTransaction.serviceProvided.nullable.error.serviceProvided,ridConsTransaction.serviceProvided.nullable.error.metridoc.rid.RidServiceProvided,ridConsTransaction.serviceProvided.nullable.error,metridoc.rid.RidConsTransaction.serviceProvided.nullable.metridoc.rid.RidConsTransaction.serviceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable.serviceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable.metridoc.rid.RidServiceProvided,metridoc.rid.RidConsTransaction.serviceProvided.nullable,ridConsTransaction.serviceProvided.nullable.metridoc.rid.RidConsTransaction.serviceProvided,ridConsTransaction.serviceProvided.nullable.serviceProvided,ridConsTransaction.serviceProvided.nullable.metridoc.rid.RidServiceProvided,ridConsTransaction.serviceProvided.nullable,nullable.metridoc.rid.RidConsTransaction.serviceProvided,nullable.serviceProvided,nullable.metridoc.rid.RidServiceProvided,nullable]; arguments [serviceProvided,class metridoc.rid.RidConsTransaction]; default message [Property [{0}] of class [{1}] cannot be null]
+- Field error in object 'metridoc.rid.RidConsTransaction' on field 'modeOfConsultation': rejected value [null]; codes [metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.error.metridoc.rid.RidConsTransaction.modeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.error.modeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.error.metridoc.rid.RidModeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.error,ridConsTransaction.modeOfConsultation.nullable.error.metridoc.rid.RidConsTransaction.modeOfConsultation,ridConsTransaction.modeOfConsultation.nullable.error.modeOfConsultation,ridConsTransaction.modeOfConsultation.nullable.error.metridoc.rid.RidModeOfConsultation,ridConsTransaction.modeOfConsultation.nullable.error,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.metridoc.rid.RidConsTransaction.modeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.modeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable.metridoc.rid.RidModeOfConsultation,metridoc.rid.RidConsTransaction.modeOfConsultation.nullable,ridConsTransaction.modeOfConsultation.nullable.metridoc.rid.RidConsTransaction.modeOfConsultation,ridConsTransaction.modeOfConsultation.nullable.modeOfConsultation,ridConsTransaction.modeOfConsultation.nullable.metridoc.rid.RidModeOfConsultation,ridConsTransaction.modeOfConsultation.nullable,nullable.metridoc.rid.RidConsTransaction.modeOfConsultation,nullable.modeOfConsultation,nullable.metridoc.rid.RidModeOfConsultation,nullable]; arguments [modeOfConsultation,class metridoc.rid.RidConsTransaction]; default message [Property [{0}] of class [{1}] cannot be null]
+- Field error in object 'metridoc.rid.RidConsTransaction' on field 'ridLibraryUnit': rejected value [null]; codes [metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.error.metridoc.rid.RidConsTransaction.ridLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.error.ridLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.error.metridoc.rid.RidLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.error,ridConsTransaction.ridLibraryUnit.nullable.error.metridoc.rid.RidConsTransaction.ridLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable.error.ridLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable.error.metridoc.rid.RidLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable.error,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.metridoc.rid.RidConsTransaction.ridLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.ridLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable.metridoc.rid.RidLibraryUnit,metridoc.rid.RidConsTransaction.ridLibraryUnit.nullable,ridConsTransaction.ridLibraryUnit.nullable.metridoc.rid.RidConsTransaction.ridLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable.ridLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable.metridoc.rid.RidLibraryUnit,ridConsTransaction.ridLibraryUnit.nullable,nullable.metridoc.rid.RidConsTransaction.ridLibraryUnit,nullable.ridLibraryUnit,nullable.metridoc.rid.RidLibraryUnit,nullable]; arguments [ridLibraryUnit,class metridoc.rid.RidConsTransaction]; default message [Property [{0}] of class [{1}] cannot be null]
+- Field error in object 'metridoc.rid.RidConsTransaction' on field 'rank': rejected value [null]; codes [metridoc.rid.RidConsTransaction.rank.nullable.error.metridoc.rid.RidConsTransaction.rank,metridoc.rid.RidConsTransaction.rank.nullable.error.rank,metridoc.rid.RidConsTransaction.rank.nullable.error.metridoc.rid.RidRank,metridoc.rid.RidConsTransaction.rank.nullable.error,ridConsTransaction.rank.nullable.error.metridoc.rid.RidConsTransaction.rank,ridConsTransaction.rank.nullable.error.rank,ridConsTransaction.rank.nullable.error.metridoc.rid.RidRank,ridConsTransaction.rank.nullable.error,metridoc.rid.RidConsTransaction.rank.nullable.metridoc.rid.RidConsTransaction.rank,metridoc.rid.RidConsTransaction.rank.nullable.rank,metridoc.rid.RidConsTransaction.rank.nullable.metridoc.rid.RidRank,metridoc.rid.RidConsTransaction.rank.nullable,ridConsTransaction.rank.nullable.metridoc.rid.RidConsTransaction.rank,ridConsTransaction.rank.nullable.rank,ridConsTransaction.rank.nullable.metridoc.rid.RidRank,ridConsTransaction.rank.nullable,nullable.metridoc.rid.RidConsTransaction.rank,nullable.rank,nullable.metridoc.rid.RidRank,nullable]; arguments [rank,class metridoc.rid.RidConsTransaction]; default message [Property [{0}] of class [{1}] cannot be null]
+
+2013-07-26 12:35:03,873 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+--Output from testConstraints--
+2013-07-26 12:35:03,919 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:03,950 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testDatabase--
+--Output from testConstraints--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="8" name="RidCourseSponsorTests" package="metridoc.rid" tests="1" time="0.191" timestamp="2013-07-26T16:35:03">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidCourseSponsorTests" name="testBootStrap" time="0.123" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:04,118 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:04,143 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="9" name="RidDepartmentTests" package="metridoc.rid" tests="1" time="0.172" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidDepartmentTests" name="testBootStrap" time="0.063" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:04,250 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:04,296 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="10" name="RidManageLibraryUnitSpreadsheetsServiceTests" package="metridoc.rid" tests="1" time="0.114" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidManageLibraryUnitSpreadsheetsServiceTests" name="SpreadsheetService method transferSpreadsheets should transfer spreadsheets into local hidden directory metridoc under subdirectory files" time="0.044" />
+
+      <system-out><![CDATA[--Output from SpreadsheetService method transferSpreadsheets should transfer spreadsheets into local hidden directory metridoc under subdirectory files--
+2013-07-26 12:35:04,386 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring CDM_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,407 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring General_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,407 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring HSL_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,407 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring LIPPINCOTT_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,408 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring RIS_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,408 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring Science Libraries_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,408 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring Transaction_List.xlsx
+
+2013-07-26 12:35:04,409 [Thread-13] INFO  rid.RidManageLibraryUnitSpreadsheetsService  - Transferring WIC_Bulkload_Schematic.xlsx
+
+2013-07-26 12:35:04,434 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from SpreadsheetService method transferSpreadsheets should transfer spreadsheets into local hidden directory metridoc under subdirectory files--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="11" name="RidModeOfConsultationTests" package="metridoc.rid" tests="1" time="0.147" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidModeOfConsultationTests" name="testBootStrap" time="0.077" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:04,555 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:04,584 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="12" name="RidRankTests" package="metridoc.rid" tests="1" time="0.14" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidRankTests" name="testBootStrap" time="0.071" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:04,699 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:04,727 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="13" name="RidSchoolTests" package="metridoc.rid" tests="1" time="0.166" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidSchoolTests" name="testBootStrap" time="0.094" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:04,865 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:04,894 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="14" name="RidServiceProvidedTests" package="metridoc.rid" tests="1" time="0.133" timestamp="2013-07-26T16:35:04">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidServiceProvidedTests" name="testBootStrap" time="0.061" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:05,000 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:05,030 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="15" name="RidStatisticsReportTests" package="metridoc.rid" tests="1" time="0.138" timestamp="2013-07-26T16:35:05">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidStatisticsReportTests" name="testSomething" time="0.066" />
+
+      <system-out><![CDATA[--Output from testSomething--
+2013-07-26 12:35:05,137 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+2013-07-26 12:35:05,171 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="16" name="RidStatisticsServiceTests" package="metridoc.rid" tests="1" time="0.082" timestamp="2013-07-26T16:35:05">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidStatisticsServiceTests" name="testSomething" time="0.0050" />
+
+      <system-out><![CDATA[--Output from testSomething--
+2013-07-26 12:35:05,252 [Thread-13] INFO  conf.Config  - found MetridocConfig.groovy, will add to configuration
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testSomething--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="itadd-intern.local" id="17" name="RidUserGoalTests" package="metridoc.rid" tests="1" time="0.062" timestamp="2013-07-26T16:35:05">
+      <properties />
+
+      <testcase classname="metridoc.rid.RidUserGoalTests" name="testBootStrap" time="0.06" />
+
+      <system-out><![CDATA[--Output from testBootStrap--
+2013-07-26 12:35:05,361 [Thread-13] WARN  core.DatastoreUtils  - Cannot unbind session, there's no SessionHolder registered
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testBootStrap--
+]]></system-err>
+
+  </testsuite>
+</testsuites>

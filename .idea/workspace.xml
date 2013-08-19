@@ -1,0 +1,1443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="3ea03823-982d-4e92-b85d-8566021679fa" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/metridoc-rid-grailsPlugins.iml" />
+    </list>
+    <ignored path="metridoc-rid.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$USER_HOME$/.grails/" />
+    <file path="/RidBootStrapService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371650521746" ignored="false" />
+    <file path="/MetridocRidBootStrap.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368729073917" ignored="false" />
+    <file path="/Dummy.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376939527974" ignored="false" />
+    <file path="/RidSpreadsheetBootstrapService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368714226635" ignored="false" />
+    <file path="/RidSpreadsheetBootstrapServiceTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368714799165" ignored="false" />
+    <file path="/a.dummy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374856424903" ignored="false" />
+    <file path="/RidLibraryUnitController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369065873657" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootstrapServiceTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368717333363" ignored="false" />
+    <file path="/RidTransactionController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373465460670" ignored="false" />
+    <file path="/list.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376322321415" ignored="false" />
+    <file path="/RidSpreadsheetBootstrapAndTransferService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368730401776" ignored="false" />
+    <file path="/RidSpreadsheetBootstrapAndTransferServiceTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368730010304" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootstrapAndTransferServiceTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368725236163" ignored="false" />
+    <file path="/RidSpreadsheetTransferMethodController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368726312603" ignored="false" />
+    <file path="/fragment.java" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372089484854" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootStrapServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368726953737" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootStrapServiceTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368726953737" ignored="false" />
+    <file path="/RidSpreadsheetTransferMethod.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368727462903" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootstrapAndTransferServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368730052945" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidTransactionTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369320059122" ignored="false" />
+    <file path="/edit.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370528815445" ignored="false" />
+    <file path="/RidManageLibraryUnitSpreadsheetsService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370879176528" ignored="false" />
+    <file path="/create.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375375610093" ignored="false" />
+    <file path="/search.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374853411239" ignored="false" />
+    <file path="/show.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374853644720" ignored="false" />
+    <file path="/spreadsheetUpload.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370874640580" ignored="false" />
+    <file path="$PROJECT_DIR$/../foo/grails-app/conf/BuildConfig.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369077380671" ignored="false" />
+    <file path="/BuildConfig.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374775206599" ignored="false" />
+    <file path="$PROJECT_DIR$/../foo/grails-app/conf/Config.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369077380671" ignored="false" />
+    <file path="$PROJECT_DIR$/../foo/grails-app/conf/UrlMappings.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369077380671" ignored="false" />
+    <file path="$PROJECT_DIR$/../bar/grails-app/conf/BuildConfig.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369146664822" ignored="false" />
+    <file path="/_tabs.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373560247032" ignored="false" />
+    <file path="$PROJECT_DIR$/../tempTest/grails-app/conf/BuildConfig.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369149935173" ignored="false" />
+    <file path="$PROJECT_DIR$/../tempTest/grails-app/conf/UrlMappings.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369149893664" ignored="false" />
+    <file path="$PROJECT_DIR$/../tempTest/grails-app/conf/Config.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369149893664" ignored="false" />
+    <file path="/departmentList.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371131877167" ignored="false" />
+    <file path="/_form.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375382695817" ignored="false" />
+    <file path="$USER_HOME$/.grails/2.2.0/projects/tempTest/plugins/metridoc-rid-0.1-SNAPSHOT/plugin.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369154473645" ignored="false" />
+    <file path="/_toggle.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371144505052" ignored="false" />
+    <file path="/bootstrap.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373296353174" ignored="false" />
+    <file path="/_toggleLabel.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371049019477" ignored="false" />
+    <file path="/ridtrans.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373298443944" ignored="false" />
+    <file path="/RidConsTransactionBase.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369319947357" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidTransactionTests-out.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369320059123" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidTransactionTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369320059123" ignored="false" />
+    <file path="/RidInsTransactionBase.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369321681173" ignored="false" />
+    <file path="/RidInsTransactionTemplate.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372692674335" ignored="false" />
+    <file path="/RidLocation.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369320919852" ignored="false" />
+    <file path="/RidSchool.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369320973004" ignored="false" />
+    <file path="/RidRank.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370453120467" ignored="false" />
+    <file path="/RidLibraryUnit.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369321168759" ignored="false" />
+    <file path="/RidInsTransaction.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372692653597" ignored="false" />
+    <file path="/RidTransactionService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370353087551" ignored="false" />
+    <file path="/TestDataService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371752333227" ignored="false" />
+    <file path="/_formIns.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374854694177" ignored="false" />
+    <file path="/RidTransactionControllerTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370526893348" ignored="false" />
+    <file path="/RidTransactionAdminController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369937998759" ignored="false" />
+    <file path="/RidCourseSponsorController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369940516885" ignored="false" />
+    <file path="/templateList.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374853769385" ignored="false" />
+    <file path="/RidCourseSponsor.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370531161183" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidCourseSponsorControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015788732" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidCourseSponsorControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015788733" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidDepartmentControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015841128" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidModeOfConsultationControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015883470" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidRankControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015896529" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidSchoolControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015909572" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidServiceProvidedControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015921481" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidUserGoalControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015934280" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidUserGoalControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370015934281" ignored="false" />
+    <file path="/_formCons.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374854463212" ignored="false" />
+    <file path="/RidAdminTransactionController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372090628609" ignored="false" />
+    <file path="/_adminToggle.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370271596959" ignored="false" />
+    <file path="/_adminToggleLabel.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371839101089" ignored="false" />
+    <file path="/ridtrans_admin.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371748982695" ignored="false" />
+    <file path="/RidAdminCourseSponsorController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437922437" ignored="false" />
+    <file path="/RidAdminBaseController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370955918892" ignored="false" />
+    <file path="/RidAdminRankController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370360438596" ignored="false" />
+    <file path="/Config.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373572442744" ignored="false" />
+    <file path="/RidAdminLibraryUnitController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370365754528" ignored="false" />
+    <file path="/RidAdminServiceProvidedController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370366017825" ignored="false" />
+    <file path="/RidAdminUserGoalController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437329353" ignored="false" />
+    <file path="/RidAdminSchoolController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437342214" ignored="false" />
+    <file path="/RidAdminModeOfConsultationController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437438653" ignored="false" />
+    <file path="/RidAdminDepartmentController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437592633" ignored="false" />
+    <file path="/RidAdminLocationController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370437735973" ignored="false" />
+    <file path="/_baseCreate.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370528409536" ignored="false" />
+    <file path="/_baseEdit.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370528789084" ignored="false" />
+    <file path="/RidPaginateTagLibTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370531531169" ignored="false" />
+    <file path="/RidPaginateTagLib.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370531837488" ignored="false" />
+    <file path="/_tabLabel.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372165919462" ignored="false" />
+    <file path="/RidManageLibraryUnitSpreadsheetsServiceTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370877436380" ignored="false" />
+    <file path="/Ajax.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370959346879" ignored="false" />
+    <file path="/Bootstrap.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370959788405" ignored="false" />
+    <file path="/CSSMediaQuery.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370960066248" ignored="false" />
+    <file path="/Grails.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370960644157" ignored="false" />
+    <file path="/Form.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370960885374" ignored="false" />
+    <file path="/Excel.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370962143196" ignored="false" />
+    <file path="/databaseDesign.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370963747589" ignored="false" />
+    <file path="/toc.yml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370963939250" ignored="false" />
+    <file path="/technology.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370964928451" ignored="false" />
+    <file path="/unitTests.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370965206191" ignored="false" />
+    <file path="/webUI.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1370965270655" ignored="false" />
+    <file path="/_toggleDD.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371567119449" ignored="false" />
+    <file path="/_toggleTabs.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371044887200" ignored="false" />
+    <file path="/personal.gdoc" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371046050983" ignored="false" />
+    <file path="/_toggleLabelRight.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371049078310" ignored="false" />
+    <file path="/_tabsWithToggle.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371049059628" ignored="false" />
+    <file path="/_displayMode.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371061887745" ignored="false" />
+    <file path="/_displayLabel.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371062453993" ignored="false" />
+    <file path="/SpreadsheetService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371067684742" ignored="false" />
+    <file path="/_modal.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371129191815" ignored="false" />
+    <file path="/bacon.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371130345660" ignored="false" />
+    <file path="$APPLICATION_HOME_DIR$/plugins/Grails/lib/grails_integration.jar!/org/jetbrains/plugins/grails/lang/gsp/resolve/taglib/tld/grails.tld" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371565082589" ignored="false" />
+    <file path="/RidStatisticsReport.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372685807960" ignored="false" />
+    <file path="/RidStatisticsService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372871967514" ignored="false" />
+    <file path="/stats.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374693145151" ignored="false" />
+    <file path="/RidStatisticsSearchReport.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371828915257" ignored="false" />
+    <file path="/statSearch.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374693186185" ignored="false" />
+    <file path="/searchStatResults.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374853556495" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidCourseSponsorTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371838184375" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidAdminUserGoalControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371838184375" ignored="false" />
+    <file path="/_toggleLabelDD.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371838528578" ignored="false" />
+    <file path="/RidStatisticsGraphReport.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372090318014" ignored="false" />
+    <file path="/statGraph.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374853717363" ignored="false" />
+    <file path="/RidStatistics.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373050855351" ignored="false" />
+    <file path="/_statLabel.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372166129543" ignored="false" />
+    <file path="/RidDepartment.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372362063421" ignored="false" />
+    <file path="/RidConsTransaction.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372692599873" ignored="false" />
+    <file path="/RidConsTransactionTemplate.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372692666484" ignored="false" />
+    <file path="/RidTransaction.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373379980519" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidConsTransactionTests-out.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidRankTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/html/metridoc/rid/3_RidAdminRankControllerTests.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidConsTransactionTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/html/metridoc/rid/12_RidRankTests.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidAdminRankControllerTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/html/all.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidConsTransactionTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/TEST-unit-unit-metridoc.rid.RidAdminRankControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/html/index.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/html/metridoc/rid/7_RidConsTransactionTests.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidRankTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1372699080321" ignored="false" />
+    <file path="/select2.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373297347833" ignored="false" />
+    <file path="/select2edit.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373299336936" ignored="false" />
+    <file path="/RidStatisticsGraph.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373475057613" ignored="false" />
+    <file path="/DummyFile.xpath" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373475229189" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/.gitignore" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373552573682" ignored="false" />
+    <file path="/.gitignore" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373551803801" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/application.properties" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373552573682" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/conf/BuildConfig.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374849485582" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/AuthController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374513620647" ignored="false" />
+    <file path="/AuthController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374513494336" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/user/list.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374609682997" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/user/_tabs.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376583428544" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/role/list.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374601557244" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/manageReport/index.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374593128083" ignored="false" />
+    <file path="/index.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375381716948" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/ManageReportController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376581983463" ignored="false" />
+    <file path="/ManageReportController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374592539736" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/services/metridoc/core/ManageReportService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373647388087" ignored="false" />
+    <file path="/ManageReportService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373641749059" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/conf/Config.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373572443947" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.InitAuthServiceTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.LogControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ProfileControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.NotificationEmailsTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.utils.ScriptUtilsTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.LogServiceTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ShiroDbRealmTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/ManageReportControllerTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373649899002" ignored="false" />
+    <file path="/ManageReportControllerTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373649876290" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ShiroUserTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ManageReportTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.AuthServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TESTS-TestSuites.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373918005534" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ManageReportControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.AuthControllerTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/UserSeed.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373897487172" ignored="false" />
+    <file path="/UserSeed.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373897486212" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/ShiroUser.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374163848273" ignored="false" />
+    <file path="/ShiroUser.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373915767976" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/ProfileController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373914981133" ignored="false" />
+    <file path="/ProfileController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373914980355" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/UserController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376581449376" ignored="false" />
+    <file path="/UserController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373914591308" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/services/metridoc/core/AuthService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374513613140" ignored="false" />
+    <file path="/AuthService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374513411850" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/services/metridoc/core/InitAuthService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375385483729" ignored="false" />
+    <file path="/InitAuthService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375385478766" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/ShiroUserTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374163848273" ignored="false" />
+    <file path="/ShiroUserTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373915604971" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/ProfileControllerTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917113022" ignored="false" />
+    <file path="/ProfileControllerTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917009775" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/ShiroDbRealmTest.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373913436400" ignored="false" />
+    <file path="/ShiroDbRealmTest.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373900038228" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.UserServiceTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.NotificationEmailsServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.ManageReportServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.CommonServiceTests.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/html/metridoc/core/13_ShiroUserTests.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373903806106" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/plain/TEST-unit-unit-metridoc.core.ShiroUserTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373905810848" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/plain/TEST-unit-unit-metridoc.core.ShiroUserTests-out.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373905810848" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/html/failed.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373911110400" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/html/all.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373911110399" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/UserControllerTest.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373913791626" ignored="false" />
+    <file path="/UserControllerTest.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373913791203" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.utils.ConfigObjectUtilsTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/TEST-unit-unit-metridoc.core.UserControllerTest.xml" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373917168561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/plain/TEST-unit-unit-metridoc.core.UserControllerTest.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373914015953" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/target/test-reports/html/index.html" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373911110399" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/ShiroRole.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373911675584" ignored="false" />
+    <file path="/ControllerInfo.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374071027363" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/ControllerInfo.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374070856523" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/ControllerData.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374076761605" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/ControllerDataSpec.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374070870221" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/test/unit/metridoc/core/AppCategorySpec.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374071022693" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/AppCategory.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374082291113" ignored="false" />
+    <file path="/AppCategory.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374082290479" ignored="false" />
+    <file path="/ControllerData.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374076753066" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/services/metridoc/core/HomeService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374522002605" ignored="false" />
+    <file path="/HomeService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374519333850" ignored="false" />
+    <file path="/MetridocCoreBootStrap.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374172439897" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/conf/MetridocCoreBootStrap.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374173163155" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/HomeController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374515533873" ignored="false" />
+    <file path="/HomeController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374515529675" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/home/index.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374847447085" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/realms/metridoc/core/ShiroDbRealm.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374163848273" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/js/manageReport.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374175989390" ignored="false" />
+    <file path="/manageReport.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374595278931" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/css/manageReport.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374180179857" ignored="false" />
+    <file path="/manageReport.css" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374179181089" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/home/_displayCategories.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374182233957" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/home/_appCategory.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374182151479" ignored="false" />
+    <file path="/_displayCategories.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374182221524" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/home/_adminCategory.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374182214521" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/js/homepage.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374182332618" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/home/_listControllers.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374850212561" ignored="false" />
+    <file path="/_listControllers.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374850212561" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/home/js/homepage.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374517606028" ignored="false" />
+    <file path="/homepage.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374517598818" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/manageReport/js/manageReport.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374595380500" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/manageReport/_rolesDropdown.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374526137143" ignored="false" />
+    <file path="/_rolesDropdown.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374526125685" ignored="false" />
+    <file path="/MetridocRidResources.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374856242189" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/status/index.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374775254952" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/conf/MetridocCoreResources.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374850499471" ignored="false" />
+    <file path="/MetridocCoreResources.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374848098490" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/MetridocCoreGrailsPlugin.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374849047374" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/home/js/home.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374850260352" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/RestController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374865578159" ignored="false" />
+    <file path="/RestController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374865496144" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/domain/metridoc/core/LDAP_Data.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375382955156" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/adminLDAP/index.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375381831600" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/AdminLDAPController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375385709431" ignored="false" />
+    <file path="/LDAP_Data.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375382916201" ignored="false" />
+    <file path="/AdminLDAPController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375384818902" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/adminLDAP/_form.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1375382699818" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/realms/metridoc/core/ShiroLdapRealm.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376326110248" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/services/metridoc/core/RoleMappingService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376326004483" ignored="false" />
+    <file path="/RoleMappingService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376326003384" ignored="false" />
+    <file path="/ShiroLdapRealm.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376326079676" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/ldapRole/_groupName.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376322261078" ignored="false" />
+    <file path="/_groupName.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376321912873" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/ldapRole/create.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376322266326" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/views/ldapRole/list.gsp" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376322328040" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/LdapRoleController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376324048080" ignored="false" />
+    <file path="/LdapRoleController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376323544400" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/RoleController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376581937688" ignored="false" />
+    <file path="/ManageAccessController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376583199676" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/grails-app/controllers/metridoc/core/ManageAccessController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376583203242" ignored="false" />
+    <file path="$PROJECT_DIR$/../metridoc-core/web-app/manageAccess/js/manageAccess.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376583165486" ignored="false" />
+    <file path="/manageAccess.js" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376583113743" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DatabaseView">
+    <flatten value="false" />
+    <groupTables value="false" />
+    <sortChildren value="false" />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="metridoc-rid" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="_formCons.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="25" selection-start="3329" selection-end="3340" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.gsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/create.gsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="19" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1376938560000" expanded="true" signature="2352:2364" placeholder="{...}" />
+                <marker date="1376938560000" expanded="true" signature="2708:2739" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RidTransactionController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="5" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.52348995">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RidStatisticsService.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/services/metridoc/rid/RidStatisticsService.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="18" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminServiceProvided/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminSchool/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminRank/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminModeOfConsultation/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminLocation/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminLibraryUnit/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminCourseSponsor/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminDepartment/departmentList.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/_form.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridAdminDepartment/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/conf/MetridocRidResources.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/list.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/_formIns.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/create.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="98" />
+    <option name="y" value="33" />
+    <option name="width" value="1568" />
+    <option name="height" value="916" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="d3.v3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridTransaction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridAdminDepartment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ridAdminBase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="metridoc-rid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grails-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="vcs.CVS" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="metridoc.rid" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web-app/css" />
+      <recent name="$PROJECT_DIR$/web-app/select2-3.4.0" />
+      <recent name="$PROJECT_DIR$/grails-app/views/ridTransaction" />
+      <recent name="$PROJECT_DIR$/web-app/js" />
+      <recent name="$PROJECT_DIR$/grails-app/views/ridAdminTransaction" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="metridoc.rid" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/grails-app/views/ridTransaction" />
+      <recent name="$PROJECT_DIR$/grails-app/views/ridAdminTransaction" />
+      <recent name="$PROJECT_DIR$/src/docs/guide/personal" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.RidSpreadsheetBootstrapAndTransferServiceTests.testSomething">
+    <configuration default="false" name="RidSpreadsheetBootstrapAndTransferServiceTests.testSomething" type="JUnit" factoryName="JUnit" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="metridoc.rid.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="metridoc-rid" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="metridoc.rid" />
+      <option name="MAIN_CLASS_NAME" value="metridoc.rid.RidSpreadsheetBootstrapAndTransferServiceTests" />
+      <option name="METHOD_NAME" value="testSomething" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="true" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.RidSpreadsheetBootstrapAndTransferServiceTests.testSomething" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.RidSpreadsheetBootstrapAndTransferServiceTests.testSomething" />
+      </list>
+    </recent_temporary>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="true" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <configuration useDefault="false">$USER_HOME$/.subversion</configuration>
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3ea03823-982d-4e92-b85d-8566021679fa" name="Default" comment="" />
+      <created>1368630873927</created>
+      <updated>1368630873927</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Refactored BootStrap into RidBootStrapService to make Bootstrap easier to maintain">
+      <created>1368635559166</created>
+      <updated>1368635559166</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added service to create local directory copies of spreadsheet files in the .metridoc/files">
+      <created>1368713516102</created>
+      <updated>1368713516102</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Rewrote download methods in LibraryUnitController and TransactionController to download spreadsheets from .metridoc/files. Also wrote unit test for spreadSheetBootStrapService to ensure transfer of spreadsheets to local directory was successful">
+      <created>1368725691101</created>
+      <updated>1368725691101</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Refactored download() method of libraryUnitController and transactionController to abstract controller spreadsheetTransferMethodController">
+      <created>1368726002101</created>
+      <updated>1368726002101</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Refactored download() method of libraryUnitController and transactionController to service manageLibraryUnitSpreadsheets. Added a check to transferSpreadsheets() to prevent overwriting updated spreadsheets with older versions.">
+      <created>1368730698101</created>
+      <updated>1368730698101</updated>
+    </task>
+    <task id="LOCAL-00006" summary="download() method in RidManageLibraryUnitSpreadsheetsService now properly finds and downloads file. Added a redirect back to index upon download failure in RidTransactionController. Removed special characters from method name in RidManageLibraryUnitSpreadsheetsServiceTest">
+      <created>1369066714155</created>
+      <updated>1369066714155</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Modified transferSpreadsheets() in RidManageLibraryUnitSpreadsheetsService to use input/output streams instead of renameTo in order to remove platform issues">
+      <created>1369070043101</created>
+      <updated>1369070043101</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed Transaction_list to Transaction_List in transfer spreadsheet testing in order to remove issues related to case sensitivity.">
+      <created>1369075265101</created>
+      <updated>1369075265101</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Removed unnecessary references to plugin metridoc-rid in views files. Updated &quot;compile metridoc-core&quot; to 0.54.4-SNAPSHOT in BuildConfig.groovy">
+      <created>1369077529101</created>
+      <updated>1369077529101</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed spelling of duplicate in error messages. Re-inserted plugin references in view files to fix css import errors. Re-titled tabs in Transaction create form">
+      <created>1369154713105</created>
+      <updated>1369154713105</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Provided visual separation of Upload Spreadsheet and Download Spreadsheet in the spreadsheetUpload view. Removed list transactions tab. Removed unnecessary headers from create transaction and search transaction views">
+      <created>1369163792101</created>
+      <updated>1369163792101</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed download spreadsheet interface from a pop-up window to a pull-down menu. (from spreadsheetUpload.gsp)">
+      <created>1369234361157</created>
+      <updated>1369234361157</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added a toggle button to switch between consultation transactions and instructional transactions. This information is stored in session scope. Currently, create, search, and spreadsheet upload views hide all forms and features while in instructional mode.">
+      <created>1369251001102</created>
+      <updated>1369251001102</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refactored RidTransaction into RidConsTransaction and RidInsTransaction. Added test data for RidInsTransactions. Added new domain class RidLocation. Refactored parameter generation for RidBootStrapService into RidDataService. Implemented &quot;search&quot; action for RidInsTransaction">
+      <created>1369753496172</created>
+      <updated>1369753496172</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Implemented &quot;create&quot; and &quot;show&quot; for InstructionalTransactions. Enabled redirect back to previous action after toggling between consultation and instructional modes. Refactored the form template into formCons and formIns">
+      <created>1369767781102</created>
+      <updated>1369767781102</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed TransactionControllerTests by adding a call to correctly set the transaction type">
+      <created>1369918874143</created>
+      <updated>1369918874143</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added Consultation/Instructional toggle to TransactionAdmin controller and associated controllers and transaction management views (ridCourseSponsor/list.gsp, etc)">
+      <created>1369942476101</created>
+      <updated>1369942476101</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added &quot;Admin&quot; to start of admin controllers and adjusted test names accordingly. Added login-requiring code to all controllers.">
+      <created>1370265153144</created>
+      <updated>1370265153144</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixed an error in saving InsTransaction templates. Added &quot;reached character count&quot; visual indicator to UserGoal box in InsTransaction create view; will refactor and add to appropriate input boxes.">
+      <created>1370265379102</created>
+      <updated>1370265379102</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added toggle for switching between transaction functions and admin functions. Admin toggle is included in the toggles template.">
+      <created>1370273752101</created>
+      <updated>1370273752101</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added tooltips for Transaction mode toggle and Administration mode toggle">
+      <created>1370276693101</created>
+      <updated>1370276693101</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Tweaked TransactionControllerTests syntax from session.setAttribute to controller.session.setAttribute to see if it will make Jenkins builds work.">
+      <created>1370277301102</created>
+      <updated>1370277301102</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Second tweak to try to get working Jenkins build">
+      <created>1370277742101</created>
+      <updated>1370277742101</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Refactored Admin controllers. Created AdminBaseController that has all methods used to add new members to RidSchool, RidRank, etc. Also updated the view pages accordingly. Next step is to refactor views.">
+      <created>1370439805178</created>
+      <updated>1370439805178</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Forgot to add AdminBaseController to svn">
+      <created>1370440583102</created>
+      <updated>1370440583102</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Yet another attempt to fix the TransactionControllerTest getSession bug in Jenkins. I altered the synax and lowered the method call below more of the setup code just in case something was being mocked in the wrong order.">
+      <created>1370443932101</created>
+      <updated>1370443932101</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Commented out problem tests in TransactionControllerTests. Added source and target lines to buildConfig">
+      <created>1370527041128</created>
+      <updated>1370527041128</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Factored out common code in AdminController view files and created _baseForm, _baseCreate, _baseEdit, and _baseList templates in ridAdminBase folder. Note that ridAdminLibraryUnit views have not been refactored due to the spreadsheet download functionality, and ridAdminDepartment has an unfactored list view.">
+      <created>1370533187101</created>
+      <updated>1370533187101</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Download spreadsheet bug fixed.">
+      <created>1370875315197</created>
+      <updated>1370875315197</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Small formatting changes">
+      <created>1370956750162</created>
+      <updated>1370956750162</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Small formatting changes">
+      <created>1370956797101</created>
+      <updated>1370956797101</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Some small rewordings of documentation files to make the language more formal.">
+      <created>1370965411100</created>
+      <updated>1370965411100</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixed download spreadsheet as Excel bug. Touched up documentation">
+      <created>1371051558105</created>
+      <updated>1371051558105</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Fixed downloading InsTransaction list as spreadsheet bug">
+      <created>1371069055106</created>
+      <updated>1371069055106</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Added tab and dropdown mode for the cons/ins switching button.">
+      <created>1371069094101</created>
+      <updated>1371069094101</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Fixed department icon bug. Department modal now properly shows the list of departments.">
+      <created>1371132221104</created>
+      <updated>1371132221104</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Set cons/ins switch mode to the dropdown box. Added select2 plugin which adds searchable dropdowns.">
+      <created>1371479772102</created>
+      <updated>1371479772102</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added administration toggle to dropdown.">
+      <created>1371567671107</created>
+      <updated>1371567671107</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fixed issue of default departments/libraryunits/etc not being added to the production version.">
+      <created>1371649998158</created>
+      <updated>1371649998158</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Made sure bootstrap won't try to add data that's already there">
+      <created>1371650558102</created>
+      <updated>1371650558102</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Changed version to 0.2.0-SNAPSHOT">
+      <created>1371834917104</created>
+      <updated>1371834917104</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Cosmetic changes to code styling">
+      <created>1371838182102</created>
+      <updated>1371838182102</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added statistical reports to the admin view">
+      <created>1371838321101</created>
+      <updated>1371838321101</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Improved Admin/Transaction dropdown to include both modes and highlight the currently active mode in a manner consistent with the admin tab dropdown.">
+      <created>1371839170101</created>
+      <updated>1371839170101</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Bumped version to 0.1.2 to fix bugs. Issue where old pills layout appeared when logging in from link that wasn't the homepage fixed. Issue where typing in an entry for rank:other in the create forms threw an error. Statistics functionality present but set to development env only.">
+      <created>1372699079140</created>
+      <updated>1372699079140</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Statistics report remade to feature data tables with overview/monthly breakdown toggles and show all/show some functionality.">
+      <created>1373290336123</created>
+      <updated>1373290336123</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Make css/js imports use Resource plugin instead of r:external">
+      <created>1374856714101</created>
+      <updated>1374856714101</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="98" y="33" width="1568" height="916" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.02553542" sideWeight="0.6724782" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32160804" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13206308" sideWeight="0.6708543" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32722834" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32914573" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18791065" sideWeight="0.6708543" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45177045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32663316" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41959798" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844934" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
+    <option name="myTodoPanelSettings">
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
+    </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="XPathView.XPathProjectComponent">
+    <history />
+    <find-history />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridAdminCourseSponsor/show.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="32" selection-start="378" selection-end="378" vertical-scroll-proportion="0.080213904">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridAdminDepartment/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="163" selection-end="163" vertical-scroll-proportion="-1.2765957">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.grails/2.2.0/projects/metridoc-rid/plugins/metridoc-core-0.54.4-SNAPSHOT/grails-app/views/layouts/main.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="1.25" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/list.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="37" selection-start="761" selection-end="761" vertical-scroll-proportion="0.23305085">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.grails/2.2.0/projects/metridoc-rid/plugins/metridoc-core-0.54.4-SNAPSHOT/grails-app/taglib/metridoc/ReportTagLib.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="8" selection-start="574" selection-end="574" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/MetridocRidResources.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="31" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_formIns.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridAdminDepartment/departmentList.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="3" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web-app/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="35" selection-start="814" selection-end="814" vertical-scroll-proportion="0.01986755" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/metridoc/rid/RidTransactionService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="6" selection-start="63" selection-end="63" vertical-scroll-proportion="-5.7615895">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/templateList.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.061026353">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/create.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="19" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1376938560000" expanded="true" signature="2352:2364" placeholder="{...}" />
+            <marker date="1376938560000" expanded="true" signature="2708:2739" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="25" selection-start="3329" selection-end="3340" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/metridoc/rid/RidStatisticsService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="18" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="5" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.52348995">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="grailsSettings">
+    <option name="map">
+      <map>
+        <entry key="metridoc-rid">
+          <value>
+            <GrailsSettings>
+              <option name="buildConfigCrc" value="-1597517374" />
+              <option name="pluginDependenciesCrc" value="641495159" />
+              <option name="fixedGrailsVersion" value="2.2.3" />
+              <option name="properties">
+                <map>
+                  <entry key="grails.global.plugins.dir" value="$USER_HOME$/.grails/2.2.0/global-plugins" />
+                  <entry key="grails.project.plugins.dir" value="$USER_HOME$/.grails/2.2.0/projects/metridoc-rid/plugins" />
+                  <entry key="grails.project.work.dir" value="$USER_HOME$/.grails/2.2.0/projects/metridoc-rid" />
+                  <entry key="grails.work.dir" value="$USER_HOME$/.grails/2.2.0" />
+                </map>
+              </option>
+            </GrailsSettings>
+          </value>
+        </entry>
+        <entry key="metridoc-rid-grailsPlugins">
+          <value>
+            <GrailsSettings />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Hibernate</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>grails-2.2.0</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>metridoc-rid</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+
