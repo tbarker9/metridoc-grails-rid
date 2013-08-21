@@ -18,12 +18,9 @@ grails.project.dependency.resolution = {
         mavenLocal()
         mavenCentral()
         mavenRepo "http://metridoc.googlecode.com/svn/maven/repository/"
+        mavenRepo "http://dl.bintray.com/upennlib/metridoc"
     }
     dependencies {
-        build("org.tmatesoft.svnkit:svnkit:1.3.5") {
-            excludes "jna", "trilead-ssh2", "sqljet"
-        }
-        build("com.google.code.maven-svn-wagon:maven-svn-wagon:1.4")
         compile("org.apache.poi:poi:3.8-beta3")
         compile("org.apache.poi:poi-ooxml:3.8-beta3") {
             excludes 'poi'
@@ -37,8 +34,7 @@ grails.project.dependency.resolution = {
         compile(":metridoc-core:0.7.1")
         //TODO: Remove when we upgrade metridoc core
         compile ":hibernate:$grailsVersion"
-        build ":release:2.2.1"
-        build(":tomcat:$grailsVersion") {
+        build(":release:2.2.1", ":bintray-upload:0.2", ":tomcat:$grailsVersion") {
             export = false
         }
         runtime ":jquery:1.10.0"
