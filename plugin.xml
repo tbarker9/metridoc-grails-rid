@@ -52,7 +52,7 @@
   </dependencies>
   <plugins>
     <compile>
-      <plugin group='org.grails.plugins' name='metridoc-core' version='0.54.4-SNAPSHOT' />
+      <plugin group='org.grails.plugins' name='metridoc-core' version='0.7' />
     </compile>
     <build>
       <plugin group='org.grails.plugins' name='rest-client-builder' version='1.0.3' />

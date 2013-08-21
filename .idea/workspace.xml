@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="3ea03823-982d-4e92-b85d-8566021679fa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/metridoc-rid-grailsPlugins.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin.xml" afterPath="$PROJECT_DIR$/plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="metridoc-rid.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$USER_HOME$/.grails/" />
     <file path="/RidBootStrapService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1371650521746" ignored="false" />
     <file path="/MetridocRidBootStrap.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368729073917" ignored="false" />
-    <file path="/Dummy.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1376939527974" ignored="false" />
+    <file path="/Dummy.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1377093079604" ignored="false" />
     <file path="/RidSpreadsheetBootstrapService.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368714226635" ignored="false" />
     <file path="/RidSpreadsheetBootstrapServiceTests.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368714799165" ignored="false" />
-    <file path="/a.dummy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1374856424903" ignored="false" />
+    <file path="/a.dummy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1377093463389" ignored="false" />
     <file path="/RidLibraryUnitController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1369065873657" ignored="false" />
     <file path="$PROJECT_DIR$/target/test-reports/plain/TEST-unit-unit-metridoc.rid.RidSpreadsheetBootstrapServiceTests.txt" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1368717333363" ignored="false" />
     <file path="/RidTransactionController.groovy" changelist="3ea03823-982d-4e92-b85d-8566021679fa" time="1373465460670" ignored="false" />
@@ -365,10 +368,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RidTransactionController.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RidTransactionController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="5" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.52348995">
+            <state line="58" column="49" selection-start="2173" selection-end="2173" vertical-scroll-proportion="-0.65217394">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildConfig.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="22" selection-start="545" selection-end="545" vertical-scroll-proportion="-5.88">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.1863354">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plugin.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="74" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/target/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="18" selection-start="2197" selection-end="2197" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -401,9 +440,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/views/ridAdminServiceProvided/list.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/ridAdminSchool/list.gsp" />
-        <option value="$PROJECT_DIR$/grails-app/views/ridAdminRank/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/ridAdminModeOfConsultation/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/ridAdminLocation/list.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/ridAdminLibraryUnit/list.gsp" />
@@ -417,6 +453,9 @@
         <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/ridTransaction/create.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy" />
+        <option value="$PROJECT_DIR$/plugin.xml" />
+        <option value="$PROJECT_DIR$/application.properties" />
       </list>
     </option>
   </component>
@@ -454,6 +493,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -685,22 +725,22 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="vcs.CVS" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.lastSelected" value="vcs.CVS" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1113,18 +1153,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="98" y="33" width="1568" height="916" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32914573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41854638" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.02553542" sideWeight="0.6724782" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32160804" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32663316" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13206308" sideWeight="0.6708543" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32722834" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1137,11 +1179,9 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18791065" sideWeight="0.6708543" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.45177045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32663316" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41959798" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844934" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1215,30 +1255,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/views/ridAdminCourseSponsor/show.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_form.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="32" selection-start="378" selection-end="378" vertical-scroll-proportion="0.080213904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/ridAdminDepartment/list.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="7" selection-start="163" selection-end="163" vertical-scroll-proportion="-1.2765957">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.grails/2.2.0/projects/metridoc-rid/plugins/metridoc-core-0.54.4-SNAPSHOT/grails-app/views/layouts/main.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="1.25" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/list.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="37" selection-start="761" selection-end="761" vertical-scroll-proportion="0.23305085">
@@ -1248,9 +1264,7 @@
     </entry>
     <entry file="file://$USER_HOME$/.grails/2.2.0/projects/metridoc-rid/plugins/metridoc-core-0.54.4-SNAPSHOT/grails-app/taglib/metridoc/ReportTagLib.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="8" selection-start="574" selection-end="574" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
+        <state line="27" column="8" selection-start="574" selection-end="574" vertical-scroll-proportion="0.33333334" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/MetridocRidResources.groovy">
@@ -1291,6 +1305,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="25" selection-start="3329" selection-end="3340" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/create.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="19" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
@@ -1301,9 +1322,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/ridTransaction/_formCons.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="25" selection-start="3329" selection-end="3340" vertical-scroll-proportion="0.0">
+        <state line="58" column="49" selection-start="2173" selection-end="2173" vertical-scroll-proportion="-0.65217394">
           <folding />
         </state>
       </provider>
@@ -1315,9 +1336,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/metridoc/rid/RidTransactionController.groovy">
+    <entry file="file://$PROJECT_DIR$/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="5" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.52348995">
+        <state line="54" column="74" selection-start="3097" selection-end="3097" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/target/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="18" selection-start="2197" selection-end="2197" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="22" selection-start="545" selection-end="545" vertical-scroll-proportion="-5.88">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="158" selection-end="158" vertical-scroll-proportion="0.1863354">
           <folding />
         </state>
       </provider>
