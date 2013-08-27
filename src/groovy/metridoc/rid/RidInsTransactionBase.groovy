@@ -7,19 +7,25 @@ abstract class RidInsTransactionBase {
     Integer eventLength = 1
     Integer attendanceTotal = 1
     String notes
-    String staffPennkey
+    String instructorPennkey
+    String coInstructorPennkey
+    String sequenceName
+    Integer sequenceUnit
+    String otherSessionType
+    String otherAudience
     String sessionDescription
     String otherLocation
-    String instructionalMaterials
+    String otherInstructionalMaterials
 
     // roles
-    String userName
+    //String userName
     String facultySponsor
     String courseName
     String courseNumber
-    String otherRank
+    //String otherRank
     String otherSchool
     String coInstructor
+    String requestor
 
     // Calendar dateOfInstruction = Calendar.getInstance()
     Date dateOfInstruction = new Date()

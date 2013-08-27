@@ -1,5 +1,7 @@
 package metridoc.rid
 
+import org.apache.commons.collections.CollectionUtils
+
 import java.text.SimpleDateFormat
 
 class RidTransactionService {
@@ -140,25 +142,23 @@ class RidTransactionService {
                 }
             }
 
-            if (params.staffPennkey) {
-                String[] staffPennkey_splits = params.staffPennkey.split(" ");
-                for (String s in staffPennkey_splits) {
+            if (params.instructorPennkey) {
+                String[] instructorPennkey_splits = params.instructorPennkey.split(" ");
+                for (String s in instructorPennkey_splits) {
                     if (!s.trim().isEmpty()) {
                         query = query.where {
-                            staffPennkey ==~ ~s.trim()
+                            instructorPennkey ==~ ~s.trim()
                         }
                     }
                 }
             }
-/*
-            if (params.ridSchoolSearch) {
-                def SchoolList = params.list('ridSchoolSearch')
-                if (SchoolList.size() > 0 && !SchoolList.contains("0")) {
-                    List<Long> sList = new LinkedList<Long>()
-                    for (String id in SchoolList)
-                        sList.add(Long.valueOf(id))
-                    query = query.where {
-                        school in RidSchool.findAllByIdInList(sList)
+            if (params.coInstructorPennkey) {
+                String[] coInstructorPennkey_splits = params.coInstructorPennkey.split(" ");
+                for (String s in coInstructorPennkey_splits) {
+                    if (!s.trim().isEmpty()) {
+                        query = query.where {
+                            coInstructorPennkey ==~ ~s.trim()
+                        }
                     }
                 }
             }
@@ -170,10 +170,25 @@ class RidTransactionService {
                     for (String id in DepartmentList)
                         dList.add(Long.valueOf(id))
                     query = query.where {
-                        department in RidDepartment.findAllByIdInList(dList)
+                        department in RidDepartment.findAllByIdInList(dList) || CollectionUtils.intersection(extraDepartments, RidDepartment.findAllByIdInList(dList)).size() > 0
                     }
                 }
             }
+
+
+            if (params.ridSchoolSearch) {
+                def SchoolList = params.list('ridSchoolSearch')
+                if (SchoolList.size() > 0 && !SchoolList.contains("0")) {
+                    List<Long> sList = new LinkedList<Long>()
+                    for (String id in SchoolList)
+                        sList.add(Long.valueOf(id))
+                    query = query.where {
+                        school in RidSchool.findAllByIdInList(sList)
+                    }
+                }
+            }
+/*
+
 
             if (params.userName) {
                 String[] userName_splits = params.userName.split(" ");
@@ -325,16 +340,6 @@ class RidTransactionService {
     }
 
     def createNewInsInstanceMethod(Map params, RidInsTransactionBase ridTransactionInstance) {
-        String otherRank = params.otherRank
-        if (otherRank != null && !otherRank.isEmpty()) {
-            if (RidRank.findAllByName(otherRank).size() == 0) {
-                def c = new RidRank(name: otherRank, inForm: 0)
-                c.save()
-                if (c.hasErrors()) println c.errors
-            }
-            if (RidRank.findAllByName(otherRank).size() > 0)
-                ridTransactionInstance.rank = RidRank.findByName(otherRank)
-        }
 
         String otherLocation = params.otherLocation
         if (otherLocation != null && !otherLocation.isEmpty()) {
@@ -345,6 +350,26 @@ class RidTransactionService {
             }
             if (RidLocation.findAllByName(otherLocation).size() > 0)
                 ridTransactionInstance.location = RidLocation.findByName(otherLocation)
+        }
+        String otherInstructionalMaterials = params.otherInstructionalMaterials
+        if (otherInstructionalMaterials != null && !otherInstructionalMaterials.isEmpty()) {
+            if (RidInstructionalMaterials.findAllByName(otherInstructionalMaterials).size() == 0) {
+                def e = new RidInstructionalMaterials(name: otherInstructionalMaterials, inForm: 0)
+                e.save()
+                if (e.hasErrors()) println e.errors
+            }
+            if (RidInstructionalMaterials.findAllByName(otherInstructionalMaterials).size() > 0)
+                ridTransactionInstance.instructionalMaterials = RidInstructionalMaterials.findByName(otherInstructionalMaterials)
+        }
+        String otherAudience = params.otherAudience
+        if (otherAudience != null && !otherAudience.isEmpty()) {
+            if (RidAudience.findAllByName(otherAudience).size() == 0) {
+                def e = new RidAudience(name: otherAudience, inForm: 0)
+                e.save()
+                if (e.hasErrors()) println e.errors
+            }
+            if (RidAudience.findAllByName(otherAudience).size() > 0)
+                ridTransactionInstance.audience = RidAudience.findByName(otherAudience)
         }
     }
 }

@@ -9,6 +9,7 @@
 <!--<![endif]-->
 
 <div id="list-ridDepartment" class="content scaffold-list">
+    <g:hiddenField name="targetDept" id="targetDept"/>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
@@ -19,7 +20,7 @@
         <tbody>
         <g:each in="${ridDepartmentInstanceList}" var="ridDepartmentInstance">
             <tr style="cursor: pointer;"
-                onclick="setDepartment(${fieldValue(bean: ridDepartmentInstance, field: "id")})">
+                onclick="setDepartment(${fieldValue(bean: ridDepartmentInstance, field: "id")}, '#' + targetDept.val())">
                 <td>${fieldValue(bean: ridDepartmentInstance, field: "name")}</td>
                 <td>${fieldValue(bean: ridDepartmentInstance, field: "fullName")}</td>
             </tr>

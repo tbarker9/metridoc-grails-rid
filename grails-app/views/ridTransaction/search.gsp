@@ -187,12 +187,13 @@
                 <div class="row-fluid">
                     <div class="span2 ">
                         <div class="control-group fieldcontain">
-                            <label class="control-label" for="staffPennkey">
-                                <g:message code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/>
+                            <label class="control-label" for="instructorPennkey">
+                                <g:message code="ridTransaction.instructorPennkey.label" default="Instructor Pennkey"/>
                             </label>
 
                             <div class="controls">
-                                <g:textField id="staffPennkey" style="width:150px" class="userInput" name="staffPennkey"
+                                <g:textField id="instructorPennkey" style="width:150px" class="userInput"
+                                             name="instructorPennkey"
                                              value=""/>
                             </div>
                         </div>

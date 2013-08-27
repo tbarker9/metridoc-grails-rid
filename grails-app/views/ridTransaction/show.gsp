@@ -281,29 +281,16 @@
                             format="yyyy-MM-dd" date="${ridTransactionInstance?.dateOfInstruction}"/></span>
                 </td>
                 <td colspan="2">
-                    <span id="staffPennkey-label" class="property-label"><g:message
-                            code="ridTransaction.staffPennkey.label" default="Staff Pennkey"/></span>
+                    <span id="instructorPennkey-label" class="property-label"><g:message
+                            code="ridTransaction.instructorPennkey.label" default="Instructor Pennkey"/></span>
                     :
-                    <span class="property-value" aria-labelledby="staffPennkey-label"><g:fieldValue
-                            bean="${ridTransactionInstance}" field="staffPennkey"/></span>
+                    <span class="property-value" aria-labelledby="instructorPennkey-label"><g:fieldValue
+                            bean="${ridTransactionInstance}" field="instructorPennkey"/></span>
                 </td>
             </tr>
 
             <tr align="center">
-                <td>
-                    <span id="userName-label" class="property-label"><g:message code="ridTransaction.userName.label"
-                                                                                default="User Name"/></span>
-                    :<br/>
-                    <span class="property-value" aria-labelledby="userName-label"><g:fieldValue
-                            bean="${ridTransactionInstance}" field="userName"/></span>
-                </td>
-                <td>
-                    <span id="rank-label" class="property-label"><g:message code="ridTransaction.rank.label"
-                                                                            default="Rank"/></span>
-                    :<br/>
-                    <span class="property-value" aria-labelledby="rank-label"><g:fieldValue
-                            bean="${ridTransactionInstance}" field="rank"/></span>
-                </td>
+
                 <td>
                     <span id="school-label" class="property-label"><g:message
                             code="ridTransaction.school.label" default="School"/></span>

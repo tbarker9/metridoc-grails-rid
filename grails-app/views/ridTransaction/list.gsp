@@ -115,11 +115,11 @@
                     <thead>
                     <tr>
 
-                        <g:sortableColumn property="staffPennkey"
-                                          title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}"/>
+                        <g:sortableColumn property="instructorPennkey"
+                                          title="${message(code: 'ridTransaction.instructorPennkey.label', default: 'Instructor Pennkey')}"/>
 
                         <g:sortableColumn property="dateOfConsultation"
-                                          title="${message(code: 'ridTransaction.dateOfInstruction.label', default: 'Date of Consultation')}"/>
+                                          title="${message(code: 'ridTransaction.dateOfInstruction.label', default: 'Date of Instruction')}"/>
 
                         <g:sortableColumn property="ridLibraryUnit"
                                           title="${message(code: 'ridTransaction.ridLibraryUnit.label', default: 'Library Unit')}"/>
@@ -137,11 +137,11 @@
                             onclick="window.location = 'show/${ridTransactionInstance.id}'"
                             style="cursor: pointer;">
 
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>
+                            <td>${fieldValue(bean: ridTransactionInstance, field: "instructorPennkey")}</td>
 
                             <td><g:formatDate format="yyyy-MM-dd"
                                               date="${ridTransactionInstance?.dateOfInstruction}"/></td>
-                            %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
+                            %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateofInstruction")}</td>--}%
 
                             <td>${fieldValue(bean: ridTransactionInstance, field: "ridLibraryUnit")}</td>
 
