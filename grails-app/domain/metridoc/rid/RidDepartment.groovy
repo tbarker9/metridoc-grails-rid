@@ -4,8 +4,10 @@ class RidDepartment {
 
     static hasMany = [ridConsTransaction: RidConsTransaction,
             ridInsTransaction: RidInsTransaction]
+    static belongsTo = [ridInsTransactionCrossLister: RidInsTransaction]
     String name
     String fullName
+    boolean crossList = false
 
     String toString() {
         return "${name}"
@@ -16,5 +18,6 @@ class RidDepartment {
         fullName(blank: true, nullable: true)
         ridConsTransaction(nullable: true)
         ridInsTransaction(nullable: true)
+        ridInsTransactionCrossLister(nullable: true)
     }
 }

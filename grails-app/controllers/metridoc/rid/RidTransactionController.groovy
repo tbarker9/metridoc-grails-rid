@@ -142,7 +142,7 @@ class RidTransactionController {
 
                 flash.message = message(code: 'default.created.message',
                         args: [message(code: 'ridTransaction.label',
-                                default: 'RidConsTransaction'), ridTransactionInstance.id])
+                                default: 'RidInsTransaction'), ridTransactionInstance.id])
                 redirect(action: "show", id: ridTransactionInstance.id)
             }.invalidToken {
                 flash.alerts << "Don't click the create button more than one time to make duplicated submission!"

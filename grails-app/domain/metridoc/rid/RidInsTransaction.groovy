@@ -2,13 +2,20 @@ package metridoc.rid
 
 class RidInsTransaction extends RidInsTransactionBase {
 
-    static belongsTo = [department: RidDepartment,
-            rank: RidRank,
+    static belongsTo = [
+            department: RidDepartment,
+//            rank: RidRank,
             school: RidSchool,
             ridLibraryUnit: RidLibraryUnit,
-            location: RidLocation]
+            location: RidLocation,
+            sessionType: RidSessionType,
+            audience: RidAudience,
+            instructionalMaterials: RidInstructionalMaterials]
 
-    static transients = ['otherRank', 'otherUser', 'otherSchool', 'otherLocation']
+    static hasMany = [extraDepartments: RidDepartment]
+
+    static transients = [/*'otherRank',*/ 'otherUser', 'otherSchool', 'otherLocation',
+            'otherSessionType', 'otherAudience', 'otherInstructionalMaterials']
 
     String spreadsheetName
 
@@ -18,7 +25,10 @@ class RidInsTransaction extends RidInsTransactionBase {
         eventLength(nullable: false, min: 0)
         notes(blank: true, nullable: true, maxSize: 500)
         sessionDescription(blank: true, nullable: true, maxSize: 500)
-        staffPennkey(blank: false, nullable: false, maxSize: 100)
+        instructorPennkey(blank: false, nullable: false, maxSize: 100)
+        coInstructorPennkey(blank: true, nullable: true, maxSize: 100)
+        sequenceName(blank: true, nullable: true, maxSize: 100)
+        sequenceUnit(nullable: true, min: 0)
         location(blank: false, nullable: false)
         otherLocation(blank: true, nullable: true, maxSize: 50)
 
@@ -26,17 +36,24 @@ class RidInsTransaction extends RidInsTransactionBase {
         facultySponsor(blank: true, nullable: true, maxSize: 100)
         courseName(blank: true, nullable: true, maxSize: 100)
         courseNumber(blank: true, nullable: true, maxSize: 100)
-        otherRank(blank: true, nullable: true, maxSize: 50)
+        //otherRank(blank: true, nullable: true, maxSize: 50)
         school(nullable: true)
         otherSchool(blank: true, nullable: true, maxSize: 50)
         department(nullable: true)
-        userName(blank: true, nullable: true, maxSize: 50)
+        extraDepartments(nullable: true)
+        //userName(blank: true, nullable: true, maxSize: 50)
         coInstructor(blank: true, nullable: true, maxSize: 50)
+        requestor(blank: true, nullable: true, maxSize: 50)
 
         // DESCRIPTION
         ridLibraryUnit(nullable: false)
         attendanceTotal(blank: false, nullable: false, min: 0)
         spreadsheetName(nullable: true, blank: true)
+        sessionType(nullable: false, blank: false)
+        otherSessionType(nullable: true, blank: true)
+        audience(nullable: true, blank: true)
+        otherAudience(nullable: true, blank: true)
         instructionalMaterials(blank: true, nullable: true, maxSize: 50)
+        otherInstructionalMaterials(blank: true, nullable: true, maxSize: 50)
     }
 }

@@ -99,68 +99,74 @@
         </g:if>
 
         <g:else>
-            <div id="list-ridTransaction" class="content scaffold-list" role="main">
-                <h1>
-                    <g:message code="default.list.label" args="[entityName]"/>
-                    <g:if test="${ridTransactionAllList.size() > 0}">
-                        <g:link action="export" params="${params}">
-                            <i id="exportToFile"
-                               title="Save the current transaction list as an excel file" class="icon-download-alt"></i>
-                        </g:link>
-                    </g:if>
-                </h1>
+            <g:if env="development">
+                <div id="list-ridTransaction" class="content scaffold-list" role="main">
+                    <h1>
+                        <g:message code="default.list.label" args="[entityName]"/>
+                        <g:if test="${ridTransactionAllList.size() > 0}">
+                            <g:link action="export" params="${params}">
+                                <i id="exportToFile"
+                                   title="Save the current transaction list as an excel file"
+                                   class="icon-download-alt"></i>
+                            </g:link>
+                        </g:if>
+                    </h1>
 
 
-                <table class="table table-striped table-hover">
-                    <thead>
-                    <tr>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
 
-                        <g:sortableColumn property="staffPennkey"
-                                          title="${message(code: 'ridTransaction.staffPennkey.label', default: 'Staff Pennkey')}"/>
+                            <g:sortableColumn property="instructorPennkey"
+                                              title="${message(code: 'ridTransaction.instructorPennkey.label', default: 'Instructor Pennkey')}"/>
 
-                        <g:sortableColumn property="dateOfConsultation"
-                                          title="${message(code: 'ridTransaction.dateOfInstruction.label', default: 'Date of Consultation')}"/>
+                            <g:sortableColumn property="dateOfConsultation"
+                                              title="${message(code: 'ridTransaction.dateOfInstruction.label', default: 'Date of Instruction')}"/>
 
-                        <g:sortableColumn property="ridLibraryUnit"
-                                          title="${message(code: 'ridTransaction.ridLibraryUnit.label', default: 'Library Unit')}"/>
+                            <g:sortableColumn property="ridLibraryUnit"
+                                              title="${message(code: 'ridTransaction.ridLibraryUnit.label', default: 'Library Unit')}"/>
 
-                        <g:sortableColumn property="ridLocation"
-                                          title="${message(code: 'ridTransaction.ridLocation.label', default: 'Location')}"/>
+                            <g:sortableColumn property="ridLocation"
+                                              title="${message(code: 'ridTransaction.ridLocation.label', default: 'Location')}"/>
 
-                        <g:sortableColumn property="notes"
-                                          title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}"/>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
-                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
-                            onclick="window.location = 'show/${ridTransactionInstance.id}'"
-                            style="cursor: pointer;">
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "staffPennkey")}</td>
-
-                            <td><g:formatDate format="yyyy-MM-dd"
-                                              date="${ridTransactionInstance?.dateOfInstruction}"/></td>
-                            %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateOfConsultation")}</td>--}%
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "ridLibraryUnit")}</td>
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "location")}</td>
-
-                            <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
-
+                            <g:sortableColumn property="notes"
+                                              title="${message(code: 'ridTransaction.notes.label', default: 'Notes')}"/>
                         </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-                <g:if test="${ridTransactionInstanceTotal > params.max}">
-                    <div class="pagination">
-                        <g:paginate action="query" total="${ridTransactionInstanceTotal}" params="${params}"
-                                    next="&gt;&gt;"
-                                    prev="&lt;&lt;"/>
-                    </div>
-                </g:if>
-            </div>
+                        </thead>
+                        <tbody>
+                        <g:each in="${ridTransactionInstanceList}" status="i" var="ridTransactionInstance">
+                            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}"
+                                onclick="window.location = 'show/${ridTransactionInstance.id}'"
+                                style="cursor: pointer;">
+
+                                <td>${fieldValue(bean: ridTransactionInstance, field: "instructorPennkey")}</td>
+
+                                <td><g:formatDate format="yyyy-MM-dd"
+                                                  date="${ridTransactionInstance?.dateOfInstruction}"/></td>
+                                %{--<td>${fieldValue(bean: ridTransactionInstance, field: "dateofInstruction")}</td>--}%
+
+                                <td>${fieldValue(bean: ridTransactionInstance, field: "ridLibraryUnit")}</td>
+
+                                <td>${fieldValue(bean: ridTransactionInstance, field: "location")}</td>
+
+                                <td>${fieldValue(bean: ridTransactionInstance, field: "notes")}</td>
+
+                            </tr>
+                        </g:each>
+                        </tbody>
+                    </table>
+                    <g:if test="${ridTransactionInstanceTotal > params.max}">
+                        <div class="pagination">
+                            <g:paginate action="query" total="${ridTransactionInstanceTotal}" params="${params}"
+                                        next="&gt;&gt;"
+                                        prev="&lt;&lt;"/>
+                        </div>
+                    </g:if>
+                </div>
+            </g:if>
+            <g:else>
+                Not yet Implemented
+            </g:else>
         </g:else>
     </div>
 </md:report>

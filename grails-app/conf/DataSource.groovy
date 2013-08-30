@@ -17,7 +17,7 @@ environments {
     development {
         dataSource {
             // one of 'create', 'create-drop','update'
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/metridoc_rid?autoreconnect=true"
             //url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }

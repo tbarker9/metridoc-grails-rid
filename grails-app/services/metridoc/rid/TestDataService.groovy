@@ -149,15 +149,44 @@ class TestDataService {
         // for location
         List<String> loc = Arrays.asList("Classroom", "Library conference room", "Lecture hall")
         for (String i in loc.sort()) {
-            if (!RidLocation.findByName(i)) {
+            if (!RidInstructionalMaterials.findByName(i)) {
                 def nl = new RidLocation(name: i, inForm: 1)
                 nl.save()
                 if (nl.hasErrors()) println nl.errors
             }
         }
         def otherLocation = "Other location (please indicate)"
-        if (!RidSchool.findByName(otherLocation)) {
-            new RidSchool(name: otherLocation, inForm: 2).save()
+        if (!RidLocation.findByName(otherLocation)) {
+            new RidLocation(name: otherLocation, inForm: 2).save()
+        }
+        // ---------------------------------------------------------------------------------------------
+        // for instructionalMaterials
+        List<String> im = Arrays.asList("PowerPoint", "Handout", "Quiz")
+        for (String i in im.sort()) {
+            if (!RidInstructionalMaterials.findByName(i)) {
+                def nl = new RidInstructionalMaterials(name: i, inForm: 1)
+                nl.save()
+                if (nl.hasErrors()) println nl.errors
+            }
+        }
+        def otherInstructionalMaterials = "Other instructional Materials (please indicate)"
+        if (!RidInstructionalMaterials.findByName(otherInstructionalMaterials)) {
+            new RidInstructionalMaterials(name: otherInstructionalMaterials, inForm: 2).save()
+        }
+
+        // ---------------------------------------------------------------------------------------------
+        // for instructionalMaterials
+        List<String> aud = Arrays.asList("Undergraduates", "Grad Students", "Teachers")
+        for (String i in aud.sort()) {
+            if (!RidAudience.findByName(i)) {
+                def nl = new RidAudience(name: i, inForm: 1)
+                nl.save()
+                if (nl.hasErrors()) println nl.errors
+            }
+        }
+        def otherAudience = "Other audience (please indicate)"
+        if (!RidAudience.findByName(otherAudience)) {
+            new RidAudience(name: otherAudience, inForm: 2).save()
         }
 
         // ---------------------------------------------------------------------------------------------
@@ -356,6 +385,86 @@ class TestDataService {
         for (String i in cMode) {
             if (!RidModeOfConsultation.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("General"))) {
                 def c = new RidModeOfConsultation(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+
+        // ---------------------------------------------------------------------------------------------
+        // for session type -- WIC
+        List<String> cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "Video or web conference", "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("WIC"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("WIC"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        new RidSessionType(name: "Other (please indicate)", inForm: 2, ridLibraryUnit: RidLibraryUnit.findByName("WIC")).save()
+        // for session type -- HSL
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("HSL"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("HSL"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        // for session type -- CDM
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("CDM"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("CDM"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        // for session type -- LIPPINCOTT
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("LIPPINCOTT"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("LIPPINCOTT"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        // for session type -- RIS
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("RIS"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("RIS"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        // for session type -- Science Libraries
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("Science Libraries"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("Science Libraries"))
+                c.save()
+                if (c.hasErrors()) println c.errors
+            }
+        }
+        // for session type -- General
+        cType = Arrays.asList("Email", "Phone", "Chat", "Conferencing software",
+                "In person (in library)", "In person (outside library)")
+        new RidSessionType(name: "", inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General")).save(validate: false)
+        for (String i in cType) {
+            if (!RidSessionType.findByNameAndRidLibraryUnit(i, RidLibraryUnit.findByName("General"))) {
+                def c = new RidSessionType(name: i, inForm: 1, ridLibraryUnit: RidLibraryUnit.findByName("General"))
                 c.save()
                 if (c.hasErrors()) println c.errors
             }
